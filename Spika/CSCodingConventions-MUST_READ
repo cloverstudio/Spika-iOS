@@ -1,0 +1,307 @@
+
+
+
+ **********************************************
+ *      CLOVER STUDIO CODING CONVENTIONS      *
+ **********************************************
+ 
+ A. CODING RULES
+ 
+    1. Each class or category has it's own file
+        
+        MyClass.h
+        MyClass.m
+        MyClass+Category.h
+        MyClass+Category.m
+        
+    2. Each class or category has it's own group in project explorer
+    
+        ∆ Classes Folder
+            ∆ MyClass
+                MyClass.h
+                MyClass.m
+              ∆ MyClass+Category
+                    MyClass+Category.h
+                    MyClass+Category.m
+            ∆ TestClass
+                TestClass.h
+                TestClass.m
+                
+    3. Never use duplicated code, instead copy/pasting create new method
+    
+ B. NAMING CONVENTIONS
+ 
+    1. Always use full sentences and names when naming methods
+        
+        GOOD: √
+        
+            -initWithLongString: success: error:
+            
+        BAD: X
+        
+            -initWithStr: success: error:
+            -initWithDict: arr: expr:
+            
+    2. Always use full names when naming variables
+    
+        GOOD: √
+        
+            UIViewController    *viewController = ...
+            NSString            *titleString = ...
+            BOOL                isKeyboardUp
+            
+        BAD: X
+        
+            UIViewController    *vc = ...
+            NSString            *titleStr = ...
+            BOOL                keyUp
+            
+    3. Instance variables must always be prefixed with unserscore sign "_"
+    
+        GOOD: √
+        
+            BOOL _myInstanceVariable;
+            
+        BAD: X
+        
+            BOOL myVariable;
+            BOOL myVariable_;
+            BOOL _myVariable_;
+            BOOL __myVariable
+
+    4. Variables that describe state of an object should use "is" or "should" prefix
+    
+        GOOD: √
+        
+            BOOL isKeyboardUp
+            BOOL shouldUpdateLocation
+            BOOL isHidden
+            
+        BAD: X
+        
+            BOOL areKeyboardUp
+            BOOL keyboardUp
+            BOOL updateLocation
+            
+    5. Initialization instance methods should always begin with initWith...
+    
+        GOOD: √
+        
+            -initWith: 
+            -initWith: object: index:
+        
+        BAD: X
+        
+            -newWith:
+            -initAs:
+            -initUsing:
+            -initializeWith:
+            
+    6. Initialization class methods should look like:
+    
+        GOOD: √
+        
+            +labelWithFrame:
+            +objectWithDictionary:
+            
+        BAD: X
+        
+            +objToDic:
+            +objToArr:
+            
+    7. Delegate methods must always include themselves as argument
+    
+        GOOD: √
+        
+            -alertViewDidClose:(UIAlertView *)alertView;
+            -mediaPanel:(HUMediaPanelView *)mediaPanel didSelectButton:(UIButton *)button atIndex:(NSInteger)index;
+            
+        BAD: X
+        
+            -firstButtonPressed;
+            -dialogDidClose;
+            -buttonPressed:(UIAlertView *)alertView;
+            -willHideAlertView;
+            -didCloseAlertView:(UIAlertView *)alertView;
+            
+    8. Methods with multiple arguments should be formatted by separating arguments with enter, aligned by colon (:)
+       Avoid partial separating as well.
+    
+        GOOD: √
+        
+            - (void)updateMyProfile:(NSString *)name 
+                          bloodType:(NSString *)bloodType 
+                           furupata:(NSDictionary *)furupata
+                           birthday:(NSInteger)birthday 
+                    profileImageUrl:(NSString *)profileImageUrl;
+
+        BAD: X
+        
+            - (void)updateMyProfile:(NSString *)name bloodType:(NSString *)bloodType furupata:(NSDictionary *)furupata birthday:(NSInteger)birthday profileImageUrl:(NSString *)profileImageUrl;
+            - (void)updateMyProfile:(NSString *)name bloodType:(NSString *)bloodType furupata:(NSDictionary *)furupata
+			   birthday:(NSInteger)birthday profileImageUrl:(NSString *)profileImageUrl;
+        
+ C. BLOCK USAGE
+ 
+    1. Use blocks for simple callbacks only that don't need to be reused anywhere
+       If block consists of more than 3 lines call method instead
+    
+        GOOD: √
+            [WebServicesManager sendRequest:aURL callback:(id result, NSError* error){
+                if (error) return;
+                NSLog(@"result: %@",result);
+                [self parseResult:result];
+            }];
+        
+        BAD: X
+        
+            [WebServicesManager sendRequest:aURL callback:(id result, NSError* error){
+                if (error) return;
+                NSLog(@"result: %@",result);
+                
+                NSDictionary *dictionary = result;
+                NSMutableArray *array = [NSMutableArray new];
+
+                for (id key in dictionary) {
+                
+                    for (id object in dictionary[key]) {
+                    
+                        Model *model = [[Model alloc] initWithObject:object];
+                        [array addObject:model];
+
+                    }
+
+                }
+                
+                for (Model *model in array) {
+                
+                    if ([model.name isEqualToString:@"Test"]) {
+                        continue;
+                        
+                        [self.realModelArray addObject:model];
+                    }
+
+                }
+
+            }];
+        
+    2. Avoid calling blocks within blocks
+    
+        GOOD: √
+        
+            [[API apiWithCallback:^(id result, NSError *error){
+            
+                [self fetchProfileData];
+
+            }] login];
+
+        BAD: X
+        
+            [[API apiWithCallback:^(id result, NSError *error){
+            
+                if (error)
+                    return;
+
+                [[API apiWithCallback:^(id result, NSError *error){
+                
+                    NSDictionary *dictionary = result;
+                    
+                    [[API apiWithCallback:^(id result, NSError *error){
+                
+                        ...
+
+                    }] updateWithDictionary:dictionary];
+                    
+
+                }] getProfileData];
+
+            }] login];
+
+
+    3. Using blocks you gain simplicity and hassle instead using delegates but you trade off reusability!
+    
+ D. LOCALIZABLE STRING FORMATTING
+ 
+    1. When adding strings to Localizable.strings (RandomLanguage) you have to add single comment as section break to help visualize which string is used where
+       Recommended format for comment is /* Title */
+    
+        GOOD: √
+        
+            /* Shared */
+            "OK"                    = "Ok";
+
+            /* LoginViewController */
+            "Login-Title"           = "Login";
+            "Email"                 = "Email";
+            "Password"              = "Password";
+            "Loading"               = "Loading";
+            "Missing-Email"         = "Please provide your email";
+            "Missling-Password"     = "Please provide your password";
+            "Incorrect-Login"       = "Username or email is incorrect. Please try again";
+
+            /* SignUpViewControlle */
+            "SignUp-Title"          = "Sign Up";
+            "Username"              = "Username";
+            "Missing-Username"      = "Please provide your username";
+            "SignUp-Succeeded"      = "Sign Up succeeded";
+
+            /* WallVC */
+            "Send"                  = "Send";
+
+        BAD: X
+        
+            "OK"                    = "Ok";
+            "Login-Title"           = "Login";
+            "Email"                 = "Email";
+            "Password"              = "Password";
+            "Loading"               = "Loading";
+            "Missing-Email"         = "Please provide your email";
+            "Missling-Password"     = "Please provide your password";
+            "Incorrect-Login"       = "Username or email is incorrect. Please try again";
+            "SignUp-Title"          = "Sign Up";
+            "Username"              = "Username";
+            "Missing-Username"      = "Please provide your username";
+            "SignUp-Succeeded"      = "Sign Up succeeded";
+            "Send"                  = "Send";
+
+ E. CLASS FORMATTING
+ 
+    1. Each class must implement #pragma mark - in this order:
+
+        ⁃	Dealloc
+        ⁃	Initialization
+        ⁃	View lifecycle
+        ⁃	Override
+        ⁃	Button selectors
+        ⁃	Notification selectors
+        ⁃	Animation
+        ⁃	Delegates
+
+ ****************************************
+ *      HOOK UP CODING CONVENTIONS      *
+ ****************************************
+
+ A. NAMING CONVENTIONS
+ 
+    1. Each viewController uses his own style category named UIViewController+Style
+        
+		GOOD: √
+			HULoginViewController+Style
+            
+		BAD: X
+			HPLoginStyle
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

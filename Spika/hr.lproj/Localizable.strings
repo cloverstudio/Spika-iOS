@@ -1,0 +1,285 @@
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2013 Clover Studio Ltd. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+/* Shared */
+"OK"                    = "Ok";
+"Cancel"                = "Odustani";
+
+/* BaseViewController */
+"Back"                  = "Natrag";
+"Loading"               = "Učitavanje";
+"No-Items"              = "Nema podataka";
+
+/* LoginViewController */
+"Login-Title"           = "Prijavi se";
+"ForgetPassword-Title"	= "Poslati lozinku";
+"Email"                 = "Email";
+"Password"              = "Lozinka";
+"Loading"               = "Učitavanje";
+"Missing-Email"         = "Molimo upišite svoju email adresu";
+"Missling-Password"     = "Molimo upišite svoju lozinku";
+"Incorrect-Login"       = "Korisničko ime ili email su krivi. Molimo pokušajte ponovno";
+"Wrong password message"= "Lozinka bi u sebi trebala sadržavati barem jedan broj, slovo, te bi trebala imati barem 6 znakova!";
+"Wrong email message"   = "Molimo upišite valjanu email adresu.";
+"Forgot-Details"        = "Zaboravili ste svoje podatke?";
+
+/* SignUpViewControlle */
+"SignUp-Title"          = "Registriraj se";
+"Username"              = "Korisničko ime";
+"Missing-Username"      = "Molimo upišite svoje korisničko ime";
+"SignUp-Succeeded"      = "Registracija je uspjela";
+"Invalid-Name"          = "Ime mora imati barem 2 znaka.";
+"Duplicate email"       = "Već ste se registrirali. Molimo prijavite se.";
+"Duplicate username"    = "To korisničko ime se već koristi. Molimo izaberite drugo.";
+
+/* ForgotPasswordView */
+"ForgotPassword-Send"   = "Pošalji";
+"ForgotPassword-Sent"   = "Vaša lozinka je poslana na email adresu koju ste upisali.";
+"Invalid-Email-Title"   = "Nevaljan email";
+"Invalid-Email-Message" = "Molimo upišite valjanu email adresu.";
+
+/* WallVC */
+"Wall-Title"            = "Wall";
+"Send"                  = "Šalji";
+"Video-Time-Too-Long"	= "Video snimka ne smije biti duža od 30 sekunde.";
+"Audio-Time-Too-Long"	= "Glasovna snimka ne smije biti duža od 30 sekunde.";
+
+/* HUProfileViewController  */
+"Profile-Title"         = "Profil";
+"Last-Login"            = "Posljednja prijava:";
+"Add-Contact"           = "Dodaj kontakt";
+"Remove-Contact"        = "Ukloni kontakt";
+"Start-Conversation"    = "Nabaci spiku.";
+
+/* LocationViewController */
+"Location-Title-Search" = "Lokacija";
+"Location-Title-Show"   = "Detalji lokacije";
+"Share"                 = "Dijeli";
+
+/* HUGroupProfileViewController */
+"Groups-Title"			= "Grupe";
+"Group-Name"            = "Ime grupe";
+"Description"           = "Opis";
+"Add-Group-Title"       = "Dodaj grupu";
+"GroupCategory-Title"   = "Categories";
+"Search-Groups"         = "Pretraži grupe";
+"Group-Profile"         = "Profil grupe";
+"Group-Owner"           = "Vlasnik";
+"Add-Favorite"          = "Dodaj Fav";
+"Remove-Favorite"       = "Makni";
+"Search"				= "Traži";
+"Name"					= "Ime";
+"Password"				= "Lozinka";
+"About"					= "Opis";
+"Max Favorite Exceeded" = "Smijete imati najviše %d favorita. Molimo prvo maknite nekog sa popisa.";
+"Subscribe"             = "Pretplati se";
+"Unsubscribe"           = "Odjavi se";
+"Confirm delete group"  = "Jeste li sigurni da želite izbrisati grupu?";
+"Password-Exists"       = "DA";
+"No-Password"           = "NE";
+"GroupOwner"			= "Vlasnik grupe";
+
+/*HUNewGroupController*/
+"Enter-Name"            = "ime";
+"Enter-Password"        = "lozinka";
+"Enter-Description"     = "opis";
+"Missing-Group-Name"    = "Unesite naziv grupe.";
+"Processing"            = "Obrađujem...";
+"Missing-Group-Description"    = "Molimo unesite opis grupe.";
+"New-Group-Created."    = "Stvorena nova grupa";
+"Make-Favourite-Button" = "Dodaj u favorite";
+"Remove-Favourite-Button"= "Makni iz favorita";
+"Duplicate groupname"    = "Ovo ime grupe je već zauzeto, molimo izaberite drugo.";
+
+/*HUGroupsViewController*/
+"Favorites"				 = "Pretplaćene grupe";
+"My Groups"              = "Pretplaćene/Moja";
+"No Favorite Advice"     = "Još nemate omiljenih grupa... Kada dodate grupu u popis omiljenih grupa dobivat ćete push notifikacije kada netko nešto posta na grupin wall.";
+
+/*HUNewGroupViewController*/
+"New Group"				= "Nova grupa";
+
+/*HUUsersViewController*/
+"Explore"				= "Filtriraj";
+"Search"				= "Pretraži";
+"My Contacts"			= "Moji kontakti";
+"No Users"				= "Nema rezultata";
+"Search-Title"			= "Pretraži";
+"No Contact Advice"     = "Nemate kontakata... Dodajte nekoliko prijatelja u vaše kontakte, tako da kaše spikate s njima.";
+
+/*HUVoiceMessageDetailViewController*/
+"Wall"					= "Wall";
+
+/*HUVoiceRecorderViewController*/
+"Wall"					= "Wall";
+
+/*ImageDetailVC*/
+"Image Detail"			= "Detalji slike";
+
+/*ImageUploadVC*/
+"Preview"				= "Pregled";
+
+/*VideoDetailVC*/
+"Video Detail"			= "Detalji videa";
+
+/*AlertViewManager*/
+"Recent activity"		= "Nedavna aktivnost";
+"Uploading image"		= "Uploadam sliku.";
+"Processing"			= "Obrađujem...";
+"Downloading voice"		= "Downloadam zvučni zapis...";
+"Sending voice"			= "Šaljem zvučni zapis...";
+"Sending video"			= "Šaljem video snimku...";
+"Sending"				= "Šaljem...";
+"Error"					= "Greška";
+
+/*CSToast*/
+"Succeed to get notification token"				= "Uspio se učitati notifikacijski token.";
+"Failed to get notification token"				= "Nije se uspio učitati notifikacijski token.";
+"Wrong password"								= "Kriva lozinka";
+"ERROR: No onUploadBlock() has been provided"	= "GREŠKA: Nije provide-an onUploadBlock()";
+"Message sent"									= "Poruka poslana.";
+"Avatar uploaded"								= "Avatar poslan.";
+"Failed to post comment"						= "Komentar nije postan.";
+"Group deleted"									= "Grupa izbrisana.";
+"Missing-Group-Name"							= "Nedostaje ime grupe!";
+"Group updated"									= "Grupa ažurirana.";
+"Saved"											= "Pohranjeno";
+"Failed to save"								= "Pohrana nije uspjela";
+"Group created successfully"					= "Grupa je kreirana.";
+"Success"										= "Uspjeh!";
+"Cache cleared"									= "Predmemorija ispražnjena!";
+"API Endpoint contains error"					= "API Endpoint ima grešku!";
+"Failed to save voice locally"					= "Nije uspjelo lokalno snimanje zvučnog zapisa.";
+"Voice download failed"							= "Download zvučnog zapisa nije uspio.";
+"Voice sent"									= "Glasovni zapis poslan.";
+"Video sent"									= "Video poslan.";
+"Location sent"									= "Lokacija sent.";
+"Camera is not supported in Simulator"			= "Kamera nije podržana u simulatoru.";
+
+/*HUVoiceRecorderViewController*/
+"Voice"				= "Zvučni zapis";
+"TAP AND RECORD"	= "Tapni i snimaj";
+"RECORDING"			= "Snimam ...";
+"RECORDING DONE"	= "Snimanje gotovo";
+"NONAME TITLE VOICE" = "%@'s VOICE";
+
+/*SideMenuView*/
+"Users"				= "Korisnici";
+"Groups"			= "Grupe";
+"Profile"			= "Profil";
+"Settings"			= "Postavke";
+"Logout"			= "Odlogiraj se";
+
+/*HUMyProfileViewController*/
+"My Profile"		= "Moj profil";
+"Birthday"			= "Rođendan";
+"Gender"			= "Spol";
+
+/*HUProfileViewController*/
+"Last Login"		= "Zadnji login";
+"Max Contact Exceeded" = "Smijete imati najviše %d kontakata. Molimo prvo maknite nekog sa popisa.";
+
+/*VideoDetailVC*/
+"Failed to save video locally"	= "Nije uspjelo lokalno snimanje video snimke.";
+"Video download failed"			= "Video download nije uspio.";
+"NONAME TITLE VIDEO"            = "%@'v VIDEO";
+"Server-Error"                  = "Vaša internet konekcija nije aktivna, molimo probajte kasnije.";
+"Loading-Error"                 = "Postoji problem sa vašom internet konekcijom, molimo probajte kasnije.";
+"Token-Expired"                 = "Vaš token je istekao, molimo logirajte se ponovno.";
+
+/* tutorial */
+"tutorial-login"                = "Hvala vam što ste skinuli Spiku. Uživajte u spikanju :)";
+"tutorial-recent"               = "Hvala vam na registraciji! Ovaj ekran pokazuje sve nepročitane poruke. Trenutno je prazan, ali uskoro će biti ispunjen porukama vaših prijatelja :)";
+"tutorial-wall"                 = "Ovo je mjesto gdje možete pričati sa prijateljem ili postati u nešto grupu. Možete postati sliku, zvučni zapis i video snimku. Pošaljite nam nešto!";
+"tutorial-users"                = "Pronađite ovdje svoje prijatelje! možete pretraživati po imenu, te filtrirati po spolu i godinama. Također, možete dodati prijatelje u kontakt listu tako da možete lakše naći razgovore s njima.";
+"tutorial-groups"               = "Ovdje možete naći grupe koje vam se sviđaju. Pretplatite se na vašu omiljenu grupu, pa ćete biti obaviješteni kada netko nešto posta na wall od te grupe. Naravno, možete i napraviti svoju vlastitu grupu.";
+"tutorial-group-add"            = "Zaštitite svoju grupu sa lozinkom tako da samo ljudi sa kojima ste ju podijelili mogu pristupiti njenom wall-u. Također, vaša grupa je automatski dodana u subscriber listu. Pazite da ne prijeđete limit!";
+"tutorial-userprofile"          = "Možete dodati svoje prijatelje u kontakte, ali pazite jer možete imati najviše 20 kontakata.";
+"tutorial-groupprofile"         = "Možete se pretplatiti na grupu, pa ćete biti obaviješteni kada netko nešto posta na wall od te grupe, no budite pažljivi, jer je broj pretplata ograničen na 10.";
+
+/* settings */
+"Enter current password"	= "Unesite trenutnu lozinku";
+"Enter new password"		= "Unesite novu lozinku";
+"Re-enter new password"		= "Opet unesite novu lozinku";
+"InvalidPassword"           = "Unesena lozinka ne odgovara vašoj trenutnoj lozinci.";
+"InvalidNewPassword"        = "Morate unijeti istu lozinku u oba polja.";
+"PasswordChanged"           = "Lozinka je uspješno promijenjena.";
+"FailedToChangePassword"    = "Nije uspjela promjena lozinke.";
+"GroupDeleted"              = "Ovu grupu je izbrisao njen vlasnik. Molimo da se odjavite od grupe ako ste još pretplaćeni na nju.";
+"Confirm Logout"            = "Da li se stvarno želite odjaviti?";
+
+"CHAT ACTIVITY"             = "Nepročitane poruke";
+"GROUPS ACTIVITY"           = "Aktivnost grupe";
+"No Recent Activities"      = "Nema nepročitanih poruka";
+"NOTIFICATIONS"             = "Notifikacije";
+"User Support"              = "Korisnička podrška";
+"ACCOUNT"                   = "Račun";
+"Type name..."              = "Molimo unesite ime";
+"Online Status"             = "Status";
+"Edit"                      = "Uredi";
+"ExploreBtn"				= "Traži";
+"all"                       = "sve";
+"female"                    = "ženski";
+"male"                      = "muški";
+"Slide to pick age..."      = "Vuci starosni limit";
+"Male"                      = "Muški";
+"Female"                    = "Ženski";
+"No declaration"            = "Nedefiniran";
+"online"                    = "online";
+"away"                      = "away";
+"busy"                      = "busy";
+"offline"                   = "offline";
+"Category"                  = "Kategorija";
+"Categories"                = "Kategorije";
+"Add Group"                 = "Dodaj grupu";
+"Save"						= "Pohrani";
+"Upload"                    = "Upload";
+"PASSWORD"                  = "Lozinka";
+"Change Password"           = "Promijeni lozinku";
+"PASSCODE PROTECT"          = "Sigurnosna šifra";
+"CLEAR CACHE"               = "Isprazni predmemoriju";
+"SETTINGS"                  = "Postavke";
+"Delete"                    = "Izbriši";
+"PLEASE ENTER NEW PASSCODE" = "Molimo unesite novu sigurnosnu šifru";
+"PLEASE ENTER CURRENT PASSCODE" = "Molimo unesite trenutnu sigurnosnu šifru";
+"PLEASE ENTER NEW PASSCODE AGAIN" = "Molimo opet unesite novu sigurnosnu šifru";
+"No Groups"                 = "Grupa nije nađena.";
+"No Favorite Groups"        = "Favorite lista je prazna.";
+"No Users"                  = "Korisnik nije nađen.";
+"No Users Contacts"         = "Kontakt lista je prazna.";
+"VIDEO TITLE"               = "Pošalji video";
+"Add video title"           = "Postavi naslov videa";
+"VOICE TITLE"               = "Pošalji audio";
+"Add voice title"           = "Postavi naslov zvučnog zapisa";
+"LocationTitle"             = "Odredi lokaciju od %@";
+"LOCATION WALL TITLE"       = "%@ je podijelila svoju lokaciju.\n%@";
+"VIDEO WALL TITLE"          = "%@";
+"VOICE WALL TITLE"          = "%@";
+"Close"                     = "Zatvori";
+
+
+
+
+
+

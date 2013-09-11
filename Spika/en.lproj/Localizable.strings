@@ -1,0 +1,286 @@
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2013 Clover Studio Ltd. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+/* Shared */
+"OK"                    = "Ok";
+"Cancel"                = "Cancel";
+
+/* BaseViewController */
+"Back"                  = "Back";
+"Loading"               = "Loading";
+"No-Items"              = "No items";
+
+/* LoginViewController */
+"Login-Title"           = "SIGN IN";
+"ForgetPassword-Title"	= "SEND PASSWORD";
+"Email"                 = "Email";
+"Password"              = "Password";
+"Loading"               = "Loading";
+"Missing-Email"         = "Please provide your email";
+"Missing-Password"      = "Please provide your password";
+"Incorrect-Login"       = "Username/email is incorrect. Please try again";
+"Wrong password message"= "Password should be alpha-numerical and longer than 5 characters!";
+"Wrong email message"   = "Please provide a valid email address.";
+"Forgot-Details"        = "Forgot details?";
+
+/* SignUpViewControlle */
+"SignUp-Title"          = "SIGN UP";
+"Username"              = "Username";
+"Missing-Username"      = "Please provide your username";
+"SignUp-Succeeded"      = "Sign Up succeeded";
+"Invalid-Name"          = "Name must be at least 2 characters long";
+"Duplicate email"       = "You have already signed up. Please sign in.";
+"Duplicate username"    = "This username is already taken. Please select another one.";
+
+/* ForgotPasswordView */
+"ForgotPassword-Send"   = "Send";
+"ForgotPassword-Sent"   = "Your password has been sent to your email address.";
+"Invalid-Email-Title"   = "Invalid Email";
+"Invalid-Email-Message" = "Please provide a valid email address.";
+
+/* WallVC */
+"Wall-Title"            = "WALL";
+"Send"                  = "Send";
+"Video-Time-Too-Long"	= "Video length should be less than 30 seconds.";
+"Audio-Time-Too-Long"	= "Audio recording length should be less than 3 minutes.";
+
+/* HUProfileViewController  */
+"Profile-Title"         = "PROFILE";
+"Last-Login"            = "Last login:";
+"Add-Contact"           = "Add Contact";
+"Remove-Contact"        = "Remove Contact";
+"Start-Conversation"    = "Start Conversation";
+
+/* LocationViewController */
+"Location-Title-Search" = "LOCATION";
+"Location-Title-Show"   = "Location Details";
+"Share"                 = "Share";
+
+/* HUGroupProfileViewController */
+"Groups-Title"           = "GROUPS";
+"Group-Name"            = "Group name";
+"Description"           = "Description";
+"Add-Group-Title"       = "Add group";
+"GroupCategory-Title"   = "Categories";
+"Search-Groups"         = "Search groups";
+"Group-Profile"         = "Group profile";
+"Group-Owner"           = "Owner";
+"Add-Favorite"          = "Add Fav";
+"Remove-Favorite"       = "Remove";
+"Search"				= "Search";
+"Name"					= "Name";
+"Password"				= "Password";
+"About"					= "About";
+"Max Favorite Exceeded" = "You can save %d favorites at most. Please remove someone first.";
+"Subscribe"             = "Subscribe";
+"Unsubscribe"           = "Unsubscribe";
+"Confirm delete group"  = "Are you sure you want to delete this group?";
+"Password-Exists"       = "YES";
+"No-Password"           = "NO";
+"GroupOwner"           = "Group Owner";
+
+/*HUNewGroupController*/
+"Enter-Name"            = "name";
+"Enter-Password"        = "password";
+"Enter-Description"     = "description";
+"Missing-Group-Name"    = "Please input group name.";
+"Processing"            = "Processing...";
+"Missing-Group-Description"    = "Please input group description.";
+"New-Group-Created."    = "New group created.";
+"Make-Favourite-Button" = "Make Favorite";
+"Remove-Favourite-Button"= "Remove from favorite";
+"Duplicate groupname"    = "This group name is already taken. Please select another one.";
+
+/*HUGroupsViewController*/
+"Favorites"				 = "Subscribed Groups";
+"My Groups"              = "Subscribed/Mine";
+"No Favorite Advice"     = "You have no favorite groups yet... By adding a group to favorites you will recieve push notifications when someone posts to a group's wall.";
+
+/*HUNewGroupViewController*/
+"New Group"				= "NEW GROUP";
+
+/*HUUsersViewController*/
+"Explore"				= "EXPLORE";
+"Search"				= "SEARCH";
+"My Contacts"			= "MY CONTACTS";
+"No Users"				= "NO USERS";
+"Search-Title"			= "SEARCH";
+"No Contact Advice"     = "You have no contacts yet... Add some friends to your contacts, so you could reach them more easily.";
+
+/*HUVoiceMessageDetailViewController*/
+"Wall"					= "WALL";
+
+/*HUVoiceRecorderViewController*/
+"Wall"					= "Wall";
+"Microphon-device-busy" = "Microphone is busy, please restart the app and try again later.";
+/*ImageDetailVC*/
+"Image Detail"			= "IMAGE DETAIL";
+
+/*ImageUploadVC*/
+"Preview"				= "PREVIEW";
+
+/*VideoDetailVC*/
+"Video Detail"			= "VIDEO DETAIL";
+
+/*AlertViewManager*/
+"Recent activity"		= "Recent activity";
+"Uploading image"		= "Uploading image.";
+"Processing"			= "Processing...";
+"Downloading voice"		= "Downloading voice...";
+"Sending voice"			= "Sending voice...";
+"Sending video"			= "Sending video...";
+"Sending"				= "Sending...";
+"Error"					= "Error";
+
+/*CSToast*/
+"Succeed to get notification token"				= "Succeeded to get notification token.";
+"Failed to get notification token"				= "Failed to get notification token.";
+"Wrong password"								= "Wrong password";
+"ERROR: No onUploadBlock() has been provided"	= "ERROR: No onUploadBlock() has been provided";
+"Message sent"									= "Message sent.";
+"Avatar uploaded"								= "Avatar uploaded";
+"Failed to post comment"						= "Failed to post comment.";
+"Group deleted"									= "Group deleted.";
+"Missing-Group-Name"							= "Missing group name!";
+"Group updated"									= "Group updated.";
+"Saved"											= "Saved";
+"Failed to save"								= "Failed to save";
+"Group created successfully"					= "Group created successfully.";
+"Success"										= "Success!";
+"Cache cleared"									= "Cache cleared!";
+"API Endpoint contains error"					= "API Endpoint contains an error!";
+"Failed to save voice locally"					= "Failed to save voice locally.";
+"Voice download failed"							= "Voice download failed.";
+"Voice sent"									= "Voice sent.";
+"Video sent"									= "Video sent.";
+"Location sent"									= "Location sent.";
+"Camera is not supported in Simulator"			= "Camera is not supported in Simulator.";
+
+/*HUVoiceRecorderViewController*/
+"Voice"				= "Voice";
+"TAP AND RECORD"	= "TAP AND RECORD";
+"RECORDING"			= "RECORDING ...";
+"RECORDING DONE"	= "RECORDING DONE";
+"NONAME TITLE VOICE"      = "%@'s VOICE";
+
+/*SideMenuView*/
+"Users"				= "Users";
+"Groups"			= "Groups";
+"Profile"			= "Profile";
+"Settings"			= "Settings";
+"Logout"			= "Logout";
+
+/*HUMyProfileViewController*/
+"My Profile"		= "My Profile";
+"Birthday"			= "Birthday";
+"Gender"			= "Gender";
+
+/*HUProfileViewController*/
+"Last Login"		= "Last Login";
+"Max Contact Exceeded" = "You can save %d contacts at most. Please remove someone first.";
+
+/*VideoDetailVC*/
+"Failed to save video locally"	= "Failed to save video locally.";
+"Video download failed"			= "Video download failed.";
+"NONAME TITLE VIDEO"            = "%@'s VIDEO";
+"Server-Error"                  = "There is a problem with internet connection, please try again later.";
+"Loading-Error"                 = "There is a problem with internet connection, please try again later.";
+"Token-Expired"                 = "Your token has expired, please login again.";
+
+/* tutorial */
+"tutorial-login"                = "Thank you for downloading HookUp. Enjoy chatting :)";
+"tutorial-recent"               = "Thank you for signing up! This screen shows all of your unread messages. It's empty at the moment but soon it will be full of messages from your friends :)";
+"tutorial-wall"                 = "This is the place where you can talk to a friend or post in a group. You can also send photo, voice and video. Try sending something to us!";
+"tutorial-users"                = "Find your friends here! You can search by name, explore by gender or age. Also, you can add friends to contact list so you could find conversations with them more easily.";
+"tutorial-groups"               = "Here you can find the groups that you like. Subscribe to your favorite group and you will be notified whenever someone posts on that group's wall. You can also create your own group.";
+"tutorial-group-add"            = "You can secure your group with a password so only people you've shared it with can access the wall. Also, your group is automatically added to the subscribers list. Be careful not to exceeed the limit!";
+"tutorial-userprofile"          = "You can add your friends to contacts, but be careful, number of contacts is limited to 20.";
+"tutorial-groupprofile"         = "You can subscribe to a group and you will get notified when someone posts to the wall in that group, but be careful, number of group subscriptions is limited to 10.";
+
+/* settings */
+"Enter current password"	= "Enter current password";
+"Enter new password"		= "Enter new password";
+"Re-enter new password"		= "Re-enter new password";
+"InvalidPassword"           = "Entered password does not match your password.";
+"InvalidNewPassword"        = "You must enter the same password in both fields.";
+"PasswordChanged"           = "Succeeded to change password.";
+"FailedToChangePassword"    = "Failed to change password.";
+"GroupDeleted"              = "This group has been deleted by it's owner. Please unsubscribe if you are still subscribed.";
+"Confirm Logout"            = "Do you really want to logout?";
+
+"CHAT ACTIVITY"             = "UNREAD MESSAGES";
+"GROUPS ACTIVITY"           = "GROUP ACTIVITY";
+"No Recent Activities"      = "There are no unread messages";
+"NOTIFICATIONS"             = "NOTIFICATIONS";
+"User Support"              = "User support";
+"ACCOUNT"                   = "ACCOUNT";
+"Type name..."              = "Please enter name";
+"Online Status"             = "Status";
+"Edit"                      = "Edit";
+"ExploreBtn"				= "Search";
+"all"                       = "all";
+"female"                    = "female";
+"male"                      = "male";
+"Slide to pick age..."      = "Slide to narrow age limit";
+"Male"                      = "Male";
+"Female"                    = "Female";
+"No declaration"            = "No declaration";
+"online"                    = "online";
+"away"                      = "away";
+"busy"                      = "busy";
+"offline"                   = "offline";
+"Category"                  = "Category";
+"Categories"                = "Categories";
+"Add Group"                 = "Create Group";
+"Save"						= "Save";
+"Upload"                    = "Upload";
+"PASSWORD"                  = "PASSWORD";
+"Change Password"           = "Change Password";
+"PASSCODE PROTECT"          = "PASSCODE PROTECT";
+"CLEAR CACHE"               = "CLEAR CACHE";
+"SETTINGS"                  = "SETTINGS";
+"Delete"                    = "Delete";
+"PLEASE ENTER NEW PASSCODE" = "Please enter new passcode";
+"PLEASE ENTER CURRENT PASSCODE" = "Please enter current passcode";
+"PLEASE ENTER NEW PASSCODE AGAIN" = "Please enter new passcode again";
+"No Groups"                 = "Group could not be found";
+"No Favorite Groups"        = "Favorite group list is empty";
+"No Users"                  = "User could not be found";
+"No Users Contacts"         = "Contact list is empty";
+"VIDEO TITLE"               = "Send Video";
+"Add video title"           = "Set video title";
+"VOICE TITLE"               = "Send Voice";
+"Add voice title"           = "Set voice title";
+"LocationTitle"             = "Set the location of %@";
+"LOCATION WALL TITLE"       = "%@ has shared location.\n%@";
+"VIDEO WALL TITLE"          = "%@";
+"VOICE WALL TITLE"          = "%@";
+"Close"                     = "Close";
+"ReportViolation"           = "Report violation";
+"ReportViolationConfirm"    = "Do you really want to report this content as violation content ?";
+"Violation Reported"        = "We receiced this report, we will delete this content after review.";
+"EULA-TITLE"                = "Terms of Service";
+"EULA-AGREE"                = "Agree";
+"EULA_FILE"                 = "english.html";
+

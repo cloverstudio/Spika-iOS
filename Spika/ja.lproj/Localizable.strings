@@ -1,0 +1,291 @@
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2013 Clover Studio Ltd. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+/* Shared */
+"OK"                    = "Ok";
+"Cancel"                = "キャンセル";
+
+/* BaseViewController */
+"Back"                  = "戻る";
+"Loading"               = "読込み中";
+"No-Items"              = "見つかりませんでした。";
+
+/* LoginViewController */
+"Login-Title"           = "ログイン";
+"ForgetPassword-Title"  = "パスワードの再送";
+"Email"                 = "メール";
+"Password"              = "パスワード";
+"Loading"               = "読込み中";
+"Missing-Email"         = "メールアドレスを入力して下さい。";
+"Missing-Password"      = "パスワードを入力して下さい。";
+"Incorrect-Login"       = "メールアドレス、またはパスワードが違います。";
+"Wrong password message"= "パスワードは半角英数字６文字以上で入力して下さい。";
+"Wrong email message"   = "メールアドレスが正しくありません。";
+"Forgot-Details"        = "パスワードを忘れた方はこちら";
+
+/* SignUpViewControlle */
+"SignUp-Title"          = "ユーザー登録";
+"Username"              = "ニックネーム";
+"Missing-Username"      = "ニックネームを入力して下さい。";
+"SignUp-Succeeded"      = "登録完了しました。";
+"Invalid-Name"          = "ニックネームは２文字以上でお願いします。";
+"Duplicate email"       = "既に登録済のメールアドレスです。";
+"Duplicate username"    = "ニックネームが既に登録されています。別のニックネームを設定して下さい。";
+
+/* ForgotPasswordView */
+"ForgotPassword-Send"   = "送信";
+"ForgotPassword-Sent"   = "メールアドレスにパスワードを送信しました。";
+"Invalid-Email-Title"   = "メールアドレスが正しくありません。";
+"Invalid-Email-Message" = "メールアドレスが正しくありません。";
+
+/* WallVC */
+"Wall-Title"            = "チャット";
+"Send"                  = "送る";
+"Video-Time-Too-Long"	= "ビデオは３０秒以内でお願いします。";
+"Audio-Time-Too-Long"	= "音声は3分以内でお願いします。";
+
+/* HUProfileViewController  */
+"Profile-Title"         = "プロフィール";
+"Last-Login"            = "最終ログイン";
+"Add-Contact"           = "コンタクトに\n追加";
+"Remove-Contact"        = "コンタクトから\n削除";
+"Start-Conversation"    = "チャットする";
+
+/* LocationViewController */
+"Location-Title-Search" = "現在地";
+"Location-Title-Show"   = "現在地の詳細";
+"Share"                 = "共有する";
+
+/* HUGroupProfileViewController */
+"Groups-Title"           = "グループ";
+"Group-Name"            = "グループ名";
+"Description"           = "紹介文";
+"Add-Group-Title"       = "グループタイトルの入力";
+"GroupCategory-Title"   = "カテゴリー";
+"Search-Groups"         = "グループ検索";
+"Group-Profile"         = "プロフィール";
+"Group-Owner"           = "オーナー";
+"Add-Favorite"          = "お気に入りに\n追加";
+"Remove-Favorite"       = "お気に入りから\n削除";
+"Search"				= "検索";
+"Name"					= "名前";
+"Password"				= "パスワード";
+"About"					= "プロフィール";
+"Max Favorite Exceeded" = "お気に入りの保存は%dまでです。\nまずは削除を行ってください。";
+"Subscribe"             = "お気に入りに\n追加";
+"Unsubscribe"           = "お気に入りから\n削除";
+"Confirm delete group"  = "このグループを削除してもよろしいですか？";
+"Password-Exists"       = "はい";
+"No-Password"           = "いいえ";
+"GroupOwner"           =  "オーナー";
+
+/*HUNewGroupController*/
+"Enter-Name"            = "名前";
+"Enter-Password"        = "パスワード";
+"Enter-Description"     = "プロフィール";
+"Missing-Group-Name"    = "グループ名を設定してください。";
+"Missing-Group-Description"    = "グループ　プロフィールを設定してください。";
+"Processing"            = "処理中...";
+"New-Group-Created."    = "グループが作成されました。";
+"Make-Favourite-Button" = "お気に入りに\n追加";
+"Remove-Favourite-Button"= "お気に入りから\n削除";
+"Duplicate groupname"    = "指定のグループ名はすでに使用されています。";
+
+/*HUGroupsViewController*/
+"Favorites"				 = "お気に入り";
+"My Groups"              = "お気に入り";
+"No Favorite Advice"     = "お気に入りに登録されたグループがありません。\nグループをお気に入りに追加すると、グループの情報がプッシュ通知にて届きます。";
+
+/*HUNewGroupViewController*/
+"New Group"				= "新しいグループ";
+
+/*HUUsersViewController*/
+"Explore"				= "年齢・性別検索";
+"Search"				= "名前で検索";
+"My Contacts"			= "コンタクトリスト";
+"No Users"				= "該当ユーザーがいません";
+"Search-Title"			= "検索";
+"No Contact Advice"     = "現在コンタクトリストが空です。お気に入りのユーザーを追加すればここから簡単にチャットが開始出来ます。";
+
+/*HUVoiceMessageDetailViewController*/
+"Wall"					= "チャット";
+
+/*HUVoiceRecorderViewController*/
+"Wall"					= "チャット";
+"Microphon-device-busy" = "マイクの調子が悪いようです。アプリのリスタートをおこなってください。";
+/*ImageDetailVC*/
+"Image Detail"			= "写真詳細";
+
+/*ImageUploadVC*/
+"Preview"				= "プレビュー";
+
+/*VideoDetailVC*/
+"Video Detail"			= "ビデオ詳細";
+
+/*AlertViewManager*/
+"Recent activity"		= "未読メッセージ一覧";
+"Uploading image"		= "画像アップロード";
+"Processing"			= "処理中...";
+"Downloading voice"		= "音声ファイルダウンロード中...";
+"Sending voice"			= "音声ファイルのアップロード中...";
+"Sending video"			= "ビデオアップロード中...";
+"Sending"				= "送信中...";
+"Error"					= "エラー";
+
+/*CSToast*/
+"Succeed to get notification token"				= "Succeeded to get notification token.";
+"Failed to get notification token"				= "Failed to get notification token.";
+"Wrong password"								= "パスワードが不正です。";
+"ERROR: No onUploadBlock() has been provided"	= "ERROR: No onUploadBlock() has been provided";
+"Message sent"									= "Message sent.";
+"Avatar uploaded"								= "Avatar uploaded";
+"Failed to post comment"						= "コメントの投稿に失敗しました。";
+"Group deleted"									= "グループを削除しました。";
+"Missing-Group-Name"							= "グループ名を入力して下さい。";
+"Group updated"									= "グループを更新しました。";
+"Saved"											= "保存しました。";
+"Failed to save"								= "保存に失敗しました。";
+"Group created successfully"					= "新規グループを作成しました。";
+"Success"										= "Success!";
+"Cache cleared"									= "キャッシュをクリアしました。";
+"API Endpoint contains error"					= "API Endpoint contains an error!";
+"Failed to save voice locally"					= "音声ファイルの保存に失敗しました。";
+"Voice download failed"							= "音声ファイルのダウンロードに失敗しました。";
+"Voice sent"									= "Voice sent.";
+"Video sent"									= "Video sent.";
+"Location sent"									= "Location sent.";
+"Camera is not supported in Simulator"			= "Camera is not supported in Simulator.";
+
+/*HUVoiceRecorderViewController*/
+"Voice"				= "音声";
+"TAP AND RECORD"	= "タップして録音";
+"RECORDING"			= "録音中...";
+"RECORDING DONE"	= "録音終了";
+"NONAME TITLE VOICE"      = "%@音声ファイル";
+
+/*SideMenuView*/
+"Users"				= "ユーザー";
+"Groups"			= "グループ";
+"Profile"			= "プロフィール";
+"Settings"			= "設定";
+"Logout"			= "ログアウト";
+
+/*HUMyProfileViewController*/
+"My Profile"		= "Myプロフィール";
+"Birthday"			= "誕生日";
+"Gender"			= "性別";
+
+/*HUProfileViewController*/
+"Last Login"		= "最終ログイン";
+"Max Contact Exceeded" = "お気に入りの保存は%dまでです。\nまずは削除を行ってください。";
+
+/*VideoDetailVC*/
+"Failed to save video locally"	= "動画の処理に失敗しました。";
+"Video download failed"			= "動画のダウンロードに失敗しました。";
+"NONAME TITLE VIDEO"            = "%@'s VIDEO";
+"Server-Error"                  = "通信エラーが発生しました。しばらくしてから再度お試しください。";
+"Loading-Error"                 = "インターネットに接続されていません。設定を確認の上、再度お試しください。";
+"Token-Expired"                 = "再ログインに失敗しました。もう一度ログインを行ってください。";
+
+/* tutorial */
+"tutorial-login"                = "HookUpをダウンロードありがとうございます！";
+"tutorial-recent"               = "ご登録ありがとうございます。この画面には、未読メッセージが表示されます。";
+"tutorial-wall"                 = "このチャット画面では友達や、グループへのメッセージを送ることが出来ます。メッセージだけでなく、写真やビデオ・音声ファイルなどを送ることも出来ます。ぜひ試してみてください。";
+"tutorial-users"                = "ここでは、友達の検索を行えます。名前の検索だけでなく、性別・年齢別検索も行えます。また、友達をお気に入りに追加すると、今後も簡単にチャットすることが出来ます。";
+"tutorial-groups"               = "ここではグループの検索を行い、お気に入りに追加することが出来ます。お気に入りに追加されたグループの最新情報が、プッシュ通知にて届きます。";
+"tutorial-group-add"            = "作成するグループにパスワードを設定することができます。パスワードのかかったグループは、パスワードを持つ者にしか閲覧できません。パスワードを設定する際には、その点に注意をしてください。";
+"tutorial-userprofile"          = "お友達をお気に入りに追加することができます。リミットは20です。";
+"tutorial-groupprofile"         = "グループの作成をおこなうことができます。お気に入りに入れたグループと同様に、グループの最新情報がプッシュ通知にて届きます。お気に入りに入れられるグループ数は最大で10です。";
+
+/* settings */
+"Enter current password"	= "現在のパスワード";
+"Enter new password"		= "新しいパスワード";
+"Re-enter new password"		= "新しいパスワード(再入力)";
+"InvalidPassword"           = "パスワードが正しくありません";
+"InvalidNewPassword"        = "パスワードが一致しません";
+"PasswordChanged"           = "パスワードが変更されました";
+"FailedToChangePassword"    = "パスワードの変更に失敗しました";
+"GroupDeleted"              = "このグループはオーナーにより削除されました。お気に入りに追加されている場合には、削除をしてください。";
+"Confirm Logout"            = "ログアウトします。\nよろしいですか？";
+
+"CHAT ACTIVITY"             = "未読メッセージ";
+"GROUPS ACTIVITY"           = "新規グループ投稿";
+"No Recent Activities"      = "未読メッセージはありません。";
+"NOTIFICATIONS"             = "未読通知";
+"User Support"              = "サポートホットライン";
+"ACCOUNT"                   = "メニュー";
+"Type name..."              = "名前を入力して下さい。";
+"Online Status"             = "ステータス";
+"Edit"                      = "編集";
+"ExploreBtn"				= "検索";
+"all"                       = "全員";
+"female"                    = "女性";
+"male"                      = "男性";
+"Slide to pick age..."      = "年齢を絞込み";
+"Male"                      = "男性";
+"Female"                    = "女性";
+"No declaration"            = "公開しない";
+"online"                    = "オンライン";
+"away"                      = "離席中";
+"busy"                      = "多忙中";
+"offline"                   = "オフライン";
+"Category"                  = "カテゴリー";
+"Categories"                = "カテゴリー";
+"Add Group"                 = "グループの新規作成";
+"Save"						= "保存";
+"Upload"                    = "アップロード";
+"PASSWORD"                  = "パスワード";
+"Change Password"           = "パスワードの変更";
+"PASSCODE PROTECT"          = "パスコードロック";
+"CLEAR CACHE"               = "キャッシュのクリア";
+"SETTINGS"                  = "設定";
+"Delete"                    = "削除する";
+"PLEASE ENTER NEW PASSCODE" = "新しいパスコードを入力して下さい。";
+"PLEASE ENTER CURRENT PASSCODE" = "パスコードを入力して下さい。";
+"PLEASE ENTER NEW PASSCODE AGAIN" = "再度同じパスコードを入力して下さい。";
+"No Groups"                 = "グループが見つかりませんでした。";
+"No Favorite Groups"        = "お気に入りが空です。";
+"No Users"                  = "ユーザーが見つかりませんでした。";
+"No Users Contacts"         = "コンタクトが空です。";
+"VIDEO TITLE"               = "ビデオの送信";
+"Add video title"           = "タイトルを設定";
+"VOICE TITLE"               = "音声の送信";
+"Add voice title"           = "タイトルを設定";
+"LocationTitle"             = "%@さんの現在地を送信";
+"LOCATION WALL TITLE"       = "%@さんが位置情報を共有しました。\n%@";
+"VIDEO WALL TITLE"          = "%@";
+"VOICE WALL TITLE"          = "%@";
+"Close"                     = "閉じる";
+"OpenWeb"                   = "ブラウザで開く";
+"ReportViolation"           = "不正投稿を通報する";
+"ReportViolationConfirm"    = "不正投稿を通報しますか？";
+"Violation Reported"        = "不正利用の通報を受理致しました。問題がないか確認後、投稿を削除致します。";
+"EULA-TITLE"                = "利用許諾契約";
+"EULA-AGREE"                = "承諾する";
+"EULA_FILE"                 = "japanese.html";
+
+
+
+
+
