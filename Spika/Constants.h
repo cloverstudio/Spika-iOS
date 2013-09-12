@@ -43,8 +43,8 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://hookupproduction.clover-studio.com/HookUpServer/hookup/"
-#define DatabaseName            @"hookup"
+#define DatabaseURL             @"http://spikademo.clover-studio.com/HookUpServer/hookup/"
+#define DatabaseName            @"spikademo"
 #define AuthURL                 @"hookup-auth.php"
 #define CheckUniqueURL          @"checkUnique.php"
 #define ReminderURL             @"sendpassword.php"
@@ -52,15 +52,15 @@
 #define DatabasePassword        @"cloverpass013"
 #define PagingMessageFetchNum   20
 
-#define SmileyWebURL            @"http://hookupproduction.clover-studio.com/HookUpServer/hookup/emoji.php"
-#define HttpRootURL             @"http://hookupproduction.clover-studio.com/HookUpServer/hookup/"
+#define SmileyWebURL            @"http://spikademo.clover-studio.com/HookUpServer/hookup/emoji.php"
+#define HttpRootURL             @"http://spikademo.clover-studio.com/HookUpServer/hookup/"
 #define FileUplaoder            @"fileuploader.php"
 #define FileDownloader          @"filedownloader.php"
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"7df093b56d11b8c5f961cf120d01989b"
+#define SupportUserId           @"9b396ef6f2ea68ff9eee226388000e52"
 
 // UI element constants
 #define StdUIElementHeight 35
