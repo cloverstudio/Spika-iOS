@@ -43,7 +43,7 @@
     imageView.y = 70;
     imageView.userInteractionEnabled = YES;
     
-    _emailField = [HUControls emailFieldWithFrame:CGRectMake(44, 18, 220, 30)];
+    _emailField = [HUControls emailFieldWithFrame:CGRectMake(44, 14, 220, 30)];
     [imageView addSubview:_emailField];
     
     UIButton *button = [HUControls buttonWithCenter:[CSKit center]

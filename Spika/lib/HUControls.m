@@ -61,8 +61,9 @@
 +(UITextField*) emailFieldWithFrame:(CGRect) frame {
     UITextField *emailField = [CSKit textFieldWithFrame:frame
                                                    font:kFontArialMTOfSize(kFontSizeMiddium)
-                                                   text:NSLocalizedString(@"Email", @"")
-                                            placeholder:nil];
+                                                   text:nil
+                                            placeholder:NSLocalizedString(@"Email", @"")];
+    
     emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     emailField.textColor = kHUColorLightGray;
     emailField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -71,6 +72,9 @@
     emailField.returnKeyType = UIReturnKeyNext;
     emailField.backgroundColor = [UIColor clearColor];
     emailField.clearsOnBeginEditing = YES;
+    
+    [emailField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
     
     return emailField;
 }

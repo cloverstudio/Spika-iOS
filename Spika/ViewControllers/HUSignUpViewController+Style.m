@@ -46,7 +46,7 @@
 
 - (UITextField *) newUsernameField {
 
-    UITextField *usernameField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 17, 220, 30)
+    UITextField *usernameField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 15, 220, 30)
                                                                 font:[self fontForTextField]
                                                                 text:nil
                                                          placeholder:NSLocalizedString(@"Username", @"")]);
@@ -58,12 +58,15 @@
     usernameField.returnKeyType = UIReturnKeyNext;
     usernameField.backgroundColor = [UIColor clearColor];
     
+    [usernameField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
+    
     return usernameField;
 }
 
 - (UITextField *) newEmailField {
 
-    UITextField *emailField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 69, 220, 30)
+    UITextField *emailField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 65, 220, 30)
                                                  font:[self fontForTextField]
                                                  text:nil
                                           placeholder:NSLocalizedString(@"Email", @"")]);
@@ -76,11 +79,14 @@
     emailField.returnKeyType = UIReturnKeyNext;
     emailField.backgroundColor = [UIColor clearColor];
     
+    [emailField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
+    
     return emailField;
 }
 - (UITextField *) newPasswordField {
 
-    UITextField *passwordField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 117, 220, 30)
+    UITextField *passwordField = CS_RETAIN([CSKit textFieldWithFrame:CGRectMake(44, 114, 220, 30)
                                                     font:kFontArialMTOfSize(kFontSizeMiddium)
                                                     text:nil
                                              placeholder:NSLocalizedString(@"Password", @"")]);
@@ -90,6 +96,9 @@
     passwordField.enablesReturnKeyAutomatically = YES;
     passwordField.returnKeyType = UIReturnKeyDone;
     passwordField.backgroundColor = [UIColor clearColor];
+    
+    [passwordField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
     
     return passwordField;
 }

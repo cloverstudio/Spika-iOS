@@ -55,7 +55,7 @@
 
 - (UITextField *) emailField {
 
-    UITextField *emailField = [CSKit textFieldWithFrame:CGRectMake(44, 19, 220, 30)
+    UITextField *emailField = [CSKit textFieldWithFrame:CGRectMake(44, 15, 220, 30)
                                                    font:[self fontForTextField]
                                                    text:nil
                                             placeholder:NSLocalizedString(@"Email", @"")];
@@ -68,13 +68,16 @@
     emailField.backgroundColor = [UIColor clearColor];
     emailField.keyboardType = UIKeyboardTypeEmailAddress;
 
+    [emailField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
+
     
     return emailField;
 }
 
 - (UITextField *) passwordField {
 
-    UITextField *passwordField = [CSKit textFieldWithFrame:CGRectMake(44, 65, 220, 30)
+    UITextField *passwordField = [CSKit textFieldWithFrame:CGRectMake(44, 63, 220, 30)
                                                       font:[self fontForTextField]
                                                       text:nil
                                                placeholder:NSLocalizedString(@"Password", @"")];
@@ -83,6 +86,9 @@
     passwordField.secureTextEntry = YES;
     passwordField.enablesReturnKeyAutomatically = YES;
     passwordField.returnKeyType = UIReturnKeyDone;
+    
+    [passwordField setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+
     
     return passwordField;
 }

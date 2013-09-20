@@ -25,12 +25,13 @@
 #import "HUBaseViewController.h"
 #import "UIColor+Aditions.h"
 #import "UIImage+Aditions.h"
+#import "HUButton.h"
 
 @interface HUBaseViewController (Style)
 
 #pragma mark - UIButton Factory
 
-+(UIButton *) buttonWithTitle:(NSString *)title
++(HUButton *) buttonWithTitle:(NSString *)title
                         frame:(CGRect)frame
               backgroundColor:(UIColor *)backgroundColor
                        target:(id)target

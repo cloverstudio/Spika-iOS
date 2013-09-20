@@ -203,9 +203,30 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self prefersStatusBarHidden];
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+    else
+    {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
+    
+}
+
+// Add this Method
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
     NSArray *views = [AppDelegate getInstance].navigationController.viewControllers;
     
@@ -213,7 +234,7 @@
         [self addBackButton];
     else
         [self addSlideButtonItem];
-    
+ 
 }
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -382,10 +403,10 @@
     barButtonItem.isAccessibilityElement = YES;
     barButtonItem.accessibilityLabel = @"slidebutton";
     self.navigationItem.leftBarButtonItem = barButtonItem;
+    
 }
 
 - (void) addBackButton {
-    
     self.navigationItem.leftBarButtonItems = [self backBarButtonItemsWithSelector:@selector(onBack:)];
 }
 

@@ -25,18 +25,19 @@
 #import "HUBaseViewController+Style.h"
 #import "NSNotification+Extensions.h"
 #import "HUBaseViewController+Style.h"
+#import "HUButton.h"
 
 @implementation HUBaseViewController (Style)
 
 #pragma mark - UIButton Factory
 
-+(UIButton *) buttonWithTitle:(NSString *)title
++(HUButton *) buttonWithTitle:(NSString *)title
                         frame:(CGRect)frame
               backgroundColor:(UIColor *)backgroundColor
                        target:(id)target
                      selector:(SEL)selector {
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    HUButton *button = [HUButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:frame];
     [button setBackgroundColor:backgroundColor];
     [button setTitle:title forState:UIControlStateNormal];
@@ -61,12 +62,14 @@
                               target:(id)target
                             selector:(SEL)selector {
 
-    UIButton *button = [HUBaseViewController
+    HUButton *button = [HUBaseViewController
                         buttonWithTitle:title
                         frame:frame
                         backgroundColor:backgroundColor
                         target:target
                         selector:selector];
+    
+    [button alignmentRectInsets];
     
     UIBarButtonItem *negativeSpacer = CS_AUTORELEASE([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                                                    target:nil
@@ -75,10 +78,12 @@
     // Note: We use 5 above b/c that's how many pixels of padding iOS seems to add
     // Add the two buttons together on the left:
     
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     return  [NSArray arrayWithObjects:
-             negativeSpacer,
-             [CSKit barButtonItemWithButton:button],
+             btn,
              nil];
+    
 }
 
 - (NSArray *) backBarButtonItemsWithSelector:(SEL)aSelector {

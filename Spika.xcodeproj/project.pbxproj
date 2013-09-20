@@ -414,6 +414,7 @@
 		ADC647B417E0796600C16A9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B317E0796600C16A9D /* AudioToolbox.framework */; };
 		ADC647B617E0798500C16A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B517E0798500C16A9D /* CoreMedia.framework */; };
 		ADC647B817E079B700C16A9D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B717E079B600C16A9D /* MobileCoreServices.framework */; };
+		CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB78BF717ECAEEB0053FBE3 /* HUButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1049,6 +1050,8 @@
 		ADC647B317E0796600C16A9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADC647B517E0798500C16A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ADC647B717E079B600C16A9D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CEB78BF617ECAEEB0053FBE3 /* HUButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUButton.h; sourceTree = "<group>"; };
+		CEB78BF717ECAEEB0053FBE3 /* HUButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2119,6 +2122,8 @@
 				ADC6460E17E0761600C16A9D /* StdTextView.m */,
 				ADC6460F17E0761600C16A9D /* UserListCell.h */,
 				ADC6461017E0761600C16A9D /* UserListCell.m */,
+				CEB78BF617ECAEEB0053FBE3 /* HUButton.h */,
+				CEB78BF717ECAEEB0053FBE3 /* HUButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2615,6 +2620,7 @@
 				ADC6477B17E0761700C16A9D /* HUMapBubbleView.m in Sources */,
 				ADC6477C17E0761700C16A9D /* HUMediaPanelView+Style.m in Sources */,
 				ADC6477D17E0761700C16A9D /* HUMediaPanelView.m in Sources */,
+				CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */,
 				ADC6477E17E0761700C16A9D /* HUPasswordChangeDialog.m in Sources */,
 				ADC6477F17E0761700C16A9D /* HUPasswordDisplayView+Style.m in Sources */,
 				ADC6478017E0761700C16A9D /* HUPasswordDisplayView.m in Sources */,

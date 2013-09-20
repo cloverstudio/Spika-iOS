@@ -28,6 +28,7 @@
 #import "MAKVONotificationCenter.h"
 #import "DatabaseManager.h"
 #import "CSGraphics.h"
+#import "Utils.h"
 
 @interface HUSideMenuViewController ()
 @property (nonatomic, strong) HUCounterBalloonView *counterView;
@@ -75,18 +76,18 @@
     [super loadView];
     
     self.settingsTableView = (UITableView *)self.view;
+    self.settingsTableView.backgroundColor = [UIColor clearColor];
+    
     [self.view removeFromSuperview];
     
     self.view = [[UIView alloc] initWithFrame:_settingsTableView.bounds];
     self.view.clipsToBounds = YES;
-    
-    self.view.y = [UIApplication sharedApplication].statusBarFrame.size.height;
+    self.view.height = [Utils getDisplayHeight];
     
     UINavigationBar *navigationBar = [HUSideMenuViewController newNavigationBarWithTitle:NSLocalizedString(@"MAIN MENU", nil)];
     [self.view addSubview:navigationBar];
     
     _settingsTableView.y = navigationBar.relativeHeight;
-    _settingsTableView.height -= navigationBar.height;
     [self.view addSubview:_settingsTableView];
     
     self.counterView = [HUCounterBalloonView counterView];
@@ -119,7 +120,25 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self setSettingsViewStyle];
+
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self prefersStatusBarHidden];
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+    else
+    {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
+
 }
+
+// Add this Method
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

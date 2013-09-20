@@ -96,20 +96,18 @@
         _isEditing = NO;
         _keyboardShowing = NO;
         
-        
-        
         self.view.backgroundColor = [self viewBackgroundColor];
 
     }
     
     return self;
+    
 }
 
 
 - (id)init {
     
     if (self = [super init]) {
-        
         
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         _isEditing = NO;

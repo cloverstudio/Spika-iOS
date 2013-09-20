@@ -29,6 +29,7 @@
 #import "UIView+Apperance.h"
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
+#import "Utils.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -74,7 +75,10 @@
 
     [super loadView];
     
-    _mainView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(
+        0,0,[Utils getDisplayWidth],[Utils getDisplayHeight]
+    )];
+    
     _mainView.autoresizingMask = self.view.autoresizingMask;
     _mainView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_mainView];

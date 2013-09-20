@@ -178,6 +178,7 @@
     self.textLabel.textColor = [UIColor colorWithIntegralRed:153 green:153 blue:153];
     self.textLabel.font = kFontArialMTOfSize(kFontSizeMiddium);
     self.selectedBackgroundView = overlay;
+    self.backgroundColor = [UIColor clearColor];
     
     return self;
 }
