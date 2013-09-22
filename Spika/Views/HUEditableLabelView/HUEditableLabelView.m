@@ -26,7 +26,7 @@
 
 @interface HUEditableLabelView (){
     UILabel *_titleLabel;
-    UITextView *_textView;
+    HUTextView *_textView;
     UITextField *_passwordView;
     UIImageView *_iconView;
     BOOL    _isSecure;
@@ -51,9 +51,12 @@
         _titleLabel.numberOfLines = 2;
         _titleLabel.backgroundColor = [UIColor clearColor];
         
-        _textView = [[UITextView alloc] init];
+        _textView = [[HUTextView alloc] init];
         [_textView setReturnKeyType:UIReturnKeyDone];
-        _textView.dataDetectorTypes = UIDataDetectorTypeLink;
+        
+        // crashes in iOS7
+        //_textView.dataDetectorTypes = UIDataDetectorTypeLink;
+        
         _textView.delegate = self;
         _textView.backgroundColor = [UIColor clearColor];
         
@@ -126,11 +129,24 @@
     );
     
     int textViewWidth = self.frame.size.width - kTitleLabelWidth - kHUEditableLabelViewElementMargin * 3;
-    _textView.frame = CGRectMake(kTitleLabelWidth + kHUEditableLabelViewElementMargin * 2, 8,
-								 textViewWidth, self.height * 1.2 + 10);
+    
+    if(!_multiLine){
+        _textView.frame = CGRectMake(kTitleLabelWidth + kHUEditableLabelViewElementMargin * 2, 8,
+                                     textViewWidth, kEditableLabelHeight);
+    }else{
+        
+        int textFieldHeight = [_textView getContentHeight];
+        
+        if(textFieldHeight < kEditableLabelHeight)
+            textFieldHeight = kEditableLabelHeight;
+        
+        _textView.frame = CGRectMake(kTitleLabelWidth + kHUEditableLabelViewElementMargin * 2, 8,
+                                     textViewWidth, textFieldHeight);
+        
+    }
     
     _passwordView.frame = CGRectMake(kTitleLabelWidth + kHUEditableLabelViewElementMargin * 2 + 7, 17,
-                                     textViewWidth, self.height - 12);
+                                     textViewWidth, kEditableLabelHeight);
 
     _passwordView.font = _textView.font;
     _passwordView.textColor = _textView.textColor;
@@ -335,8 +351,9 @@
 
 -(void) adjustHeight{
     
-    int height = _textView.contentSize.height;
-    if(height < kEditableLabelHeight)
+    int height = [_textView getContentHeight];
+    
+    if(_multiLine == NO || height < kEditableLabelHeight)
         height = kEditableLabelHeight;
     
     super.frame = CGRectMake(

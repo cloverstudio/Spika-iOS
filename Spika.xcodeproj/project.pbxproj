@@ -414,6 +414,7 @@
 		ADC647B417E0796600C16A9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B317E0796600C16A9D /* AudioToolbox.framework */; };
 		ADC647B617E0798500C16A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B517E0798500C16A9D /* CoreMedia.framework */; };
 		ADC647B817E079B700C16A9D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B717E079B600C16A9D /* MobileCoreServices.framework */; };
+		CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1151E217EF4BCD00C14DA6 /* HUTextView.m */; };
 		CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB78BF717ECAEEB0053FBE3 /* HUButton.m */; };
 /* End PBXBuildFile section */
 
@@ -1050,6 +1051,8 @@
 		ADC647B317E0796600C16A9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADC647B517E0798500C16A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ADC647B717E079B600C16A9D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CE1151E117EF4BCD00C14DA6 /* HUTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTextView.h; sourceTree = "<group>"; };
+		CE1151E217EF4BCD00C14DA6 /* HUTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUTextView.m; sourceTree = "<group>"; };
 		CEB78BF617ECAEEB0053FBE3 /* HUButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUButton.h; sourceTree = "<group>"; };
 		CEB78BF717ECAEEB0053FBE3 /* HUButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2124,6 +2127,8 @@
 				ADC6461017E0761600C16A9D /* UserListCell.m */,
 				CEB78BF617ECAEEB0053FBE3 /* HUButton.h */,
 				CEB78BF717ECAEEB0053FBE3 /* HUButton.m */,
+				CE1151E117EF4BCD00C14DA6 /* HUTextView.h */,
+				CE1151E217EF4BCD00C14DA6 /* HUTextView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2552,6 +2557,7 @@
 				ADC6473517E0761700C16A9D /* HUGroupProfileViewController+Style.m in Sources */,
 				ADC6473617E0761700C16A9D /* HUGroupProfileViewController.m in Sources */,
 				ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */,
+				CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */,
 				ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */,
 				ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */,
 				ADC6473A17E0761700C16A9D /* HUImageUploadViewController.m in Sources */,

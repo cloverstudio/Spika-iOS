@@ -28,6 +28,7 @@
 #import "NSData+Base64.h"
 #import "NSDateFormatter+SharedFormatter.h"
 
+
 @implementation Utils
 
 +(NSString *) urlencode:(NSString *)baseStr{
@@ -312,5 +313,25 @@
 +(int) getKeyboardHeight{
     return 216;
 }
+
++(int) heightByText:(NSString *)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size{
+   
+    if(IOS_NEWER_OR_EQUAL_TO_7){
+        NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              font, NSFontAttributeName,
+                                              nil];
+        
+        CGRect frame = [text boundingRectWithSize:size
+                                          options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                       attributes:attributesDictionary
+                                          context:nil];
+        
+        return frame.size.height;
+    }else{
+        return [text sizeWithFont:font constrainedToSize:size].height;
+    }
+    
+}
+
 
 @end

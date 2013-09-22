@@ -24,6 +24,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HUEditableLabelDelegate.h"
+#import "HUTextView.h"
 
 #define kEditableLabelHeight					35
 #define kTitleLabelWidth						110

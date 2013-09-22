@@ -336,6 +336,9 @@
 }
 
 - (void) viewDidLoad{
+    
+    [super viewDidLoad];
+    
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-wall",nil)];
 }
 

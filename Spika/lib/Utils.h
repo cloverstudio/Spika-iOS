@@ -25,6 +25,8 @@
 #import <Foundation/Foundation.h>
 #import "Models.h"
 
+#define IOS_NEWER_OR_EQUAL_TO_7 ( [ [ [ UIDevice currentDevice ] systemVersion ] floatValue ] >= 7.0 )
+
 @interface Utils : NSObject
 
 +(NSString *) urlencode:(NSString *)baseStr;
@@ -56,5 +58,8 @@
 +(NSString *)getKeyForLocalizedString:(NSString *)localizedString;
 
 +(int) getKeyboardHeight;
+
++(int) heightByText:(NSString *)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size;
+
 
 @end

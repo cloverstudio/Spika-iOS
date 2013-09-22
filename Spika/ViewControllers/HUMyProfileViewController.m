@@ -146,7 +146,6 @@
         if(view.frame.size.height != 0)
             y += view.frame.size.height + kMargin;
         
-        
     }
     
     _contentView.contentSize = CGSizeMake(_contentView.contentSize.width,y + kMargin);
