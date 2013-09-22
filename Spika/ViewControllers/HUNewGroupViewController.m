@@ -72,6 +72,8 @@
 
 - (void) viewDidLoad{
     
+    [super viewDidLoad];
+    
     [self hideStartConverstationBtn];
     
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-group-add",nil)];
@@ -99,8 +101,6 @@
     [_avatarView setUserInteractionEnabled:YES];
     
     
-    [self layoutViews];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -109,6 +109,13 @@
     
     self.navigationItem.leftBarButtonItems = [self backBarButtonItemsWithSelector:@selector(onBack:)];
     self.navigationItem.title = NSLocalizedString(@"New Group", nil);
+
+    [self layoutViews];
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self layoutViews];
 }
 
 - (void)onBack:(id)sender {

@@ -13,7 +13,7 @@
 
 -(int) getContentHeight{
     float height = [self textViewHeightForAttributedText:[[NSAttributedString alloc] initWithString:self.text] andWidth:self.width];
-    return (int) height;
+    return (int) height + 20;
 }
 
 - (CGFloat)textViewHeightForAttributedText: (NSAttributedString*)text andWidth: (CGFloat)width {

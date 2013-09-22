@@ -330,6 +330,12 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self layoutViews];
+
+}
 - (void) viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
@@ -339,6 +345,7 @@
     [self unsubscribeForKeyboardWillChangeFrameNotification];
     
     [self unsubscribeForKeyboardWillHideNotification];
+
 }
 
 - (void) animateKeyboardWillShow:(NSNotification *)aNotification {

@@ -1351,6 +1351,10 @@
         
         // check already exists
         for(NSString *groupId in freshUser.favouriteGroups){
+            
+            if(![groupId respondsToSelector:@selector(isEqualToString)])
+                 continue;
+                 
             if([groupId isEqualToString:group._id]){
                 errorBlock(@"Already exists.");
                 return;

@@ -360,7 +360,12 @@
     BOOL isExists = NO;
     
     for(int i = 0 ; i < [_favouriteGroups count] ; i++){
-        if([[_favouriteGroups objectAtIndex:i] isEqualToString:group._id]){
+        NSString *favoriteGroupId = [_favouriteGroups objectAtIndex:i];
+        
+        if(![favoriteGroupId respondsToSelector:@selector(isEqualToString)])
+            continue;
+        
+        if([favoriteGroupId isEqualToString:group._id]){
             isExists = YES;
             break;
         }

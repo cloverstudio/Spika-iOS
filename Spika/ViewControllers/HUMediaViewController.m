@@ -91,6 +91,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.navigationItem.rightBarButtonItems = nil;
 }
 

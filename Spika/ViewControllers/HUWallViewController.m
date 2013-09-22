@@ -22,10 +22,13 @@
  THE SOFTWARE.
  */
 
-#import "HUWallViewController.h"
-#import "HUWallViewController+Style.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVAsset.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import "HUWallViewController.h"
+#import "HUWallViewController+Style.h"
 #import "Utils.h"
 #import "DatabaseManager.h"
 #import "UserManager.h"
@@ -1152,10 +1155,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info{
 			AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:url];
 			CMTime duration = playerItem.duration;
 
-			if (CMTimeGetSeconds(duration) <= kVideoMaxLength)
+			//if (CMTimeGetSeconds(duration) <= kVideoMaxLength)
 				[self performSelector:@selector(sendVideo:) withObject:url afterDelay:0.5];
-			else
-				[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Video-Time-Too-Long", nil)];
+			//else
+			//	[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Video-Time-Too-Long", nil)];
 		}
         
     }

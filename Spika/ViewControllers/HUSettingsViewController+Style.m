@@ -149,6 +149,8 @@ static CGFloat xOffset = 20;
         [cell addSubview:contentView];
     }
     
+    cell.backgroundColor = [UIColor clearColor];
+    
 }
 
 

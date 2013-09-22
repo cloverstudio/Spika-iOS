@@ -48,6 +48,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     self.title = NSLocalizedString(@"Video", nil);
 }
 
