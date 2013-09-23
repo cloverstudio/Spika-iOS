@@ -1108,7 +1108,7 @@
     
     _messageInputContainer.frame = viewHolderFrame;
     
-    CGRect textInputFrame = [self frameForMessageInputTextField];
+    CGRect textInputFrame = messageInputTextFieldFrame;
     
     if(_mediaButton.hidden == NO)
         _messageInputTextField.frame = textInputFrame;
