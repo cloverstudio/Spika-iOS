@@ -18,7 +18,11 @@
 
 - (CGFloat)textViewHeightForAttributedText: (NSAttributedString*)text andWidth: (CGFloat)width {
     UITextView *calculationView = [[UITextView alloc] init];
-    [calculationView setAttributedText:text];
+    if([calculationView respondsToSelector:@selector(setAttributedText:)]){
+      [calculationView setAttributedText:text];
+    }else{
+      [calculationView setText:text.string];
+    }
     CGSize size = [calculationView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
 }
