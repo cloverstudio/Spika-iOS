@@ -43,7 +43,7 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://spikademo.clover-studio.com/HookUpServer/hookup/"
+#define DatabaseURL             @"http://spikademo2.clover-studio.com/api/"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"hookup-auth.php"
 #define CheckUniqueURL          @"checkUnique.php"
@@ -52,8 +52,8 @@
 #define DatabasePassword        @"cloverpass013"
 #define PagingMessageFetchNum   20
 
-#define SmileyWebURL            @"http://spikademo.clover-studio.com/HookUpServer/hookup/emoji.php"
-#define HttpRootURL             @"http://spikademo.clover-studio.com/HookUpServer/hookup/"
+#define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
+#define HttpRootURL             @"http://spikademo2.clover-studio.com/api/"
 #define FileUplaoder            @"fileuploader.php"
 #define FileDownloader          @"filedownloader.php"
 
