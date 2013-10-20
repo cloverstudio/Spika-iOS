@@ -325,7 +325,7 @@
         
         [[HUHTTPClient sharedClient] setDefaultHeader:@"user_id" value:@"create_user"];
         
-        [[HUHTTPClient sharedClient] doPost:@""
+        [[HUHTTPClient sharedClient] doPost:@"createUser"
                                             operationType:CSWebOperatonTypeJSON
                                                    params:params
                                               resultBlock:^(id result) {
