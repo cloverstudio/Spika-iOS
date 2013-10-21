@@ -96,7 +96,7 @@
 		self.allMessages = [NSMutableArray new];
 		
 		NSDictionary *notifications = [dictionary objectForKeyPath:@"notifications"];
-		for (NSDictionary *rawNote in [notifications allValues]) {
+		for (NSDictionary *rawNote in notifications) {
 			
 			HUModelActivityNotification *note = [[HUModelActivityNotification alloc] initWithDictionary:rawNote];
 			note.category = self;
@@ -126,7 +126,7 @@
 		self.messages = [NSMutableArray new];
 		
 		NSDictionary *messages = [dictionary objectForKeyPath:@"messages"];
-		for (NSDictionary *rawMessage in [messages allValues]) {
+		for (NSDictionary *rawMessage in messages) {
 			
 			ModelMessage *message = [self messageWithDictionary:rawMessage];
 			message.value = self;
