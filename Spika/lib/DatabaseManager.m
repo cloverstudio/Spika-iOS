@@ -495,7 +495,7 @@
                           success:(DMArrayBlock) successBlock
                             error:(DMErrorBlock) errorBlock {
     
-    NSString *method = [self getURL:@"searchuser.php"
+    NSString *method = [self getURL:@"searchUsers"
                      withParameters:@{
                         @"n"    :   string,
                         @"af"   :   [fromAge stringValue],
@@ -600,7 +600,7 @@
                success:(DMFindOneBlock)successBlock
                  error:(DMErrorBlock)errorBlock{
         
-    NSString *strUrl = [NSString stringWithFormat:@"%@", userId];
+    NSString *strUrl = [NSString stringWithFormat:@"findUser/id/%@", userId];
 
     [self setDefaultHeaderValues];
     
@@ -765,6 +765,9 @@
         
         
         NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[ModelUser objectToDictionary:user]];
+        //remove password
+        [params removeObjectForKey:@"password"];
+        
         NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
         [self setDefaultHeaderValues];
 
@@ -844,7 +847,7 @@
                   
                   NSDictionary *responseDictionary = (NSDictionary *)result;
                   
-                  if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                  if([responseDictionary objectForKey:@"_id"] != nil) {
                       
                       successBlock(YES,nil);
                       return;
@@ -2817,7 +2820,7 @@
 
 -(void) doLogout:(CSResultBlock) successBlock{
     
-    NSString *method = [self getURL:@"unregistToken.php"
+    NSString *method = [self getURL:@"unregistToken"
                      withParameters:@{@"user_id":[[UserManager defaultManager] getLoginedUser]._id}];
     
     [[HUHTTPClient sharedClient] doGet:method
