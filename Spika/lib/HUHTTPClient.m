@@ -45,7 +45,7 @@
 
 - (id)initWithBaseURL:(NSURL *)url {
     
-    //[[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
     
     self = [super initWithBaseURL:url];
     if (!self) {
@@ -99,7 +99,15 @@
                if(errorBlock)
                    errorBlock(error);
                
-               [self handleCriticalError:error operation:operation];
+               NSString *responseBody = [error localizedRecoverySuggestion];
+               SBJsonParser *parser = [[SBJsonParser alloc] init];
+               id repr = [parser objectWithString:responseBody];
+               
+               if([repr isKindOfClass:[NSDictionary class]] && [repr objectForKey:@"message"] != nil){
+                   [self handleLogicError:[repr objectForKey:@"message"]];
+               }else{
+                   [self handleCriticalError:error operation:operation];
+               }
                
            }];
 
@@ -151,7 +159,16 @@
                if(errorBlock)
                    errorBlock(error);
                
-               [self handleCriticalError:error operation:operation];
+               NSString *responseBody = [error localizedRecoverySuggestion];
+               SBJsonParser *parser = [[SBJsonParser alloc] init];
+               id repr = [parser objectWithString:responseBody];
+               
+               if([repr isKindOfClass:[NSDictionary class]] && [repr objectForKey:@"message"] != nil){
+                   [self handleLogicError:[repr objectForKey:@"message"]];
+               }else{
+                   [self handleCriticalError:error operation:operation];
+               }
+
                
            }];
     
@@ -190,7 +207,16 @@
               if(errorBlock)
                   errorBlock(error);
               
-              [self handleCriticalError:error operation:operation];
+              NSString *responseBody = [error localizedRecoverySuggestion];
+              SBJsonParser *parser = [[SBJsonParser alloc] init];
+              id repr = [parser objectWithString:responseBody];
+              
+              if([repr isKindOfClass:[NSDictionary class]] && [repr objectForKey:@"message"] != nil){
+                  [self handleLogicError:[repr objectForKey:@"message"]];
+              }else{
+                  [self handleCriticalError:error operation:operation];
+              }
+
               
           }];
     
@@ -228,7 +254,16 @@
               if(errorBlock)
                   errorBlock(error);
               
-              [self handleCriticalError:error operation:operation];
+              NSString *responseBody = [error localizedRecoverySuggestion];
+              SBJsonParser *parser = [[SBJsonParser alloc] init];
+              id repr = [parser objectWithString:responseBody];
+              
+              if([repr isKindOfClass:[NSDictionary class]] && [repr objectForKey:@"message"] != nil){
+                  [self handleLogicError:[repr objectForKey:@"message"]];
+              }else{
+                  [self handleCriticalError:error operation:operation];
+              }
+
               
           }];
     
@@ -344,6 +379,11 @@
     [operation start];
 
     
+}
+
+- (void) handleLogicError:(NSString *)errStr {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotificationName:NotificationLogicError object:errStr];
 }
 
 - (void) handleCriticalError:(NSError *)err operation:(AFHTTPRequestOperation *)operation{

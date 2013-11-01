@@ -22,6 +22,7 @@
  THE SOFTWARE.
  */
 
+#import <CommonCrypto/CommonDigest.h>
 #import "Utils.h"
 #import "UserManager.h"
 #import "StrManager.h"
@@ -331,6 +332,14 @@
         return [text sizeWithFont:font constrainedToSize:size].height;
     }
     
+}
+
++(NSString *)MD5:(NSString*)keyString
+{
+    unsigned char hash[16];
+    CC_MD5([keyString cStringUsingEncoding:NSUTF8StringEncoding], (int)strlen([keyString cStringUsingEncoding:NSUTF8StringEncoding]), hash);
+    NSString *hashString = [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",hash[0],hash[1],hash[2],hash[3],hash[4],hash[5],hash[6],hash[7],hash[8],hash[9],hash[10],hash[11],hash[12],hash[13],hash[14],hash[15]];
+    return hashString;
 }
 
 

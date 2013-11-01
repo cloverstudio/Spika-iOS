@@ -785,6 +785,17 @@
                                                       
                                                       
                                                   }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:NotificationLogicError
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *notification) {
+                                                      
+                                                      NSString *errStr = (NSString *) [notification object];
+                                                      [[AlertViewManager defaultManager] showAlert:errStr];
+
+                                                      //[[AlertViewManager defaultManager] dismiss];
+                                                  }];
+    
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NotificationTokenExpiredError
                                                       object:nil

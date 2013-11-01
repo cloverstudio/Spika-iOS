@@ -283,12 +283,7 @@
                 });
             }
               error:^(NSString *errStr){
-                  
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      
-                      
-                      
-                  });
+                 [[AlertViewManager defaultManager] dismiss];
         }];
         
     });
@@ -345,6 +340,7 @@
         
     }
     
+    /*
     NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"email" value:_emailField.text];
     
     if(result != nil){
@@ -364,6 +360,7 @@
         return NO;
         
     }
+    */
     
     return YES;
 }

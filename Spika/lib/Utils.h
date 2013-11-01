@@ -61,5 +61,5 @@
 
 +(int) heightByText:(NSString *)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size;
 
-
++(NSString *)MD5:(NSString*)keyString;
 @end

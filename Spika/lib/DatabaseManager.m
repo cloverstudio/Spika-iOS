@@ -213,17 +213,15 @@
                  success:(DMFindOneBlock)successBlock
                    error:(DMErrorBlock)errorBlock {
     
-    NSDictionary *params = @{@"email" : email, @"password" : password};
+    NSDictionary *params = @{@"email" : email, @"password" : [Utils MD5:password]};
     
     CSErrorBlock error = ^(NSError *error) {
         errorBlock(error.description);
     };
     
     CSResultBlock success = ^(NSDictionary *result) {
-        
-        result = [[result objectForKey:@"rows"] objectAtIndex:0];
-        
-        ModelUser *user = [ModelUser objectWithDictionary:[result objectForKey:@"value"]];
+
+        ModelUser *user = [ModelUser objectWithDictionary:result];
         
 		//save password and token
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -313,7 +311,7 @@
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setObject:name forKey:@"name"];
         [params setObject:email forKey:@"email"];
-        [params setObject:password forKey:@"password"];
+        [params setObject:[Utils MD5:password] forKey:@"password"];
         [params setObject:@"user" forKey:@"type"];
         [params setObject:@"online" forKey:@"online_status"];
         [params setObject:@(DefaultContactNum) forKey:@"max_contact_count"];
@@ -731,7 +729,7 @@
     
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPut:strUrl
+    [[HUHTTPClient sharedClient] doPost:@"updateUser"
 						 operationType:CSWebOperatonTypeJSON
 								params:params
 						   resultBlock:^(id result)
@@ -739,11 +737,9 @@
                                              
 		NSDictionary *responseDictionary = (NSDictionary *)result;
 		
-		if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+		if([responseDictionary objectForKey:@"_rev"] != nil) {
 			
-			if ([responseDictionary objectForKey:@"rev"]) {
-				toUser._rev = [responseDictionary objectForKey:@"rev"];
-			}
+			toUser._rev = [responseDictionary objectForKey:@"_rev"];
 			successBlock(YES, nil);
 			return;
 		}
@@ -774,7 +770,7 @@
 
         
         
-        [[HUHTTPClient sharedClient] doPut:strUrl
+        [[HUHTTPClient sharedClient] doPost:@"updateUser"
                              operationType:CSWebOperatonTypeJSON
                                     params:params
                                resultBlock:^(id result) {
@@ -2691,8 +2687,7 @@
 						success:(DMFindOneBlock)successBlock
 						  error:(DMErrorBlock)errorBlock {
 	
-	NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", userId];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/user_activity_summary%@", query];
+    NSString *strUrl = [NSString stringWithFormat:@"activitySummary"];
     
     [self setDefaultHeaderValues];
 	

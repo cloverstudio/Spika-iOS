@@ -43,9 +43,9 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://spikademo2.clover-studio.com/api/"
+#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
 #define DatabaseName            @"spikademo"
-#define AuthURL                 @"hookup-auth.php"
+#define AuthURL                 @"auth"
 #define CheckUniqueURL          @"checkUnique.php"
 #define ReminderURL             @"sendpassword.php"
 #define DatabaseUserName        @"binduser"
@@ -53,14 +53,14 @@
 #define PagingMessageFetchNum   20
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://spikademo2.clover-studio.com/api/"
+#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
 #define FileUplaoder            @"fileuploader.php"
 #define FileDownloader          @"filedownloader.php"
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"9b396ef6f2ea68ff9eee226388000e52"
+#define SupportUserId           @"0818764dcc50d80cc116738daa01685e"
 
 // UI element constants
 #define StdUIElementHeight 35
@@ -112,6 +112,7 @@
 #define NotificationGroupsShowSearch                    @"groupsShowSearch"
 #define NotificationGroupsShowCategories				@"groupsShowCategories"
 #define NotificationCriticalError                       @"criticalError"
+#define NotificationLogicError                          @"logicError"
 #define NotificationTokenExpiredError                   @"tokenExpired"
 #define NotificationServiceUnavailable                  @"ServiceUnavailable"
 #define NotificationTuggleSideMenu                      @"tuggleSideMenu"
