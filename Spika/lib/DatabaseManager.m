@@ -2115,7 +2115,7 @@
     
     NSString *emoticonId = [data objectForKey:@"_id"];
     NSString *emoticonIdentifier = [data objectForKey:@"identifier"];
-    NSString *emoticonImageUrl = [Utils generateAttachmentURL:data];
+    NSString *emoticonImageUrl = [Utils generateEmoticonURL:data];
     
     if(emoticonId == nil || emoticonIdentifier == nil || emoticonImageUrl == nil) {
         errorBlock(@"Invalid emoticon data");
@@ -2162,7 +2162,7 @@
     
     [self setDefaultHeaderValues];
 
-    [[HUHTTPClient sharedClient] doPost:@""
+    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {
