@@ -1842,13 +1842,11 @@
         
     int skip = page * PagingMessageFetchNum;
     
-    NSString *query = [NSString stringWithFormat:@"?startkey=%@&endkey=%@&limit=%d&descending=true&skip=%d",
-                       [NSString stringWithFormat:@"[\"%@\",{}]",group._id],
-                       [NSString stringWithFormat:@"[\"%@\"]",group._id],
-                       PagingMessageFetchNum,
-                       skip];
-    
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_group_message%@", query];
+    NSString *strUrl = [NSString stringWithFormat:@"groupMessages/%@/%d/%d",
+                     group._id,
+                     PagingMessageFetchNum,
+                     skip];
+
     
     NSMutableArray *messagesArray = [NSMutableArray array];
     __block ModelMessage *message = nil;
@@ -1960,6 +1958,8 @@
     
     [params setObject:[NSNumber numberWithBool:YES] forKey:@"valid"];
     
+    NSString *apiName = @"sendMessageToUser";
+    
     if(toUser != nil) {
         
         [params setObject:toUser.name forKey:@"to_user_name"];
@@ -1968,7 +1968,7 @@
         
     }
     else if(toGroup != nil) {
-        
+        apiName = @"sendMessageToGroup";
         [params setObject:toGroup.name forKey:@"to_group_name"];
         [params setObject:toGroup._id forKey:@"to_group_id"];
         [params setObject:@"group" forKey:@"message_target_type"];
@@ -1999,7 +1999,7 @@
             [params setObject:returnString forKey:@"picture_file_id"];
             [params setObject:thumbId forKey:@"picture_thumb_file_id"];
 
-            [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+            [[HUHTTPClient sharedClient] doPost:apiName
                                                 operationType:CSWebOperatonTypeJSON
                                                        params:params
                                                   resultBlock:^(id result) {
@@ -2144,6 +2144,8 @@
     
     [params setObject:[NSNumber numberWithBool:YES] forKey:@"valid"];
     
+    NSString *apiName = @"sendMessageToUser";
+    
     if(toUser != nil) {
         
         [params setObject:toUser.name forKey:@"to_user_name"];
@@ -2152,7 +2154,7 @@
         
     }
     else if(toGroup != nil){
-        
+        apiName = @"sendMessageToGroup";
         [params setObject:toGroup.name forKey:@"to_group_name"];
         [params setObject:toGroup._id forKey:@"to_group_id"];
         [params setObject:@"group" forKey:@"message_target_type"];
@@ -2166,7 +2168,7 @@
     
     [self setDefaultHeaderValues];
 
-    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+    [[HUHTTPClient sharedClient] doPost:apiName
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {
@@ -2442,6 +2444,8 @@
         [params setObject:[NSNumber numberWithLong:[Utils getUTCFormateDateInLong]] forKey:@"modified"];
         [params setObject:[NSNumber numberWithBool:YES] forKey:@"valid"];
         
+        NSString *apiName = @"sendMessageToUser";
+        
         if(toUser != nil) {
             
             [params setObject:toUser.name forKey:@"to_user_name"];
@@ -2449,7 +2453,7 @@
             [params setObject:@"user" forKey:@"message_target_type"];
         }
         else if(toGroup != nil) {
-            
+            apiName = @"sendMessageToGroup";
             [params setObject:toGroup.name forKey:@"to_group_name"];
             [params setObject:toGroup._id forKey:@"to_group_id"];
             [params setObject:@"group" forKey:@"message_target_type"];
@@ -2463,7 +2467,7 @@
         
         [self setDefaultHeaderValues];
         
-        [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+        [[HUHTTPClient sharedClient] doPost:apiName
                                             operationType:CSWebOperatonTypeJSON
                                                    params:params
                                               resultBlock:^(id result) {
@@ -2522,6 +2526,8 @@
             [params setObject:[NSNumber numberWithLong:[Utils getUTCFormateDateInLong]] forKey:@"modified"];
             [params setObject:[NSNumber numberWithBool:YES] forKey:@"valid"];
             
+            NSString *apiName = @"sendMessageToUser";
+            
             if(toUser != nil) {
                 
                 [params setObject:toUser.name forKey:@"to_user_name"];
@@ -2529,7 +2535,7 @@
                 [params setObject:@"user" forKey:@"message_target_type"];
             }
             else if(toGroup != nil) {
-                
+                apiName = @"sendMessageToGroup";
                 [params setObject:toGroup.name forKey:@"to_group_name"];
                 [params setObject:toGroup._id forKey:@"to_group_id"];
                 [params setObject:@"group" forKey:@"message_target_type"];
@@ -2542,7 +2548,7 @@
             
             [self setDefaultHeaderValues];
             
-            [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+            [[HUHTTPClient sharedClient] doPost:apiName
                                   operationType:CSWebOperatonTypeJSON
                                          params:params
                                     resultBlock:^(id result) {
@@ -2639,6 +2645,7 @@
     [params setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"];
     [params setObject:@"" forKey:@"body"];
     
+    NSString *apiName = @"sendMessageToUser";
     if(targetType == TargetTypeUser) {
         
         [params setObject:toUser.name forKey:@"to_user_name"];
@@ -2646,7 +2653,7 @@
         [params setObject:@"user" forKey:@"message_target_type"];
     }    
     else if(targetType == TargetTypeGroup) {
-        
+        apiName = @"sendMessageToGroup";
         [params setObject:toGroup.name forKey:@"to_group_name"];
         [params setObject:toGroup._id forKey:@"to_group_id"];
         [params setObject:@"group" forKey:@"message_target_type"];
@@ -2654,7 +2661,7 @@
 
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+    [[HUHTTPClient sharedClient] doPost:apiName
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {
