@@ -1082,7 +1082,7 @@
                success:(DMFindOneBlock)successBlock
                  error:(DMErrorBlock)errorBlock{
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@", groupId];
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/id/%@", groupId];
     
     [self setDefaultHeaderValues];
     
@@ -1742,6 +1742,8 @@
     
     [params setObject:[NSNumber numberWithBool:YES] forKey:@"valid"];
     
+    NSString *apiName = @"sendMessageToUser";
+    
     if(targetType == TargetTypeUser) {
     
         [params setObject:toUser.name forKey:@"to_user_name"];
@@ -1754,6 +1756,8 @@
     
     if(targetType == TargetTypeGroup) {
         
+        apiName = @"sendMessageToGroup";
+
         [params setObject:toGroup.name forKey:@"to_group_name"];
         
         [params setObject:toGroup._id forKey:@"to_group_id"];
@@ -1763,7 +1767,7 @@
     
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
+    [[HUHTTPClient sharedClient] doPost:apiName
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {
