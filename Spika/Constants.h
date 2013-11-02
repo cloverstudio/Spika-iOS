@@ -54,13 +54,13 @@
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
 #define HttpRootURL             @"http://localhost:8080/wwwroot/api"
-#define FileUplaoder            @"fileuploader.php"
-#define FileDownloader          @"filedownloader.php"
+#define FileUplaoder            @"/fileuploader"
+#define FileDownloader          @"/filedownloader"
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"0818764dcc50d80cc116738daa01685e"
+#define SupportUserId           @"361e5fc396c17b44e58eea1a2300050b"
 
 // UI element constants
 #define StdUIElementHeight 35

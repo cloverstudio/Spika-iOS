@@ -1995,7 +1995,7 @@
             [params setObject:returnString forKey:@"picture_file_id"];
             [params setObject:thumbId forKey:@"picture_thumb_file_id"];
 
-            [[HUHTTPClient sharedClient] doPost:@""
+            [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                                 operationType:CSWebOperatonTypeJSON
                                                        params:params
                                                   resultBlock:^(id result) {
@@ -2459,7 +2459,7 @@
         
         [self setDefaultHeaderValues];
         
-        [[HUHTTPClient sharedClient] doPost:@""
+        [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                             operationType:CSWebOperatonTypeJSON
                                                    params:params
                                               resultBlock:^(id result) {
@@ -2538,7 +2538,7 @@
             
             [self setDefaultHeaderValues];
             
-            [[HUHTTPClient sharedClient] doPost:@""
+            [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                   operationType:CSWebOperatonTypeJSON
                                          params:params
                                     resultBlock:^(id result) {
@@ -2650,7 +2650,7 @@
 
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@""
+    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {

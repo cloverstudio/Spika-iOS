@@ -127,7 +127,9 @@ AlertViewManager *_AlertViewManager;
     });
     
 }
-                   
+-(UIAlertView *) showAlert:(NSString *)title message:(NSString *)message{
+    [self showAlert:message];
+}
 /*-(UIAlertView *) showAlert:(NSString *)title message:(NSString *)message{
 
            

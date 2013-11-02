@@ -167,8 +167,6 @@
                                                        
                                                        dispatch_async(dispatch_get_main_queue(), ^{
                                                            [[AlertViewManager defaultManager] dismiss];
-                                                           [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Error", nil)
-																								message:errStr];
                                                        });
                                                        
                                                        
