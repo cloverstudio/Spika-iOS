@@ -1049,7 +1049,7 @@
         
         [self setDefaultHeaderValues];
         
-        [[HUHTTPClient sharedClient] doPost:@""
+        [[HUHTTPClient sharedClient] doPost:@"createGroup"
                                             operationType:CSWebOperatonTypeJSON
                                                    params:params
                                               resultBlock:^(id result) {
