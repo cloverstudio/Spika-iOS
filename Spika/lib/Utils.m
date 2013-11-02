@@ -269,6 +269,18 @@
     
 }
 
++(NSString *)generateEmoticonURL:(NSDictionary *)data{
+    
+    NSString *fileName = @"";
+    
+    for(NSString *key in [data objectForKey:@"_attachments"]){
+        fileName = [NSString stringWithString:key];
+    }
+    
+    return [NSString stringWithFormat:@"%@/Emoticon/%@",DatabaseURL,[data objectForKey:@"_id"]];
+    
+}
+
 +(CGSize) fitSize:(CGSize) originalSize toSize:(CGSize) toSize{
     
     float scale = (float)toSize.width / (float)originalSize.width;

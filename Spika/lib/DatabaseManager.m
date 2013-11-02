@@ -1763,7 +1763,7 @@
     
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@""
+    [[HUHTTPClient sharedClient] doPost:@"sendMessageToUser"
                                         operationType:CSWebOperatonTypeJSON
                                                params:params
                                           resultBlock:^(id result) {
@@ -1909,7 +1909,7 @@
 - (void)loadEmoticons:(DMArrayBlock)successBlock
                 error:(DMErrorBlock)errorBlock {
     
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_all_emoticons"];
+    NSString *strUrl = [NSString stringWithFormat:@"Emoticons"];
     
     [self setDefaultHeaderValues];
     

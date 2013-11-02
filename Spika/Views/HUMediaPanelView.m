@@ -210,7 +210,7 @@
         [_dicEmoticions setObject:data
                            forKey:[NSString stringWithFormat:@"%d",emoticonBtn.tag]];
         
-        NSString *imageUrl = [Utils generateAttachmentURL:data];
+        NSString *imageUrl = [Utils generateEmoticonURL:data];
         
         [[DatabaseManager defaultManager] loadEmoticons:imageUrl
                                                   toBtn:emoticonBtn

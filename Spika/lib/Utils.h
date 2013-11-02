@@ -47,6 +47,7 @@
 + (NSDictionary *)generateAttachmentJsonForVoice:(NSURL *)voicePathURL fileName:(NSString *)fileName;
 
 +(NSString *)generateAttachmentURL:(NSDictionary *)data;
++(NSString *)generateEmoticonURL:(NSDictionary *)data;
 
 +(NSString*) formatDate:(NSDate*) date;
 
