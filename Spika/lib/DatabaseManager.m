@@ -2043,15 +2043,11 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     [params setObject:message._id forKey:@"message_id"];
-    [params setObject:user.name forKey:@"user_name"];
-    [params setObject:user._id forKey:@"user_id"];
-    [params setObject:@"comment" forKey:@"type"];
     [params setObject:comment forKey:@"comment"];
-    [params setObject:[NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]] forKey:@"created"];
 
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@""
+    [[HUHTTPClient sharedClient] doPost:@"sendComment"
                                        operationType:CSWebOperatonTypeJSON
                                               params:params
                                          resultBlock:^(id result) {
