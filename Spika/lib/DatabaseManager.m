@@ -1106,9 +1106,8 @@
 - (void)findGroupsByCategoryId:(NSString *)groupCategoryId
                       success:(DMArrayBlock)successBlock
                         error:(DMErrorBlock)errorBlock{
-
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", groupCategoryId];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_group_by_category_id%@", query];
+    
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/categoryId/%@", groupCategoryId];
     
     [self setDefaultHeaderValues];
     
@@ -1471,7 +1470,7 @@
 -(void) findGroupCategories:(DMArrayBlock)successBlock
                       error:(DMErrorBlock)errorBlock{
     
-    NSString *strUrl = @"_design/app/_view/find_group_categories";
+    NSString *strUrl = @"findAllGroupCategory";
     
     [self setDefaultHeaderValues];
     
