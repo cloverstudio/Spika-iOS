@@ -224,8 +224,7 @@
         for(id groupId in [dic objectForKey:@"favorite_groups"]){
             [user.favouriteGroups addObject:[NSString stringWithFormat:@"%@",groupId]];
         }
-        
-        [user.favouriteGroups setArray:[dic objectForKey:@"favorite_groups"]];
+
     }
     
     if([dic objectForKey:@"avatar_file_id"] != nil){

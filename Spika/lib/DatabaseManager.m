@@ -1016,67 +1016,58 @@
             success:(DMUpdateBlock)successBlock
               error:(DMErrorBlock)errorBlock{
     
-    void (^findGroupHandler)(id) = ^(id response){
+    NSString *fileId = nil;
+    NSString *thumbId = nil;
     
-        NSString *fileId = nil;
-        NSString *thumbId = nil;
+    if(avatarImage != nil){
+        NSData *imageData = UIImageJPEGRepresentation(avatarImage,0.8);
+        fileId = [self uploadFileSynchronously:imageData fliename:@"avatar.jpg"];
         
-        if(avatarImage != nil){
-            NSData *imageData = UIImageJPEGRepresentation(avatarImage,0.8);
-            fileId = [self uploadFileSynchronously:imageData fliename:@"avatar.jpg"];
-            
-            UIImage *thumbImage = [UIImage imageWithImage:avatarImage scaledToSize:CGSizeMake(AvatarThumbNailSize, AvatarThumbNailSize)];
-            NSData *thumbData = UIImageJPEGRepresentation(thumbImage,0.8);
-            thumbId = [self uploadFileSynchronously:thumbData fliename:@"avatarThumb.jpg"];
-        }
-
-        
-        
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-        [params setObject:name forKey:@"name"];
-        [params setObject:[Utils MD5:password] forKey:@"group_password"];
-		[params setObject:categoryID forKey:@"category_id"];
-		[params setObject:categoryName forKey:@"category_name"];
-        [params setObject:description forKey:@"description"];
-        [params setObject:@"group" forKey:@"type"];
-        [params setObject:user._id forKey:@"user_id"];
-        [params setObject:[NSNumber numberWithBool:NO] forKey:@"is_favourite"];
-        if(fileId != nil)
-            [params setObject:fileId forKey:@"avatar_file_id"];
-        
-        if(thumbId != nil)
-            [params setObject:thumbId forKey:@"avatar_thumb_file_id"];
-        
-        
-        [self setDefaultHeaderValues];
-        
-        [[HUHTTPClient sharedClient] doPost:@"createGroup"
-                                            operationType:CSWebOperatonTypeJSON
-                                                   params:params
-                                              resultBlock:^(id result) {
-                                                  
-                                                  NSDictionary *responseDictionary = (NSDictionary *)result;
-                                                  
-                                                  if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
-                                                      
-                                                      [[DatabaseManager defaultManager] addGroupNamedToFavorite:name toUser:user success:successBlock error:errorBlock];                                                      
-                                                      return;
-                                                  }
-                                                  
-                                                  successBlock(false, @"Failed to create new group.");
-                                              }
-                                             failureBlock:^(NSError *error) {
-                                                 errorBlock(error.localizedDescription);
-                                             }
-                                      uploadProgressBlock:nil
-                                    downloadProgressBlock:nil];
-    };
+        UIImage *thumbImage = [UIImage imageWithImage:avatarImage scaledToSize:CGSizeMake(AvatarThumbNailSize, AvatarThumbNailSize)];
+        NSData *thumbData = UIImageJPEGRepresentation(thumbImage,0.8);
+        thumbId = [self uploadFileSynchronously:thumbData fliename:@"avatarThumb.jpg"];
+    }
     
-    [self findGroupByName:name
-                  success:findGroupHandler
-                    error:^(NSString *errorString) {
-                          errorBlock(errorString);
-                      }];
+    
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:name forKey:@"name"];
+    [params setObject:[Utils MD5:password] forKey:@"group_password"];
+    [params setObject:categoryID forKey:@"category_id"];
+    [params setObject:categoryName forKey:@"category_name"];
+    [params setObject:description forKey:@"description"];
+    [params setObject:@"group" forKey:@"type"];
+    [params setObject:user._id forKey:@"user_id"];
+    [params setObject:[NSNumber numberWithBool:NO] forKey:@"is_favourite"];
+    if(fileId != nil)
+        [params setObject:fileId forKey:@"avatar_file_id"];
+    
+    if(thumbId != nil)
+        [params setObject:thumbId forKey:@"avatar_thumb_file_id"];
+    
+    
+    [self setDefaultHeaderValues];
+    
+    [[HUHTTPClient sharedClient] doPost:@"createGroup"
+                          operationType:CSWebOperatonTypeJSON
+                                 params:params
+                            resultBlock:^(id result) {
+                                
+                                NSDictionary *responseDictionary = (NSDictionary *)result;
+                                
+                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
+                                    
+                                    successBlock(YES,result);
+                                    return;
+                                }
+                                
+                                successBlock(false, @"Failed to create new group.");
+                            }
+                           failureBlock:^(NSError *error) {
+                               errorBlock(error.localizedDescription);
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 - (void)findGroupByID:(NSString *)groupId
