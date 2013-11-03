@@ -266,8 +266,8 @@
                 success:(DMFindOneBlock)successBlock
                   error:(DMErrorBlock)errorBlock{
 
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", email];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_user_by_email%@", query];
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/name/%@", [Utils urlencode:email]];
+
     
     [self setDefaultHeaderValues];
 
@@ -396,14 +396,14 @@
             [params setObject:returnString forKey:@"avatar_file_id"];
             [params setObject:thumbReturnString forKey:@"avatar_thumb_file_id"];
             
-            [[HUHTTPClient sharedClient] doPost:@""
+            [[HUHTTPClient sharedClient] doPost:@"updateUser"
                                                 operationType:CSWebOperatonTypeJSON
                                                        params:params
                                                   resultBlock:^(id result) {
                                                       
                                                       NSDictionary *responseDictionary = (NSDictionary *)result;
                                                       
-                                                      if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                                                      if([responseDictionary objectForKey:@"_id"] != nil) {
                                                           
                                                           if (successBlock) successBlock(responseDictionary);
                                                           return;
@@ -629,10 +629,8 @@
 -(void)findUserByName:(NSString *)userName
               success:(DMFindOneBlock)successBlock
                 error:(DMErrorBlock)errorBlock{
-    
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", userName];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_user_by_name%@", query];
 
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/name/%@", [Utils urlencode:userName]];
     
     [self setDefaultHeaderValues];
     
@@ -1517,10 +1515,8 @@
 -(void)findOneGroupByName:(NSString *)groupName
               success:(DMFindOneBlock)successBlock
                 error:(DMErrorBlock)errorBlock{
-    
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", groupName];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_group_by_name%@", query];
-    
+
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/name/%@", [Utils urlencode:groupName]];
     
     [self setDefaultHeaderValues];
     
@@ -1717,8 +1713,8 @@
               success:(DMFindOneBlock)successBlock
                 error:(DMErrorBlock)errorBlock {
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@", message._id];
-    
+    NSString *strUrl = [NSString stringWithFormat:@"findMessageById/%@", message._id];
+
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
