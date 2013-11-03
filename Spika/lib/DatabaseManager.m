@@ -1425,11 +1425,10 @@
         
 
         NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[ModelGroup toDic:newGroup]];
-        NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
         
         [self setDefaultHeaderValues];
         
-        [[HUHTTPClient sharedClient] doPut:strUrl
+        [[HUHTTPClient sharedClient] doPost:@"updateGroup"
                                            operationType:CSWebOperatonTypeJSON
                                                   params:params
                                              resultBlock:^(id result) {
@@ -1492,13 +1491,13 @@
     
     newGroup.deleted = YES;
     
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[ModelGroup toDic:newGroup]];
-    NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:newGroup._id forKey:@"_id"];
     
     [self setDefaultHeaderValues];
     
 
-    [[HUHTTPClient sharedClient] doPut:strUrl
+    [[HUHTTPClient sharedClient] doPost:@"deleteGroup"
                          operationType:CSWebOperatonTypeJSON
                                 params:params
                            resultBlock:^(id result) {
