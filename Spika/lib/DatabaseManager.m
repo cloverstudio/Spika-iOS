@@ -2324,12 +2324,15 @@
     
     int skip = page * PagingMessageFetchNum;
     
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"&descending=true&limit=%d&skip=%d", message._id, PagingMessageFetchNum , skip];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_comments_by_message_id%@", query];
+    NSString *url = [NSString stringWithFormat:@"comments/%@/%d/%d",
+                     message._id,
+                     PagingMessageFetchNum,
+                     skip];
+
     
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doGet:strUrl
+    [[HUHTTPClient sharedClient] doGet:url
                          operationType:CSWebOperatonTypeJSON
                            resultBlock:^(id result) {
                                
@@ -2366,8 +2369,7 @@
                     success:(DMFindOneBlock)successBlock
                       error:(DMErrorBlock)errorBlock{
     
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", message._id];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/get_comment_count%@", query];
+    NSString *strUrl = [NSString stringWithFormat:@"commentsCount/%@",message._id];
     
     [self setDefaultHeaderValues];
     
