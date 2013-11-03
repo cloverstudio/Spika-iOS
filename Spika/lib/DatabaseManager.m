@@ -770,8 +770,6 @@
         
         NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
         [self setDefaultHeaderValues];
-
-        
         
         [[HUHTTPClient sharedClient] doPost:@"updateUser"
                              operationType:CSWebOperatonTypeJSON
@@ -833,40 +831,48 @@
     BOOL isAdding = NO;
         
     if ([user.contacts containsObject:contactId]) {
-        [user.contacts removeObject:contactId];
+        
+        NSDictionary *params = @{@"user_id":contactId};
+        
+        [[HUHTTPClient sharedClient] doPost:@"removeContact"
+                              operationType:CSWebOperatonTypeJSON
+                                     params:params
+                                resultBlock:^(id result) {
+                                    
+                                    NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
+                                    [[UserManager defaultManager] setLoginedUser:user];
+                                    
+                                    successBlock(YES,result);
+                                }
+                               failureBlock:^(NSError *error) {}
+                                uploadProgressBlock:nil
+                                downloadProgressBlock:nil];
+        
     }
     else {
         
-        isAdding = YES;
-        [user.contacts addObject:contactId];
+        
+        NSDictionary *params = @{@"user_id":contactId};
+        
+        [[HUHTTPClient sharedClient] doPost:@"addContact"
+                              operationType:CSWebOperatonTypeJSON
+                                     params:params
+                                resultBlock:^(id result) {
+                                    
+                                    NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
+                                    [[UserManager defaultManager] setLoginedUser:user];
+                                    
+                                    successBlock(YES,result);
+                                    
+                                }
+                               failureBlock:^(NSError *error) {}
+                               uploadProgressBlock:nil
+                               downloadProgressBlock:nil];
     }
 
-    
-   [self updateUser:user
-              result:^(id result) {
-                  
-                  NSDictionary *responseDictionary = (NSDictionary *)result;
-                  
-                  if([responseDictionary objectForKey:@"_id"] != nil) {
-                      
-                      successBlock(YES,nil);
-                      return;
-                  }
-                  
-                  errorBlock(isAdding ? @"Failed to add contact" : @"Failed to remove contact");
-                  
-                  if (isAdding) {
-                      [user.contacts removeObject:contactId];
-                  }
-                  else {
-                      [user.contacts addObject:contactId];
-                  }
-                  
-                  return;
-              }
-               error:^(NSError *error) {
-                   errorBlock(error.localizedDescription);
-               }];
+
 }
 
 - (void)saveUserPushNotificationToken:(ModelUser *)toUser

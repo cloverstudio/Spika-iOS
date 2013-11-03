@@ -190,7 +190,12 @@
     
     if([dic objectForKey:@"contacts"] != nil){
 
-        [user.contacts setArray:[dic objectForKey:@"contacts"]];
+        user.contacts = [[NSMutableArray alloc] init];
+        
+        for(id userId in [dic objectForKey:@"contacts"]){
+            [user.contacts addObject:[NSString stringWithFormat:@"%@",userId]];
+        }
+        
     }
     
     if([dic objectForKey:@"password"] != nil){
@@ -220,6 +225,7 @@
             [user.favouriteGroups addObject:[NSString stringWithFormat:@"%@",groupId]];
         }
         
+        [user.favouriteGroups setArray:[dic objectForKey:@"favorite_groups"]];
     }
     
     if([dic objectForKey:@"avatar_file_id"] != nil){
