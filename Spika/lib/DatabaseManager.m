@@ -2582,14 +2582,11 @@
                       groupId:(NSString *) groupId{
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:@"watching_group_log" forKey:@"type"];
-    [params setObject:userId forKey:@"user_id"];
     [params setObject:groupId forKey:@"group_id"];
-    [params setObject:[NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]] forKey:@"created"];
     
     [self setDefaultHeaderValues];
     
-    [[HUHTTPClient sharedClient] doPost:@""
+    [[HUHTTPClient sharedClient] doPost:@"watchGroup"
                           operationType:CSWebOperatonTypeJSON
                                  params:params
                             resultBlock:nil
@@ -2602,58 +2599,15 @@
 
 -(void) deleteWatchinGroupLog:(NSString *) userId{
     
-
-    NSString *query = [NSString stringWithFormat:@"?key=\"%@\"", userId];
-    NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_lastwatching_group_by_user_id%@", query];
-    
     [self setDefaultHeaderValues];
-	
-	CSResultBlock block = ^(NSDictionary *result) {
-		
-		NSArray *rows = [result objectForKeyPath:@"rows"];
-        
-        for(NSDictionary *rowDic in rows){
-            
-            NSDictionary *valueDic = [rowDic objectForKey:@"value"];
-            
-            NSString *userIdRow = [valueDic objectForKey:@"user_id"];
-            if(userIdRow == nil)
-                continue;
-            
-            if([userIdRow isEqualToString:userId]){
-                
-                NSString *rowId = [valueDic objectForKey:@"_id"];
-                NSString *rowRev = [valueDic objectForKey:@"_rev"];
-                
-
-                NSString *strUrl = [NSString stringWithFormat:@"%@?rev=%@",
-                                    rowId,
-                                    rowRev];
-                
-                [[HUHTTPClient sharedClient] doDelete:strUrl
-                                               params:nil
-                                        operationType:AFJSONParameterEncoding
-                                          resultBlock:^(id result) {
-
-                                          }
-                                         failureBlock:^(NSError *error) {
-
-                                         }
-                                  uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
-            }
-            
-        }
-        
-	};
-	
     
-    [[HUHTTPClient sharedClient] doGet:strUrl
-                         operationType:CSWebOperatonTypeJSON
-                           resultBlock:block
-                          failureBlock:nil
-                   uploadProgressBlock:nil
-                 downloadProgressBlock:nil];
+    [[HUHTTPClient sharedClient] doPost:@"unWatchGroup"
+                          operationType:CSWebOperatonTypeJSON
+                                 params:nil
+                            resultBlock:nil
+                           failureBlock:nil
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
     
     
 }
