@@ -965,12 +965,9 @@
                 success:(DMFindOneBlock)successBlock
                   error:(DMErrorBlock)errorBlock {
     
-    NSString *method = [self getURL:@"searchgroup.php"
-                     withParameters:@{
-                        @"n"    :   name,
-                        }];
+    NSString *url = [NSString stringWithFormat:@"searchGroups/name/%@",name];
     
-    [[HUHTTPClient sharedClient] doGet:method
+    [[HUHTTPClient sharedClient] doGet:url
                                        operationType:CSWebOperatonTypeJSON
                                          resultBlock:^(id result) {
                                              
@@ -1161,125 +1158,25 @@
                    success:(DMUpdateBlock)successBlock
                      error:(DMErrorBlock)errorBlock{
     
-    __block ModelGroup *freshGroup;
-    __block ModelUser *freshUser;
-    __block NSMutableDictionary *userGroupDic;
-    
-    // getNewGroupHandler -> getNewUserGroupHandler -> deleteUserGroupHandler -> deleteFavoriteFromUserHadler -> getNewUserHandler;
 
-    void (^getNewUserHandler)(id) = ^(id result){
-        
-        [[DatabaseManager defaultManager] findUserWithID:user._id success:^(id result){
-            
-            successBlock(YES,result);
-            
-        } error:^(NSString *strError){
-            
-            errorBlock(strError);
-            
-        }];
-        
-    };
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:group._id forKey:@"group_id"];
     
-    void (^deleteFavoriteFromUserHadler)(id) = ^(id result){
-        
-        [freshUser.favouriteGroups removeObject:freshGroup._id];
-        
-        [[DatabaseManager defaultManager] updateUser:freshUser result: getNewUserHandler error:^(NSError *error) {
-            errorBlock(error.localizedDescription);
-        }];
-        
-    };
+    [self setDefaultHeaderValues];
     
-    void (^deleteUserGroupHandler)(id) = ^(id result){
-        
-        NSArray *foundUserGroup = (NSArray *) result;
-        if(foundUserGroup.count > 0){
-            
-            userGroupDic = [[NSMutableDictionary alloc] initWithDictionary:[foundUserGroup objectAtIndex:0]];
-            if([userGroupDic objectForKey:@"value"] == nil){
-                deleteFavoriteFromUserHadler(nil);
-                return;
-            }
-            
-            NSDictionary *value = [userGroupDic objectForKey:@"value"];
-
-            
-            NSString *strUrl = [NSString stringWithFormat:@"%@?rev=%@",
-                                [value objectForKey:@"_id"],
-                                [value objectForKey:@"_rev"]];
-            
-            [self setDefaultHeaderValues];
-            
-            [[HUHTTPClient sharedClient] doDelete:strUrl
-                                                         params:nil
-                                                  operationType:AFJSONParameterEncoding
-                                                    resultBlock:^(id result) {
-                                                        
-                                                        deleteFavoriteFromUserHadler(nil);
-                                                        
-                                                    }
-                                                   failureBlock:^(NSError *error) {
-                                                       
-                                                       deleteFavoriteFromUserHadler(nil);
-                                                       
-                                                   }
-                                            uploadProgressBlock:nil
-                                          downloadProgressBlock:nil];
-            
-        }else{
-            
-            deleteFavoriteFromUserHadler(nil);
-            
-        }
-        
-    };
+    [[HUHTTPClient sharedClient] doPost:@"unSubscribeGroup"
+                          operationType:CSWebOperatonTypeJSON
+                                 params:params
+                            resultBlock:^(NSString * result){
+                                
+                                successBlock(YES,result);
+                            }
+                           failureBlock:^(NSError *error) {
+                               errorBlock(error.localizedDescription);
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
     
-    void (^getNewUserGroupHandler)(id) = ^(id result){
-        
-        // save user_group relation
-        
-        freshUser = (ModelUser *)result;
-        
-
-        NSString *query = [NSString stringWithFormat:@"?key=[\"%@\",\"%@\"]", group._id,freshUser._id];
-        NSString *strUrl = [NSString stringWithFormat:@"_design/app/_view/find_users_group%@", query];
-        
-        [self setDefaultHeaderValues];
-        
-        [[HUHTTPClient sharedClient] doGet:strUrl
-                                           operationType:CSWebOperatonTypeJSON
-                                             resultBlock:^(id result) {
-                                                 
-                                                 NSDictionary *responseDictionary = (NSDictionary *)result;
-                                                 NSArray *matchedRows = [responseDictionary objectForKey:@"rows"];
-                                                 deleteUserGroupHandler(matchedRows);
-
-                                             }
-                                            failureBlock:^(NSError *error) {
-                                                errorBlock(error.localizedDescription);
-                                            }
-                                     uploadProgressBlock:nil
-                                   downloadProgressBlock:nil];
-
-    };
-    
-    
-    void (^getNewGroupHandler)(id) = ^(id result){
-        
-        freshGroup = (ModelGroup *)result;
-        
-        [[DatabaseManager defaultManager] findUserWithID:user._id success:getNewUserGroupHandler error:^(NSString *strError){
-            errorBlock(strError);
-        }];
-        
-    };
-    
-    // get user_group data
-    
-    [[DatabaseManager defaultManager] findGroupByID:group._id success:getNewGroupHandler error:^(NSString *strError){
-        errorBlock(strError);
-    }];
     
 }
 
@@ -1312,91 +1209,25 @@
                    success:(DMUpdateBlock)successBlock
                      error:(DMErrorBlock)errorBlock{
     
-    __block ModelGroup *freshGroup;
-    __block ModelUser *freshUser;
-    
-    // getNewGroupHandler -> getNewUserHandler -> favoriteSavedHadler -> addedNewUserGroupHadler
-    
-    void (^addedNewUserGroupHadler)(id) = ^(id result){
-        
-        [[DatabaseManager defaultManager] findUserWithID:user._id success:^(id result){
-            
-            successBlock(YES,result);
-            
-        } error:^(NSString *strError){
-            
-            errorBlock(strError);
-        
-        }];
-        
-    };
 
-    void (^favoriteSavedHadler)(id) = ^(id result){
-        
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:group._id forKey:@"group_id"];
+    
+    [self setDefaultHeaderValues];
+    
+    [[HUHTTPClient sharedClient] doPost:@"subscribeGroup"
+                          operationType:CSWebOperatonTypeJSON
+                                 params:params
+                            resultBlock:^(NSString * result){
+                                
+                                successBlock(YES,result);
+                            }
+                            failureBlock:^(NSError *error) {
+                               errorBlock(error.localizedDescription);
+                            }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 
-        [freshUser.favouriteGroups addObject:freshGroup._id];
-        
-        [[DatabaseManager defaultManager] updateUser:freshUser result:addedNewUserGroupHadler error:^(NSError *error) {
-            errorBlock(error.localizedDescription);
-        }];
-
-    };
-    
-    void (^getNewUserHandler)(id) = ^(id result){
-        
-        // save user_group relation
-        
-        freshUser = (ModelUser *)result;
-        
-        // check already exists
-        for(NSString *groupId in freshUser.favouriteGroups){
-            
-            if(![groupId respondsToSelector:@selector(isEqualToString)])
-                 continue;
-                 
-            if([groupId isEqualToString:group._id]){
-                errorBlock(@"Already exists.");
-                return;
-            }
-        }
-        
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-        [params setObject:freshGroup._id forKey:@"group_id"];
-        [params setObject:freshUser._id forKey:@"user_id"];
-        [params setObject:freshUser.name forKey:@"user_name"];
-        [params setObject:@"user_group" forKey:@"type"];
-        
-        [self setDefaultHeaderValues];
-        
-        [[HUHTTPClient sharedClient] doPost:@""
-                                            operationType:CSWebOperatonTypeJSON
-                                                   params:params
-                                              resultBlock:favoriteSavedHadler
-                                             failureBlock:^(NSError *error) {
-                                                 errorBlock(error.localizedDescription);
-                                             }
-                                      uploadProgressBlock:nil
-                                    downloadProgressBlock:nil];
-
-        
-    };
-    
-    
-    void (^getNewGroupHandler)(id) = ^(id result){
-        
-        freshGroup = (ModelGroup *)result;
-
-        [[DatabaseManager defaultManager] findUserWithID:user._id success:getNewUserHandler error:^(NSString *strError){
-            errorBlock(strError);
-        }];
-        
-    };
-    
-    
-    [[DatabaseManager defaultManager] findGroupByID:group._id success:getNewGroupHandler error:^(NSString *strError){
-        errorBlock(strError);
-    }];
-    
 }
 
 - (void)updateGroup:(ModelGroup *)newGroup

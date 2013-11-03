@@ -421,7 +421,8 @@
 }
 
 - (void) populateViews{
-
+    
+    
     [_categoryLabel setEditerText:_group.categoryName];
     [_nameLabel setEditerText:_group.name];
     
@@ -446,6 +447,7 @@
     
     [_aboutLabel setEditerText:_group.description];
     
+    
     [[DatabaseManager defaultManager] loadCategoryIconByName:_group.categoryName success:^(UIImage *image){
         
         [_categoryLabel setIconImage:image];
@@ -464,6 +466,7 @@
 }
 
 -(void) updateAddButton{
+    
     
     if(_group.deleted == NO && [[[UserManager defaultManager] getLoginedUser]._id isEqualToString:_group.userId]){
         

@@ -212,7 +212,14 @@
     }
     
     if([dic objectForKey:@"favorite_groups"] != nil){
-        [user.favouriteGroups setArray:[dic objectForKey:@"favorite_groups"]];
+        //force convert to struing
+        
+        user.favouriteGroups = [[NSMutableArray alloc] init];
+        
+        for(id groupId in [dic objectForKey:@"favorite_groups"]){
+            [user.favouriteGroups addObject:[NSString stringWithFormat:@"%@",groupId]];
+        }
+        
     }
     
     if([dic objectForKey:@"avatar_file_id"] != nil){
@@ -359,12 +366,27 @@
     
     BOOL isExists = NO;
     
-    for(int i = 0 ; i < [_favouriteGroups count] ; i++){
-        NSString *favoriteGroupId = [_favouriteGroups objectAtIndex:i];
+    if(_favouriteGroups == nil){
+        return NO;
+    }
+    
+    if(![_favouriteGroups isKindOfClass:[NSArray class]]){
+        return NO;
+    }
+    
+    if(![_favouriteGroups respondsToSelector:@selector(count)])
+        return NO;
+    
+    int count = [_favouriteGroups count];
+    int i = 0;
+    
+    for(i = 0 ; i < count ; i++){
         
-        if(![favoriteGroupId respondsToSelector:@selector(isEqualToString)])
-            continue;
+        if(i > count)
+            break;
         
+        NSString *favoriteGroupId = [NSString stringWithFormat:@"%@",[_favouriteGroups objectAtIndex:i]];
+
         if([favoriteGroupId isEqualToString:group._id]){
             isExists = YES;
             break;
