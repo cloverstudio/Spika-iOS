@@ -832,7 +832,7 @@
         [[AlertViewManager defaultManager] showInputPassword:@"Please input password"
                                                  resultBlock:^(NSString *password){
                                                      
-                                                     if(password != nil && [password isEqualToString:_group.password])
+                                                     if(password != nil && [[Utils MD5:password] isEqualToString:_group.password])
                                                          
                                                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:_group];
                                                      

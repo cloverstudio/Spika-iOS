@@ -39,6 +39,7 @@
 #import "HUEditableLabelView.h"
 #import "HUPickerTableView.h"
 #import "HUDataManager.h"
+#import "Utils.h"
 
 @interface HUMyGroupProfileViewController (){
     BOOL                _isEditing;
@@ -308,6 +309,11 @@
         if (_selectedCategoryID == nil) _selectedCategoryID = @"";
         
         _group.name = groupName;
+        
+        if(![groupPassword isEqualToString:@""]){
+            groupPassword = [Utils MD5:groupPassword];
+        }
+        
         _group.password = groupPassword;
         _group.description = description;
         _group.categoryId = _selectedCategoryID;

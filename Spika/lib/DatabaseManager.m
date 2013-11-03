@@ -1030,7 +1030,7 @@
         
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setObject:name forKey:@"name"];
-        [params setObject:password forKey:@"group_password"];
+        [params setObject:[Utils MD5:password] forKey:@"group_password"];
 		[params setObject:categoryID forKey:@"category_id"];
 		[params setObject:categoryName forKey:@"category_name"];
         [params setObject:description forKey:@"description"];
