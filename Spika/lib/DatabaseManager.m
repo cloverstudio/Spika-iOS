@@ -195,7 +195,7 @@
 -(NSString *)sendReminderSynchronous:(NSString *)email {
 
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?db=%@&email=%@",DatabaseURL,ReminderURL,DatabaseName,email]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?email=%@",DatabaseURL,ReminderURL,email]];
     
     NSString *result = [[HUHTTPClient sharedClient] doGetSynchronous:url];
     

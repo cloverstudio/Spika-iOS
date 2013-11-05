@@ -47,7 +47,7 @@
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
 #define CheckUniqueURL          @"checkUnique.php"
-#define ReminderURL             @"sendpassword.php"
+#define ReminderURL             @"resetPassword"
 #define DatabaseUserName        @"binduser"
 #define DatabasePassword        @"cloverpass013"
 #define PagingMessageFetchNum   20
