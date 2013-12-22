@@ -2692,8 +2692,8 @@
 		36EBC3ACD3476584B85C547F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ken yasue (ZLB2YFY6R2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ken yasue (ZLB2YFY6R2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -2707,8 +2707,8 @@
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "AE7108DE-2DC5-4076-8B0E-60BDBCFAE8C5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE7108DE-2DC5-4076-8B0E-60BDBCFAE8C5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
