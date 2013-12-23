@@ -83,7 +83,7 @@
                       text:(NSString*) text
                   fontSize:(CGFloat) fontSize {
     UILabel *label = [CSKit labelWithFrame:frame
-                                      font:kFontMyriadProOfSize(fontSize)
+                                      font:kFontArialMTOfSize(fontSize)
                                  textColor:kHUColorDarkDarkGray
                              textAlignment:UITextAlignmentLeft
                                       text:text];

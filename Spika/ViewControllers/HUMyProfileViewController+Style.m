@@ -136,7 +136,7 @@
 
 -(UIFont *)fontForTextFields{
     
-    UIFont *font = kFontMyriadProOfSize(kFontSizeMiddium);
+    UIFont *font = kFontArialMTOfSize(kFontSizeMiddium);
     
     return font;
 }
@@ -144,7 +144,7 @@
 
 - (UIFont *) fontForUsernameLabel {
     
-    return kFontMyriadProOfSize(kFontSizeMiddium);
+    return kFontArialMTOfSize(kFontSizeMiddium);
 }
 
 

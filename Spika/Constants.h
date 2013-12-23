@@ -31,10 +31,8 @@
 #pragma mark - Fonts
 #define kFontArialMT                @"ArialMT"
 #define kFontArialMTBold            @"Arial-BoldMT"
-#define kFontMyriadPro              @"MyriadPro-Regular"
-#define kFontArialMTOfSize(__SIZE__)                [UIFont fontWithName:kFontMyriadPro size:__SIZE__]
+#define kFontArialMTOfSize(__SIZE__)                [UIFont fontWithName:kFontArialMT size:__SIZE__]
 #define kFontArialMTBoldOfSize(__SIZE__)            [UIFont fontWithName:kFontArialMTBold size:__SIZE__]
-#define kFontMyriadProOfSize(__SIZE__)              [UIFont fontWithName:kFontMyriadPro size:__SIZE__]
 #define kFontSizeExtraBig               50
 #define kFontSizeBig                    20
 #define kFontSizeMiddium                16
@@ -43,7 +41,7 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
+#define DatabaseURL             @"http://192.168.1.105:8080/wwwroot/api"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
 #define CheckUniqueURL          @"checkUnique.php"
@@ -53,7 +51,7 @@
 #define PagingMessageFetchNum   20
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
+#define HttpRootURL             @"http://192.168.1.105:8080/wwwroot/api"
 #define FileUplaoder            @"/fileuploader"
 #define FileDownloader          @"/filedownloader"
 

@@ -86,7 +86,7 @@
         [self addSubview:view];
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, viewSize.width, viewSize.height)];
-        label.font = kFontMyriadProOfSize(kFontSizeMiddium);
+        label.font = kFontArialMTOfSize(kFontSizeMiddium);
         label.backgroundColor = [UIColor clearColor];
         label.userInteractionEnabled = NO;
         label.text = string;

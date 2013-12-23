@@ -97,7 +97,6 @@
 		ADC6465617E0761600C16A9D /* LoadingAnimation5.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440717E0761500C16A9D /* LoadingAnimation5.png */; };
 		ADC6465717E0761600C16A9D /* LoadingAnimation5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440817E0761500C16A9D /* LoadingAnimation5@2x.png */; };
 		ADC6465817E0761600C16A9D /* tutorial_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440917E0761500C16A9D /* tutorial_window@2x.png */; };
-		ADC6465917E0761600C16A9D /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440B17E0761500C16A9D /* MyriadPro-Regular.otf */; };
 		ADC6465A17E0761600C16A9D /* hp_email_field.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440D17E0761500C16A9D /* hp_email_field.png */; };
 		ADC6465B17E0761600C16A9D /* hp_email_field@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6440E17E0761500C16A9D /* hp_email_field@2x.png */; };
 		ADC6465C17E0761600C16A9D /* group_stub.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6441017E0761500C16A9D /* group_stub.png */; };
@@ -570,7 +569,6 @@
 		ADC6440717E0761500C16A9D /* LoadingAnimation5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingAnimation5.png; sourceTree = "<group>"; };
 		ADC6440817E0761500C16A9D /* LoadingAnimation5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoadingAnimation5@2x.png"; sourceTree = "<group>"; };
 		ADC6440917E0761500C16A9D /* tutorial_window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial_window@2x.png"; sourceTree = "<group>"; };
-		ADC6440B17E0761500C16A9D /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		ADC6440D17E0761500C16A9D /* hp_email_field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_email_field.png; sourceTree = "<group>"; };
 		ADC6440E17E0761500C16A9D /* hp_email_field@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hp_email_field@2x.png"; sourceTree = "<group>"; };
 		ADC6441017E0761500C16A9D /* group_stub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group_stub.png; sourceTree = "<group>"; };
@@ -1512,7 +1510,6 @@
 		ADC6440A17E0761500C16A9D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				ADC6440B17E0761500C16A9D /* MyriadPro-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -2275,7 +2272,6 @@
 				ADC6465617E0761600C16A9D /* LoadingAnimation5.png in Resources */,
 				ADC6465717E0761600C16A9D /* LoadingAnimation5@2x.png in Resources */,
 				ADC6465817E0761600C16A9D /* tutorial_window@2x.png in Resources */,
-				ADC6465917E0761600C16A9D /* MyriadPro-Regular.otf in Resources */,
 				ADC6465A17E0761600C16A9D /* hp_email_field.png in Resources */,
 				ADC6465B17E0761600C16A9D /* hp_email_field@2x.png in Resources */,
 				ADC6465C17E0761600C16A9D /* group_stub.png in Resources */,

@@ -40,7 +40,7 @@
     if (self) {        
         CGRect frame = CGRectMake(6, 5, 200, 44);
         CSTextField *textField = [[CSTextField alloc] initWithFrame:frame];
-        textField.font = kFontMyriadProOfSize(kFontSizeSmall);
+        textField.font = kFontArialMTOfSize(kFontSizeSmall);
         textField.text = self.placeholderString;
         textField.textInset = CGPointMake(4, 0);
         textField.placeholderInset = CGPointMake(4, 0);

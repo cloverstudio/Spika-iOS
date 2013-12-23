@@ -156,7 +156,7 @@ typedef enum {
 {
 	UILabel *statusLabel = [[UILabel alloc] initWithFrame:[self frameForStatusLabel]];
     statusLabel.backgroundColor = [UIColor clearColor];
-    statusLabel.font =kFontMyriadProOfSize(kFontSizeBig);
+    statusLabel.font =kFontArialMTOfSize(kFontSizeBig);
     statusLabel.textColor = [HUBaseViewController colorWithSharedColorType:HUSharedColorTypeDark];
     statusLabel.text = NSLocalizedString(@"TAP AND RECORD", nil);
     [_scrollView addSubview:statusLabel];

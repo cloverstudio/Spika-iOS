@@ -66,7 +66,7 @@
         self.statusBarColor = kHUColorGreen;
         self.barColor = kHUColorWhite;
         self.textColor = kHUColorWhite;
-        self.font = kFontMyriadProOfSize(kFontSizeMiddium);
+        self.font = kFontArialMTOfSize(kFontSizeMiddium);
         
         [self addObserver:self forKeyPath:@"leftValue" options:0 context:NULL];
         [self addObserver:self forKeyPath:@"rightValue" options:0 context:NULL];
