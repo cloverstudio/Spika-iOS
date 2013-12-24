@@ -1032,7 +1032,12 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:name forKey:@"name"];
-    [params setObject:[Utils MD5:password] forKey:@"group_password"];
+    
+    if(password.length > 0)
+        [params setObject:[Utils MD5:password] forKey:@"group_password"];
+    else
+        [params setObject:@"" forKey:@"group_password"];
+    
     [params setObject:categoryID forKey:@"category_id"];
     [params setObject:categoryName forKey:@"category_name"];
     [params setObject:description forKey:@"description"];
@@ -1287,7 +1292,7 @@
             success:(DMFindOneBlock)successBlock
               error:(DMErrorBlock)errorBlock{
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@", group._id];
+    NSString *strUrl = [NSString stringWithFormat:@"findGroup/id/%@", group._id];
     
     [self setDefaultHeaderValues];
     

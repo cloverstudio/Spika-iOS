@@ -271,4 +271,14 @@
     
 }
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    // allow password entry
+    if (textView.superview == _passwordLabel) {
+		return YES;
+	}
+    
+    return [super textViewShouldBeginEditing:textView];
+}
+
 @end

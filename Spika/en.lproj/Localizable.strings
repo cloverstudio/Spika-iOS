@@ -98,7 +98,8 @@
 "Confirm delete group"  = "Are you sure you want to delete this group?";
 "Password-Exists"       = "YES";
 "No-Password"           = "NO";
-"GroupOwner"           = "Group Owner";
+"GroupOwner"            = "Group Owner";
+"Change Group Password" = "Change Group Password";
 
 /*HUNewGroupController*/
 "Enter-Name"            = "name";

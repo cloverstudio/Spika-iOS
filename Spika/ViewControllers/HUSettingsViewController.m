@@ -58,7 +58,7 @@
 -(void) loadView {
 	
 	[super loadView];
-
+    
     [self addSlideButtonItem];
     
 	self.title = NSLocalizedString(@"SETTINGS", nil);
@@ -130,7 +130,7 @@
 }
 
 -(void) passwordActiveDidChangeValue:(RCSwitch *)sender {
-
+    
 	[[UIResponder currentFirstResponder] resignFirstResponder];
 	if (sender.isOn) {
 		[self showSetNewPasswordModalViewController];
@@ -153,7 +153,7 @@
 }
 
 -(void) showSetNewPasswordModalViewController {
-
+    
 	HUPasswordSetNewViewController *viewController = [HUPasswordSetNewViewController passwordViewController:^(id controller, NSString *newPassword, BOOL isSuccess) {
 		if (isSuccess) {
 			[self savePassword:newPassword];
@@ -191,7 +191,7 @@
 	static NSString *cellIdentifier = @"CellIdentifier";
 	
 	UITableViewCell *cell = [CSKit tableViewCellDefault:cellIdentifier tableView:tableView];
-
+    
 	[self provideCellContent:cell forIndexPath:indexPath];
 	
 	return cell;

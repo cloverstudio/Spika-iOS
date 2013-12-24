@@ -40,6 +40,7 @@
 #import "HUPickerTableView.h"
 #import "HUDataManager.h"
 #import "Utils.h"
+#import "HUPasswordChangeDialog.h"
 
 @interface HUMyGroupProfileViewController (){
     BOOL                _isEditing;
@@ -77,7 +78,7 @@
     [_avatarView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewDidTap:)]];
     [_avatarView setUserInteractionEnabled:YES];
     
-    [_passwordLabel setPasswordEntry:YES];
+    //[_passwordLabel setPasswordEntry:YES];
 }
 
 - (void) tuggleEdit{
@@ -150,7 +151,7 @@
 - (void) populateViews{
     [super populateViews];
     
-    [_passwordLabel setEditerText:_group.password];
+    //[_passwordLabel setEditerText:_group.password];
 }
 
 -(void) loadAvatar{
@@ -220,6 +221,86 @@
 }
 
 -(void) dialog:(HUDialog *)dialog didPressButtonAtIndex:(NSInteger)index{
+    
+    if([dialog isKindOfClass:[HUPasswordChangeDialog class]]){
+        
+        HUPasswordChangeDialog *passwordDialog = (HUPasswordChangeDialog *) dialog;
+        
+        if(_group.password.length != 0){
+            
+            if([_group.password isEqualToString:[Utils MD5:passwordDialog.oldPasswordView.text]]){
+                
+                
+                
+            }else{
+                
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"InvalidPassword", nil)];
+                return;
+                
+            }
+            
+        }else{
+            
+            if([passwordDialog.oldPasswordView.text length] > 0){
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"InvalidPassword", nil)];
+                return;
+            }
+            
+        }
+        
+        if([passwordDialog.passwordView.text length] > 0){
+            if(![[HUDataManager defaultManager] isPasswordOkay:passwordDialog.passwordView.text]){
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password message", @"")];
+                return ;
+            }
+            
+            if(![passwordDialog.passwordView.text isEqualToString:passwordDialog.confirmPasswordView.text]){
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"InvalidNewPassword", nil)];
+                return;
+            }
+        }
+
+        NSString *newPassword = passwordDialog.passwordView.text;
+        
+        if(newPassword.length != 0){
+            _group.password = [Utils MD5:newPassword];
+        }else{
+            _group.password = @"";
+        }
+        
+        HUMyGroupProfileViewController *this = self;
+        
+        [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
+        
+        [[DatabaseManager defaultManager] updateGroup:_group avatarImage:_avatarImage success:^(BOOL isSuccess, NSString *errorStr) {
+            
+            [[AlertViewManager defaultManager] dismiss];
+            
+            if (isSuccess) {
+                
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Group updated", nil)];
+                [this tuggleEdit];
+                
+                [[DatabaseManager defaultManager] reloadGroup:_group success:^(id result) {
+                    
+                    this.group = result;
+                    [this populateViews];
+                    this.didUpdateGroup = YES;
+                    
+                } error:^(NSString *errorString) {
+                    
+                }];
+                
+            } else {
+               [[AlertViewManager defaultManager] dismiss];
+            }
+            
+        } error:^(NSString *errorString) {
+            [[AlertViewManager defaultManager] dismiss];
+        }];
+         
+        return;
+    }
     
     if(index == 0)
         [self onDelete];
@@ -413,6 +494,25 @@
     
     return YES;
 }
+
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    
+    // open password change dialog
+    if (textView.superview == _passwordLabel) {
+        
+        HUPasswordChangeDialog *dialog = [[HUPasswordChangeDialog alloc] initWithText:NSLocalizedString(@"Change Group Password", nil)
+                                                                             delegate:self
+                                                                          cancelTitle:NSLocalizedString(@"Cancel", nil)
+                                                                           otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"Save", nil),nil]];
+        [dialog show];
+        
+		return YES;
+	}
+    
+    return [super textViewShouldBeginEditing:textView];
+}
+
 
 
 #pragma mark - HUImageUploadViewConrollerDelegate Methods

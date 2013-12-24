@@ -99,6 +99,7 @@
 "Password-Exists"       = "はい";
 "No-Password"           = "いいえ";
 "GroupOwner"           =  "オーナー";
+"Change Group Password" = "グループパスワードの変更";
 
 /*HUNewGroupController*/
 "Enter-Name"            = "名前";

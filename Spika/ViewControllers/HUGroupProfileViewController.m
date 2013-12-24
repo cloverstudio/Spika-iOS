@@ -524,6 +524,10 @@
 		return NO;
 	}
     
+    if (textView.superview == _passwordLabel) {
+		return NO;
+	}
+    
     return YES;
     
 }
