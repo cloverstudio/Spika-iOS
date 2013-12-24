@@ -77,13 +77,9 @@
     
     CGRect titleRect = [self frameForAvatarTitleView];
     
-    self.tableView.frame = CGRectMake(
-        self.tableView.x,
-        self.tableView.y + _controlBar.size.height,
-        self.tableView.width,
-        self.tableView.height - _controlBar.size.height
-    );
-    
+    self.tableView.y = titleRect.origin.y + titleRect.size.height + 10;
+    self.tableView.height = self.tableView.height - self.tableView.y;
+
     [self hideMediaPanel];
 
 }
