@@ -224,6 +224,7 @@
 "Re-enter new password"		= "新しいパスワード(再入力)";
 "InvalidPassword"           = "パスワードが正しくありません";
 "InvalidNewPassword"        = "パスワードが一致しません";
+"Confirm Email"             = "メールにパスワードリセット用のリンクが送信されます。";
 "PasswordChanged"           = "パスワードが変更されました";
 "FailedToChangePassword"    = "パスワードの変更に失敗しました";
 "GroupDeleted"              = "このグループはオーナーにより削除されました。お気に入りに追加されている場合には、削除をしてください。";

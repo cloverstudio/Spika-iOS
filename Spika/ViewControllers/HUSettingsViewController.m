@@ -200,72 +200,41 @@
 
 - (void)changePassword
 {
-    HUPasswordChangeDialog *dialog = [[HUPasswordChangeDialog alloc] initWithText:NSLocalizedString(@"Confirm delete group", nil)
-                                                                         delegate:self
-                                                                      cancelTitle:NSLocalizedString(@"Cancel", nil)
-                                                                       otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"Save", nil),nil]];
+    HUDialog *dialog = [[HUDialog alloc] initWithText:NSLocalizedString(@"Confirm Email", nil)
+                                             delegate:self
+                                          cancelTitle:NSLocalizedString(@"NO", nil)
+                                           otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"YES", nil),nil]];
     [dialog show];
 }
 
+
 -(void) dialog:(HUDialog *)dialog didPressButtonAtIndex:(NSInteger)index{
     
-    if(index != 0)
-        return;
-    
-    HUPasswordChangeDialog *passwordDialog = (HUPasswordChangeDialog *) dialog;
-    
-    ModelUser *user = [[UserManager defaultManager] getLoginedUser];
-    
-    if(![passwordDialog.oldPasswordView.text isEqualToString:user.password]){
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"InvalidPassword", nil)];
-        return;
+    if(index == 0){
+        
+        ModelUser *user = [[UserManager defaultManager] getLoginedUser];
+        NSString *email = user.email;
+        
+        [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSString *result = [[DatabaseManager defaultManager] sendReminderSynchronous:email];
+            
+            [[AlertViewManager defaultManager] dismiss];
+            
+            if([result isEqualToString:@"OK"]){
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"ForgotPassword-Sent", NULL)];
+            }else{
+                [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Invalid-Email-Message", NULL)];
+            }
+            
+        });
+        
     }
     
-    if(![[HUDataManager defaultManager] isPasswordOkay:passwordDialog.passwordView.text]){
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password message", @"")];
-        return ;
-    }
-    
-    if(![passwordDialog.passwordView.text isEqualToString:passwordDialog.confirmPasswordView.text]){
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"InvalidNewPassword", nil)];
-        return;
-    }
-    
-    [[DatabaseManager defaultManager] updatePassword:user newPassword:passwordDialog.passwordView.text
-        success:^(BOOL succees,NSString *errStr){
-            
-            [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"PasswordChanged", nil)];
-            
-            
-            [[DatabaseManager defaultManager] reloadUser:user
-                success:^(id result) {
-                    ModelUser *newuser = (ModelUser *) result;
-                    
-                    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-                    [userDefault setObject:passwordDialog.passwordView.text forKey:UserDefaultLastLoginPass];
-                    [userDefault setObject:passwordDialog.passwordView.text forKey:UserPassword];
-                    [userDefault synchronize];
-                    
-                    newuser.password = passwordDialog.passwordView.text;
-                    [[UserManager defaultManager] setLoginedUser:newuser];
-
-                }
-                error:^(NSString *errorString) {
-                    NSLog(@"failed to reload user");
-            }];
-
-            
-
-            
-        } error:^(NSString *errStr){
-            
-            [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"FailedToChangePassword", nil)];
-            
-    }];
 }
 
--(void) dialogDidPressCancel:(HUDialog *)dialog{
-    
-}
+
 
 @end

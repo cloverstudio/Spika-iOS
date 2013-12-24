@@ -225,6 +225,7 @@
 "InvalidPassword"           = "Entered password does not match your password.";
 "InvalidNewPassword"        = "You must enter the same password in both fields.";
 "PasswordChanged"           = "Succeeded to change password.";
+"Confirm Email"             = "Please check email and open link.";
 "FailedToChangePassword"    = "Failed to change password.";
 "GroupDeleted"              = "This group has been deleted by it's owner. Please unsubscribe if you are still subscribed.";
 "Confirm Logout"            = "Do you really want to logout?";

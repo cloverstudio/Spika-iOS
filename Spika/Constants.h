@@ -58,7 +58,7 @@
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"5b1ace6289ae4b7f46cd1d18bf0005b9"
+#define SupportUserId           @"88ee633db11d260b3102baafd000058c"
 
 // UI element constants
 #define StdUIElementHeight 35

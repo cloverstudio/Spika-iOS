@@ -27,7 +27,7 @@
 @implementation HUVoiceMessageDetailViewController (Style)
 
 - (CGRect)frameForVoicePlayerBar {
-    CGRect frame = CGRectMake(5, 5, 310, 40);
+    CGRect frame = CGRectMake(5, 49, 310, 40);
     return frame;
 }
 

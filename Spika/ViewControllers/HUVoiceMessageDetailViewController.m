@@ -79,9 +79,9 @@
     
     self.tableView.frame = CGRectMake(
         self.tableView.x,
-        self.tableView.y + titleRect.size.height,
+        self.tableView.y + _controlBar.size.height,
         self.tableView.width,
-        self.tableView.height - titleRect.size.height
+        self.tableView.height - _controlBar.size.height
     );
     
     [self hideMediaPanel];

@@ -76,7 +76,7 @@
 	{
 		UIView *holderView = [[UIView alloc] initWithFrame:view.bounds];
 		holderView.backgroundColor = [UIColor blackColor];
-		holderView.alpha = 0.8;
+		holderView.alpha = 1.0;
 		
 		UIView *shadowView = [[UIView alloc] init];
 		shadowView.layer.masksToBounds = NO;
