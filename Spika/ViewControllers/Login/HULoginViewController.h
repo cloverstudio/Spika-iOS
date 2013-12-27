@@ -23,8 +23,18 @@
  */
 
 #import "HUBaseViewController.h"
-#import "HUDialog.h"
 
-@interface HUSignUpViewController : HUBaseViewController <UITextFieldDelegate, HUDialogDelegate>
+@interface HULoginViewController : HUBaseViewController <UITextFieldDelegate>{
+    IBOutlet UIView          *_mainView;
+    IBOutlet UIView          *_loginContainer;
+    IBOutlet UITextField     *_emailField;
+    IBOutlet UITextField     *_passwordField;
+    IBOutlet UIButton        *_signInButton;
+    IBOutlet UIButton        *_signUpButton;
+    IBOutlet UIButton        *_forgotDetailsButton;
+}
 
+-(IBAction) onSignIn;
+-(IBAction) onSignUp;
+-(IBAction) onForgotDetails;
 @end

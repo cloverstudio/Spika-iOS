@@ -23,27 +23,20 @@
  */
 
 #import "HULoginViewController.h"
-#import "HULoginViewController+Style.h"
 #import "DatabaseManager.h"
 #import "CSToast.h"
 #import "UIView+Apperance.h"
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
 #import "Utils.h"
+#import "HUSignUpViewController.h"
+#import "HUForgotPasswordViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @interface HULoginViewController () {
     
-    UIView          *_mainView;
-    
-    UIView          *_loginContainer;
-    
-    UITextField     *_emailField;
-    UITextField     *_passwordField;
-    
-    UIButton        *_signInButton;
-    UIButton        *_signUpButton;
+
 }
 
 #pragma mark - Animations
@@ -71,23 +64,51 @@
 
 #pragma mark - View Lifecycle
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        
+    }
+    return self;
+}
+
+
+- (void) viewDidLoad{
+    [super viewDidLoad];
+    
+}
+
 - (void) loadView {
 
     [super loadView];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:UserDefaultLastLoginEmail]) {
+        _emailField.text = [defaults objectForKey:UserDefaultLastLoginEmail];
+        _passwordField.text = [defaults objectForKey:UserDefaultLastLoginPass];
+    } else {
+        
+    }
+    
+    [_forgotDetailsButton setTitle:NSLocalizedString(@"Forgot-Details", @"") forState:UIControlStateNormal];
+    [_signInButton setTitle:NSLocalizedString(@"Login-Title", @"") forState:UIControlStateNormal];
+    [_signUpButton setTitle:NSLocalizedString(@"SignUp-Title", @"") forState:UIControlStateNormal];
+
+    
+    /*
     _mainView = [[UIView alloc] initWithFrame:CGRectMake(
         0,0,[Utils getDisplayWidth],[Utils getDisplayHeight]
     )];
     
-    _mainView.autoresizingMask = self.view.autoresizingMask;
-    _mainView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_mainView];
         
     _loginContainer = [self loginContainer];
     [_mainView addSubview:_loginContainer];
     
     UIImageView *loginFieldsBackground = [self loginFieldsBackground];
     [_loginContainer addSubview:loginFieldsBackground];
+    
+     
+    
     
     _emailField = CS_RETAIN([self emailField]);
     _emailField.delegate = self;
@@ -99,21 +120,19 @@
     _emailField.isAccessibilityElement = YES;
     [loginFieldsBackground addSubview:_passwordField];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:UserDefaultLastLoginEmail]) {
-        _emailField.text = [defaults objectForKey:UserDefaultLastLoginEmail];
-        _passwordField.text = [defaults objectForKey:UserDefaultLastLoginPass];
-    } else {
-
-    }
+      */
     
+    /*
+
     UIButton *forgotDetailsButton = [self forgotDetailsButton];
     [forgotDetailsButton addTarget:self
                             action:@selector(onForgotDetails)
                   forControlEvents:UIControlEventTouchUpInside];
     forgotDetailsButton.isAccessibilityElement = YES;
     [_loginContainer addSubview:forgotDetailsButton];
-
+    
+    
+    
     
     _signInButton = [self signInButton];
     [_signInButton addTarget:self
@@ -130,9 +149,10 @@
           forControlEvents:UIControlEventTouchUpInside];
     _signUpButton.isAccessibilityElement = YES;
     [_mainView addSubview:_signUpButton];
-
+ */
     
 }
+
 
 - (void) viewWillAppear:(BOOL)animated {
 
@@ -198,9 +218,10 @@
                         options:curve
                      animations:^(){
                          
-                         _loginContainer.frame = [self frameForLoginContainer:YES];
-                         _signInButton.frame = [self frameForSignInButton:YES];
-                         _signUpButton.frame = [self frameForSignUpButton:YES];
+                         _loginContainer.y -= 10;
+                         _signInButton.y -= 50;
+                         _signUpButton.y -= 50;
+
                      }
                      completion:nil];
 }
@@ -214,10 +235,10 @@
                           delay:0.0
                         options:curve
                      animations:^(){
-                         
-                         _loginContainer.frame = [self frameForLoginContainer:NO];
-                         _signInButton.frame = [self frameForSignInButton:NO];
-                         _signUpButton.frame = [self frameForSignUpButton:NO];
+
+                         _loginContainer.y += 20;
+                         _signInButton.y += 100;
+                         _signUpButton.y += 100;
                          
                      }
                      completion:nil];
@@ -232,7 +253,9 @@
 #pragma mark - Button Selectors
 
 - (void) onForgotDetails {
-    [self.navigationController pushViewController:[CSKit viewControllerFromString:@"HUForgotPasswordViewController"]
+    HUForgotPasswordViewController *vc = [[HUForgotPasswordViewController alloc] initWithNibName:@"ForgotPasswordView" bundle:nil];
+    
+    [self.navigationController pushViewController:vc
                                          animated:YES];
 }
 
@@ -299,7 +322,9 @@
 
     self.navigationController.hidesBottomBarWhenPushed = YES;
     
-    [[self navigationController] pushViewController:[CSKit viewControllerFromString:@"HUSignUpViewController"]
+    HUSignUpViewController *vc = [[HUSignUpViewController alloc] initWithNibName:@"SignupView" bundle:nil];
+    
+    [[self navigationController] pushViewController:vc
                                            animated:YES];
 }
 

@@ -54,8 +54,6 @@
 - (void) dealloc {
 
 	NSLog(@"%@ dealloc'd!",NSStringFromClass([self class]));
-    [self removeObserver:self
-              forKeyPath:@"viewType"];
     
     CS_RELEASE(_slideButton);
     CS_SUPER_DEALLOC;
@@ -133,20 +131,17 @@
     
     [super loadView];
     
+    
     self.navigationItem.rightBarButtonItems = [HUBaseViewController dummyBarButtonItem];
     self.view.userInteractionEnabled = YES;
     
+    /*
     if ([self viewFromNib]) {
-        
         self.view = [self viewFromNib];
-    }
-    else {
-        
+    } else {
         self.view = CS_AUTORELEASE([[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]]);
     }
-    
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithBundleImage:@"hp_view_background_pattern"]];
+    */
     
     if ([NSStringFromClass([self class]) isEqualToString:@"HULoginViewController"] ||
         [NSStringFromClass([self class]) isEqualToString:@"HUSignUpViewController"]) {
@@ -168,6 +163,8 @@
 						 completion:^(BOOL finished) { [self.view addSubview:label]; }];
 	}
     
+     
+    
     UISwipeGestureRecognizer *oneFingerSwipeRight =
     [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeForMenu)];
     [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
@@ -179,6 +176,7 @@
     [[self view] addGestureRecognizer:oneFingerSwipeLeft];
     
 }
+ 
 
 - (void) swipeForMenu{
     

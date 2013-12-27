@@ -51,6 +51,7 @@
 #import "Crittercism.h"
 #import "HUAvatarManager.h"
 #import "HUEULAViewController.h"
+#import "HULoginViewController.h"
 
 @interface AppDelegate (){
     UIView *_disableTouchView;
@@ -106,7 +107,6 @@
     
     [self clearUserDefaults];
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -281,8 +281,13 @@
 
 - (void) presentLoginViewController:(BOOL) animated {
     
-    CSNavigationController *loginNavController = [[CSNavigationController alloc] initWithRootViewController:[CSKit viewControllerFromString:@"HULoginViewController"]];
-    [loginNavController setBackgroundImage:[UIImage imageWithColor:kHUColorDarkDarkGray andSize:CGSizeMake(1, 1)]];    
+    
+    HULoginViewController *loginVC = [[HULoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+    CSNavigationController *loginNavController = [[CSNavigationController alloc] initWithRootViewController:loginVC];
+    
+    [loginNavController setBackgroundImage:[UIImage imageWithColor:kHUColorDarkDarkGray andSize:CGSizeMake(1, 1)]];
+    
+    
     [_navigationController presentViewController:loginNavController
                                         animated:animated
                                       completion:nil];

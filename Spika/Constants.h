@@ -41,7 +41,7 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://192.168.1.105:8080/wwwroot/api"
+#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
 #define CheckUniqueURL          @"checkUnique.php"
@@ -51,14 +51,14 @@
 #define PagingMessageFetchNum   20
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://192.168.1.105:8080/wwwroot/api"
+#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
 #define FileUplaoder            @"/fileuploader"
 #define FileDownloader          @"/filedownloader"
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"88ee633db11d260b3102baafd000058c"
+#define SupportUserId           @"83dba54b0eb6061dfcb8f688f70002d1"
 
 // UI element constants
 #define StdUIElementHeight 35

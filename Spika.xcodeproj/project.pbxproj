@@ -296,15 +296,12 @@
 		ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453517E0761600C16A9D /* HUBaseViewController.m */; };
 		ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */; };
 		ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453917E0761600C16A9D /* HUEULAViewController.m */; };
-		ADC6473417E0761700C16A9D /* HUForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453B17E0761600C16A9D /* HUForgotPasswordViewController.m */; };
 		ADC6473517E0761700C16A9D /* HUGroupProfileViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */; };
 		ADC6473617E0761700C16A9D /* HUGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453F17E0761600C16A9D /* HUGroupProfileViewController.m */; };
 		ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */; };
 		ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454317E0761600C16A9D /* HUGroupsViewController.m */; };
 		ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */; };
 		ADC6473A17E0761700C16A9D /* HUImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */; };
-		ADC6473B17E0761700C16A9D /* HULoginViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454917E0761600C16A9D /* HULoginViewController+Style.m */; };
-		ADC6473C17E0761700C16A9D /* HULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454B17E0761600C16A9D /* HULoginViewController.m */; };
 		ADC6473D17E0761700C16A9D /* HUMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454D17E0761600C16A9D /* HUMediaViewController.m */; };
 		ADC6473E17E0761700C16A9D /* HUMyGroupProfileViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454F17E0761600C16A9D /* HUMyGroupProfileViewController+Style.m */; };
 		ADC6473F17E0761700C16A9D /* HUMyGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6455117E0761600C16A9D /* HUMyGroupProfileViewController.m */; };
@@ -326,8 +323,6 @@
 		ADC6474F17E0761700C16A9D /* HUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457117E0761600C16A9D /* HUSettingsViewController.m */; };
 		ADC6475017E0761700C16A9D /* HUSideMenuViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */; };
 		ADC6475117E0761700C16A9D /* HUSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */; };
-		ADC6475217E0761700C16A9D /* HUSignUpViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457717E0761600C16A9D /* HUSignUpViewController+Style.m */; };
-		ADC6475317E0761700C16A9D /* HUSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457917E0761600C16A9D /* HUSignUpViewController.m */; };
 		ADC6475417E0761700C16A9D /* HUSubMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */; };
 		ADC6475517E0761700C16A9D /* HUUsersViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457D17E0761600C16A9D /* HUUsersViewController+Style.m */; };
 		ADC6475617E0761700C16A9D /* HUUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457F17E0761600C16A9D /* HUUsersViewController.m */; };
@@ -413,6 +408,13 @@
 		ADC647B417E0796600C16A9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B317E0796600C16A9D /* AudioToolbox.framework */; };
 		ADC647B617E0798500C16A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B517E0798500C16A9D /* CoreMedia.framework */; };
 		ADC647B817E079B700C16A9D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B717E079B600C16A9D /* MobileCoreServices.framework */; };
+		B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */; };
+		B3409E02186DEDB50033A4B3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E01186DEDB50033A4B3 /* MainWindow.xib */; };
+		B3409E0A186DF2B60033A4B3 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E09186DF2B60033A4B3 /* LoginView.xib */; };
+		B3CE0C00186E2AAE009372B0 /* HUSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CE0BFE186E2AAE009372B0 /* HUSignUpViewController.m */; };
+		B3CE0C02186E2C21009372B0 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C01186E2C21009372B0 /* SignupView.xib */; };
+		B3CE0C06186E343A009372B0 /* HUForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */; };
+		B3CE0C08186E347F009372B0 /* ForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */; };
 		CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1151E217EF4BCD00C14DA6 /* HUTextView.m */; };
 		CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB78BF717ECAEEB0053FBE3 /* HUButton.m */; };
 /* End PBXBuildFile section */
@@ -827,8 +829,6 @@
 		ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDigitInputViewController.m; sourceTree = "<group>"; };
 		ADC6453817E0761600C16A9D /* HUEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUEULAViewController.h; sourceTree = "<group>"; };
 		ADC6453917E0761600C16A9D /* HUEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUEULAViewController.m; sourceTree = "<group>"; };
-		ADC6453A17E0761600C16A9D /* HUForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUForgotPasswordViewController.h; sourceTree = "<group>"; };
-		ADC6453B17E0761600C16A9D /* HUForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUForgotPasswordViewController.m; sourceTree = "<group>"; };
 		ADC6453C17E0761600C16A9D /* HUGroupProfileViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupProfileViewController+Style.h"; sourceTree = "<group>"; };
 		ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupProfileViewController+Style.m"; sourceTree = "<group>"; };
 		ADC6453E17E0761600C16A9D /* HUGroupProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupProfileViewController.h; sourceTree = "<group>"; };
@@ -841,10 +841,6 @@
 		ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUImageUploadViewController+Style.m"; sourceTree = "<group>"; };
 		ADC6454617E0761600C16A9D /* HUImageUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUImageUploadViewController.h; sourceTree = "<group>"; };
 		ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUImageUploadViewController.m; sourceTree = "<group>"; };
-		ADC6454817E0761600C16A9D /* HULoginViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HULoginViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6454917E0761600C16A9D /* HULoginViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HULoginViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6454A17E0761600C16A9D /* HULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HULoginViewController.h; sourceTree = "<group>"; };
-		ADC6454B17E0761600C16A9D /* HULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HULoginViewController.m; sourceTree = "<group>"; };
 		ADC6454C17E0761600C16A9D /* HUMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMediaViewController.h; sourceTree = "<group>"; };
 		ADC6454D17E0761600C16A9D /* HUMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMediaViewController.m; sourceTree = "<group>"; };
 		ADC6454E17E0761600C16A9D /* HUMyGroupProfileViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUMyGroupProfileViewController+Style.h"; sourceTree = "<group>"; };
@@ -887,10 +883,6 @@
 		ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSideMenuViewController+Style.m"; sourceTree = "<group>"; };
 		ADC6457417E0761600C16A9D /* HUSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSideMenuViewController.h; sourceTree = "<group>"; };
 		ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSideMenuViewController.m; sourceTree = "<group>"; };
-		ADC6457617E0761600C16A9D /* HUSignUpViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSignUpViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6457717E0761600C16A9D /* HUSignUpViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSignUpViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6457817E0761600C16A9D /* HUSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSignUpViewController.h; sourceTree = "<group>"; };
-		ADC6457917E0761600C16A9D /* HUSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSignUpViewController.m; sourceTree = "<group>"; };
 		ADC6457A17E0761600C16A9D /* HUSubMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSubMenuViewController.h; sourceTree = "<group>"; };
 		ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSubMenuViewController.m; sourceTree = "<group>"; };
 		ADC6457C17E0761600C16A9D /* HUUsersViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUUsersViewController+Style.h"; sourceTree = "<group>"; };
@@ -1049,6 +1041,16 @@
 		ADC647B317E0796600C16A9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADC647B517E0798500C16A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ADC647B717E079B600C16A9D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B3409DFB186DEB3F0033A4B3 /* HULoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HULoginViewController.h; sourceTree = "<group>"; };
+		B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HULoginViewController.m; sourceTree = "<group>"; };
+		B3409E01186DEDB50033A4B3 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		B3409E09186DF2B60033A4B3 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = ../../UserInterfaces/LoginView.xib; sourceTree = "<group>"; };
+		B3CE0BFD186E2AAE009372B0 /* HUSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSignUpViewController.h; sourceTree = "<group>"; };
+		B3CE0BFE186E2AAE009372B0 /* HUSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSignUpViewController.m; sourceTree = "<group>"; };
+		B3CE0C01186E2C21009372B0 /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
+		B3CE0C04186E343A009372B0 /* HUForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUForgotPasswordViewController.h; sourceTree = "<group>"; };
+		B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUForgotPasswordViewController.m; sourceTree = "<group>"; };
+		B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordView.xib; sourceTree = "<group>"; };
 		CE1151E117EF4BCD00C14DA6 /* HUTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTextView.h; sourceTree = "<group>"; };
 		CE1151E217EF4BCD00C14DA6 /* HUTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUTextView.m; sourceTree = "<group>"; };
 		CEB78BF617ECAEEB0053FBE3 /* HUButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUButton.h; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 				ADC6437A17E0761500C16A9D /* Default@2x.png */,
 				ADC6437B17E0761500C16A9D /* InfoPlist.strings */,
 				ADC6437F17E0761500C16A9D /* Localizable.strings */,
+				B3409E00186DED9A0033A4B3 /* UserInterfaces */,
 				ADC6436E17E0761500C16A9D /* ControllerSupport */,
 				ADC6438117E0761500C16A9D /* Extensions */,
 				ADC643E017E0761500C16A9D /* External */,
@@ -1925,6 +1928,9 @@
 		ADC6452917E0761600C16A9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3CE0C03186E343A009372B0 /* ForgotPassword */,
+				B3CE0BFA186E2AAE009372B0 /* Signup */,
+				B3409DF8186DEB3F0033A4B3 /* Login */,
 				ADC6452A17E0761600C16A9D /* _HUPasswordBaseViewController+Style.h */,
 				ADC6452B17E0761600C16A9D /* _HUPasswordBaseViewController+Style.m */,
 				ADC6452C17E0761600C16A9D /* _HUPasswordBaseViewController.h */,
@@ -1941,8 +1947,6 @@
 				ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */,
 				ADC6453817E0761600C16A9D /* HUEULAViewController.h */,
 				ADC6453917E0761600C16A9D /* HUEULAViewController.m */,
-				ADC6453A17E0761600C16A9D /* HUForgotPasswordViewController.h */,
-				ADC6453B17E0761600C16A9D /* HUForgotPasswordViewController.m */,
 				ADC6453C17E0761600C16A9D /* HUGroupProfileViewController+Style.h */,
 				ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */,
 				ADC6453E17E0761600C16A9D /* HUGroupProfileViewController.h */,
@@ -1955,10 +1959,6 @@
 				ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */,
 				ADC6454617E0761600C16A9D /* HUImageUploadViewController.h */,
 				ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */,
-				ADC6454817E0761600C16A9D /* HULoginViewController+Style.h */,
-				ADC6454917E0761600C16A9D /* HULoginViewController+Style.m */,
-				ADC6454A17E0761600C16A9D /* HULoginViewController.h */,
-				ADC6454B17E0761600C16A9D /* HULoginViewController.m */,
 				ADC6454C17E0761600C16A9D /* HUMediaViewController.h */,
 				ADC6454D17E0761600C16A9D /* HUMediaViewController.m */,
 				ADC6454E17E0761600C16A9D /* HUMyGroupProfileViewController+Style.h */,
@@ -2001,10 +2001,6 @@
 				ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */,
 				ADC6457417E0761600C16A9D /* HUSideMenuViewController.h */,
 				ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */,
-				ADC6457617E0761600C16A9D /* HUSignUpViewController+Style.h */,
-				ADC6457717E0761600C16A9D /* HUSignUpViewController+Style.m */,
-				ADC6457817E0761600C16A9D /* HUSignUpViewController.h */,
-				ADC6457917E0761600C16A9D /* HUSignUpViewController.m */,
 				ADC6457A17E0761600C16A9D /* HUSubMenuViewController.h */,
 				ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */,
 				ADC6457C17E0761600C16A9D /* HUUsersViewController+Style.h */,
@@ -2201,6 +2197,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B3409DF8186DEB3F0033A4B3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B3409E09186DF2B60033A4B3 /* LoginView.xib */,
+				B3409DFB186DEB3F0033A4B3 /* HULoginViewController.h */,
+				B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B3409E00186DED9A0033A4B3 /* UserInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				B3409E01186DEDB50033A4B3 /* MainWindow.xib */,
+			);
+			path = UserInterfaces;
+			sourceTree = "<group>";
+		};
+		B3CE0BFA186E2AAE009372B0 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				B3CE0BFD186E2AAE009372B0 /* HUSignUpViewController.h */,
+				B3CE0BFE186E2AAE009372B0 /* HUSignUpViewController.m */,
+				B3CE0C01186E2C21009372B0 /* SignupView.xib */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		B3CE0C03186E343A009372B0 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				B3CE0C04186E343A009372B0 /* HUForgotPasswordViewController.h */,
+				B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */,
+				B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2258,6 +2292,7 @@
 				ADC6461717E0761600C16A9D /* Default-568h@2x.png in Resources */,
 				ADC6461817E0761600C16A9D /* Default.png in Resources */,
 				ADC6461917E0761600C16A9D /* Default@2x.png in Resources */,
+				B3409E02186DEDB50033A4B3 /* MainWindow.xib in Resources */,
 				ADC6461A17E0761600C16A9D /* InfoPlist.strings in Resources */,
 				ADC6461B17E0761600C16A9D /* Localizable.strings in Resources */,
 				ADC6464A17E0761600C16A9D /* LICENSE in Resources */,
@@ -2267,6 +2302,7 @@
 				ADC6465117E0761600C16A9D /* LoadingAnimation2@2x.png in Resources */,
 				ADC6465217E0761600C16A9D /* LoadingAnimation3.png in Resources */,
 				ADC6465317E0761600C16A9D /* LoadingAnimation3@2x.png in Resources */,
+				B3CE0C02186E2C21009372B0 /* SignupView.xib in Resources */,
 				ADC6465417E0761600C16A9D /* LoadingAnimation4.png in Resources */,
 				ADC6465517E0761600C16A9D /* LoadingAnimation4@2x.png in Resources */,
 				ADC6465617E0761600C16A9D /* LoadingAnimation5.png in Resources */,
@@ -2396,6 +2432,7 @@
 				ADC646E517E0761600C16A9D /* hp_wall_tableview_top_shadow.png in Resources */,
 				ADC646E617E0761600C16A9D /* hp_wall_tableview_top_shadow@2x.png in Resources */,
 				ADC646E717E0761600C16A9D /* albums_more_icon.png in Resources */,
+				B3409E0A186DF2B60033A4B3 /* LoginView.xib in Resources */,
 				ADC646E817E0761600C16A9D /* albums_more_icon@2x.png in Resources */,
 				ADC646E917E0761600C16A9D /* albums_more_icon_active.png in Resources */,
 				ADC646EA17E0761600C16A9D /* albums_more_icon_active@2x.png in Resources */,
@@ -2432,6 +2469,7 @@
 				AD74BB5617E0B3680061F786 /* user_away_icon.png in Resources */,
 				AD74BB5717E0B3680061F786 /* user_away_icon@2x.png in Resources */,
 				AD74BB5817E0B3680061F786 /* user_busy_icon.png in Resources */,
+				B3CE0C08186E347F009372B0 /* ForgotPasswordView.xib in Resources */,
 				AD74BB5917E0B3680061F786 /* user_busy_icon@2x.png in Resources */,
 				AD74BB5A17E0B3680061F786 /* user_offline_icon.png in Resources */,
 				AD74BB5B17E0B3680061F786 /* user_offline_icon@2x.png in Resources */,
@@ -2453,6 +2491,7 @@
 				ADC6461517E0761600C16A9D /* HUPushNotificationManager.m in Sources */,
 				ADC6461C17E0761600C16A9D /* AFHTTPClient+Synchronous.m in Sources */,
 				ADC6461D17E0761600C16A9D /* AFHTTPClient.m in Sources */,
+				B3CE0C06186E343A009372B0 /* HUForgotPasswordViewController.m in Sources */,
 				ADC6461E17E0761600C16A9D /* AFHTTPRequestOperation+ResponseObject.m in Sources */,
 				ADC6461F17E0761600C16A9D /* AFHTTPRequestOperation.m in Sources */,
 				ADC6462017E0761600C16A9D /* AFHTTPRequestOperationLogger.m in Sources */,
@@ -2495,6 +2534,7 @@
 				ADC6464817E0761600C16A9D /* MAKVONotificationCenter.m in Sources */,
 				ADC6464917E0761600C16A9D /* OrderedDictionary.m in Sources */,
 				ADC6464B17E0761600C16A9D /* RCSwitch.m in Sources */,
+				B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */,
 				ADC6464C17E0761600C16A9D /* RCSwitchClone.m in Sources */,
 				ADC6464D17E0761600C16A9D /* RCSwitchOnOff.m in Sources */,
 				ADC646FF17E0761700C16A9D /* CSDispatcher.m in Sources */,
@@ -2549,7 +2589,6 @@
 				ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */,
 				ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */,
 				ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */,
-				ADC6473417E0761700C16A9D /* HUForgotPasswordViewController.m in Sources */,
 				ADC6473517E0761700C16A9D /* HUGroupProfileViewController+Style.m in Sources */,
 				ADC6473617E0761700C16A9D /* HUGroupProfileViewController.m in Sources */,
 				ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */,
@@ -2557,8 +2596,6 @@
 				ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */,
 				ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */,
 				ADC6473A17E0761700C16A9D /* HUImageUploadViewController.m in Sources */,
-				ADC6473B17E0761700C16A9D /* HULoginViewController+Style.m in Sources */,
-				ADC6473C17E0761700C16A9D /* HULoginViewController.m in Sources */,
 				ADC6473D17E0761700C16A9D /* HUMediaViewController.m in Sources */,
 				ADC6473E17E0761700C16A9D /* HUMyGroupProfileViewController+Style.m in Sources */,
 				ADC6473F17E0761700C16A9D /* HUMyGroupProfileViewController.m in Sources */,
@@ -2580,8 +2617,6 @@
 				ADC6474F17E0761700C16A9D /* HUSettingsViewController.m in Sources */,
 				ADC6475017E0761700C16A9D /* HUSideMenuViewController+Style.m in Sources */,
 				ADC6475117E0761700C16A9D /* HUSideMenuViewController.m in Sources */,
-				ADC6475217E0761700C16A9D /* HUSignUpViewController+Style.m in Sources */,
-				ADC6475317E0761700C16A9D /* HUSignUpViewController.m in Sources */,
 				ADC6475417E0761700C16A9D /* HUSubMenuViewController.m in Sources */,
 				ADC6475517E0761700C16A9D /* HUUsersViewController+Style.m in Sources */,
 				ADC6475617E0761700C16A9D /* HUUsersViewController.m in Sources */,
@@ -2614,6 +2649,7 @@
 				ADC6477317E0761700C16A9D /* HUEditableLabelView.m in Sources */,
 				ADC6477417E0761700C16A9D /* HUExploreUsersView.m in Sources */,
 				ADC6477517E0761700C16A9D /* HUGroupsCategoryTableViewCell+Style.m in Sources */,
+				B3CE0C00186E2AAE009372B0 /* HUSignUpViewController.m in Sources */,
 				ADC6477617E0761700C16A9D /* HUGroupsCategoryTableViewCell.m in Sources */,
 				ADC6477717E0761700C16A9D /* HUGroupsTableViewCell+Style.m in Sources */,
 				ADC6477817E0761700C16A9D /* HUGroupsTableViewCell.m in Sources */,
@@ -2697,7 +2733,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spika/Spika-Prefix.pch";
 				INFOPLIST_FILE = "Spika/Spika-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
@@ -2777,7 +2813,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spika/Spika-Prefix.pch";
 				INFOPLIST_FILE = "Spika/Spika-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
@@ -2826,7 +2862,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spika/Spika-Prefix.pch";
 				INFOPLIST_FILE = "Spika/Spika-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",

@@ -40,7 +40,7 @@
 
 +(AppDelegate *)getInstance;
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) IBOutlet UIWindow *window;
 @property (strong, nonatomic) CSNavigationController *navigationController;
 
 @end

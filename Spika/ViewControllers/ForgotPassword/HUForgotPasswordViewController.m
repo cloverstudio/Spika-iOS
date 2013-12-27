@@ -27,34 +27,9 @@
 #import "NSString+Extensions.h"
 #import "AlertViewManager.h"
 #import "DatabaseManager.h"
-@interface HUForgotPasswordViewController ()
-@property (nonatomic, weak) UITextField *emailField;
-@end
 
 @implementation HUForgotPasswordViewController
 
--(void) loadView {
-    self.view = [CSKit view];
-    self.view.backgroundColor = kHUColorDarkGray;
-    
-    UIImageView *imageView = [CSKit imageViewWithImageNamed:@"hp_email_field"];
-    [self.view addSubview:imageView];
-    imageView.center = [CSKit center];
-    imageView.y = 70;
-    imageView.userInteractionEnabled = YES;
-    
-    _emailField = [HUControls emailFieldWithFrame:CGRectMake(44, 14, 220, 30)];
-    [imageView addSubview:_emailField];
-    
-    UIButton *button = [HUControls buttonWithCenter:[CSKit center]
-                                     localizedTitle:@"ForgotPassword-Send"
-                                    backgroundColor:kHUColorGreen
-                                         titleColor:kHUColorWhite
-                                             target:self
-                                           selector:@selector(sendForgotPasswordRequest)];
-    button.y = 135;
-    [self.view addSubview:button];
-}
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

@@ -24,7 +24,6 @@
 
 #import "HUSignUpViewController.h"
 #import "DatabaseManager.h"
-#import "HUSignUpViewController+Style.h"
 #import "CSGraphics.h"
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
@@ -33,18 +32,6 @@
 #define kTagSignUpSucceededAlert    700
 
 @interface HUSignUpViewController () {
-
-    UIView          *_mainView;
-    UIView          *_loadingView;
-    
-    UIImageView     *_loginFieldsBackground;
-    
-    UITextField     *_usernameField;
-    UITextField     *_emailField;
-    UITextField     *_passwordField;
-    
-    UIButton        *_signInButton;
-    UIButton        *_signUpButton;
 }
 
 #pragma mark - Animations
@@ -61,8 +48,6 @@
 - (void) dealloc {
     
     CS_RELEASE(_mainView);
-    CS_RELEASE(_loadingView);
-    
     CS_RELEASE(_loginFieldsBackground);
     CS_RELEASE(_usernameField);
     CS_RELEASE(_emailField);
@@ -77,10 +62,16 @@
 
     [super loadView];
     
+    [_signInButton setTitle:NSLocalizedString(@"Login-Title", @"") forState:UIControlStateNormal];
+    [_signUpButton setTitle:NSLocalizedString(@"SignUp-Title", @"") forState:UIControlStateNormal];
+
+    
+    /*
     _mainView = [[UIView alloc] initWithFrame:self.view.bounds];
     _mainView.autoresizingMask = self.view.autoresizingMask;
     _mainView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_mainView];
+    
     
     _loginFieldsBackground = CS_RETAIN([self newLoginFieldsBackground]);
     [_mainView addSubview:_loginFieldsBackground];
@@ -114,14 +105,8 @@
     _loadingView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_loadingView];
     
-    UIActivityIndicatorView *indicatorView = [self newLoadingIndicatorView];
-    indicatorView.center = _loadingView.center;
-    [_loadingView addSubview:indicatorView];
+     */
     
-    UILabel *loadingLabel = [self loadingLabel:indicatorView.frame];
-    [_loadingView addSubview:loadingLabel];
-    
-    [self showLoadingView:NO animated:NO];
 	 
 }
 
@@ -155,35 +140,6 @@
 
 #pragma mark - Animations
 
-- (void) showLoadingView:(BOOL) show animated:(BOOL) animated {
-    
-    
-    _mainView.hidden = NO;
-    _loadingView.hidden = NO;
-    
-    void(^animations)() = ^(){
-        
-        _loadingView.alpha = show;
-        _mainView.alpha = !show;
-    };
-    
-    void(^completion)(BOOL) = ^(BOOL finished){
-        
-        _mainView.hidden = !_mainView.alpha;
-        _loadingView.hidden = !_loadingView.alpha;
-    };
-    
-    if (!animated) {
-        animations();
-        completion(YES);
-    }
-    
-    [UIView animateWithDuration:0.2
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:animations
-                     completion:completion];
-}
 
 - (void) animateKeyboardWillShow:(NSNotification *)aNotification {
     
@@ -199,9 +155,9 @@
                         options:curve
                      animations:^(){
                          
-                         _loginFieldsBackground.frame = [self frameForLoginFieldsBackground:YES];
-                         _signUpButton.frame = [self frameForSignUpButton:YES];
-                         _signInButton.frame = [self frameForSignInButton:YES];
+                         _loginFieldsBackground.y -= 10;
+                         _signInButton.y -= 50;
+                         _signUpButton.y -= 50;
                      }
                      completion:nil];
 }
@@ -216,9 +172,9 @@
                         options:curve
                      animations:^(){
                          
-                         _loginFieldsBackground.frame = [self frameForLoginFieldsBackground:NO];
-                         _signUpButton.frame = [self frameForSignUpButton:NO];
-                         _signInButton.frame = [self frameForSignInButton:NO];
+                         _loginFieldsBackground.y += 20;
+                         _signInButton.y += 100;
+                         _signUpButton.y += 100;
                      }
                      completion:nil];
 }

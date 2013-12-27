@@ -22,45 +22,20 @@
  THE SOFTWARE.
  */
 
-#import "HULoginViewController.h"
+#import "HUBaseViewController.h"
+#import "HUDialog.h"
 
-@interface HULoginViewController (Style)
+@interface HUSignUpViewController : HUBaseViewController <UITextFieldDelegate, HUDialogDelegate>{
+    IBOutlet UIView          *_mainView;
+    IBOutlet UIImageView     *_loginFieldsBackground;
+    IBOutlet UITextField     *_usernameField;
+    IBOutlet UITextField     *_emailField;
+    IBOutlet UITextField     *_passwordField;
+    IBOutlet UIButton        *_signInButton;
+    IBOutlet UIButton        *_signUpButton;
+}
 
-#pragma mark - UIViews
-- (UIView *) loginContainer;
-
-#pragma mark - UIImageViews
-- (UIImageView *) loginFieldsBackground;
-
-#pragma mark - UITextFields
-- (UITextField *) emailField;
-- (UITextField *) passwordField;
-
-#pragma mark - UIButtons
-- (UIButton *) forgotDetailsButton;
-- (UIButton *) signInButton;
-- (UIButton *) signUpButton;
-
-#pragma mark - UIActivityIndicatorView
-- (UIActivityIndicatorView *) loadingIndicatorView;
-
-#pragma mark - Labels
-- (UILabel *) loadingLabel:(CGRect)loadingIndicatorFrame;
-
-#pragma mark - Colors
-- (UIColor *) colorForTextField;
-
-#pragma mark - Fonts
-- (UIFont *) fontForTextField;
-- (UIFont *) fontForForgotDetailsButton;
-- (UIFont *) fontForSignInUpButtons;
-- (UIFont *) fontForLoadingLabel;
-
-#pragma mark - Frames
-- (CGRect) frameForLoginContainer:(BOOL)isUp;
-- (CGRect) frameForLoginBackground;
-- (CGRect) frameForForgotDetailsButton;
-- (CGRect) frameForSignInButton:(BOOL)isUp;
-- (CGRect) frameForSignUpButton:(BOOL)isUp;
+-(IBAction) onSignIn;
+-(IBAction) onSignUp;
 
 @end

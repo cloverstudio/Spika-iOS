@@ -24,6 +24,12 @@
 
 #import "HUBaseViewController.h"
 
-@interface HULoginViewController : HUBaseViewController <UITextFieldDelegate>
+@interface HUForgotPasswordViewController : HUBaseViewController <UITextFieldDelegate>{
+    IBOutlet UIButton        *_sendButton;
+    IBOutlet UITextField     *_emailField;
+
+}
+
+-(IBAction) sendForgotPasswordRequest;
 
 @end
