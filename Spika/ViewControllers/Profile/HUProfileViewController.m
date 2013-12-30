@@ -22,7 +22,6 @@
  THE SOFTWARE.
  */
 #import "HUProfileViewController.h"
-#import "HUProfileViewController+Style.h"
 #import "DatabaseManager.h"
 #import "CSToast.h"
 #import "Models.h"
@@ -34,16 +33,11 @@
 #import "AutoScrollLabel.h"
 #import "AlertViewManager.h"
 #import "Utils.h"
+#import "HUImageView.h"
 
 @interface HUProfileViewController () {
-    HUEditableLabelView *_nameLabel;
-    HUEditableLabelView *_lastLoginLabel;
-    HUEditableLabelView *_aboutLabel;
-    HUEditableLabelView *_genderLabel;
-    HUEditableLabelView *_birthdayLabel;
-    HUEditableLabelView *_onlineStatusLabel;
+
     UIButton            *_saveButton;
-    UIButton            *_startConversationBtn;
     
     ModelUser *_user;
     
@@ -73,16 +67,7 @@
 #pragma mark - Dealloc
 
 -(void) dealloc {
-    CS_RELEASE(_nameLabel);
-    CS_RELEASE(_lastLoginLabel);
-    CS_RELEASE(_aboutLabel);
-    CS_RELEASE(_genderLabel);
-    CS_RELEASE(_birthdayLabel);
-    CS_RELEASE(_user);
-    CS_RELEASE(_userAvatarImageView);
-    CS_RELEASE(_onlineStatusLabel);
-    
-    CS_SUPER_DEALLOC;
+
 }
 
 #pragma mark - Initialization
@@ -96,7 +81,6 @@
         _isEditing = NO;
         _keyboardShowing = NO;
         
-        self.view.backgroundColor = [self viewBackgroundColor];
 
     }
     
@@ -104,20 +88,20 @@
     
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil withUser:(ModelUser *)user{
 
-- (id)init {
-    
-    if (self = [super init]) {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nil]) {
         
+        _user = CS_RETAIN([ModelUser objectWithDictionary:[ModelUser objectToDictionary:user]]);
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         _isEditing = NO;
         _keyboardShowing = NO;
-        
-        self.view.backgroundColor = [self viewBackgroundColor];
+
         
     }
     
     return self;
+    
 }
 
 - (void) hideView:(UIView *)view{
@@ -134,98 +118,43 @@
 
 - (void) layoutViews{
     
-    _aboutLabel.frame = CGRectMake(
-                                   _aboutLabel.x,
-                                   _aboutLabel.y,
-                                   _aboutLabel.width,
-                                   _aboutLabel.textView.contentSize.height
-                                   );
+    UIImage *originalImage = _avatarImage;
+    CGSize imageSize = _userAvatarImageView.downloadedImageSize;
     
-    int width = CGRectGetWidth(self.view.frame) - kMargin * 2;
-    int x = kMargin;
-    int y = kMargin;
+    float viewHeight = 200;
     
-    for(UIView *view in _views){
+    if(originalImage == nil)
+        originalImage = _userAvatarImageView.image;
+    
+    float imageWidth = imageSize.width;
+    
+    if(imageWidth != 0){
         
-        if(view == _userAvatarImageView){
-            
-            UIImage *originalImage = _avatarImage;
-            float viewHeight = 200;
-            
-            if(originalImage == nil)
-                originalImage = _userAvatarImageView.image;
-            
-            float imageWidth = originalImage.size.width;
-            float viewWidth = _userAvatarImageView.width;
-            
-            float scale = viewWidth / imageWidth;
-            
-            if(originalImage != nil)
-                viewHeight = originalImage.size.height * scale;
-            
-            _userAvatarImageView.frame = CGRectMake(
-                                                    _userAvatarImageView.x,
-                                                    _userAvatarImageView.y,
-                                                    _userAvatarImageView.width,
-                                                    viewHeight
-                                                    );
-        } else if (view == _startConversationBtn) {
-            
-            _startConversationBtn.frame = CGRectMake(
-                                                     _startConversationBtn.x,
-                                                     y,
-                                                     _startConversationBtn.width,
-                                                     kStartButtonHeight
-                                                     );
-            
-        }else{
-            view.frame = CGRectMake(x, y, width, view.frame.size.height);
-            
+        float viewWidth = _userAvatarImageView.width;
+        
+        float scale = viewWidth / imageWidth;
+        
+        if(originalImage != nil && scale != 0){
+            viewHeight = imageSize.height * scale;
+            [_avatarImageViewHeightConstraint setConstant:viewHeight];
         }
-        
-        if(view.frame.size.height != 0 && view.hidden != YES)
-            y += view.frame.size.height + kMargin;
-        
+
         
     }
-    
-    _contentView.contentSize = CGSizeMake(_contentView.contentSize.width,y + kMargin);
-}
 
-- (CGRect) frameByNumberOfElement:(int) number{
+    [_aboutValueLabel sizeToFit];
+    int aboutViewHeight = _aboutValueLabel.size.height + 10;
     
-    int width = CGRectGetWidth(self.view.frame) - kMargin * 2;
-    int x = kMargin;
-    int height = 200;
-    if(number == 0)
-        height = 200;
-    else if(number == 1)
-        height = kStartButtonHeight;
-    else
-        height = kEditableLabelHeight;
-    
-    int y = kMargin;
-    
-    for(int i = 0;i < number ; i++){
-        
-        int lastElementHeight = kEditableLabelHeight;
-        
-        if(i == 0)
-            lastElementHeight = 200;
-        if(i == 1)
-            lastElementHeight = kStartButtonHeight;
-        
-        y += lastElementHeight + kMargin;
-        
-    }
-    
-    CGRect returnRect = CGRectMake(
-                                   x,y,width,height
-                                   );
-    
-    return returnRect;
-}
+    if(_aboutViewHeightConstraint.constant < aboutViewHeight)
+        [_aboutViewHeightConstraint setConstant:aboutViewHeight];
 
+    CGRect bottomElementRect = [_bottomElement convertRect:_bottomElement.bounds toView:_contentView];
+    float contentBottomLinePosition = CGRectGetMaxY(_bottomElement.frame);
+    
+    // todo : fit to actual content height
+    [_contentHeightConstraint setConstant:1500];
+    
+}
 
 #pragma mark - View lifecycle
 
@@ -252,91 +181,15 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     
-    _contentView = CS_RETAIN([self newContentView]);
+    [_startConversationBtn setTitle:NSLocalizedString(@"Start-Conversation", nil) forState:UIControlStateNormal];
+    [_nameLabel setText:NSLocalizedString(@"Name", nil)];
+    [_lastLoginLabel setText:NSLocalizedString(@"Last Login", nil)];
+    [_aboutLabel setText:NSLocalizedString(@"About", nil)];
+    [_birthdayLabel setText:NSLocalizedString(@"Birthday", nil)];
+    [_genderLabel setText:NSLocalizedString(@"Gender", nil)];
+    [_statusLabel setText:NSLocalizedString(@"Online Status", nil)];
+    
     [self.view addSubview:_contentView];
-    
-    _userAvatarImageView = CS_RETAIN([self newUserAvatarImageView]);
-    _userAvatarImageView.frame = [self frameByNumberOfElement:0];
-    _userAvatarImageView.delegate = self;
-    [_contentView addSubview:_userAvatarImageView];
-
-    _startConversationBtn = CS_RETAIN([self startConversationButton]);
-    _startConversationBtn.frame = [self frameByNumberOfElement:1];
-    _startConversationBtn.frame = CGRectMake(
-                                             _startConversationBtn.x,
-                                             _startConversationBtn.y,
-                                             _startConversationBtn.width,
-                                             kStartButtonHeight
-                                             );
-    
-    [_startConversationBtn addTarget:self action:@selector(startConversation) forControlEvents:UIControlEventTouchDown];
-    [_contentView addSubview:_startConversationBtn];
-    UIImage *arrow2 = [UIImage imageNamed:@"table_arrow_white"];
-    UIImageView *imageView2 = [[UIImageView alloc] initWithImage:arrow2];
-    imageView2.frame = CGRectMake(
-                                  _startConversationBtn.width - arrow2.size.width - 5,
-                                  5,
-                                  arrow2.size.width,
-                                  arrow2.size.height
-                                  );
-    [_startConversationBtn addSubview:imageView2];
-    if ([myUser._id isEqualToString:self.user._id]) {
-        _startConversationBtn.hidden = YES;
-    }
-    
-    _nameLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Name", nil)]);
-    _nameLabel.frame = [self frameByNumberOfElement:2];
-    [_nameLabel setDelegate:self];
-    [_contentView addSubview:_nameLabel];
-    
-    _lastLoginLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Last Login", nil)]);
-    _lastLoginLabel.frame = [self frameByNumberOfElement:3];
-    [_lastLoginLabel setDelegate:self];
-    [_contentView addSubview:_lastLoginLabel];
-    
-    _aboutLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"About", nil)]);
-    _aboutLabel.frame = [self frameByNumberOfElement:4];
-    _aboutLabel.multiLine = YES;
-    [_aboutLabel setDelegate:self];
-    [_contentView addSubview:_aboutLabel];
-    
-    _birthdayLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Birthday", nil)]);
-    _birthdayLabel.frame = [self frameByNumberOfElement:5];
-    [_birthdayLabel setDelegate:self];
-    [_contentView addSubview:_birthdayLabel];
-    
-    _genderLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Gender", nil)]);
-    _genderLabel.frame = [self frameByNumberOfElement:6];
-    [_genderLabel setDelegate:self];
-    [_contentView addSubview:_genderLabel];
-    
-    _onlineStatusLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Online Status", nil)]);
-    _onlineStatusLabel.frame = [self frameByNumberOfElement:7];
-    [_onlineStatusLabel setDelegate:self];
-    [_contentView addSubview:_onlineStatusLabel];
-    
-    _saveButton = [self newSaveButtonWithSelector:@selector(onSave)];
-    [self hideView:_saveButton];
-    [_contentView addSubview:_saveButton];
-
-    [_views addObject:_userAvatarImageView];
-    [_views addObject:_startConversationBtn];
-    [_views addObject:_nameLabel];
-    [_views addObject:_lastLoginLabel];
-    [_views addObject:_aboutLabel];
-    [_views addObject:_birthdayLabel];
-    [_views addObject:_genderLabel];
-    [_views addObject:_saveButton];
-    [_views addObject:_onlineStatusLabel];
-
-    _genderActionSheet = [[UIActionSheet alloc]
-                          initWithTitle:@"Select gender"
-                          delegate:self
-                          cancelButtonTitle:@"Cancel"
-                          destructiveButtonTitle:nil
-                          otherButtonTitles:NSLocalizedString(@"Male",nil),
-                                                NSLocalizedString(@"Female",nil),
-                                                NSLocalizedString(@"No declaration",nil), nil];
     
     [self populateWithData];
     
@@ -373,16 +226,18 @@
                                          success:^(id result) {
                                              _user = result;
                                              
-                                             [_genderLabel setEditerText:_user.gender];
-                                             [_aboutLabel setEditerText:_user.about];
-                                             [_nameLabel setEditerText:_user.name];
+                                             [_nameValueLabel setText:_user.name];
+
+                                             [_genderValueLabel setText:_user.gender];
+                                             [_aboutValueLabel setText:_user.about];
                                              
                                              if(_user.birthday != 0){
                                                  _birthdayDate = [NSDate dateWithTimeIntervalSince1970:_user.birthday];
                                              }
                                              
+                                             NSString *onlineStatusString = [_user.onlineStatus isEqualToString:@""] ? _onlineStatusDataSource[0] : [Utils convertOnlineStatusKeyForDisplay:_user.onlineStatus];
                                              
-                                             [_onlineStatusLabel setEditerText:[_user.onlineStatus isEqualToString:@""] ? _onlineStatusDataSource[0] : [Utils convertOnlineStatusKeyForDisplay:_user.onlineStatus]];
+                                             [_statusValueLabel setText:onlineStatusString];
                                              
                                              int stateIndex = 0;
                                              for(int i = 0 ; i < _onlineStatusDataSource.count ; i++){
@@ -394,12 +249,11 @@
                                                  
                                              }
                                              
-                                             [_onlineStatusLabel setIconImage:[UIImage imageNamed:_onlineStatusImageNamesArray[stateIndex]]];
+                                             [_onlineStatusIconView setImage:[UIImage imageNamed:_onlineStatusImageNamesArray[stateIndex]]];
                                              
                                              
                                              [this displayDate];
                                              [this layoutViews];
-                                             
                                              [this loadAvatar];
                                              
                                          }
@@ -417,12 +271,12 @@
     
     if(_birthdayDate != nil){
         NSString *dateString = [format stringFromDate:_birthdayDate];
-        [_birthdayLabel setEditerText:dateString];
+        [_birthdayValueLabel setText:dateString];
     }
 
     if(_user.lastLogin != 0){
         NSString *dateString2 = [format stringFromDate:[NSDate dateWithTimeIntervalSince1970:_user.lastLogin]];
-        [_lastLoginLabel setEditerText:dateString2];
+        [_lastLoginValueLabel setText:dateString2];
     }
     
 }
@@ -438,6 +292,7 @@
         UIImage *image = [[HUHTTPClient sharedClient] imageWithUrl:[NSURL URLWithString:url]];
         
         if (image) {
+            _avatarImage = image;
             _userAvatarImageView.image = image;
             [self layoutViews];
         }else{
@@ -451,7 +306,7 @@
 }
 
 #pragma mark - Button Selectors
-- (void) startConversation{
+- (IBAction)startConversation:(id)sender{
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:_user];
     
@@ -543,5 +398,24 @@
     
     
 }
+
+-(NSArray *) addContactBarButtonItemsWithSelector:(SEL)aSelector {
+    
+    return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Add-Contact", nil)
+                                                  frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                        backgroundColor:[HUBaseViewController sharedBarButtonItemColor]
+                                                 target:self
+                                               selector:aSelector];
+}
+
+-(NSArray *) removeContactBarButtonItemsWithSelector:(SEL)aSelector {
+    
+    return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Remove-Contact", nil)
+                                                  frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                        backgroundColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeRed]
+                                                 target:self
+                                               selector:aSelector];
+}
+
 
 @end

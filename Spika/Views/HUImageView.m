@@ -46,8 +46,8 @@
 
 - (void) dealloc {
 
-    [self removeObserver:self
-              forKeyPath:@"imageURL"];
+//    [self removeObserver:self
+//              forKeyPath:@"imageURL"];
     
 //    [self removeObserver:self
 //              forKeyPath:@"image"];

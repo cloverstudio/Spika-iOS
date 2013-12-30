@@ -23,7 +23,6 @@
  */
 
 #import "HUMyProfileViewController+Style.h"
-#import "HUProfileViewController+Style.h"
 #import "HUBaseViewController+Style.h"
 #import "UIImage+Aditions.h"
 #import "CSGraphics.h"

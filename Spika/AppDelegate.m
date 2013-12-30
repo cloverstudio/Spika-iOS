@@ -692,7 +692,7 @@
             
             ModelUser *user = (ModelUser *)[notification object];
             
-            HUProfileViewController *viewController = [(HUProfileViewController *)[HUProfileViewController alloc] initWithUser:user];
+            HUProfileViewController *viewController = [[HUProfileViewController alloc] initWithNibName:@"UserProfileView" withUser:user];
             [_navigationController pushViewController:viewController animated:YES];
     }];
 

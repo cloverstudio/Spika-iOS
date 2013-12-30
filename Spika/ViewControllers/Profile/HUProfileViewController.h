@@ -30,12 +30,37 @@
 
 @class ModelUser,HUImageView;
 
-@interface HUProfileViewController : HUBaseViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,HUEditableLabelDelegate,UIActionSheetDelegate>
+@interface HUProfileViewController : HUBaseViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,HUEditableLabelDelegate,UIActionSheetDelegate>{
+    
+    IBOutlet UIScrollView *contentView;
+    IBOutlet HUImageView *_userAvatarImageView;
+    IBOutlet UIButton    *_startConversationBtn;
+    IBOutlet UILabel    *_nameLabel;
+    IBOutlet UILabel    *_nameValueLabel;
+    IBOutlet UILabel    *_lastLoginLabel;
+    IBOutlet UILabel    *_lastLoginValueLabel;
+    IBOutlet UILabel    *_aboutLabel;
+    IBOutlet UILabel    *_aboutValueLabel;
+    IBOutlet UILabel    *_birthdayLabel;
+    IBOutlet UILabel    *_birthdayValueLabel;
+    IBOutlet UILabel    *_genderLabel;
+    IBOutlet UILabel    *_genderValueLabel;
+    IBOutlet UILabel    *_statusLabel;
+    IBOutlet UILabel    *_statusValueLabel;
+    IBOutlet UIView     *_bottomElement;
+    IBOutlet UIImageView    *_onlineStatusIconView;
+    IBOutlet NSLayoutConstraint *_avatarImageViewHeightConstraint;
+    IBOutlet NSLayoutConstraint *_aboutViewHeightConstraint;
+    IBOutlet NSLayoutConstraint *_contentHeightConstraint;
+    
+}
 
 @property (nonatomic, strong) ModelUser *user;
 @property (nonatomic, strong) UIScrollView *contentView;
 @property (nonatomic, strong) HUImageView *userAvatarImageView;
 
 - (id)initWithUser:(ModelUser *) user;
+- (id)initWithNibName:(NSString *)nibNameOrNil withUser:(ModelUser *)user;
+- (IBAction)startConversation:(id)sender;
 
 @end
