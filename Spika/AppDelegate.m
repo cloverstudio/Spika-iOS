@@ -708,7 +708,7 @@
             if(group.deleted == NO && [UserManager groupBelongsToUser:group]){
                 viewController = [[HUMyGroupProfileViewController alloc] initWithGroup:group];
             }else{                
-                viewController = [[HUGroupProfileViewController alloc] initWithGroup:group];
+                viewController = [[HUGroupProfileViewController alloc] initWithNibName:@"GroupProfileView" withGroup:group];
             }
             
             [_navigationController pushViewController:viewController animated:YES];

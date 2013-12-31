@@ -83,6 +83,8 @@
 
 - (void) tuggleEdit{
     
+    
+    /*
     if(_keyboardShowing){
         [self.view endEditing:YES];
         _keyboardShowing = NO;
@@ -145,7 +147,7 @@
     }
     
     [self layoutViews];
-    
+    */
 }
 
 - (void) populateViews{
@@ -360,6 +362,7 @@
 
 -(void) onSave{
 	
+    /*
 	[self resignActiveTextViewAndHideKeyboard];
     
     if(_keyboardShowing){
@@ -439,12 +442,13 @@
         } error:errorBlock];
         
     });
-    
+    */
 }
 
 
 - (BOOL) validationAsync{
     
+    /*
     if (![_nameLabel getEditorText] || [_nameLabel getEditorText].length == 0) {
         
         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Name", @"")];
@@ -491,6 +495,8 @@
         }
         
     }
+    
+     */
     
     return YES;
 }

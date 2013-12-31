@@ -47,7 +47,6 @@
 }
 
 -(void)resignActiveTextViewAndHideKeyboard;
-
 -(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType;
 -(void)removePickerTableView;
 
@@ -59,26 +58,33 @@
 #pragma mark - Dealloc
 
 -(void) dealloc {
-    
-    CS_RELEASE(_contentView);
-    CS_RELEASE(_avatarView);
-    CS_RELEASE(_nameLabel);
-    CS_RELEASE(_passwordLabel);
-    CS_RELEASE(_aboutLabel);
-	CS_RELEASE(_categoryLabel);
-    CS_RELEASE(_group);
-    
-    CS_SUPER_DEALLOC;
+
 }
 
 #pragma mark - Initialization
+
+- (id)initWithNibName:(NSString *)nibNameOrNil withGroup:(ModelGroup *) group{
+    
+    if (self = [super initWithNibName:nibNameOrNil bundle:nil]) {
+        _views = [[NSMutableArray alloc] initWithCapacity:10];
+        self.view.backgroundColor = [self viewBackgroundColor];
+        _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
+		_pickerTableView = [HUPickerTableView pickerTableViewFor:self];
+        
+        self.title = _group.name;
+        
+        [self populateViews];
+    }
+    
+    return self;
+}
 
 - (id)initWithGroup:(ModelGroup *) group{
     
     if (self = [super init]) {
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         self.view.backgroundColor = [self viewBackgroundColor];
-        _group = CS_RETAIN([ModelGroup jsonToObj:[ModelGroup toJSON:group]]);
+        _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
 		_pickerTableView = [HUPickerTableView pickerTableViewFor:self];
         
         self.title = _group.name;
@@ -103,79 +109,19 @@
 
 - (void) layoutViews{
     
-    int width = CGRectGetWidth(self.view.frame) - kMargin * 2;
-    int x = kMargin;
-    int y = kMargin;
-    
-    for (UIView *view in _views)
-	{
-        
-        y += view.topMargin;
-        
-        if (view == _avatarView)
-		{
-            
-            UIImage *originalImage = _avatarImage;
-            if(originalImage == nil)
-                originalImage = _avatarView.image;
-
-            
-            float imageWidth = originalImage.size.width;
-            float imageHeight = originalImage.size.height;
-			if (imageHeight == 0)
-				continue;
-            
-            float scale = imageWidth / imageHeight;
-            float viewHeight = _avatarView.width / scale;
-            
-            _avatarView.frame = CGRectMake(_avatarView.x, _avatarView.y,
-										   _avatarView.width, viewHeight);
-            
-            if(_avatarImage != nil){
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-                    _avatarView.image = _avatarImage;
-                });
-            }
-        
-            
-        } else if (view == _startConversationBtn) {
-            
-            _startConversationBtn.frame = CGRectMake(
-                                              _startConversationBtn.x,
-                                              y,
-                                              _startConversationBtn.width,
-                                              kStartButtonHeight
-                                              );
-            
-        }else if (view == _categoryLabel) {
-            
-            _categoryLabel.frame = CGRectMake(
-                                              _categoryLabel.x,
-                                              y,
-                                              _categoryLabel.width,
-                                              _categoryLabel.textView.contentSize.height
-                                              );
-            
-        }else if (view == _aboutLabel) {
-            _aboutLabel.frame = CGRectMake(
-                                           _aboutLabel.x,
-                                           y,
-                                           _aboutLabel.width,
-                                           _aboutLabel.textView.contentSize.height
-                                           );
-            
-        }else{
-            view.frame = CGRectMake(x, y, width, view.frame.size.height);
-            
+    CGSize imageSize = _avatarView.downloadedImageSize;
+    float viewHeight = 212;
+    float imageWidth = imageSize.width;
+    if(imageWidth != 0){
+        float viewWidth = _avatarView.width;
+        float scale = viewWidth / imageWidth;
+        if(_avatarView.image != nil && scale != 0){
+            viewHeight = imageSize.height * scale;
+            [_avatarImageViewHeightConstraint setConstant:viewHeight];
         }
-        
-        if(view.hidden == NO){
-            y += view.frame.size.height + kMargin + view.bottomMargin;
-        }
-        
     }
     
-    _contentView.contentSize = CGSizeMake(_contentView.contentSize.width,y + kMargin);
+    
     
 }
 
@@ -219,91 +165,11 @@
 -(void) loadView {
     
     [super loadView];
-    
+
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-groupprofile",nil)];
     
-    _contentView = CS_RETAIN([self newContentView]);
-    [self.view addSubview:_contentView];
     
-    _avatarView = CS_RETAIN([self newAvatarImageView]);
-    _avatarView.frame = [self frameByNumberOfElement:0];
-    _avatarView.delegate = self;
-    [_contentView addSubview:_avatarView];
-    
-    _startConversationBtn = CS_RETAIN([self startConversationButton]);
-    _startConversationBtn.frame = [self frameByNumberOfElement:1];
-    _startConversationBtn.frame = CGRectMake(
-        _startConversationBtn.x,
-        _startConversationBtn.y,
-        _startConversationBtn.width,
-        kStartButtonHeight
-    );
-    
-    [_startConversationBtn addTarget:self action:@selector(startConversation) forControlEvents:UIControlEventTouchDown];
-    [_contentView addSubview:_startConversationBtn];
-
-    UIImage *arrow = [UIImage imageNamed:@"table_arrow_white"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:arrow];
-    imageView.frame = CGRectMake(
-                                 _startConversationBtn.width - arrow.size.width - 5,
-                                 5,
-                                 arrow.size.width,
-                                 arrow.size.height
-                                 );
-    [_startConversationBtn addSubview:imageView];
-    
-    _categoryLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Category", nil)]);
-    _categoryLabel.frame = [self frameByNumberOfElement:2];
-    [_categoryLabel setMultiLine:NO];
-    [_categoryLabel setEditing:NO];
-    [_categoryLabel setDelegate:self];
-    [_contentView addSubview:_categoryLabel];
-
-    _nameLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Name", nil)]);
-    _nameLabel.frame = [self frameByNumberOfElement:3];
-    [_nameLabel setMultiLine:NO];
-    [_nameLabel setEditing:NO];
-    [_nameLabel setDelegate:self];
-    [_contentView addSubview:_nameLabel];
-    
-    _passwordLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"Password", nil)]);
-    _passwordLabel.frame = [self frameByNumberOfElement:4];
-    [_passwordLabel setMultiLine:NO];
-    [_passwordLabel setEditing:NO];
-    [_passwordLabel setDelegate:self];
-    [_contentView addSubview:_passwordLabel];
-    
-    _groupOwnerLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"GroupOwner", nil)]);
-    _groupOwnerLabel.frame = [self frameByNumberOfElement:5];
-    [_groupOwnerLabel setMultiLine:NO];
-    [_groupOwnerLabel setEditing:NO];
-    [_groupOwnerLabel setDelegate:self];
-    [_contentView addSubview:_groupOwnerLabel];
-    UIImage *arrow2 = [UIImage imageNamed:@"table_arrow_gray"];
-    UIImageView *imageView2 = [[UIImageView alloc] initWithImage:arrow2];
-    imageView2.frame = CGRectMake(
-        _groupOwnerLabel.width - arrow2.size.width - 5,
-        5,
-        arrow2.size.width,
-        arrow2.size.height
-    );
-    [_groupOwnerLabel addSubview:imageView2];
-
-    
-    _aboutLabel = CS_RETAIN([self getEditorLabelByTitle:NSLocalizedString(@"About", nil)]);
-    _aboutLabel.frame = [self frameByNumberOfElement:6];
-    _aboutLabel.multiLine = YES;
-    [_aboutLabel setEditing:NO];
-    [_aboutLabel setDelegate:self];
-    [_contentView addSubview:_aboutLabel];
-    
-    [_views addObject:_avatarView];
-    [_views addObject:_startConversationBtn];
-    [_views addObject:_categoryLabel];
-    [_views addObject:_nameLabel];
-    [_views addObject:_passwordLabel];
-    [_views addObject:_groupOwnerLabel];
-    [_views addObject:_aboutLabel];
+ 
 
 }
 
@@ -314,7 +180,6 @@
     
     [super viewWillAppear:animated];
     
-    
     [self subscribeForKeyboardWillShowNotificationUsingBlock:^(NSNotification *note) {
         
     }];
@@ -322,7 +187,6 @@
     [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
         [this animateKeyboardWillShow:note];
     }];
-    
     
     [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
         [this animateKeyboardWillHide:note];
@@ -423,11 +287,12 @@
 - (void) populateViews{
     
     
+    /*
     [_categoryLabel setEditerText:_group.categoryName];
+    
     [_nameLabel setEditerText:_group.name];
     
     _selectedCategoryID = _group.categoryId;
-    
     
     [[DatabaseManager defaultManager] findUserWithID:_group.userId success:^(id result){
 
@@ -435,8 +300,6 @@
         [_groupOwnerLabel setEditerText:_owner.name];
         
     } error:^(NSString *strError){
-        
-        
         
     }];
     
@@ -462,7 +325,7 @@
     [self layoutViews];
     [self loadAvatar];
     [self updateAddButton];
-    
+    */
 }
 
 -(void) updateAddButton{
@@ -484,7 +347,6 @@
     if(_group == nil)
         return;
     
-    
     if( _group.imageUrl != nil &&  _group.imageUrl.length > 0){
         
         NSString *url = _group.imageUrl;
@@ -504,85 +366,6 @@
 
 - (void) downloadSucceed:(id) sender{
     [self performSelector:@selector(layoutViews) withObject:nil afterDelay:0.1];
-}
-
-#pragma mark - UITextFieldViewDelegate
-
--(void)resignActiveTextViewAndHideKeyboard
-{
-	if (_activeTextView != nil && [_activeTextView isFirstResponder]) {
-		[_activeTextView resignFirstResponder];
-		_activeTextView = nil;
-	}
-}
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    
-    if (textView.superview == _categoryLabel) {
-		[self resignActiveTextViewAndHideKeyboard];
-		[self showPickerTableViewForPickerDataType:HUPickerGroupCategoryDataType];
-		return NO;
-	}
-    
-    if (textView.superview == _passwordLabel) {
-		return NO;
-	}
-    
-    return YES;
-    
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textField{
-    _activeTextView = textField;
-}
-
-- (void)textFieldDidEndEditing:(UITextView *)textField{
-    
-    
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-    HUEditableLabelView *superView = (HUEditableLabelView *) textView.superview;
-    
-    if([superView isKindOfClass:[HUEditableLabelView class]]){
-        if(superView.multiLine){
-            
-            superView.frame = CGRectMake(
-                                         superView.x,
-                                         superView.y,
-                                         superView.width,
-                                         textView.contentSize.height
-                                         );
-            
-            [self layoutViews];
-            
-        }else{
-            if ([text isEqualToString:@"\n"]) {
-				
-				if ([textView isEqual:_passwordLabel.textView])
-				{
-					if ([[HUDataManager defaultManager] isPasswordOkay:_passwordLabel.textView.text] == NO) {
-						[CSToast showToast:NSLocalizedString(@"Wrong password message", nil) withDuration:2.0];
-					}
-				}
-				
-                [textView resignFirstResponder];
-				_activeTextView = nil;
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
-}
-
--(void)onTouch:(id)textView{
-    if(textView == _groupOwnerLabel){
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:_owner];
-        
-    }
 }
 
 #pragma mark - Load Categories
@@ -612,118 +395,6 @@
     
 }
 
-#pragma mark - HUPickerTableView Methods
-
--(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType
-{
-	[self resignActiveTextViewAndHideKeyboard];
-	
-	[self loadGroupCategory];
-}
-
--(void)removePickerTableView
-{
-	[_pickerTableView removePickerTableView];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView isKindOfClass:[HUPickerTableView class]]) {
-        ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-        return [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
-    }
-    
-    return 0;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	if (_pickerTableView.dataSourceArray.count == 0)
-		return 0;
-	
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-		
-		ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:0];
-		NSInteger numberOfRows = pickerTableView.dataSourceArray.count <= 4 ? pickerTableView.dataSourceArray.count : 4;
-		CGFloat height = numberOfRows * [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
-		pickerTableView.frame = CGRectMake(0, 0, 320, height);
-		pickerTableView.center = CGPointMake(_pickerTableView.holderView.size.width / 2,
-											 _pickerTableView.holderView.size.height / 2);
-		
-		return pickerTableView.dataSourceArray.count;
-	}
-    
-	return 0;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-		
-		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType)
-		{
-			ModelGroupCategory *groupCategory = [pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-			
-			static NSString *cellIdentifier = @"MyCategoryCellIdentifier";
-			
-			HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-			
-			if(cell == nil) {
-				cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-																		   reuseIdentifier:cellIdentifier]);
-			}
-			
-			[cell populateWithData:groupCategory];
-			
-			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
-			
-			[HUAvatarManager avatarImageForUrl:groupCategory.imageUrl atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-				cell.avatarImageView.image = image;
-			}];
-			
-			return cell;
-		}
-		else
-			return nil;
-	}
-	else
-		return nil;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-
-		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType) {
-			ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-			[_categoryLabel setEditerText:groupCategory.title];
-
-            
-            [[DatabaseManager defaultManager] loadCategoryIconByName:groupCategory.title success:^(UIImage *image){
-                
-                [_categoryLabel setIconImage:image];
-                
-                [self layoutViews];
-                
-            }error:^(NSString *errStr){
-                
-            }];
-            
-            
-			_selectedCategoryID = groupCategory._id;
-		}
-		
-		_pickerTableView.holderView.hidden = YES;
-		UITableViewCell *cell = [pickerTableView cellForRowAtIndexPath:indexPath];
-		cell.selected = NO;
-	}
-}
 
 #pragma mark AddRemoveFronFavorite
 
@@ -828,7 +499,7 @@
     
 }
 
-- (void) startConversation{
+- (IBAction) startConversation{
     
     
     if(_group.password != nil && _group.password.length > 0 && ![_group.userId isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]){

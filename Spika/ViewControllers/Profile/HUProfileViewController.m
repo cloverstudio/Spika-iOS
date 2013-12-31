@@ -189,8 +189,6 @@
     [_genderLabel setText:NSLocalizedString(@"Gender", nil)];
     [_statusLabel setText:NSLocalizedString(@"Online Status", nil)];
     
-    [self.view addSubview:_contentView];
-    
     [self populateWithData];
     
 }

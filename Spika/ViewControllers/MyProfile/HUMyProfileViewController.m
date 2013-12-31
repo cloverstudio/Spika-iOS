@@ -162,9 +162,6 @@
     [_statusLabel setText:NSLocalizedString(@"Online Status", nil)];
 
     [_saveButton setTitle:NSLocalizedString(@"Save", @"") forState:UIControlStateNormal];
-
-    _contentView.frame = CGRectMake(0,0,self.view.width,self.view.height);
-    [self.view addSubview:_contentView];
     
     _userAvatarImageView.delegate = self;
     

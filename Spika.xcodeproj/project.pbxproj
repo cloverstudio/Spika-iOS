@@ -296,8 +296,6 @@
 		ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453517E0761600C16A9D /* HUBaseViewController.m */; };
 		ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */; };
 		ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453917E0761600C16A9D /* HUEULAViewController.m */; };
-		ADC6473517E0761700C16A9D /* HUGroupProfileViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */; };
-		ADC6473617E0761700C16A9D /* HUGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453F17E0761600C16A9D /* HUGroupProfileViewController.m */; };
 		ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */; };
 		ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454317E0761600C16A9D /* HUGroupsViewController.m */; };
 		ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */; };
@@ -411,6 +409,9 @@
 		B3409E0A186DF2B60033A4B3 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E09186DF2B60033A4B3 /* LoginView.xib */; };
 		B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */; };
 		B3C69A6B18718BA20055DD19 /* MyProflieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C69A6A18718BA20055DD19 /* MyProflieView.xib */; };
+		B3C69A731872DF060055DD19 /* HUGroupProfileViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A701872DF060055DD19 /* HUGroupProfileViewController+Style.m */; };
+		B3C69A741872DF060055DD19 /* HUGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A721872DF060055DD19 /* HUGroupProfileViewController.m */; };
+		B3C69A761872DF240055DD19 /* GroupProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C69A751872DF240055DD19 /* GroupProfileView.xib */; };
 		B3CE0C00186E2AAE009372B0 /* HUSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CE0BFE186E2AAE009372B0 /* HUSignUpViewController.m */; };
 		B3CE0C02186E2C21009372B0 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C01186E2C21009372B0 /* SignupView.xib */; };
 		B3CE0C06186E343A009372B0 /* HUForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */; };
@@ -829,10 +830,6 @@
 		ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDigitInputViewController.m; sourceTree = "<group>"; };
 		ADC6453817E0761600C16A9D /* HUEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUEULAViewController.h; sourceTree = "<group>"; };
 		ADC6453917E0761600C16A9D /* HUEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUEULAViewController.m; sourceTree = "<group>"; };
-		ADC6453C17E0761600C16A9D /* HUGroupProfileViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupProfileViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupProfileViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6453E17E0761600C16A9D /* HUGroupProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupProfileViewController.h; sourceTree = "<group>"; };
-		ADC6453F17E0761600C16A9D /* HUGroupProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupProfileViewController.m; sourceTree = "<group>"; };
 		ADC6454017E0761600C16A9D /* HUGroupsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsViewController+Style.h"; sourceTree = "<group>"; };
 		ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsViewController+Style.m"; sourceTree = "<group>"; };
 		ADC6454217E0761600C16A9D /* HUGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsViewController.h; sourceTree = "<group>"; };
@@ -1043,6 +1040,11 @@
 		B3C69A6618718B440055DD19 /* HUMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMyProfileViewController.h; sourceTree = "<group>"; };
 		B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMyProfileViewController.m; sourceTree = "<group>"; };
 		B3C69A6A18718BA20055DD19 /* MyProflieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProflieView.xib; sourceTree = "<group>"; };
+		B3C69A6F1872DF060055DD19 /* HUGroupProfileViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupProfileViewController+Style.h"; sourceTree = "<group>"; };
+		B3C69A701872DF060055DD19 /* HUGroupProfileViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupProfileViewController+Style.m"; sourceTree = "<group>"; };
+		B3C69A711872DF060055DD19 /* HUGroupProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupProfileViewController.h; sourceTree = "<group>"; };
+		B3C69A721872DF060055DD19 /* HUGroupProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupProfileViewController.m; sourceTree = "<group>"; };
+		B3C69A751872DF240055DD19 /* GroupProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupProfileView.xib; sourceTree = "<group>"; };
 		B3CE0BFD186E2AAE009372B0 /* HUSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSignUpViewController.h; sourceTree = "<group>"; };
 		B3CE0BFE186E2AAE009372B0 /* HUSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSignUpViewController.m; sourceTree = "<group>"; };
 		B3CE0C01186E2C21009372B0 /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
@@ -1926,6 +1928,7 @@
 		ADC6452917E0761600C16A9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3C69A6E1872DF060055DD19 /* GroupProfile */,
 				B3C69A6318718B440055DD19 /* MyProfile */,
 				B32EA3E8186F92BF00733D07 /* Profile */,
 				B3CE0C03186E343A009372B0 /* ForgotPassword */,
@@ -1947,10 +1950,6 @@
 				ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */,
 				ADC6453817E0761600C16A9D /* HUEULAViewController.h */,
 				ADC6453917E0761600C16A9D /* HUEULAViewController.m */,
-				ADC6453C17E0761600C16A9D /* HUGroupProfileViewController+Style.h */,
-				ADC6453D17E0761600C16A9D /* HUGroupProfileViewController+Style.m */,
-				ADC6453E17E0761600C16A9D /* HUGroupProfileViewController.h */,
-				ADC6453F17E0761600C16A9D /* HUGroupProfileViewController.m */,
 				ADC6454017E0761600C16A9D /* HUGroupsViewController+Style.h */,
 				ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */,
 				ADC6454217E0761600C16A9D /* HUGroupsViewController.h */,
@@ -2227,6 +2226,18 @@
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
+		B3C69A6E1872DF060055DD19 /* GroupProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B3C69A6F1872DF060055DD19 /* HUGroupProfileViewController+Style.h */,
+				B3C69A701872DF060055DD19 /* HUGroupProfileViewController+Style.m */,
+				B3C69A711872DF060055DD19 /* HUGroupProfileViewController.h */,
+				B3C69A721872DF060055DD19 /* HUGroupProfileViewController.m */,
+				B3C69A751872DF240055DD19 /* GroupProfileView.xib */,
+			);
+			path = GroupProfile;
+			sourceTree = "<group>";
+		};
 		B3CE0BFA186E2AAE009372B0 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -2358,6 +2369,7 @@
 				ADC6467C17E0761600C16A9D /* hp_nav_bar_background.png in Resources */,
 				ADC6467D17E0761600C16A9D /* hp_nav_bar_background@2x.png in Resources */,
 				ADC6467E17E0761600C16A9D /* hp_slide_button@2x.png in Resources */,
+				B3C69A761872DF240055DD19 /* GroupProfileView.xib in Resources */,
 				ADC6467F17E0761600C16A9D /* delete_arrow.png in Resources */,
 				ADC6468017E0761600C16A9D /* delete_arrow@2x.png in Resources */,
 				ADC6469317E0761600C16A9D /* hu_push_close.png in Resources */,
@@ -2588,6 +2600,7 @@
 				ADC6472117E0761700C16A9D /* HUPushNotificationModel.m in Sources */,
 				ADC6472217E0761700C16A9D /* HUSearchBarModel.m in Sources */,
 				ADC6472317E0761700C16A9D /* MapViewAnnotation.m in Sources */,
+				B3C69A741872DF060055DD19 /* HUGroupProfileViewController.m in Sources */,
 				ADC6472417E0761700C16A9D /* MapViewBubbleAnnotation.m in Sources */,
 				ADC6472517E0761700C16A9D /* ModelComment.m in Sources */,
 				ADC6472617E0761700C16A9D /* ModelGroup.m in Sources */,
@@ -2603,8 +2616,6 @@
 				ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */,
 				ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */,
 				ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */,
-				ADC6473517E0761700C16A9D /* HUGroupProfileViewController+Style.m in Sources */,
-				ADC6473617E0761700C16A9D /* HUGroupProfileViewController.m in Sources */,
 				ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */,
 				CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */,
 				ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */,
@@ -2690,6 +2701,7 @@
 				ADC6478F17E0761700C16A9D /* MessageTypeImageDetailCell+Style.m in Sources */,
 				ADC6479017E0761700C16A9D /* MessageTypeImageDetailCell.m in Sources */,
 				ADC6479117E0761700C16A9D /* MessageTypeLocationCell.m in Sources */,
+				B3C69A731872DF060055DD19 /* HUGroupProfileViewController+Style.m in Sources */,
 				ADC6479217E0761700C16A9D /* MessageTypeMediaCell+Style.m in Sources */,
 				ADC6479317E0761700C16A9D /* MessageTypeMediaCell.m in Sources */,
 				ADC6479417E0761700C16A9D /* MessageTypeNewsCell.m in Sources */,

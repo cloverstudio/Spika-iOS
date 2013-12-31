@@ -31,17 +31,30 @@
 
 @interface HUGroupProfileViewController : HUBaseViewController <UITextViewDelegate,UITableViewDataSource,HUEditableLabelDelegate>
 {
-    HUImageView *_avatarView;
-    UIScrollView *_contentView;
+    
+    IBOutlet UIScrollView *_contentView;
+    IBOutlet NSLayoutConstraint *_contentHeightConstraint;
+    
+    IBOutlet HUImageView *_avatarView;
+    IBOutlet NSLayoutConstraint *_avatarImageViewHeightConstraint;
+    
+    IBOutlet UILabel    *_nameLabel;
+    IBOutlet UILabel    *_nameValueLabel;
+    IBOutlet UILabel    *_aboutLabel;
+    IBOutlet UILabel    *_aboutValueLabel;
+    IBOutlet UILabel    *_passwordLabel;
+    IBOutlet UILabel    *_passwordValueLabel;
+    IBOutlet UILabel    *_groupOwnerLabel;
+    IBOutlet UILabel    *_groupOwnerValueLabel;
+    
+    IBOutlet NSLayoutConstraint *_aboutViewHeightConstraint;
+    IBOutlet UIButton *_startConversationBtn;
+    
     NSMutableArray *_views;
-    HUEditableLabelView *_nameLabel;
-    HUEditableLabelView *_passwordLabel;
-    HUEditableLabelView *_aboutLabel;
-    HUEditableLabelView *_categoryLabel;
-    HUEditableLabelView *_groupOwnerLabel;
+
     ModelGroup *_group;
     ModelUser *_owner;
-    UIButton *_startConversationBtn;
+    
 
 	BOOL                _keyboardShowing;
 	NSString			*_selectedCategoryID;
@@ -51,6 +64,7 @@
 @property (nonatomic, weak) UITextView *activeTextView;
 @property (nonatomic, strong) ModelGroup *group;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil withGroup:(ModelGroup *) group;
 - (id)initWithGroup:(ModelGroup *) group;
 - (void) layoutViews;
 - (void) populateViews;
@@ -60,5 +74,7 @@
 -(void)resignActiveTextViewAndHideKeyboard;
 -(void)hideStartConverstationBtn;
 -(void)enablePassword;
+
+-(IBAction) startConversation;
 
 @end

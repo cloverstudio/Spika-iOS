@@ -74,6 +74,8 @@
     
     [super viewDidLoad];
     
+    
+    /*
     [self hideStartConverstationBtn];
     
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-group-add",nil)];
@@ -100,7 +102,7 @@
     [_avatarView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewDidTap:)]];
     [_avatarView setUserInteractionEnabled:YES];
     
-    
+    */
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -124,6 +126,8 @@
 
 - (void) onSave{
 	
+    
+    /*
 	[self resignActiveTextViewAndHideKeyboard];
     [self.view endEditing:YES];
     
@@ -184,11 +188,15 @@
          }];
         
     });
+     
+    */
 }
 
 
 - (BOOL) validationAsync{
     
+    
+    /*
     if (![_nameLabel getEditorText] || [_nameLabel getEditorText].length == 0) {
         
         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Name", @"")];
@@ -229,7 +237,7 @@
         return NO;
         
     }
-    
+    */
     return YES;
 }
 
