@@ -23,7 +23,6 @@
  */
 
 #import "HUMyGroupProfileViewController.h"
-#import "HUMyGroupProfileViewController+Style.h"
 #import "UIActionSheet+MKBlockAdditions.h"
 #import "UIImagePickerController+Extensions.h"
 #import "DatabaseManager.h"
@@ -43,10 +42,7 @@
 #import "HUPasswordChangeDialog.h"
 
 @interface HUMyGroupProfileViewController (){
-    BOOL                _isEditing;
     BOOL                _keyboardShowing;
-    UIButton            *_saveButton;
-    UIButton            *_deleteButton;
     UIImage             *_avatarImage;
 }
 
@@ -63,108 +59,99 @@
     _isEditing = NO;
     self.navigationItem.rightBarButtonItems = [self editProfileBarButtonItemWithSelector:@selector(tuggleEdit) editing:_isEditing];
     
-    _saveButton = [self newSaveButtonWithSelector:@selector(onSave)];
-    _saveButton.topMargin = 10;
-    [self hideView:_saveButton];
-    [_contentView addSubview:_saveButton];
-    [_views addObject:_saveButton];
+    [_saveButton setTitle:NSLocalizedString(@"Save", @"") forState:UIControlStateNormal];
+    [_deleteButton setTitle:NSLocalizedString(@"Delete", @"") forState:UIControlStateNormal];
     
-    _deleteButton = [self newDeleteButtonWithSelector:@selector(confirmDelete)];
-    _deleteButton.topMargin = 10;
-    [self hideView:_deleteButton];
-    [_contentView addSubview:_deleteButton];
-    [_views addObject:_deleteButton];
+    _categoryValueLabel.enabled = NO;
+    _nameValueLabel.enabled = NO;
+    _groupOwnerValueLabel.enabled = NO;
+    _passwordValueLabel.enabled = NO;
+    _aboutValueLabel.editable = NO;
     
-    [_avatarView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewDidTap:)]];
-    [_avatarView setUserInteractionEnabled:YES];
+    _saveButton.hidden = YES;
+    _saveButton.enabled = NO;
     
-    //[_passwordLabel setPasswordEntry:YES];
+    _deleteButton.hidden = YES;
+    _deleteButton.enabled = NO;
+    
+    [_avatarView setUserInteractionEnabled:NO];
 }
 
 - (void) tuggleEdit{
     
-    
-    /*
     if(_keyboardShowing){
         [self.view endEditing:YES];
         _keyboardShowing = NO;
     }
     if(_isEditing){
         
-        
         _isEditing = NO;
         
         self.navigationItem.rightBarButtonItems = [self editProfileBarButtonItemWithSelector:@selector(tuggleEdit) editing:_isEditing];
         
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             [self hideView:_passwordLabel];
-                             [self hideView:_saveButton];
-                             [self hideView:_deleteButton];
-                             [self layoutViews];
-                         }
-                         completion:^(BOOL finished){
-                             
-                         }
-         ];
+        _categoryValueLabel.enabled = NO;
+        _nameValueLabel.enabled = NO;
+        _groupOwnerValueLabel.enabled = NO;
+        _passwordValueLabel.enabled = NO;
+        _aboutValueLabel.editable = NO;
         
-        [_nameLabel setEditing:NO];
-        [_passwordLabel setEditing:NO];
-        [_aboutLabel setEditing:NO];
-		[_categoryLabel setEditing:NO];
+        _saveButton.hidden = YES;
+        _saveButton.enabled = NO;
         
-        _startConversationBtn.hidden = NO;
-        _groupOwnerLabel.hidden = NO;
+        _deleteButton.hidden = YES;
+        _deleteButton.enabled = NO;
         
-        [self populateViews];
+        [_avatarView setUserInteractionEnabled:NO];
         
     }else{
         _isEditing = YES;
         
         self.navigationItem.rightBarButtonItems = [self editProfileBarButtonItemWithSelector:@selector(tuggleEdit) editing:_isEditing];
         
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             [self showView:_passwordLabel height:kEditableLabelHeight];
-                             [self showView:_saveButton height:36];
-                             [self showView:_deleteButton height:36];
-                             [self layoutViews];
-                         }
-                         completion:^(BOOL finished){
-                             
-                         }
-         ];
+        _categoryValueLabel.enabled = NO;
+        _nameValueLabel.enabled = YES;
+        _groupOwnerValueLabel.enabled = NO;
+        _passwordValueLabel.enabled = NO;
+        _aboutValueLabel.editable = YES;
         
-        [_nameLabel setEditing:YES];
-        [_passwordLabel setEditing:YES];
-        [_aboutLabel setEditing:YES];
-		[_categoryLabel setEditing:YES];
+        _saveButton.hidden = NO;
+        _saveButton.enabled = YES;
         
-        _startConversationBtn.hidden = YES;
-        _groupOwnerLabel.hidden = YES;
-
+        _deleteButton.hidden = NO;
+        _deleteButton.enabled = YES;
+        
+        [_avatarView setUserInteractionEnabled:YES];
         
     }
     
+    [self populateViews];
     [self layoutViews];
-    */
+    
 }
+
+-(NSArray *) editProfileBarButtonItemWithSelector:(SEL)aSelector editing:(BOOL) editing{
+	
+	if(editing){
+        return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                      frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                            backgroundColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeRed]
+                                                     target:self
+                                                   selector:aSelector];
+        
+    }else{
+        return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Edit", nil)
+                                                      frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                            backgroundColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeGreen]
+                                                     target:self
+                                                   selector:aSelector];
+        
+    }
+}
+
 
 - (void) populateViews{
     [super populateViews];
-    
-    //[_passwordLabel setEditerText:_group.password];
 }
-
--(void) loadAvatar{
-    [super loadAvatar];
-    
-    if(_avatarImage != nil){
-        [_avatarView setImage:_avatarImage];
-    }
-        
-}
-
 
 #pragma mark - View Lifecycle
 
@@ -177,7 +164,7 @@
 
 #pragma mark - avatar
 
--(void) avatarImageViewDidTap:(UITapGestureRecognizer *)recognizer {
+-(IBAction) avatarImageViewDidTap:(UITapGestureRecognizer *)recognizer {
     
     if(_isEditing == NO)
         return;
@@ -214,7 +201,7 @@
     
 }
 
--(void) confirmDelete{
+-(IBAction) confirmDelete{
     HUDialog *dialog = [[HUDialog alloc] initWithText:NSLocalizedString(@"Confirm delete group", nil)
                                              delegate:self
                                           cancelTitle:NSLocalizedString(@"NO", nil)
@@ -261,7 +248,7 @@
                 return;
             }
         }
-
+        
         NSString *newPassword = passwordDialog.passwordView.text;
         
         if(newPassword.length != 0){
@@ -294,13 +281,13 @@
                 }];
                 
             } else {
-               [[AlertViewManager defaultManager] dismiss];
+                [[AlertViewManager defaultManager] dismiss];
             }
             
         } error:^(NSString *errorString) {
             [[AlertViewManager defaultManager] dismiss];
         }];
-         
+        
         return;
     }
     
@@ -309,14 +296,14 @@
     
 }
 
--(void) onDelete {
+-(IBAction) onDelete {
     
     if(_keyboardShowing){
         [self.view endEditing:YES];
         _keyboardShowing = NO;
         [self hideKeyboardFor:nil];
     }
-
+    
     DMErrorBlock errorBlock = ^(NSString *errorString) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[AlertViewManager defaultManager] dismiss];
@@ -352,7 +339,7 @@
                 
             }];
             
-           
+            
         } else {
             errorBlock(errorString);
         }
@@ -360,29 +347,19 @@
     
 }
 
--(void) onSave{
+-(IBAction) onSave{
 	
-    /*
-	[self resignActiveTextViewAndHideKeyboard];
+    [self.view endEditing:YES];
     
-    if(_keyboardShowing){
-        [self.view endEditing:YES];
-        _keyboardShowing = NO;
-        [self hideKeyboardFor:nil];
-    }
-
     dispatch_async(dispatch_get_main_queue(), ^{
-
+        
         
         if(![self validationAsync]){
             return;
         }
         
-        NSString *groupName = [_nameLabel getEditorText];
-        NSString *groupPassword = [_passwordLabel getEditorText];
-        NSString *description = [_aboutLabel getEditorText];
-        
-        if (groupPassword == nil) groupPassword = @"";
+        NSString *groupName = [_nameValueLabel text];
+        NSString *description = [_aboutValueLabel text];
         
         if ((groupName == nil) || [groupName isEqualToString:@""]) {
             [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Name", nil)];
@@ -394,14 +371,9 @@
         
         _group.name = groupName;
         
-        if(![groupPassword isEqualToString:@""]){
-            groupPassword = [Utils MD5:groupPassword];
-        }
-        
-        _group.password = groupPassword;
         _group.description = description;
         _group.categoryId = _selectedCategoryID;
-        _group.categoryName = _categoryLabel.textView.text;
+        _group.categoryName = _categoryValueLabel.text;
         
         [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Processing", nil)
                                                message:@""];
@@ -413,7 +385,7 @@
                                                      message:errorString];
             });
         };
-
+        
         __weak HUMyGroupProfileViewController *this = self;
         [[DatabaseManager defaultManager] updateGroup:_group avatarImage:_avatarImage success:^(BOOL isSuccess, NSString *errorStr) {
             
@@ -442,28 +414,26 @@
         } error:errorBlock];
         
     });
-    */
+    
 }
-
 
 - (BOOL) validationAsync{
     
-    /*
-    if (![_nameLabel getEditorText] || [_nameLabel getEditorText].length == 0) {
+    if (![_nameValueLabel text] || [_nameValueLabel text].length == 0) {
         
         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Name", @"")];
         
         return NO;
     }
     
-    if (![_aboutLabel getEditorText] || [_aboutLabel getEditorText].length == 0) {
+    if (![_aboutValueLabel text] || [_aboutValueLabel text].length == 0) {
         
         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Description", @"")];
         
         return NO;
     }
     
-    if(![[HUDataManager defaultManager] isNameOkay:[_nameLabel getEditorText]]){
+    if(![[HUDataManager defaultManager] isNameOkay:[_nameValueLabel text]]){
         
         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Invalid-Name", @"")];
         
@@ -471,55 +441,36 @@
         
     }
     
-    if([_passwordLabel getEditorText] != nil && [_passwordLabel getEditorText].length > 0 && ![[HUDataManager defaultManager] isPasswordOkay:[_passwordLabel getEditorText]]){
-        
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password message", @"")];
-        
-        return NO;
-        
-    }
+    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"findGroup/name" value:[_nameValueLabel text]];
     
-    
-    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"groupname" value:[_nameLabel getEditorText]];
     
     if(result != nil){
         
         NSString *foundId = [result objectForKey:@"_id"];
         
         if(![_group._id isEqualToString:foundId]){
-
-            [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate groupname", @"")];
-            
+            [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate username", @"")];
             return NO;
-            
         }
         
     }
     
-     */
     
     return YES;
 }
 
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+-(IBAction) onChangePassword{
     
-    // open password change dialog
-    if (textView.superview == _passwordLabel) {
-        
-        HUPasswordChangeDialog *dialog = [[HUPasswordChangeDialog alloc] initWithText:NSLocalizedString(@"Change Group Password", nil)
-                                                                             delegate:self
-                                                                          cancelTitle:NSLocalizedString(@"Cancel", nil)
-                                                                           otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"Save", nil),nil]];
-        [dialog show];
-        
-		return YES;
-	}
+    if(_isEditing == NO)
+        return;
     
-    return [super textViewShouldBeginEditing:textView];
+    HUPasswordChangeDialog *dialog = [[HUPasswordChangeDialog alloc] initWithText:NSLocalizedString(@"Change Group Password", nil)
+                                                                         delegate:self
+                                                                      cancelTitle:NSLocalizedString(@"Cancel", nil)
+                                                                       otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"Save", nil),nil]];
+    [dialog show];
 }
-
-
 
 #pragma mark - HUImageUploadViewConrollerDelegate Methods
 

@@ -6,24 +6,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HUGroupProfileViewController">
             <connections>
-                <outlet property="_aboutLabel" destination="58s-JB-Nn1" id="UGI-he-M1H"/>
-                <outlet property="_aboutValueLabel" destination="aLq-tV-7H4" id="MYu-Bo-jI3"/>
-                <outlet property="_aboutViewHeightConstraint" destination="rLM-Dk-euS" id="OrD-0d-l4K"/>
-                <outlet property="_avatarImageViewHeightConstraint" destination="Hfs-t6-bZT" id="S9E-RL-Rzc"/>
-                <outlet property="_avatarView" destination="g9t-6D-Ss4" id="xLF-u1-Gge"/>
-                <outlet property="_categoryIconView" destination="df0-xk-ZVK" id="PdL-Y1-JXu"/>
-                <outlet property="_categoryLabel" destination="GSE-kT-B6Z" id="tyh-tT-Pvl"/>
-                <outlet property="_categoryValueLabel" destination="SmV-te-l1f" id="KeJ-Bb-XPN"/>
-                <outlet property="_contentHeightConstraint" destination="xgR-M0-vhc" id="4yw-Gb-kt2"/>
-                <outlet property="_contentView" destination="rta-1w-NH2" id="TBs-se-KNC"/>
-                <outlet property="_groupOwnerLabel" destination="X2o-qu-gkd" id="Y7L-bz-uuS"/>
-                <outlet property="_groupOwnerValueLabel" destination="sFa-py-jaX" id="MHJ-ud-sYw"/>
-                <outlet property="_nameLabel" destination="NSX-ae-lmw" id="lOU-Zb-wTD"/>
-                <outlet property="_nameValueLabel" destination="Mgp-SB-mwx" id="HCe-V7-nPZ"/>
-                <outlet property="_passwordLabel" destination="aJP-2A-PaG" id="Onm-SS-uNk"/>
-                <outlet property="_passwordValueLabel" destination="5iJ-xH-fxZ" id="G09-wU-odx"/>
-                <outlet property="_startConversationBtn" destination="BrZ-AV-Dn0" id="9hi-BK-CgL"/>
-                <outlet property="view" destination="1" id="NC6-JR-bx5"/>
+                <outlet property="_aboutLabel" destination="58s-JB-Nn1" id="aZe-kz-mMQ"/>
+                <outlet property="_aboutValueLabel" destination="aLq-tV-7H4" id="Vyf-90-gVN"/>
+                <outlet property="_aboutViewHeightConstraint" destination="rLM-Dk-euS" id="wGv-8j-oUR"/>
+                <outlet property="_avatarImageViewHeightConstraint" destination="Hfs-t6-bZT" id="m0V-Es-dLE"/>
+                <outlet property="_avatarView" destination="g9t-6D-Ss4" id="uQq-X7-Dwh"/>
+                <outlet property="_categoryIconView" destination="df0-xk-ZVK" id="lIK-vD-SQM"/>
+                <outlet property="_categoryLabel" destination="GSE-kT-B6Z" id="Niq-2s-aIB"/>
+                <outlet property="_categoryValueLabel" destination="SmV-te-l1f" id="sw8-7w-oeg"/>
+                <outlet property="_contentHeightConstraint" destination="xgR-M0-vhc" id="R6l-sH-0YG"/>
+                <outlet property="_contentView" destination="rta-1w-NH2" id="FVF-PY-mlI"/>
+                <outlet property="_groupOwnerLabel" destination="X2o-qu-gkd" id="7FY-RV-CeX"/>
+                <outlet property="_groupOwnerValueLabel" destination="sFa-py-jaX" id="GAa-Rb-SIU"/>
+                <outlet property="_nameLabel" destination="NSX-ae-lmw" id="8HR-CH-hCn"/>
+                <outlet property="_nameValueLabel" destination="Mgp-SB-mwx" id="XhF-0b-0hM"/>
+                <outlet property="_passwordLabel" destination="aJP-2A-PaG" id="Rcg-xT-ZYf"/>
+                <outlet property="_passwordValueLabel" destination="5iJ-xH-fxZ" id="Zf2-Em-CjG"/>
+                <outlet property="_startConversationBtn" destination="BrZ-AV-Dn0" id="Rfb-yY-VPS"/>
+                <outlet property="view" destination="1" id="wkx-iF-vFl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

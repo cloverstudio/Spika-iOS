@@ -22,12 +22,20 @@
  THE SOFTWARE.
  */
 
-#import "HUMyGroupProfileViewController.h"
+#import "HUImageUploadViewController.h"
+#import "HUEditableLabelDelegate.h"
+#import "HUDialog.h"
+#import "HUGroupProfileViewController.h"
 
-@interface HUMyGroupProfileViewController (Style)
+@interface HUMyGroupProfileViewController : HUGroupProfileViewController<HUDialogDelegate>{
+    IBOutlet UIButton       *_saveButton;
+    IBOutlet UIButton       *_deleteButton;
+}
 
--(NSArray *) editProfileBarButtonItemWithSelector:(SEL)aSelector editing:(BOOL) editing;
-- (UIButton *) newSaveButtonWithSelector:(SEL)aSelector;
-- (UIButton *) newDeleteButtonWithSelector:(SEL)aSelector;
+-(IBAction) avatarImageViewDidTap:(UITapGestureRecognizer *)recognizer;
+-(IBAction) onSave;
+-(IBAction) onDelete;
+-(IBAction) confirmDelete;
+-(IBAction) onChangePassword;
 
 @end

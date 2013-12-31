@@ -23,7 +23,6 @@
  */
 
 #import "HUNewGroupViewController.h"
-#import "HUGroupProfileViewController+Style.h"
 #import "CSToast.h"
 #import "DatabaseManager.h"
 #import "UserManager.h"
@@ -35,11 +34,11 @@
 #import "HUDataManager.h"
 #import "HUPickerTableView.h"
 #import "HUGroupsCategoryTableViewCell.h"
+#import "HUTextView.h"
 
 @interface HUNewGroupViewController (){
     BOOL                _keyboardShowing;
     UIImage             *_avatarImage;
-    HUPickerTableView   *_pickerTableView;
 }
 
 @property (nonatomic, weak) UITextView *activeTextView;
@@ -59,7 +58,6 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
         _keyboardShowing = NO;
-        _pickerTableView = [HUPickerTableView pickerTableViewFor:self];
     }
     
     return self;
@@ -88,6 +86,9 @@
     [_saveButton setTitle:NSLocalizedString(@"Save", @"") forState:UIControlStateNormal];
     [_cancelButton setTitle:NSLocalizedString(@"Cancel", @"") forState:UIControlStateNormal];
     [_categoryIconView setImage:nil];
+    
+    _isEditing = YES;
+    
 }
 
 - (void) layoutViews{
@@ -161,9 +162,13 @@
 	
     [self.view endEditing:YES];
     
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Processing", nil)
+                                           message:@""];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if(![self validationAsync]){
+            [[AlertViewManager defaultManager] dismiss];
             return;
         }
 
@@ -175,9 +180,6 @@
         
         if (description == nil) description = @"";
         if (_selectedCategoryID == nil) _selectedCategoryID = @"";
-        
-        [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Processing", nil)
-                                               message:@""];
         
         HUNewGroupViewController *this = self;
         
@@ -255,7 +257,7 @@
     }
 
     
-    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"groupname" value:[_nameValueLabel text]];
+    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"findGroup/name" value:[_nameValueLabel text]];
     
     if(result != nil){
         
@@ -295,8 +297,6 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 
-
-
 -(void)imagePickerController:(UIImagePickerController*)picker
        didFinishPickingImage:(UIImage*)image
                  editingInfo:(NSDictionary*)editingInfo{
@@ -307,171 +307,6 @@
     [self dismissModalViewControllerAnimated:YES];
     [self layoutViews];
     
-}
-
-#pragma mark - Load Categories
-
--(IBAction)onCategoryOpen{
-    [self.view endEditing:YES];
-    [self showPickerTableViewForPickerDataType:HUPickerGroupCategoryDataType];
-}
-
--(void)loadGroupCategory
-{
-    
-    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
-										   message:nil];
-	
-	__weak HUGroupProfileViewController *this = self;
-    void(^successBlock)(id result) = ^(NSArray *groupCategories)
-	{
-		[[AlertViewManager defaultManager] dismiss];
-        [_pickerTableView showPickerTableViewInView:this.view
-										 pickerDataType:HUPickerGroupCategoryDataType];
-		_pickerTableView.dataSourceArray = groupCategories;
-    };
-    
-    void(^errorBlock)(id result) = ^(NSString *errStr){
-        
-        [[AlertViewManager defaultManager] dismiss];
-        
-    };
-    
-    [[DatabaseManager defaultManager] findGroupCategories:successBlock error:errorBlock];
-    
-}
-
-
-#pragma mark - HUPickerTableView Methods
-
--(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType
-{
-	[self loadGroupCategory];
-}
-
--(void)removePickerTableView
-{
-	[_pickerTableView removePickerTableView];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView isKindOfClass:[HUPickerTableView class]]) {
-        ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-        return [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
-    }
-    
-    return 0;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	if (_pickerTableView.dataSourceArray.count == 0)
-		return 0;
-	
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-		
-		ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:0];
-		NSInteger numberOfRows = pickerTableView.dataSourceArray.count <= 4 ? pickerTableView.dataSourceArray.count : 4;
-		CGFloat height = numberOfRows * [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
-		pickerTableView.frame = CGRectMake(0, 0, 320, height);
-		pickerTableView.center = CGPointMake(_pickerTableView.holderView.size.width / 2,
-											 _pickerTableView.holderView.size.height / 2);
-		
-		return pickerTableView.dataSourceArray.count;
-	}
-    
-	return 0;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-		
-		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType)
-		{
-			ModelGroupCategory *groupCategory = [pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-			
-			static NSString *cellIdentifier = @"MyCategoryCellIdentifier";
-			
-			HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-			
-			if(cell == nil) {
-				cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-																		   reuseIdentifier:cellIdentifier]);
-			}
-			
-			[cell populateWithData:groupCategory];
-			
-			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
-			
-			[HUAvatarManager avatarImageForUrl:groupCategory.imageUrl atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-				cell.avatarImageView.image = image;
-			}];
-			
-			return cell;
-		}
-		else
-			return nil;
-	}
-	else
-		return nil;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([tableView isKindOfClass:[HUPickerTableView class]])
-	{
-		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
-        
-		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType) {
-			ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
-			[_categoryValueLabel setText:groupCategory.title];
-            
-            if(groupCategory.imageUrl.length != 0){
-                [[DatabaseManager defaultManager] loadCategoryIconByName:groupCategory.title success:^(UIImage *image){
-                    
-                    [_categoryIconView setImage:image];
-                    
-                    [self layoutViews];
-                    
-                }error:^(NSString *errStr){
-                    
-                }];
-            }else{
-                [_categoryIconView setImage:[UIImage imageNamed:@"group_stub_large"]];
-            }
-
-            
-            
-			_selectedCategoryID = groupCategory._id;
-		}
-		
-		_pickerTableView.holderView.hidden = YES;
-		UITableViewCell *cell = [pickerTableView cellForRowAtIndexPath:indexPath];
-		cell.selected = NO;
-	}
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    if ([string isEqualToString:@"\n"]) {
-        [textField resignFirstResponder];
-        return NO;
-    }
-    
-    return YES;
-}
-
-#pragma mark - UITextViewDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    [self layoutViews];
-    return YES;
 }
 
 @end

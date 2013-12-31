@@ -388,7 +388,7 @@
     }
     
     
-    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"name" value:[_nameValueLabel text]];
+    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"findUser/name" value:[_nameValueLabel text]];
     
     if(result != nil){
         

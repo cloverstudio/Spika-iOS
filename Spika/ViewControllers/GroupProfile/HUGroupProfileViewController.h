@@ -29,7 +29,7 @@
 
 @class ModelGroup, HUImageView,HUEditableLabelView, HUPickerTableView,ModelUser, HUTextView;
 
-@interface HUGroupProfileViewController : HUBaseViewController <UITextViewDelegate,HUEditableLabelDelegate>
+@interface HUGroupProfileViewController : HUBaseViewController <UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     
     IBOutlet UIScrollView *_contentView;
@@ -59,9 +59,11 @@
     ModelGroup *_group;
     ModelUser *_owner;
     
-
 	BOOL                _keyboardShowing;
 	NSString			*_selectedCategoryID;
+    
+    BOOL                _isEditing;
+    
 }
 
 @property (nonatomic, strong) HUPickerTableView *pickerTableView;

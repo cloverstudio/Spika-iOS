@@ -23,7 +23,6 @@
  */
 
 #import "HUGroupProfileViewController.h"
-#import "HUGroupProfileViewController+Style.h"
 #import "DatabaseManager.h"
 #import "UserManager.h"
 #import "ModelGroup.h"
@@ -41,10 +40,12 @@
 #import "AppDelegate.h"
 #import "Utils.h"
 #import "HUTextView.h"
+#import "HUImageView.h"
 
 @interface HUGroupProfileViewController (){
     UIImage *_avatarImage;
     int _originalContainerHeight;
+    HUPickerTableView   *_pickerTableView;
 }
 
 -(void)resignActiveTextViewAndHideKeyboard;
@@ -68,12 +69,11 @@
     
     if (self = [super initWithNibName:nibNameOrNil bundle:nil]) {
         _views = [[NSMutableArray alloc] initWithCapacity:10];
-        self.view.backgroundColor = [self viewBackgroundColor];
         _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
-        
         self.title = _group.name;
+        _isEditing = NO;
         
-        [self populateViews];
+        
     }
     
     return self;
@@ -83,7 +83,6 @@
     
     if (self = [super init]) {
         _views = [[NSMutableArray alloc] initWithCapacity:10];
-        self.view.backgroundColor = [self viewBackgroundColor];
         _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
         
         self.title = _group.name;
@@ -98,7 +97,6 @@
     
     if (self = [super init]) {
         _views = [[NSMutableArray alloc] initWithCapacity:10];
-        self.view.backgroundColor = [self viewBackgroundColor];
     }
     
     return self;
@@ -144,6 +142,8 @@
     
     [super loadView];
 
+    _pickerTableView = [HUPickerTableView pickerTableViewFor:self];
+    
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-groupprofile",nil)];
 
     [_startConversationBtn setTitle:NSLocalizedString(@"Start-Conversation", nil) forState:UIControlStateNormal];
@@ -158,6 +158,8 @@
     _groupOwnerValueLabel.enabled = NO;
     _passwordValueLabel.enabled = NO;
     _aboutValueLabel.editable = NO;
+    
+    [self populateViews];
 }
 
 
@@ -169,6 +171,24 @@
 - (void) addContactRemoveButton {
     
     self.navigationItem.rightBarButtonItems = [self removeContactBarButtonItemsWithSelector:@selector(onRemove)];
+}
+
+-(NSArray *) addContactBarButtonItemsWithSelector:(SEL)aSelector {
+    
+    return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Subscribe", nil)
+                                                  frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                        backgroundColor:[HUBaseViewController sharedBarButtonItemColor]
+                                                 target:self
+                                               selector:aSelector];
+}
+
+-(NSArray *) removeContactBarButtonItemsWithSelector:(SEL)aSelector {
+    
+    return [HUBaseViewController barButtonItemWithTitle:NSLocalizedString(@"Unsubscribe", nil)
+                                                  frame:CGRectMake(0, 0, BarButtonWidth, 44)
+                                        backgroundColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeRed]
+                                                 target:self
+                                               selector:aSelector];
 }
 
 - (void) populateViews{
@@ -254,6 +274,9 @@
 -(void)loadGroupCategory
 {
     
+    if(_isEditing == NO)
+        return;
+    
     [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
 										   message:nil];
 	
@@ -261,9 +284,9 @@
     void(^successBlock)(id result) = ^(NSArray *groupCategories)
 	{
 		[[AlertViewManager defaultManager] dismiss];
-        [this.pickerTableView showPickerTableViewInView:this.view
+        [_pickerTableView showPickerTableViewInView:this.view
 										 pickerDataType:HUPickerGroupCategoryDataType];
-		this.pickerTableView.dataSourceArray = groupCategories;
+		_pickerTableView.dataSourceArray = groupCategories;
     };
     
     void(^errorBlock)(id result) = ^(NSString *errStr){
@@ -414,5 +437,150 @@
 -(IBAction) openOwner{
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:_owner];
 }
+
+
+
+#pragma mark - Load Categories
+
+-(IBAction)onCategoryOpen{
+    [self.view endEditing:YES];
+    [self showPickerTableViewForPickerDataType:HUPickerGroupCategoryDataType];
+}
+
+
+//////// following methods are used by extended classes - HUNewGroupViewController/HUMyGroupProfileViewController
+
+#pragma mark - HUPickerTableView Methods
+
+-(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType
+{
+	[self loadGroupCategory];
+}
+
+-(void)removePickerTableView
+{
+	[_pickerTableView removePickerTableView];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView isKindOfClass:[HUPickerTableView class]]) {
+        ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+        return [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
+    }
+    
+    return 0;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (_pickerTableView.dataSourceArray.count == 0)
+		return 0;
+	
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+		
+		ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:0];
+		NSInteger numberOfRows = pickerTableView.dataSourceArray.count <= 4 ? pickerTableView.dataSourceArray.count : 4;
+		CGFloat height = numberOfRows * [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
+		pickerTableView.frame = CGRectMake(0, 0, 320, height);
+		pickerTableView.center = CGPointMake(_pickerTableView.holderView.size.width / 2,
+											 _pickerTableView.holderView.size.height / 2);
+		
+		return pickerTableView.dataSourceArray.count;
+	}
+    
+	return 0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+		
+		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType)
+		{
+			ModelGroupCategory *groupCategory = [pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+			
+			static NSString *cellIdentifier = @"MyCategoryCellIdentifier";
+			
+			HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+			
+			if(cell == nil) {
+				cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+																		   reuseIdentifier:cellIdentifier]);
+			}
+			
+			[cell populateWithData:groupCategory];
+			
+			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
+			
+			[HUAvatarManager avatarImageForUrl:groupCategory.imageUrl atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+				cell.avatarImageView.image = image;
+			}];
+			
+			return cell;
+		}
+		else
+			return nil;
+	}
+	else
+		return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+        
+		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType) {
+			ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+			[_categoryValueLabel setText:groupCategory.title];
+            
+            if(groupCategory.imageUrl.length != 0){
+                [[DatabaseManager defaultManager] loadCategoryIconByName:groupCategory.title success:^(UIImage *image){
+                    
+                    [_categoryIconView setImage:image];
+                    
+                    [self layoutViews];
+                    
+                }error:^(NSString *errStr){
+                    
+                }];
+            }else{
+                [_categoryIconView setImage:[UIImage imageNamed:@"group_stub_large"]];
+            }
+            
+            
+            
+			_selectedCategoryID = groupCategory._id;
+		}
+		
+		_pickerTableView.holderView.hidden = YES;
+		UITableViewCell *cell = [pickerTableView cellForRowAtIndexPath:indexPath];
+		cell.selected = NO;
+	}
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    [self layoutViews];
+    return YES;
+}
+
 
 @end

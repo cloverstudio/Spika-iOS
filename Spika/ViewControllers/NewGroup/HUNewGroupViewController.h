@@ -28,7 +28,7 @@
 #define kLabelMarginLeft     60
 #define kMargin              5
 
-@interface HUNewGroupViewController : HUGroupProfileViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UITextFieldDelegate>{
+@interface HUNewGroupViewController : HUGroupProfileViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
     IBOutlet UIButton       *_saveButton;
     IBOutlet UIButton       *_cancelButton;
 }
