@@ -1,0 +1,477 @@
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2013 Clover Studio Ltd. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+#import "HUNewGroupViewController.h"
+#import "HUGroupProfileViewController+Style.h"
+#import "CSToast.h"
+#import "DatabaseManager.h"
+#import "UserManager.h"
+#import "HUImageView.h"
+#import "HUBaseViewController+Style.h"
+#import "UIImagePickerController+Extensions.h"
+#import "UIActionSheet+MKBlockAdditions.h"
+#import "AlertViewManager.h"
+#import "HUDataManager.h"
+#import "HUPickerTableView.h"
+#import "HUGroupsCategoryTableViewCell.h"
+
+@interface HUNewGroupViewController (){
+    BOOL                _keyboardShowing;
+    UIImage             *_avatarImage;
+    HUPickerTableView   *_pickerTableView;
+}
+
+@property (nonatomic, weak) UITextView *activeTextView;
+
+@end
+
+@implementation HUNewGroupViewController
+
+#pragma mark - Dealloc
+
+-(void) dealloc {
+
+}
+
+#pragma mark - Initialization
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
+        _keyboardShowing = NO;
+        _pickerTableView = [HUPickerTableView pickerTableViewFor:self];
+    }
+    
+    return self;
+}
+
+#pragma mark - Override
+
+-(void) loadView {
+    
+    [super loadView];
+    
+    [self showTutorialIfCan:NSLocalizedString(@"tutorial-group-add",nil)];
+    
+    _categoryValueLabel.enabled = NO;
+    _nameValueLabel.enabled = YES;
+    _groupOwnerValueLabel.enabled = NO;
+    _passwordValueLabel.enabled = YES;
+    _aboutValueLabel.editable = YES;
+    
+    [_categoryValueLabel setText:@""];
+    [_nameValueLabel setText:@""];
+    [_groupOwnerValueLabel setText:[[UserManager defaultManager] getLoginedUser].name];
+    [_passwordValueLabel setText:@""];
+    [_aboutValueLabel setText:@""];
+    
+    [_saveButton setTitle:NSLocalizedString(@"Save", @"") forState:UIControlStateNormal];
+    [_cancelButton setTitle:NSLocalizedString(@"Cancel", @"") forState:UIControlStateNormal];
+    [_categoryIconView setImage:nil];
+}
+
+- (void) layoutViews{
+    [super layoutViews];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        CGPoint absolutePosition = [_cancelButton convertPoint:_cancelButton.frame.origin toView:_contentView];
+        [_contentHeightConstraint setConstant:absolutePosition.y + _cancelButton.height + 20];
+    });
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+        
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.leftBarButtonItems = [self backBarButtonItemsWithSelector:@selector(onBack:)];
+    self.navigationItem.title = NSLocalizedString(@"New Group", nil);
+
+    HUNewGroupViewController *this = self;
+    
+    [self subscribeForKeyboardWillShowNotificationUsingBlock:^(NSNotification *note) {
+        
+    }];
+    
+    [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
+        [this animateKeyboardWillShow:note];
+    }];
+    
+    [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
+        [this animateKeyboardWillHide:note];
+    }];
+    
+    [self layoutViews];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [self unsubscribeForKeyboardWillShowNotification];
+    
+    [self unsubscribeForKeyboardWillChangeFrameNotification];
+    
+    [self unsubscribeForKeyboardWillHideNotification];
+    
+}
+
+#pragma mark - Keyboard Handling
+
+- (void) animateKeyboardWillShow:(NSNotification *)aNotification {
+    _keyboardShowing = YES;
+    CGSize keyboardSize = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    _contentView.height = self.view.height - keyboardSize.height;
+}
+
+- (void) animateKeyboardWillHide:(NSNotification *)aNotification {
+    _keyboardShowing = NO;
+    _contentView.height = self.view.height;
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self layoutViews];
+}
+
+- (IBAction)onBack:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction) onSave{
+	
+    [self.view endEditing:YES];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        if(![self validationAsync]){
+            return;
+        }
+
+        NSString *groupName = [_nameValueLabel text];
+        NSString *groupPassword = [_passwordValueLabel text];
+        NSString *description = [_aboutValueLabel text];
+        
+        if (groupPassword == nil) groupPassword = @"";
+        
+        if (description == nil) description = @"";
+        if (_selectedCategoryID == nil) _selectedCategoryID = @"";
+        
+        [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Processing", nil)
+                                               message:@""];
+        
+        HUNewGroupViewController *this = self;
+        
+        [[DatabaseManager defaultManager]
+         
+         createGroup:groupName
+         description:description
+         password:groupPassword
+         categoryID:_selectedCategoryID
+         categoryName:_categoryValueLabel.text
+         ower:[[UserManager defaultManager] getLoginedUser]
+         avatarImage:_avatarImage
+         success:^(BOOL isSuccess, NSString *errStr) {
+             
+             [[UserManager defaultManager] reloadUserDataWithCompletion:^(id result) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     [[AlertViewManager defaultManager] dismiss];
+
+                     if (isSuccess == YES) {
+                         
+                         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Group created successfully", nil)];
+                         [this onBack:nil];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSideMenuGroupsSelected object:nil];
+
+                     } else {
+                         [CSToast showToast:errStr withDuration:3.0];
+                     }
+                 });
+             }];
+             
+             [CSToast showToast:NSLocalizedString(@"Success!", nil) withDuration:3.0];
+             
+         } error:^(NSString *errStr) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [[AlertViewManager defaultManager] dismiss];
+             });
+         }];
+        
+    });
+    
+}
+
+
+- (BOOL) validationAsync{
+
+    if (![_nameValueLabel text] || [_nameValueLabel text].length == 0) {
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Name", @"")];
+        
+        return NO;
+    }
+    
+    if (![_aboutValueLabel text] || [_aboutValueLabel text].length == 0) {
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Group-Description", @"")];
+        
+        return NO;
+    }
+        
+    if(![[HUDataManager defaultManager] isNameOkay:[_nameValueLabel text]]){
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Invalid-Name", @"")];
+        
+        return NO;
+        
+    }
+    
+    if([_passwordValueLabel text] != nil && [_passwordValueLabel text].length > 0 && ![[HUDataManager defaultManager] isPasswordOkay:[_passwordValueLabel text]]){
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password message", @"")];
+        
+        return NO;
+        
+    }
+
+    
+    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"groupname" value:[_nameValueLabel text]];
+    
+    if(result != nil){
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate groupname", @"")];
+        
+        return NO;
+        
+    }
+
+    return YES;
+}
+
+
+#pragma mark - avatar
+
+
+-(IBAction) avatarImageViewDidTap:(UITapGestureRecognizer *)recognizer {
+    
+    
+    void(^dismissBlock)(int buttonIndex) = ^(int buttonIndex){        
+        buttonIndex == 0 ? [self showPhotoCameraWithDelegate:self] : [self showPhotoLibraryWithDelegate:self];
+    };
+    
+    void(^cancelBlock)(void) = ^{
+        
+        
+    };
+    
+    [UIActionSheet actionSheetWithTitle:NSLocalizedString(@"Please select source", nil)
+                                message:nil
+                                buttons:@[NSLocalizedString(@"Camera", nil),NSLocalizedString(@"Album", nil)]
+                             showInView:self.view
+                              onDismiss:dismissBlock
+                               onCancel:cancelBlock];
+    
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+
+
+-(void)imagePickerController:(UIImagePickerController*)picker
+       didFinishPickingImage:(UIImage*)image
+                 editingInfo:(NSDictionary*)editingInfo{
+    
+    
+    _avatarImage = [image copy];
+    _avatarView.image = image;
+    [self dismissModalViewControllerAnimated:YES];
+    [self layoutViews];
+    
+}
+
+#pragma mark - Load Categories
+
+-(IBAction)onCategoryOpen{
+    [self.view endEditing:YES];
+    [self showPickerTableViewForPickerDataType:HUPickerGroupCategoryDataType];
+}
+
+-(void)loadGroupCategory
+{
+    
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
+										   message:nil];
+	
+	__weak HUGroupProfileViewController *this = self;
+    void(^successBlock)(id result) = ^(NSArray *groupCategories)
+	{
+		[[AlertViewManager defaultManager] dismiss];
+        [_pickerTableView showPickerTableViewInView:this.view
+										 pickerDataType:HUPickerGroupCategoryDataType];
+		_pickerTableView.dataSourceArray = groupCategories;
+    };
+    
+    void(^errorBlock)(id result) = ^(NSString *errStr){
+        
+        [[AlertViewManager defaultManager] dismiss];
+        
+    };
+    
+    [[DatabaseManager defaultManager] findGroupCategories:successBlock error:errorBlock];
+    
+}
+
+
+#pragma mark - HUPickerTableView Methods
+
+-(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType
+{
+	[self loadGroupCategory];
+}
+
+-(void)removePickerTableView
+{
+	[_pickerTableView removePickerTableView];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView isKindOfClass:[HUPickerTableView class]]) {
+        ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+        return [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
+    }
+    
+    return 0;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (_pickerTableView.dataSourceArray.count == 0)
+		return 0;
+	
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+		
+		ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:0];
+		NSInteger numberOfRows = pickerTableView.dataSourceArray.count <= 4 ? pickerTableView.dataSourceArray.count : 4;
+		CGFloat height = numberOfRows * [HUGroupsCategoryTableViewCell heightForCellWithGroup:groupCategory];
+		pickerTableView.frame = CGRectMake(0, 0, 320, height);
+		pickerTableView.center = CGPointMake(_pickerTableView.holderView.size.width / 2,
+											 _pickerTableView.holderView.size.height / 2);
+		
+		return pickerTableView.dataSourceArray.count;
+	}
+    
+	return 0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+		
+		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType)
+		{
+			ModelGroupCategory *groupCategory = [pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+			
+			static NSString *cellIdentifier = @"MyCategoryCellIdentifier";
+			
+			HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+			
+			if(cell == nil) {
+				cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+																		   reuseIdentifier:cellIdentifier]);
+			}
+			
+			[cell populateWithData:groupCategory];
+			
+			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
+			
+			[HUAvatarManager avatarImageForUrl:groupCategory.imageUrl atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+				cell.avatarImageView.image = image;
+			}];
+			
+			return cell;
+		}
+		else
+			return nil;
+	}
+	else
+		return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([tableView isKindOfClass:[HUPickerTableView class]])
+	{
+		HUPickerTableView *pickerTableView = (HUPickerTableView *)tableView;
+        
+		if (pickerTableView.pickerDataType == HUPickerGroupCategoryDataType) {
+			ModelGroupCategory *groupCategory = [_pickerTableView.dataSourceArray objectAtIndex:indexPath.row];
+			[_categoryValueLabel setText:groupCategory.title];
+            
+            if(groupCategory.imageUrl.length != 0){
+                [[DatabaseManager defaultManager] loadCategoryIconByName:groupCategory.title success:^(UIImage *image){
+                    
+                    [_categoryIconView setImage:image];
+                    
+                    [self layoutViews];
+                    
+                }error:^(NSString *errStr){
+                    
+                }];
+            }else{
+                [_categoryIconView setImage:[UIImage imageNamed:@"group_stub_large"]];
+            }
+
+            
+            
+			_selectedCategoryID = groupCategory._id;
+		}
+		
+		_pickerTableView.holderView.hidden = YES;
+		UITableViewCell *cell = [pickerTableView cellForRowAtIndexPath:indexPath];
+		cell.selected = NO;
+	}
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    [self layoutViews];
+    return YES;
+}
+
+@end

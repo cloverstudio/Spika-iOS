@@ -27,9 +27,9 @@
 #define kLabelMarginLeft     60
 #define kMargin              5
 
-@class ModelGroup, HUImageView,HUEditableLabelView, HUPickerTableView,ModelUser;
+@class ModelGroup, HUImageView,HUEditableLabelView, HUPickerTableView,ModelUser, HUTextView;
 
-@interface HUGroupProfileViewController : HUBaseViewController <UITextViewDelegate,UITableViewDataSource,HUEditableLabelDelegate>
+@interface HUGroupProfileViewController : HUBaseViewController <UITextViewDelegate,HUEditableLabelDelegate>
 {
     
     IBOutlet UIScrollView *_contentView;
@@ -38,14 +38,18 @@
     IBOutlet HUImageView *_avatarView;
     IBOutlet NSLayoutConstraint *_avatarImageViewHeightConstraint;
     
-    IBOutlet UILabel    *_nameLabel;
-    IBOutlet UILabel    *_nameValueLabel;
-    IBOutlet UILabel    *_aboutLabel;
-    IBOutlet UILabel    *_aboutValueLabel;
-    IBOutlet UILabel    *_passwordLabel;
-    IBOutlet UILabel    *_passwordValueLabel;
-    IBOutlet UILabel    *_groupOwnerLabel;
-    IBOutlet UILabel    *_groupOwnerValueLabel;
+    IBOutlet UILabel        *_categoryLabel;
+    IBOutlet UITextField    *_categoryValueLabel;
+    IBOutlet UIImageView    *_categoryIconView;
+    
+    IBOutlet UILabel        *_nameLabel;
+    IBOutlet UITextField    *_nameValueLabel;
+    IBOutlet UILabel        *_aboutLabel;
+    IBOutlet HUTextView    *_aboutValueLabel;
+    IBOutlet UILabel        *_passwordLabel;
+    IBOutlet UITextField    *_passwordValueLabel;
+    IBOutlet UILabel        *_groupOwnerLabel;
+    IBOutlet UITextField    *_groupOwnerValueLabel;
     
     IBOutlet NSLayoutConstraint *_aboutViewHeightConstraint;
     IBOutlet UIButton *_startConversationBtn;
@@ -76,5 +80,6 @@
 -(void)enablePassword;
 
 -(IBAction) startConversation;
+-(IBAction) openOwner;
 
 @end

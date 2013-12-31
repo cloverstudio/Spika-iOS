@@ -40,6 +40,7 @@
 #import "HUDataManager.h"
 #import "AppDelegate.h"
 #import "Utils.h"
+#import "HUTextView.h"
 
 @interface HUGroupProfileViewController (){
     UIImage *_avatarImage;
@@ -69,7 +70,6 @@
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         self.view.backgroundColor = [self viewBackgroundColor];
         _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
-		_pickerTableView = [HUPickerTableView pickerTableViewFor:self];
         
         self.title = _group.name;
         
@@ -85,7 +85,6 @@
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         self.view.backgroundColor = [self viewBackgroundColor];
         _group = [ModelGroup jsonToObj:[ModelGroup toJSON:group]];
-		_pickerTableView = [HUPickerTableView pickerTableViewFor:self];
         
         self.title = _group.name;
         [self populateViews];
@@ -100,7 +99,6 @@
     if (self = [super init]) {
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         self.view.backgroundColor = [self viewBackgroundColor];
-		_pickerTableView = [HUPickerTableView pickerTableViewFor:self];
     }
     
     return self;
@@ -120,39 +118,19 @@
             [_avatarImageViewHeightConstraint setConstant:viewHeight];
         }
     }
-    
-    
-    
-}
 
-
-- (CGRect) frameByNumberOfElement:(int) number{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        float height = [_aboutValueLabel getContentHeight];
+        _aboutValueLabel.frame = CGRectMake(_aboutValueLabel.x, _aboutValueLabel.y, _aboutValueLabel.width, height);
+        [_aboutViewHeightConstraint setConstant:height + 40];
+    });
     
-    int width = CGRectGetWidth(self.view.frame) - kMargin * 2;
-    int x = kMargin;
-    int height = CGRectGetWidth(self.view.frame) - kMargin * 2;
-    
-    if(number != 0)
-        height = kEditableLabelHeight;
-    
-    int y = kMargin;
-    
-    for(int i = 0;i < number ; i++){
-        
-        int lastElementHeight = kEditableLabelHeight;
-        
-        if(i == 0)
-            lastElementHeight = CGRectGetWidth(self.view.frame) - kMargin * 2;
-        
-        y += lastElementHeight + kMargin;
-        
-    }
-    
-    CGRect returnRect = CGRectMake(
-                                   x,y,width,height
-                                   );
-    
-    return returnRect;
+    /*
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        CGPoint absolutePosition = [_aboutValueLabel convertPoint:_aboutValueLabel.frame.origin toView:_contentView];
+        [_contentHeightConstraint setConstant:absolutePosition.y + _aboutValueLabel.height + 20];
+    });
+    */
 }
 
 
@@ -167,110 +145,19 @@
     [super loadView];
 
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-groupprofile",nil)];
-    
-    
- 
 
-}
-
-
-- (void) viewWillAppear:(BOOL)animated {
+    [_startConversationBtn setTitle:NSLocalizedString(@"Start-Conversation", nil) forState:UIControlStateNormal];
+    [_categoryLabel setText:NSLocalizedString(@"GroupCategory-Title", nil)];
+    [_nameLabel setText:NSLocalizedString(@"Group-Name", nil)];
+    [_aboutLabel setText:NSLocalizedString(@"Group-Profile", nil)];
+    [_passwordLabel setText:NSLocalizedString(@"Password", nil)];
+    [_groupOwnerLabel setText:NSLocalizedString(@"Group-Owner", nil)];
     
-    __weak HUGroupProfileViewController *this = self;
-    
-    [super viewWillAppear:animated];
-    
-    [self subscribeForKeyboardWillShowNotificationUsingBlock:^(NSNotification *note) {
-        
-    }];
-    
-    [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
-        [this animateKeyboardWillShow:note];
-    }];
-    
-    [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
-        [this animateKeyboardWillHide:note];
-    }];
-    
-}
-
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    [self layoutViews];
-
-}
-- (void) viewWillDisappear:(BOOL)animated {
-    
-    [super viewWillDisappear:animated];
-    
-    [self unsubscribeForKeyboardWillShowNotification];
-    
-    [self unsubscribeForKeyboardWillChangeFrameNotification];
-    
-    [self unsubscribeForKeyboardWillHideNotification];
-
-}
-
-- (void) animateKeyboardWillShow:(NSNotification *)aNotification {
-    
-    
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    if(_keyboardShowing == NO){
-        _originalContainerHeight = _contentView.height;
-    }else{
-        
-    }
-    
-    _keyboardShowing = YES;
-    
-    CGSize csz = _contentView.contentSize;
-    CGSize bsz = _contentView.bounds.size;
-    [_contentView setContentOffset:CGPointMake(_contentView.contentOffset.x,csz.height - bsz.height) animated:YES];
-    
-    
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         _contentView.frame = CGRectMake(
-                                                         _contentView.x,
-                                                         _contentView.y,
-                                                         _contentView.width ,
-                                                         _originalContainerHeight  - kbSize.height
-                                                         );
-                     }
-                     completion:^(BOOL finished){
-                         
-                     }
-     ];
-    
-}
-
-- (void) animateKeyboardWillHide:(NSNotification *)aNotification {
-    
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    if(!_keyboardShowing)
-        return;
-    
-    _keyboardShowing = NO;
-    
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         _contentView.frame = CGRectMake(
-                                                         _contentView.x,
-                                                         _contentView.y,
-                                                         _contentView.width,
-                                                         _originalContainerHeight
-                                                         );
-                     }
-                     completion:^(BOOL finished){
-                         
-                     }
-     ];
-    
+    _categoryValueLabel.enabled = NO;
+    _nameValueLabel.enabled = NO;
+    _groupOwnerValueLabel.enabled = NO;
+    _passwordValueLabel.enabled = NO;
+    _aboutValueLabel.editable = NO;
 }
 
 
@@ -286,46 +173,40 @@
 
 - (void) populateViews{
     
-    
-    /*
-    [_categoryLabel setEditerText:_group.categoryName];
-    
-    [_nameLabel setEditerText:_group.name];
-    
-    _selectedCategoryID = _group.categoryId;
+    [_categoryValueLabel setText:_group.categoryName];
+    [_nameValueLabel setText:_group.name];
     
     [[DatabaseManager defaultManager] findUserWithID:_group.userId success:^(id result){
-
+        
         _owner = result;
-        [_groupOwnerLabel setEditerText:_owner.name];
+        [_groupOwnerValueLabel setText:_owner.name];
         
     } error:^(NSString *strError){
         
     }];
     
     if(_group.password.length > 0)
-        [_passwordLabel setEditerText:NSLocalizedString(@"Password-Exists", nil)];
+        [_passwordValueLabel setText:NSLocalizedString(@"Password-Exists", nil)];
     else
-        [_passwordLabel setEditerText:NSLocalizedString(@"No-Password", nil)];
+        [_passwordValueLabel setText:NSLocalizedString(@"No-Password", nil)];
     
-    [_aboutLabel setEditerText:_group.description];
-    
-    
+    [_aboutValueLabel setText:_group.description];
+
+
     [[DatabaseManager defaultManager] loadCategoryIconByName:_group.categoryName success:^(UIImage *image){
         
-        [_categoryLabel setIconImage:image];
-        
+        [_categoryIconView setImage:image];
         [self performSelector:@selector(layoutViews) withObject:nil afterDelay:0.1];
         
     }error:^(NSString *errStr){
         
     }];
     
-    
     [self layoutViews];
     [self loadAvatar];
     [self updateAddButton];
-    */
+     
+
 }
 
 -(void) updateAddButton{
@@ -530,9 +411,8 @@
     
 }
 
--(void)hideStartConverstationBtn{
-    [_startConversationBtn removeFromSuperview];
-    [_views removeObject:_startConversationBtn];
+-(IBAction) openOwner{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:_owner];
 }
 
 @end

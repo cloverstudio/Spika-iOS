@@ -445,7 +445,9 @@
 
 - (void) onAddGroup {
     
-    CSNavigationController *addNewGroupViewController = [[CSNavigationController alloc] initWithRootViewController:[CSKit viewControllerFromString:@"HUNewGroupViewController"]];
+    HUNewGroupViewController *vc = [[HUNewGroupViewController alloc] initWithNibName:@"NewGroupView" bundle:nil];
+    
+    CSNavigationController *addNewGroupViewController = [[CSNavigationController alloc] initWithRootViewController:vc];
     [addNewGroupViewController setBackgroundImageName:@"hp_nav_bar_background"]; //background of Navigation bar
     
     [self.navigationController presentViewController:addNewGroupViewController   

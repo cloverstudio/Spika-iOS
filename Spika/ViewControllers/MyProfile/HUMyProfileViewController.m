@@ -359,9 +359,7 @@
 - (void) animateKeyboardWillShow:(NSNotification *)aNotification {
     _keyboardShowing = YES;
     _keyboardSize = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
     _contentView.height = self.view.height - _keyboardSize.height;
-    
 }
 
 - (void) animateKeyboardWillHide:(NSNotification *)aNotification {

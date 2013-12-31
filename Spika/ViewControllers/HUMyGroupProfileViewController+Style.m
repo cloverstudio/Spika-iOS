@@ -24,7 +24,6 @@
 
 #import "HUMyGroupProfileViewController+Style.h"
 #import "HUGroupProfileViewController+Style.h"
-#import "HUNewGroupViewController+Style.h"
 #import "HUBaseViewController+Style.h"
 
 @implementation HUMyGroupProfileViewController (Style)
