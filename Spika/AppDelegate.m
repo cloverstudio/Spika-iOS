@@ -723,7 +723,7 @@
 
             [self clearNavigationVC];
             
-            HUMyProfileViewController *myHUProfileViewController = [[HUMyProfileViewController alloc] init];
+            HUMyProfileViewController *myHUProfileViewController = [[HUMyProfileViewController alloc] initWithNibName:@"MyProflieView" bundle:nil];
             [_navigationController pushViewController:myHUProfileViewController animated:YES];
 
     }];

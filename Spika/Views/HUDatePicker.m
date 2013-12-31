@@ -50,7 +50,7 @@
         );
         
 
-        self.backgroundColor = [HUBaseViewController colorWithSharedColorType:HUSharedColorTypeDark];
+        self.backgroundColor = [UIColor whiteColor];
         
         UIButton *button = [self newDoneButtonWithSelector:@selector(done)];
         

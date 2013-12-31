@@ -143,16 +143,16 @@
     }
 
     [_aboutValueLabel sizeToFit];
-    int aboutViewHeight = _aboutValueLabel.size.height + 10;
+    int aboutViewHeight = _aboutValueLabel.size.height + 40;
     
     if(_aboutViewHeightConstraint.constant < aboutViewHeight)
         [_aboutViewHeightConstraint setConstant:aboutViewHeight];
-
-    CGRect bottomElementRect = [_bottomElement convertRect:_bottomElement.bounds toView:_contentView];
-    float contentBottomLinePosition = CGRectGetMaxY(_bottomElement.frame);
     
-    // todo : fit to actual content height
-    [_contentHeightConstraint setConstant:1500];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        CGPoint absolutePosition = [_bottomElement convertPoint:_bottomElement.frame.origin toView:_contentView];
+        [_contentHeightConstraint setConstant:absolutePosition.y + _bottomElement.height + 20];
+    });
+    
     
 }
 
@@ -228,21 +228,26 @@
                                              
                                              [_nameValueLabel setText:_user.name];
 
-                                             [_genderValueLabel setText:_user.gender];
                                              [_aboutValueLabel setText:_user.about];
                                              
                                              if(_user.birthday != 0){
                                                  _birthdayDate = [NSDate dateWithTimeIntervalSince1970:_user.birthday];
                                              }
                                              
-                                             NSString *onlineStatusString = [_user.onlineStatus isEqualToString:@""] ? _onlineStatusDataSource[0] : [Utils convertOnlineStatusKeyForDisplay:_user.onlineStatus];
+                                             [_genderValueLabel setText:NSLocalizedString(_user.gender,nil)];
+                                             [_aboutValueLabel setText:_user.about];
                                              
-                                             [_statusValueLabel setText:onlineStatusString];
+                                             if(_user.birthday != 0){
+                                                 _birthdayDate = [NSDate dateWithTimeIntervalSince1970:_user.birthday];
+                                             }
+                                             
+                                             NSString *onlineStatusString = [_user.onlineStatus isEqualToString:@""] ? _onlineStatusDataSource[0] : [Utils convertOnlineStatusKeyForDB:_user.onlineStatus];
+                                             [_statusValueLabel setText:NSLocalizedString(onlineStatusString,nil)];
                                              
                                              int stateIndex = 0;
                                              for(int i = 0 ; i < _onlineStatusDataSource.count ; i++){
                                                  
-                                                 if([_onlineStatusDataSource[i] isEqualToString:[Utils convertOnlineStatusKeyForDisplay:_user.onlineStatus]]){
+                                                 if([_onlineStatusDataSource[i] isEqualToString:[Utils convertOnlineStatusKeyForDB:_user.onlineStatus]]){
                                                      stateIndex = i;
                                                      break;
                                                  }

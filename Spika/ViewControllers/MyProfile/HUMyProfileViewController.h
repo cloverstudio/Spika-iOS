@@ -28,9 +28,39 @@
 #define kLabelMarginLeft     60
 #define kMargin              5
 
-@class ModelUser,HUImageView;
+@class ModelUser,HUImageView,HUTextView;
 
-@interface HUMyProfileViewController : HUBaseViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,HUEditableLabelDelegate,UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface HUMyProfileViewController : HUBaseViewController <
+                                        UIImagePickerControllerDelegate,
+                                        UINavigationControllerDelegate,
+                                        UITextFieldDelegate,
+                                        UIActionSheetDelegate,
+                                        UITableViewDataSource,
+                                        UITableViewDelegate,
+                                        UITextViewDelegate>{
+    
+    IBOutlet UIScrollView *contentView;
+    IBOutlet HUImageView *_userAvatarImageView;
+    
+    IBOutlet UILabel        *_nameLabel;
+    IBOutlet UITextField    *_nameValueLabel;
+    IBOutlet UILabel        *_aboutLabel;
+    IBOutlet HUTextView     *_aboutValueLabel;
+    IBOutlet UILabel        *_birthdayLabel;
+    IBOutlet UITextField    *_birthdayValueLabel;
+    IBOutlet UILabel        *_genderLabel;
+    IBOutlet UITextField    *_genderValueLabel;
+    IBOutlet UILabel        *_statusLabel;
+    IBOutlet UITextField    *_statusValueLabel;
+    IBOutlet UIImageView    *_onlineStatusIconView;
+    IBOutlet UIButton       *_saveButton;
+    
+    IBOutlet NSLayoutConstraint *_avatarImageViewHeightConstraint;
+    IBOutlet NSLayoutConstraint *_aboutViewHeightConstraint;
+    IBOutlet NSLayoutConstraint *_contentHeightConstraint;
+}
+
+- (IBAction) onSave;
 
 @property (nonatomic, strong) ModelUser *myUser;
 @property (nonatomic, strong) UIScrollView *contentView;
