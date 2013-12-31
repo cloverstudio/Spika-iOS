@@ -160,7 +160,7 @@
                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                  kCFStringEncodingUTF8));
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@=%@",DatabaseURL,CheckUniqueURL,key,escapedString]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/findUser/%@/%@",DatabaseURL,key,escapedString]];
     
     NSString *result = [[HUHTTPClient sharedClient] doGetSynchronous:url];
     

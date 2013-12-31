@@ -371,11 +371,53 @@
 
 #pragma mark - Other
 
+
+- (BOOL) validationAsync{
+    
+    if (![_nameValueLabel text] || [_nameValueLabel text].length == 0) {
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Missing-Username", @"")];
+        
+        return NO;
+    }
+    
+    
+    if(![[HUDataManager defaultManager] isNameOkay:[_nameValueLabel text]]){
+        
+        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Invalid-Name", @"")];
+        return NO;
+        
+    }
+    
+    
+    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"name" value:[_nameValueLabel text]];
+    
+    if(result != nil){
+        
+        NSString *foundId = [result objectForKey:@"_id"];
+        
+        if(![[[UserManager defaultManager] getLoginedUser]._id isEqualToString:foundId]){
+            [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate username", @"")];
+            return NO;
+        }
+        
+    }
+    
+    return YES;
+}
+
+
+
 - (void) onSave{
     __weak HUMyProfileViewController *this = self;
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if(![this validationAsync]){
+            [[AlertViewManager defaultManager] dismiss];
+            return;
+        }
         
         [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
         

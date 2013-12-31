@@ -29,6 +29,8 @@
 #import "AFImageRequestOperation.h"
 #import "NSString+MD5.h"
 #import "AFHTTPClient+Synchronous.h"
+#import "ModelUser.h"
+#import "UserManager.h"
 
 @implementation HUHTTPClient
 
@@ -118,16 +120,21 @@
 
 - (NSString *) doGetSynchronous:(NSURL *) url{
     
-    NSError* error; // this is not required, but good to have
+    ModelUser *user = [[UserManager defaultManager] getLoginedUser];
+
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:url];
     
-    NSMutableString *newURL = [[NSMutableString alloc] initWithString:[url absoluteString]];
+    [request setValue:user._id forHTTPHeaderField:@"user_id"];
+    [request setValue:user.token forHTTPHeaderField:@"token"];
     
-    [newURL appendFormat:@"&db=%@",DatabaseName];
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request
+                                          returningResponse:&response
+                                                      error:&error];
     
-    url = [NSURL URLWithString:newURL];
-    
-    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-    
+    NSString* apiResponse = [NSString stringWithUTF8String:[data bytes]];
+
     return apiResponse;
 }
 

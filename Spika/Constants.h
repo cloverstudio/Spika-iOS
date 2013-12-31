@@ -44,7 +44,6 @@
 #define DatabaseURL             @"http://192.168.1.106:8080/wwwroot/api"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
-#define CheckUniqueURL          @"checkUnique.php"
 #define ReminderURL             @"resetPassword"
 #define DatabaseUserName        @"binduser"
 #define DatabasePassword        @"cloverpass013"
