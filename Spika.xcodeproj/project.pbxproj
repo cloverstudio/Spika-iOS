@@ -288,51 +288,9 @@
 		ADC6472817E0761700C16A9D /* ModelMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452017E0761600C16A9D /* ModelMessage.m */; };
 		ADC6472917E0761700C16A9D /* ModelRecentActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452217E0761600C16A9D /* ModelRecentActivity.m */; };
 		ADC6472A17E0761700C16A9D /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452517E0761600C16A9D /* ModelUser.m */; };
-		ADC6472C17E0761700C16A9D /* _HUPasswordBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452B17E0761600C16A9D /* _HUPasswordBaseViewController+Style.m */; };
-		ADC6472D17E0761700C16A9D /* _HUPasswordBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452D17E0761600C16A9D /* _HUPasswordBaseViewController.m */; };
-		ADC6472E17E0761700C16A9D /* HUBaseTableViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6452F17E0761600C16A9D /* HUBaseTableViewController+Style.m */; };
-		ADC6472F17E0761700C16A9D /* HUBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453117E0761600C16A9D /* HUBaseTableViewController.m */; };
-		ADC6473017E0761700C16A9D /* HUBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453317E0761600C16A9D /* HUBaseViewController+Style.m */; };
-		ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453517E0761600C16A9D /* HUBaseViewController.m */; };
-		ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */; };
-		ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6453917E0761600C16A9D /* HUEULAViewController.m */; };
-		ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */; };
-		ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454317E0761600C16A9D /* HUGroupsViewController.m */; };
-		ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */; };
-		ADC6473A17E0761700C16A9D /* HUImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */; };
-		ADC6473D17E0761700C16A9D /* HUMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6454D17E0761600C16A9D /* HUMediaViewController.m */; };
-		ADC6474417E0761700C16A9D /* HUPasswordConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6455B17E0761600C16A9D /* HUPasswordConfirmViewController.m */; };
-		ADC6474517E0761700C16A9D /* HUPasswordSetNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6455D17E0761600C16A9D /* HUPasswordSetNewViewController.m */; };
-		ADC6474617E0761700C16A9D /* HUPhotoDetailViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6455F17E0761600C16A9D /* HUPhotoDetailViewController+Style.m */; };
-		ADC6474717E0761700C16A9D /* HUPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456117E0761600C16A9D /* HUPhotoDetailViewController.m */; };
-		ADC6474A17E0761700C16A9D /* HURecentActivityViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456717E0761600C16A9D /* HURecentActivityViewController+Style.m */; };
-		ADC6474B17E0761700C16A9D /* HURecentActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456917E0761600C16A9D /* HURecentActivityViewController.m */; };
-		ADC6474C17E0761700C16A9D /* HUSearchBarController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456B17E0761600C16A9D /* HUSearchBarController+Style.m */; };
-		ADC6474D17E0761700C16A9D /* HUSearchBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456D17E0761600C16A9D /* HUSearchBarController.m */; };
-		ADC6474E17E0761700C16A9D /* HUSettingsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6456F17E0761600C16A9D /* HUSettingsViewController+Style.m */; };
-		ADC6474F17E0761700C16A9D /* HUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457117E0761600C16A9D /* HUSettingsViewController.m */; };
-		ADC6475017E0761700C16A9D /* HUSideMenuViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */; };
-		ADC6475117E0761700C16A9D /* HUSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */; };
-		ADC6475417E0761700C16A9D /* HUSubMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */; };
-		ADC6475517E0761700C16A9D /* HUUsersViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457D17E0761600C16A9D /* HUUsersViewController+Style.m */; };
-		ADC6475617E0761700C16A9D /* HUUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6457F17E0761600C16A9D /* HUUsersViewController.m */; };
-		ADC6475717E0761700C16A9D /* HUVideoRecorderViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458117E0761600C16A9D /* HUVideoRecorderViewController+Style.m */; };
-		ADC6475817E0761700C16A9D /* HUVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458317E0761600C16A9D /* HUVideoRecorderViewController.m */; };
-		ADC6475917E0761700C16A9D /* HUVoiceMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458517E0761600C16A9D /* HUVoiceMessageDetailViewController.m */; };
-		ADC6475A17E0761700C16A9D /* HUVoicePlayerViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458717E0761600C16A9D /* HUVoicePlayerViewController+Style.m */; };
-		ADC6475B17E0761700C16A9D /* HUVoiceRecorderViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458917E0761600C16A9D /* HUVoiceRecorderViewController+Style.m */; };
-		ADC6475C17E0761700C16A9D /* HUVoiceRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458B17E0761600C16A9D /* HUVoiceRecorderViewController.m */; };
-		ADC6475D17E0761700C16A9D /* HUWallViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458D17E0761600C16A9D /* HUWallViewController+Style.m */; };
-		ADC6475E17E0761700C16A9D /* HUWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6458F17E0761600C16A9D /* HUWallViewController.m */; };
-		ADC6475F17E0761700C16A9D /* ImageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459117E0761600C16A9D /* ImageDetailVC.m */; };
-		ADC6476017E0761700C16A9D /* ImageUploadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459317E0761600C16A9D /* ImageUploadVC.m */; };
-		ADC6476117E0761700C16A9D /* LocationViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459517E0761600C16A9D /* LocationViewController+Style.m */; };
-		ADC6476217E0761700C16A9D /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459717E0761600C16A9D /* LocationViewController.m */; };
 		ADC6476317E0761700C16A9D /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459917E0761600C16A9D /* MapVC.m */; };
 		ADC6476517E0761700C16A9D /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459C17E0761600C16A9D /* RootVC.m */; };
 		ADC6476617E0761700C16A9D /* UINavigationItem+AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */; };
-		ADC6476717E0761700C16A9D /* UsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC645A017E0761600C16A9D /* UsersVC.m */; };
-		ADC6476817E0761700C16A9D /* VideoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC645A217E0761600C16A9D /* VideoDetailVC.m */; };
 		ADC6476917E0761700C16A9D /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC645A517E0761600C16A9D /* AlertViewManager.m */; };
 		ADC6476A17E0761700C16A9D /* CSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC645A717E0761600C16A9D /* CSPageControl.m */; };
 		ADC6476C17E0761700C16A9D /* HUActivityMessageCell+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC645AB17E0761600C16A9D /* HUActivityMessageCell+Style.m */; };
@@ -403,6 +361,47 @@
 		B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */; };
 		B3409E02186DEDB50033A4B3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E01186DEDB50033A4B3 /* MainWindow.xib */; };
 		B3409E0A186DF2B60033A4B3 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E09186DF2B60033A4B3 /* LoginView.xib */; };
+		B37479721874566E001CE0E7 /* HUWallViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */; };
+		B37479731874566E001CE0E7 /* HUWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479711874566E001CE0E7 /* HUWallViewController.m */; };
+		B374798A18745B82001CE0E7 /* HUUsersViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374797618745B82001CE0E7 /* HUUsersViewController+Style.m */; };
+		B374798B18745B82001CE0E7 /* HUUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374797818745B82001CE0E7 /* HUUsersViewController.m */; };
+		B374798C18745B82001CE0E7 /* HUGroupsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374797B18745B82001CE0E7 /* HUGroupsViewController+Style.m */; };
+		B374798D18745B82001CE0E7 /* HUGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374797D18745B82001CE0E7 /* HUGroupsViewController.m */; };
+		B374798E18745B82001CE0E7 /* HUBaseTableViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374798018745B82001CE0E7 /* HUBaseTableViewController+Style.m */; };
+		B374798F18745B82001CE0E7 /* HUBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374798218745B82001CE0E7 /* HUBaseTableViewController.m */; };
+		B374799018745B82001CE0E7 /* HUBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374798418745B82001CE0E7 /* HUBaseViewController+Style.m */; };
+		B374799118745B82001CE0E7 /* HUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374798618745B82001CE0E7 /* HUBaseViewController.m */; };
+		B374799218745B82001CE0E7 /* HUEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374798918745B82001CE0E7 /* HUEULAViewController.m */; };
+		B37479C618745EDA001CE0E7 /* HUPasswordConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374799518745EDA001CE0E7 /* HUPasswordConfirmViewController.m */; };
+		B37479C718745EDA001CE0E7 /* HUPasswordSetNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374799718745EDA001CE0E7 /* HUPasswordSetNewViewController.m */; };
+		B37479C818745EDA001CE0E7 /* HUDigitInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374799A18745EDA001CE0E7 /* HUDigitInputViewController.m */; };
+		B37479C918745EDA001CE0E7 /* HUImageUploadViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374799D18745EDA001CE0E7 /* HUImageUploadViewController+Style.m */; };
+		B37479CA18745EDA001CE0E7 /* HUImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374799F18745EDA001CE0E7 /* HUImageUploadViewController.m */; };
+		B37479CB18745EDA001CE0E7 /* HUMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479A118745EDA001CE0E7 /* HUMediaViewController.m */; };
+		B37479CC18745EDA001CE0E7 /* HUPhotoDetailViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479A318745EDA001CE0E7 /* HUPhotoDetailViewController+Style.m */; };
+		B37479CD18745EDA001CE0E7 /* HUPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479A518745EDA001CE0E7 /* HUPhotoDetailViewController.m */; };
+		B37479CE18745EDA001CE0E7 /* HUVideoRecorderViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479A718745EDA001CE0E7 /* HUVideoRecorderViewController+Style.m */; };
+		B37479CF18745EDA001CE0E7 /* HUVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479A918745EDA001CE0E7 /* HUVideoRecorderViewController.m */; };
+		B37479D018745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479AB18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m */; };
+		B37479D118745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479AD18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m */; };
+		B37479D218745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479AF18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m */; };
+		B37479D318745EDA001CE0E7 /* HUVoiceRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479B118745EDA001CE0E7 /* HUVoiceRecorderViewController.m */; };
+		B37479D418745EDA001CE0E7 /* ImageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479B318745EDA001CE0E7 /* ImageDetailVC.m */; };
+		B37479D518745EDA001CE0E7 /* ImageUploadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479B518745EDA001CE0E7 /* ImageUploadVC.m */; };
+		B37479D618745EDA001CE0E7 /* LocationViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479B718745EDA001CE0E7 /* LocationViewController+Style.m */; };
+		B37479D718745EDA001CE0E7 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479B918745EDA001CE0E7 /* LocationViewController.m */; };
+		B37479D818745EDA001CE0E7 /* VideoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479BB18745EDA001CE0E7 /* VideoDetailVC.m */; };
+		B37479D918745EDA001CE0E7 /* HUSearchBarController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479BE18745EDA001CE0E7 /* HUSearchBarController+Style.m */; };
+		B37479DA18745EDA001CE0E7 /* HUSearchBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479C018745EDA001CE0E7 /* HUSearchBarController.m */; };
+		B37479DB18745EDA001CE0E7 /* HURecentActivityViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479C318745EDA001CE0E7 /* HURecentActivityViewController+Style.m */; };
+		B37479DC18745EDA001CE0E7 /* HURecentActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479C518745EDA001CE0E7 /* HURecentActivityViewController.m */; };
+		B37479E918745EE0001CE0E7 /* HUSideMenuViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */; };
+		B37479EA18745EE0001CE0E7 /* HUSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */; };
+		B37479EB18745EE0001CE0E7 /* HUSubMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E318745EE0001CE0E7 /* HUSubMenuViewController.m */; };
+		B37479EC18745EE0001CE0E7 /* HUSettingsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */; };
+		B37479ED18745EE0001CE0E7 /* HUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */; };
+		B37479F218746272001CE0E7 /* _HUPasswordBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */; };
+		B37479F318746272001CE0E7 /* _HUPasswordBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */; };
 		B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */; };
 		B3C69A6B18718BA20055DD19 /* MyProflieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C69A6A18718BA20055DD19 /* MyProflieView.xib */; };
 		B3C69A741872DF060055DD19 /* HUGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A721872DF060055DD19 /* HUGroupProfileViewController.m */; };
@@ -813,96 +812,12 @@
 		ADC6452617E0761600C16A9D /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		ADC6452717E0761600C16A9D /* Spika-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Spika-Info.plist"; sourceTree = "<group>"; };
 		ADC6452817E0761600C16A9D /* Spika-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spika-Prefix.pch"; sourceTree = "<group>"; };
-		ADC6452A17E0761600C16A9D /* _HUPasswordBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_HUPasswordBaseViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6452B17E0761600C16A9D /* _HUPasswordBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_HUPasswordBaseViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6452C17E0761600C16A9D /* _HUPasswordBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HUPasswordBaseViewController.h; sourceTree = "<group>"; };
-		ADC6452D17E0761600C16A9D /* _HUPasswordBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HUPasswordBaseViewController.m; sourceTree = "<group>"; };
-		ADC6452E17E0761600C16A9D /* HUBaseTableViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseTableViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6452F17E0761600C16A9D /* HUBaseTableViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseTableViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6453017E0761600C16A9D /* HUBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseTableViewController.h; sourceTree = "<group>"; };
-		ADC6453117E0761600C16A9D /* HUBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseTableViewController.m; sourceTree = "<group>"; };
-		ADC6453217E0761600C16A9D /* HUBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6453317E0761600C16A9D /* HUBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6453417E0761600C16A9D /* HUBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseViewController.h; sourceTree = "<group>"; };
-		ADC6453517E0761600C16A9D /* HUBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseViewController.m; sourceTree = "<group>"; };
-		ADC6453617E0761600C16A9D /* HUDigitInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDigitInputViewController.h; sourceTree = "<group>"; };
-		ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDigitInputViewController.m; sourceTree = "<group>"; };
-		ADC6453817E0761600C16A9D /* HUEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUEULAViewController.h; sourceTree = "<group>"; };
-		ADC6453917E0761600C16A9D /* HUEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUEULAViewController.m; sourceTree = "<group>"; };
-		ADC6454017E0761600C16A9D /* HUGroupsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6454217E0761600C16A9D /* HUGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsViewController.h; sourceTree = "<group>"; };
-		ADC6454317E0761600C16A9D /* HUGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupsViewController.m; sourceTree = "<group>"; };
-		ADC6454417E0761600C16A9D /* HUImageUploadViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUImageUploadViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUImageUploadViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6454617E0761600C16A9D /* HUImageUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUImageUploadViewController.h; sourceTree = "<group>"; };
-		ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUImageUploadViewController.m; sourceTree = "<group>"; };
-		ADC6454C17E0761600C16A9D /* HUMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMediaViewController.h; sourceTree = "<group>"; };
-		ADC6454D17E0761600C16A9D /* HUMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMediaViewController.m; sourceTree = "<group>"; };
-		ADC6455A17E0761600C16A9D /* HUPasswordConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPasswordConfirmViewController.h; sourceTree = "<group>"; };
-		ADC6455B17E0761600C16A9D /* HUPasswordConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPasswordConfirmViewController.m; sourceTree = "<group>"; };
-		ADC6455C17E0761600C16A9D /* HUPasswordSetNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPasswordSetNewViewController.h; sourceTree = "<group>"; };
-		ADC6455D17E0761600C16A9D /* HUPasswordSetNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPasswordSetNewViewController.m; sourceTree = "<group>"; };
-		ADC6455E17E0761600C16A9D /* HUPhotoDetailViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUPhotoDetailViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6455F17E0761600C16A9D /* HUPhotoDetailViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUPhotoDetailViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6456017E0761600C16A9D /* HUPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPhotoDetailViewController.h; sourceTree = "<group>"; };
-		ADC6456117E0761600C16A9D /* HUPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPhotoDetailViewController.m; sourceTree = "<group>"; };
-		ADC6456617E0761600C16A9D /* HURecentActivityViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HURecentActivityViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6456717E0761600C16A9D /* HURecentActivityViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HURecentActivityViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6456817E0761600C16A9D /* HURecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HURecentActivityViewController.h; sourceTree = "<group>"; };
-		ADC6456917E0761600C16A9D /* HURecentActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HURecentActivityViewController.m; sourceTree = "<group>"; };
-		ADC6456A17E0761600C16A9D /* HUSearchBarController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSearchBarController+Style.h"; sourceTree = "<group>"; };
-		ADC6456B17E0761600C16A9D /* HUSearchBarController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSearchBarController+Style.m"; sourceTree = "<group>"; };
-		ADC6456C17E0761600C16A9D /* HUSearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSearchBarController.h; sourceTree = "<group>"; };
-		ADC6456D17E0761600C16A9D /* HUSearchBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSearchBarController.m; sourceTree = "<group>"; };
-		ADC6456E17E0761600C16A9D /* HUSettingsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSettingsViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6456F17E0761600C16A9D /* HUSettingsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSettingsViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6457017E0761600C16A9D /* HUSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSettingsViewController.h; sourceTree = "<group>"; };
-		ADC6457117E0761600C16A9D /* HUSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSettingsViewController.m; sourceTree = "<group>"; };
-		ADC6457217E0761600C16A9D /* HUSideMenuViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSideMenuViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSideMenuViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6457417E0761600C16A9D /* HUSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSideMenuViewController.h; sourceTree = "<group>"; };
-		ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSideMenuViewController.m; sourceTree = "<group>"; };
-		ADC6457A17E0761600C16A9D /* HUSubMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSubMenuViewController.h; sourceTree = "<group>"; };
-		ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSubMenuViewController.m; sourceTree = "<group>"; };
-		ADC6457C17E0761600C16A9D /* HUUsersViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUUsersViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6457D17E0761600C16A9D /* HUUsersViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUUsersViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6457E17E0761600C16A9D /* HUUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUsersViewController.h; sourceTree = "<group>"; };
-		ADC6457F17E0761600C16A9D /* HUUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUsersViewController.m; sourceTree = "<group>"; };
-		ADC6458017E0761600C16A9D /* HUVideoRecorderViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVideoRecorderViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6458117E0761600C16A9D /* HUVideoRecorderViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVideoRecorderViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6458217E0761600C16A9D /* HUVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVideoRecorderViewController.h; sourceTree = "<group>"; };
-		ADC6458317E0761600C16A9D /* HUVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVideoRecorderViewController.m; sourceTree = "<group>"; };
-		ADC6458417E0761600C16A9D /* HUVoiceMessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoiceMessageDetailViewController.h; sourceTree = "<group>"; };
-		ADC6458517E0761600C16A9D /* HUVoiceMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoiceMessageDetailViewController.m; sourceTree = "<group>"; };
-		ADC6458617E0761600C16A9D /* HUVoicePlayerViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoicePlayerViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6458717E0761600C16A9D /* HUVoicePlayerViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVoicePlayerViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6458817E0761600C16A9D /* HUVoiceRecorderViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoiceRecorderViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6458917E0761600C16A9D /* HUVoiceRecorderViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVoiceRecorderViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6458A17E0761600C16A9D /* HUVoiceRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoiceRecorderViewController.h; sourceTree = "<group>"; };
-		ADC6458B17E0761600C16A9D /* HUVoiceRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoiceRecorderViewController.m; sourceTree = "<group>"; };
-		ADC6458C17E0761600C16A9D /* HUWallViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUWallViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6458D17E0761600C16A9D /* HUWallViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUWallViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6458E17E0761600C16A9D /* HUWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUWallViewController.h; sourceTree = "<group>"; };
-		ADC6458F17E0761600C16A9D /* HUWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUWallViewController.m; sourceTree = "<group>"; };
-		ADC6459017E0761600C16A9D /* ImageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetailVC.h; sourceTree = "<group>"; };
-		ADC6459117E0761600C16A9D /* ImageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetailVC.m; sourceTree = "<group>"; };
-		ADC6459217E0761600C16A9D /* ImageUploadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadVC.h; sourceTree = "<group>"; };
-		ADC6459317E0761600C16A9D /* ImageUploadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadVC.m; sourceTree = "<group>"; };
-		ADC6459417E0761600C16A9D /* LocationViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocationViewController+Style.h"; sourceTree = "<group>"; };
-		ADC6459517E0761600C16A9D /* LocationViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocationViewController+Style.m"; sourceTree = "<group>"; };
-		ADC6459617E0761600C16A9D /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
-		ADC6459717E0761600C16A9D /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		ADC6459817E0761600C16A9D /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
 		ADC6459917E0761600C16A9D /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		ADC6459B17E0761600C16A9D /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
 		ADC6459C17E0761600C16A9D /* RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
-		ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+AutoScrollLabel.h"; sourceTree = "<group>"; };
-		ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+AutoScrollLabel.m"; sourceTree = "<group>"; };
-		ADC6459F17E0761600C16A9D /* UsersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersVC.h; sourceTree = "<group>"; };
-		ADC645A017E0761600C16A9D /* UsersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersVC.m; sourceTree = "<group>"; };
-		ADC645A117E0761600C16A9D /* VideoDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailVC.h; sourceTree = "<group>"; };
-		ADC645A217E0761600C16A9D /* VideoDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailVC.m; sourceTree = "<group>"; };
+		ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationItem+AutoScrollLabel.h"; path = "../ViewControllers/UINavigationItem+AutoScrollLabel.h"; sourceTree = "<group>"; };
+		ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+AutoScrollLabel.m"; path = "../ViewControllers/UINavigationItem+AutoScrollLabel.m"; sourceTree = "<group>"; };
 		ADC645A417E0761600C16A9D /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
 		ADC645A517E0761600C16A9D /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
 		ADC645A617E0761600C16A9D /* CSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSPageControl.h; sourceTree = "<group>"; };
@@ -1028,6 +943,88 @@
 		B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HULoginViewController.m; sourceTree = "<group>"; };
 		B3409E01186DEDB50033A4B3 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B3409E09186DF2B60033A4B3 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = ../../UserInterfaces/LoginView.xib; sourceTree = "<group>"; };
+		B374796E1874566E001CE0E7 /* HUWallViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUWallViewController+Style.h"; sourceTree = "<group>"; };
+		B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUWallViewController+Style.m"; sourceTree = "<group>"; };
+		B37479701874566E001CE0E7 /* HUWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUWallViewController.h; sourceTree = "<group>"; };
+		B37479711874566E001CE0E7 /* HUWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUWallViewController.m; sourceTree = "<group>"; };
+		B374797518745B82001CE0E7 /* HUUsersViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUUsersViewController+Style.h"; sourceTree = "<group>"; };
+		B374797618745B82001CE0E7 /* HUUsersViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUUsersViewController+Style.m"; sourceTree = "<group>"; };
+		B374797718745B82001CE0E7 /* HUUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUsersViewController.h; sourceTree = "<group>"; };
+		B374797818745B82001CE0E7 /* HUUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUsersViewController.m; sourceTree = "<group>"; };
+		B374797A18745B82001CE0E7 /* HUGroupsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsViewController+Style.h"; sourceTree = "<group>"; };
+		B374797B18745B82001CE0E7 /* HUGroupsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsViewController+Style.m"; sourceTree = "<group>"; };
+		B374797C18745B82001CE0E7 /* HUGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsViewController.h; sourceTree = "<group>"; };
+		B374797D18745B82001CE0E7 /* HUGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupsViewController.m; sourceTree = "<group>"; };
+		B374797F18745B82001CE0E7 /* HUBaseTableViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseTableViewController+Style.h"; sourceTree = "<group>"; };
+		B374798018745B82001CE0E7 /* HUBaseTableViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseTableViewController+Style.m"; sourceTree = "<group>"; };
+		B374798118745B82001CE0E7 /* HUBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseTableViewController.h; sourceTree = "<group>"; };
+		B374798218745B82001CE0E7 /* HUBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseTableViewController.m; sourceTree = "<group>"; };
+		B374798318745B82001CE0E7 /* HUBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseViewController+Style.h"; sourceTree = "<group>"; };
+		B374798418745B82001CE0E7 /* HUBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseViewController+Style.m"; sourceTree = "<group>"; };
+		B374798518745B82001CE0E7 /* HUBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseViewController.h; sourceTree = "<group>"; };
+		B374798618745B82001CE0E7 /* HUBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseViewController.m; sourceTree = "<group>"; };
+		B374798818745B82001CE0E7 /* HUEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUEULAViewController.h; sourceTree = "<group>"; };
+		B374798918745B82001CE0E7 /* HUEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUEULAViewController.m; sourceTree = "<group>"; };
+		B374799418745EDA001CE0E7 /* HUPasswordConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPasswordConfirmViewController.h; sourceTree = "<group>"; };
+		B374799518745EDA001CE0E7 /* HUPasswordConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPasswordConfirmViewController.m; sourceTree = "<group>"; };
+		B374799618745EDA001CE0E7 /* HUPasswordSetNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPasswordSetNewViewController.h; sourceTree = "<group>"; };
+		B374799718745EDA001CE0E7 /* HUPasswordSetNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPasswordSetNewViewController.m; sourceTree = "<group>"; };
+		B374799918745EDA001CE0E7 /* HUDigitInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDigitInputViewController.h; sourceTree = "<group>"; };
+		B374799A18745EDA001CE0E7 /* HUDigitInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDigitInputViewController.m; sourceTree = "<group>"; };
+		B374799C18745EDA001CE0E7 /* HUImageUploadViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUImageUploadViewController+Style.h"; sourceTree = "<group>"; };
+		B374799D18745EDA001CE0E7 /* HUImageUploadViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUImageUploadViewController+Style.m"; sourceTree = "<group>"; };
+		B374799E18745EDA001CE0E7 /* HUImageUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUImageUploadViewController.h; sourceTree = "<group>"; };
+		B374799F18745EDA001CE0E7 /* HUImageUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUImageUploadViewController.m; sourceTree = "<group>"; };
+		B37479A018745EDA001CE0E7 /* HUMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMediaViewController.h; sourceTree = "<group>"; };
+		B37479A118745EDA001CE0E7 /* HUMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMediaViewController.m; sourceTree = "<group>"; };
+		B37479A218745EDA001CE0E7 /* HUPhotoDetailViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUPhotoDetailViewController+Style.h"; sourceTree = "<group>"; };
+		B37479A318745EDA001CE0E7 /* HUPhotoDetailViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUPhotoDetailViewController+Style.m"; sourceTree = "<group>"; };
+		B37479A418745EDA001CE0E7 /* HUPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPhotoDetailViewController.h; sourceTree = "<group>"; };
+		B37479A518745EDA001CE0E7 /* HUPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPhotoDetailViewController.m; sourceTree = "<group>"; };
+		B37479A618745EDA001CE0E7 /* HUVideoRecorderViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVideoRecorderViewController+Style.h"; sourceTree = "<group>"; };
+		B37479A718745EDA001CE0E7 /* HUVideoRecorderViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVideoRecorderViewController+Style.m"; sourceTree = "<group>"; };
+		B37479A818745EDA001CE0E7 /* HUVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVideoRecorderViewController.h; sourceTree = "<group>"; };
+		B37479A918745EDA001CE0E7 /* HUVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVideoRecorderViewController.m; sourceTree = "<group>"; };
+		B37479AA18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoiceMessageDetailViewController.h; sourceTree = "<group>"; };
+		B37479AB18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoiceMessageDetailViewController.m; sourceTree = "<group>"; };
+		B37479AC18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoicePlayerViewController+Style.h"; sourceTree = "<group>"; };
+		B37479AD18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVoicePlayerViewController+Style.m"; sourceTree = "<group>"; };
+		B37479AE18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoiceRecorderViewController+Style.h"; sourceTree = "<group>"; };
+		B37479AF18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVoiceRecorderViewController+Style.m"; sourceTree = "<group>"; };
+		B37479B018745EDA001CE0E7 /* HUVoiceRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoiceRecorderViewController.h; sourceTree = "<group>"; };
+		B37479B118745EDA001CE0E7 /* HUVoiceRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoiceRecorderViewController.m; sourceTree = "<group>"; };
+		B37479B218745EDA001CE0E7 /* ImageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetailVC.h; sourceTree = "<group>"; };
+		B37479B318745EDA001CE0E7 /* ImageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetailVC.m; sourceTree = "<group>"; };
+		B37479B418745EDA001CE0E7 /* ImageUploadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadVC.h; sourceTree = "<group>"; };
+		B37479B518745EDA001CE0E7 /* ImageUploadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadVC.m; sourceTree = "<group>"; };
+		B37479B618745EDA001CE0E7 /* LocationViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocationViewController+Style.h"; sourceTree = "<group>"; };
+		B37479B718745EDA001CE0E7 /* LocationViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocationViewController+Style.m"; sourceTree = "<group>"; };
+		B37479B818745EDA001CE0E7 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		B37479B918745EDA001CE0E7 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		B37479BA18745EDA001CE0E7 /* VideoDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailVC.h; sourceTree = "<group>"; };
+		B37479BB18745EDA001CE0E7 /* VideoDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailVC.m; sourceTree = "<group>"; };
+		B37479BD18745EDA001CE0E7 /* HUSearchBarController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSearchBarController+Style.h"; sourceTree = "<group>"; };
+		B37479BE18745EDA001CE0E7 /* HUSearchBarController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSearchBarController+Style.m"; sourceTree = "<group>"; };
+		B37479BF18745EDA001CE0E7 /* HUSearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSearchBarController.h; sourceTree = "<group>"; };
+		B37479C018745EDA001CE0E7 /* HUSearchBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSearchBarController.m; sourceTree = "<group>"; };
+		B37479C218745EDA001CE0E7 /* HURecentActivityViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HURecentActivityViewController+Style.h"; sourceTree = "<group>"; };
+		B37479C318745EDA001CE0E7 /* HURecentActivityViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HURecentActivityViewController+Style.m"; sourceTree = "<group>"; };
+		B37479C418745EDA001CE0E7 /* HURecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HURecentActivityViewController.h; sourceTree = "<group>"; };
+		B37479C518745EDA001CE0E7 /* HURecentActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HURecentActivityViewController.m; sourceTree = "<group>"; };
+		B37479DE18745EE0001CE0E7 /* HUSideMenuViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSideMenuViewController+Style.h"; sourceTree = "<group>"; };
+		B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSideMenuViewController+Style.m"; sourceTree = "<group>"; };
+		B37479E018745EE0001CE0E7 /* HUSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSideMenuViewController.h; sourceTree = "<group>"; };
+		B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSideMenuViewController.m; sourceTree = "<group>"; };
+		B37479E218745EE0001CE0E7 /* HUSubMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSubMenuViewController.h; sourceTree = "<group>"; };
+		B37479E318745EE0001CE0E7 /* HUSubMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSubMenuViewController.m; sourceTree = "<group>"; };
+		B37479E518745EE0001CE0E7 /* HUSettingsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSettingsViewController+Style.h"; sourceTree = "<group>"; };
+		B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSettingsViewController+Style.m"; sourceTree = "<group>"; };
+		B37479E718745EE0001CE0E7 /* HUSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSettingsViewController.h; sourceTree = "<group>"; };
+		B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSettingsViewController.m; sourceTree = "<group>"; };
+		B37479EE18746272001CE0E7 /* _HUPasswordBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HUPasswordBaseViewController.h; sourceTree = "<group>"; };
+		B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HUPasswordBaseViewController.m; sourceTree = "<group>"; };
+		B37479F018746272001CE0E7 /* _HUPasswordBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_HUPasswordBaseViewController+Style.h"; sourceTree = "<group>"; };
+		B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_HUPasswordBaseViewController+Style.m"; sourceTree = "<group>"; };
 		B3C69A6618718B440055DD19 /* HUMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMyProfileViewController.h; sourceTree = "<group>"; };
 		B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMyProfileViewController.m; sourceTree = "<group>"; };
 		B3C69A6A18718BA20055DD19 /* MyProflieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProflieView.xib; sourceTree = "<group>"; };
@@ -1923,6 +1920,18 @@
 		ADC6452917E0761600C16A9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B37479DD18745EE0001CE0E7 /* SideMenu */,
+				B37479E418745EE0001CE0E7 /* Settings */,
+				B374799318745EDA001CE0E7 /* Password */,
+				B374799818745EDA001CE0E7 /* Passcode */,
+				B374799B18745EDA001CE0E7 /* MediaViews */,
+				B37479BC18745EDA001CE0E7 /* SearchBar */,
+				B37479C118745EDA001CE0E7 /* RecentMessages */,
+				B374797418745B82001CE0E7 /* UserList */,
+				B374797918745B82001CE0E7 /* GroupList */,
+				B374797E18745B82001CE0E7 /* BaseVC */,
+				B374798718745B82001CE0E7 /* UserAgreement */,
+				B374796D1874566E001CE0E7 /* Wall */,
 				B3C69A8118732B0A0055DD19 /* MyGroup */,
 				B3C69A771873186D0055DD19 /* NewGroup */,
 				B3C69A6E1872DF060055DD19 /* GroupProfile */,
@@ -1931,96 +1940,10 @@
 				B3CE0C03186E343A009372B0 /* ForgotPassword */,
 				B3CE0BFA186E2AAE009372B0 /* Signup */,
 				B3409DF8186DEB3F0033A4B3 /* Login */,
-				ADC6452A17E0761600C16A9D /* _HUPasswordBaseViewController+Style.h */,
-				ADC6452B17E0761600C16A9D /* _HUPasswordBaseViewController+Style.m */,
-				ADC6452C17E0761600C16A9D /* _HUPasswordBaseViewController.h */,
-				ADC6452D17E0761600C16A9D /* _HUPasswordBaseViewController.m */,
-				ADC6452E17E0761600C16A9D /* HUBaseTableViewController+Style.h */,
-				ADC6452F17E0761600C16A9D /* HUBaseTableViewController+Style.m */,
-				ADC6453017E0761600C16A9D /* HUBaseTableViewController.h */,
-				ADC6453117E0761600C16A9D /* HUBaseTableViewController.m */,
-				ADC6453217E0761600C16A9D /* HUBaseViewController+Style.h */,
-				ADC6453317E0761600C16A9D /* HUBaseViewController+Style.m */,
-				ADC6453417E0761600C16A9D /* HUBaseViewController.h */,
-				ADC6453517E0761600C16A9D /* HUBaseViewController.m */,
-				ADC6453617E0761600C16A9D /* HUDigitInputViewController.h */,
-				ADC6453717E0761600C16A9D /* HUDigitInputViewController.m */,
-				ADC6453817E0761600C16A9D /* HUEULAViewController.h */,
-				ADC6453917E0761600C16A9D /* HUEULAViewController.m */,
-				ADC6454017E0761600C16A9D /* HUGroupsViewController+Style.h */,
-				ADC6454117E0761600C16A9D /* HUGroupsViewController+Style.m */,
-				ADC6454217E0761600C16A9D /* HUGroupsViewController.h */,
-				ADC6454317E0761600C16A9D /* HUGroupsViewController.m */,
-				ADC6454417E0761600C16A9D /* HUImageUploadViewController+Style.h */,
-				ADC6454517E0761600C16A9D /* HUImageUploadViewController+Style.m */,
-				ADC6454617E0761600C16A9D /* HUImageUploadViewController.h */,
-				ADC6454717E0761600C16A9D /* HUImageUploadViewController.m */,
-				ADC6454C17E0761600C16A9D /* HUMediaViewController.h */,
-				ADC6454D17E0761600C16A9D /* HUMediaViewController.m */,
-				ADC6455A17E0761600C16A9D /* HUPasswordConfirmViewController.h */,
-				ADC6455B17E0761600C16A9D /* HUPasswordConfirmViewController.m */,
-				ADC6455C17E0761600C16A9D /* HUPasswordSetNewViewController.h */,
-				ADC6455D17E0761600C16A9D /* HUPasswordSetNewViewController.m */,
-				ADC6455E17E0761600C16A9D /* HUPhotoDetailViewController+Style.h */,
-				ADC6455F17E0761600C16A9D /* HUPhotoDetailViewController+Style.m */,
-				ADC6456017E0761600C16A9D /* HUPhotoDetailViewController.h */,
-				ADC6456117E0761600C16A9D /* HUPhotoDetailViewController.m */,
-				ADC6456617E0761600C16A9D /* HURecentActivityViewController+Style.h */,
-				ADC6456717E0761600C16A9D /* HURecentActivityViewController+Style.m */,
-				ADC6456817E0761600C16A9D /* HURecentActivityViewController.h */,
-				ADC6456917E0761600C16A9D /* HURecentActivityViewController.m */,
-				ADC6456A17E0761600C16A9D /* HUSearchBarController+Style.h */,
-				ADC6456B17E0761600C16A9D /* HUSearchBarController+Style.m */,
-				ADC6456C17E0761600C16A9D /* HUSearchBarController.h */,
-				ADC6456D17E0761600C16A9D /* HUSearchBarController.m */,
-				ADC6456E17E0761600C16A9D /* HUSettingsViewController+Style.h */,
-				ADC6456F17E0761600C16A9D /* HUSettingsViewController+Style.m */,
-				ADC6457017E0761600C16A9D /* HUSettingsViewController.h */,
-				ADC6457117E0761600C16A9D /* HUSettingsViewController.m */,
-				ADC6457217E0761600C16A9D /* HUSideMenuViewController+Style.h */,
-				ADC6457317E0761600C16A9D /* HUSideMenuViewController+Style.m */,
-				ADC6457417E0761600C16A9D /* HUSideMenuViewController.h */,
-				ADC6457517E0761600C16A9D /* HUSideMenuViewController.m */,
-				ADC6457A17E0761600C16A9D /* HUSubMenuViewController.h */,
-				ADC6457B17E0761600C16A9D /* HUSubMenuViewController.m */,
-				ADC6457C17E0761600C16A9D /* HUUsersViewController+Style.h */,
-				ADC6457D17E0761600C16A9D /* HUUsersViewController+Style.m */,
-				ADC6457E17E0761600C16A9D /* HUUsersViewController.h */,
-				ADC6457F17E0761600C16A9D /* HUUsersViewController.m */,
-				ADC6458017E0761600C16A9D /* HUVideoRecorderViewController+Style.h */,
-				ADC6458117E0761600C16A9D /* HUVideoRecorderViewController+Style.m */,
-				ADC6458217E0761600C16A9D /* HUVideoRecorderViewController.h */,
-				ADC6458317E0761600C16A9D /* HUVideoRecorderViewController.m */,
-				ADC6458417E0761600C16A9D /* HUVoiceMessageDetailViewController.h */,
-				ADC6458517E0761600C16A9D /* HUVoiceMessageDetailViewController.m */,
-				ADC6458617E0761600C16A9D /* HUVoicePlayerViewController+Style.h */,
-				ADC6458717E0761600C16A9D /* HUVoicePlayerViewController+Style.m */,
-				ADC6458817E0761600C16A9D /* HUVoiceRecorderViewController+Style.h */,
-				ADC6458917E0761600C16A9D /* HUVoiceRecorderViewController+Style.m */,
-				ADC6458A17E0761600C16A9D /* HUVoiceRecorderViewController.h */,
-				ADC6458B17E0761600C16A9D /* HUVoiceRecorderViewController.m */,
-				ADC6458C17E0761600C16A9D /* HUWallViewController+Style.h */,
-				ADC6458D17E0761600C16A9D /* HUWallViewController+Style.m */,
-				ADC6458E17E0761600C16A9D /* HUWallViewController.h */,
-				ADC6458F17E0761600C16A9D /* HUWallViewController.m */,
-				ADC6459017E0761600C16A9D /* ImageDetailVC.h */,
-				ADC6459117E0761600C16A9D /* ImageDetailVC.m */,
-				ADC6459217E0761600C16A9D /* ImageUploadVC.h */,
-				ADC6459317E0761600C16A9D /* ImageUploadVC.m */,
-				ADC6459417E0761600C16A9D /* LocationViewController+Style.h */,
-				ADC6459517E0761600C16A9D /* LocationViewController+Style.m */,
-				ADC6459617E0761600C16A9D /* LocationViewController.h */,
-				ADC6459717E0761600C16A9D /* LocationViewController.m */,
 				ADC6459817E0761600C16A9D /* MapVC.h */,
 				ADC6459917E0761600C16A9D /* MapVC.m */,
 				ADC6459B17E0761600C16A9D /* RootVC.h */,
 				ADC6459C17E0761600C16A9D /* RootVC.m */,
-				ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */,
-				ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */,
-				ADC6459F17E0761600C16A9D /* UsersVC.h */,
-				ADC645A017E0761600C16A9D /* UsersVC.m */,
-				ADC645A117E0761600C16A9D /* VideoDetailVC.h */,
-				ADC645A217E0761600C16A9D /* VideoDetailVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2028,6 +1951,8 @@
 		ADC645A317E0761600C16A9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */,
+				ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */,
 				ADC645A417E0761600C16A9D /* AlertViewManager.h */,
 				ADC645A517E0761600C16A9D /* AlertViewManager.m */,
 				ADC645A617E0761600C16A9D /* CSPageControl.h */,
@@ -2203,6 +2128,172 @@
 				B3409E01186DEDB50033A4B3 /* MainWindow.xib */,
 			);
 			path = UserInterfaces;
+			sourceTree = "<group>";
+		};
+		B374796D1874566E001CE0E7 /* Wall */ = {
+			isa = PBXGroup;
+			children = (
+				B374796E1874566E001CE0E7 /* HUWallViewController+Style.h */,
+				B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */,
+				B37479701874566E001CE0E7 /* HUWallViewController.h */,
+				B37479711874566E001CE0E7 /* HUWallViewController.m */,
+			);
+			path = Wall;
+			sourceTree = "<group>";
+		};
+		B374797418745B82001CE0E7 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				B374797518745B82001CE0E7 /* HUUsersViewController+Style.h */,
+				B374797618745B82001CE0E7 /* HUUsersViewController+Style.m */,
+				B374797718745B82001CE0E7 /* HUUsersViewController.h */,
+				B374797818745B82001CE0E7 /* HUUsersViewController.m */,
+			);
+			path = UserList;
+			sourceTree = "<group>";
+		};
+		B374797918745B82001CE0E7 /* GroupList */ = {
+			isa = PBXGroup;
+			children = (
+				B374797A18745B82001CE0E7 /* HUGroupsViewController+Style.h */,
+				B374797B18745B82001CE0E7 /* HUGroupsViewController+Style.m */,
+				B374797C18745B82001CE0E7 /* HUGroupsViewController.h */,
+				B374797D18745B82001CE0E7 /* HUGroupsViewController.m */,
+			);
+			path = GroupList;
+			sourceTree = "<group>";
+		};
+		B374797E18745B82001CE0E7 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				B374797F18745B82001CE0E7 /* HUBaseTableViewController+Style.h */,
+				B374798018745B82001CE0E7 /* HUBaseTableViewController+Style.m */,
+				B374798118745B82001CE0E7 /* HUBaseTableViewController.h */,
+				B374798218745B82001CE0E7 /* HUBaseTableViewController.m */,
+				B374798318745B82001CE0E7 /* HUBaseViewController+Style.h */,
+				B374798418745B82001CE0E7 /* HUBaseViewController+Style.m */,
+				B374798518745B82001CE0E7 /* HUBaseViewController.h */,
+				B374798618745B82001CE0E7 /* HUBaseViewController.m */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		B374798718745B82001CE0E7 /* UserAgreement */ = {
+			isa = PBXGroup;
+			children = (
+				B374798818745B82001CE0E7 /* HUEULAViewController.h */,
+				B374798918745B82001CE0E7 /* HUEULAViewController.m */,
+			);
+			path = UserAgreement;
+			sourceTree = "<group>";
+		};
+		B374799318745EDA001CE0E7 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				B37479EE18746272001CE0E7 /* _HUPasswordBaseViewController.h */,
+				B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */,
+				B37479F018746272001CE0E7 /* _HUPasswordBaseViewController+Style.h */,
+				B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */,
+				B374799418745EDA001CE0E7 /* HUPasswordConfirmViewController.h */,
+				B374799518745EDA001CE0E7 /* HUPasswordConfirmViewController.m */,
+				B374799618745EDA001CE0E7 /* HUPasswordSetNewViewController.h */,
+				B374799718745EDA001CE0E7 /* HUPasswordSetNewViewController.m */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		B374799818745EDA001CE0E7 /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				B374799918745EDA001CE0E7 /* HUDigitInputViewController.h */,
+				B374799A18745EDA001CE0E7 /* HUDigitInputViewController.m */,
+			);
+			path = Passcode;
+			sourceTree = "<group>";
+		};
+		B374799B18745EDA001CE0E7 /* MediaViews */ = {
+			isa = PBXGroup;
+			children = (
+				B374799C18745EDA001CE0E7 /* HUImageUploadViewController+Style.h */,
+				B374799D18745EDA001CE0E7 /* HUImageUploadViewController+Style.m */,
+				B374799E18745EDA001CE0E7 /* HUImageUploadViewController.h */,
+				B374799F18745EDA001CE0E7 /* HUImageUploadViewController.m */,
+				B37479A018745EDA001CE0E7 /* HUMediaViewController.h */,
+				B37479A118745EDA001CE0E7 /* HUMediaViewController.m */,
+				B37479A218745EDA001CE0E7 /* HUPhotoDetailViewController+Style.h */,
+				B37479A318745EDA001CE0E7 /* HUPhotoDetailViewController+Style.m */,
+				B37479A418745EDA001CE0E7 /* HUPhotoDetailViewController.h */,
+				B37479A518745EDA001CE0E7 /* HUPhotoDetailViewController.m */,
+				B37479A618745EDA001CE0E7 /* HUVideoRecorderViewController+Style.h */,
+				B37479A718745EDA001CE0E7 /* HUVideoRecorderViewController+Style.m */,
+				B37479A818745EDA001CE0E7 /* HUVideoRecorderViewController.h */,
+				B37479A918745EDA001CE0E7 /* HUVideoRecorderViewController.m */,
+				B37479AA18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.h */,
+				B37479AB18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m */,
+				B37479AC18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.h */,
+				B37479AD18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m */,
+				B37479AE18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.h */,
+				B37479AF18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m */,
+				B37479B018745EDA001CE0E7 /* HUVoiceRecorderViewController.h */,
+				B37479B118745EDA001CE0E7 /* HUVoiceRecorderViewController.m */,
+				B37479B218745EDA001CE0E7 /* ImageDetailVC.h */,
+				B37479B318745EDA001CE0E7 /* ImageDetailVC.m */,
+				B37479B418745EDA001CE0E7 /* ImageUploadVC.h */,
+				B37479B518745EDA001CE0E7 /* ImageUploadVC.m */,
+				B37479B618745EDA001CE0E7 /* LocationViewController+Style.h */,
+				B37479B718745EDA001CE0E7 /* LocationViewController+Style.m */,
+				B37479B818745EDA001CE0E7 /* LocationViewController.h */,
+				B37479B918745EDA001CE0E7 /* LocationViewController.m */,
+				B37479BA18745EDA001CE0E7 /* VideoDetailVC.h */,
+				B37479BB18745EDA001CE0E7 /* VideoDetailVC.m */,
+			);
+			path = MediaViews;
+			sourceTree = "<group>";
+		};
+		B37479BC18745EDA001CE0E7 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				B37479BD18745EDA001CE0E7 /* HUSearchBarController+Style.h */,
+				B37479BE18745EDA001CE0E7 /* HUSearchBarController+Style.m */,
+				B37479BF18745EDA001CE0E7 /* HUSearchBarController.h */,
+				B37479C018745EDA001CE0E7 /* HUSearchBarController.m */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		B37479C118745EDA001CE0E7 /* RecentMessages */ = {
+			isa = PBXGroup;
+			children = (
+				B37479C218745EDA001CE0E7 /* HURecentActivityViewController+Style.h */,
+				B37479C318745EDA001CE0E7 /* HURecentActivityViewController+Style.m */,
+				B37479C418745EDA001CE0E7 /* HURecentActivityViewController.h */,
+				B37479C518745EDA001CE0E7 /* HURecentActivityViewController.m */,
+			);
+			path = RecentMessages;
+			sourceTree = "<group>";
+		};
+		B37479DD18745EE0001CE0E7 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				B37479DE18745EE0001CE0E7 /* HUSideMenuViewController+Style.h */,
+				B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */,
+				B37479E018745EE0001CE0E7 /* HUSideMenuViewController.h */,
+				B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */,
+				B37479E218745EE0001CE0E7 /* HUSubMenuViewController.h */,
+				B37479E318745EE0001CE0E7 /* HUSubMenuViewController.m */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		B37479E418745EE0001CE0E7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B37479E518745EE0001CE0E7 /* HUSettingsViewController+Style.h */,
+				B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */,
+				B37479E718745EE0001CE0E7 /* HUSettingsViewController.h */,
+				B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		B3C69A6318718B440055DD19 /* MyProfile */ = {
@@ -2520,6 +2611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37479EC18745EE0001CE0E7 /* HUSettingsViewController+Style.m in Sources */,
 				ADC6461117E0761600C16A9D /* AppDelegate.m in Sources */,
 				ADC6461317E0761600C16A9D /* CSLazyLoadController.m in Sources */,
 				ADC6461417E0761600C16A9D /* HUAvatarManager.m in Sources */,
@@ -2533,14 +2625,18 @@
 				ADC6462117E0761600C16A9D /* AFImageRequestOperation.m in Sources */,
 				B3C69A7D1873186D0055DD19 /* HUNewGroupViewController.m in Sources */,
 				ADC6462217E0761600C16A9D /* AFJSONRequestOperation.m in Sources */,
+				B37479D818745EDA001CE0E7 /* VideoDetailVC.m in Sources */,
 				ADC6462317E0761600C16A9D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				ADC6462417E0761600C16A9D /* AFPropertyListRequestOperation.m in Sources */,
 				ADC6462517E0761600C16A9D /* AFURLConnectionOperation.m in Sources */,
 				ADC6462617E0761600C16A9D /* AFXMLRequestOperation.m in Sources */,
 				ADC6462717E0761600C16A9D /* UIImageView+AFNetworking.m in Sources */,
+				B37479EA18745EE0001CE0E7 /* HUSideMenuViewController.m in Sources */,
+				B37479CA18745EDA001CE0E7 /* HUImageUploadViewController.m in Sources */,
 				ADC6462817E0761600C16A9D /* AutoScrollLabel.m in Sources */,
 				ADC6462917E0761600C16A9D /* CAAnimation+Blocks.m in Sources */,
 				ADC6462A17E0761600C16A9D /* DHValidation.m in Sources */,
+				B37479D718745EDA001CE0E7 /* LocationViewController.m in Sources */,
 				ADC6462B17E0761600C16A9D /* NSArray+Extensions.m in Sources */,
 				ADC6462C17E0761600C16A9D /* NSDateFormatter+SharedFormatter.m in Sources */,
 				ADC6462D17E0761600C16A9D /* NSDictionary+KeyPath.m in Sources */,
@@ -2554,6 +2650,7 @@
 				ADC6463517E0761600C16A9D /* UIImage+Alpha.m in Sources */,
 				ADC6463617E0761600C16A9D /* UIImage+NoCache.m in Sources */,
 				ADC6463717E0761600C16A9D /* UIImage+Resize.m in Sources */,
+				B374799118745B82001CE0E7 /* HUBaseViewController.m in Sources */,
 				ADC6463817E0761600C16A9D /* UIImage+RoundedCorner.m in Sources */,
 				ADC6463917E0761600C16A9D /* UIImagePickerController+Extensions.m in Sources */,
 				ADC6463A17E0761600C16A9D /* UILabel+Extensions.m in Sources */,
@@ -2563,8 +2660,11 @@
 				ADC6463E17E0761600C16A9D /* UIView+CoreGraphics.m in Sources */,
 				ADC6463F17E0761600C16A9D /* UIView+Extensions.m in Sources */,
 				ADC6464017E0761600C16A9D /* UIView+Margin.m in Sources */,
+				B37479E918745EE0001CE0E7 /* HUSideMenuViewController+Style.m in Sources */,
+				B37479CE18745EDA001CE0E7 /* HUVideoRecorderViewController+Style.m in Sources */,
 				ADC6464117E0761600C16A9D /* UIView+RoundedCorners.m in Sources */,
 				ADC6464417E0761600C16A9D /* CSNotificationView.m in Sources */,
+				B37479F318746272001CE0E7 /* _HUPasswordBaseViewController+Style.m in Sources */,
 				ADC6464617E0761600C16A9D /* HPGrowingTextView.m in Sources */,
 				ADC6464717E0761600C16A9D /* HPTextViewInternal.m in Sources */,
 				ADC6464817E0761600C16A9D /* MAKVONotificationCenter.m in Sources */,
@@ -2593,7 +2693,9 @@
 				ADC6471017E0761700C16A9D /* NSObject+MKBlockAdditions.m in Sources */,
 				ADC6471117E0761700C16A9D /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				ADC6471217E0761700C16A9D /* UIAlertView+MKBlockAdditions.m in Sources */,
+				B37479D218745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m in Sources */,
 				ADC6471317E0761700C16A9D /* NSData+Base64.m in Sources */,
+				B37479F218746272001CE0E7 /* _HUPasswordBaseViewController.m in Sources */,
 				ADC6471417E0761700C16A9D /* NSString+MD5.m in Sources */,
 				ADC6471517E0761700C16A9D /* StrManager.m in Sources */,
 				ADC6471617E0761700C16A9D /* StyleManupulator.m in Sources */,
@@ -2603,8 +2705,10 @@
 				ADC6471A17E0761700C16A9D /* HUBaseModel.m in Sources */,
 				ADC6471B17E0761700C16A9D /* HUDefaultMessageNotification.m in Sources */,
 				ADC6471C17E0761700C16A9D /* HUMenuNavigationItem+Groups.m in Sources */,
+				B37479731874566E001CE0E7 /* HUWallViewController.m in Sources */,
 				ADC6471D17E0761700C16A9D /* HUMenuNavigationItem+Users.m in Sources */,
 				ADC6471E17E0761700C16A9D /* HUMenuNavigationItem.m in Sources */,
+				B37479721874566E001CE0E7 /* HUWallViewController+Style.m in Sources */,
 				ADC6471F17E0761700C16A9D /* HUOfflinePushNotification.m in Sources */,
 				ADC6472017E0761700C16A9D /* HUPushNotificationModel+Style.m in Sources */,
 				ADC6472117E0761700C16A9D /* HUPushNotificationModel.m in Sources */,
@@ -2617,57 +2721,22 @@
 				ADC6472617E0761700C16A9D /* ModelGroup.m in Sources */,
 				ADC6472717E0761700C16A9D /* ModelGroupCategory.m in Sources */,
 				ADC6472817E0761700C16A9D /* ModelMessage.m in Sources */,
+				B37479C818745EDA001CE0E7 /* HUDigitInputViewController.m in Sources */,
 				ADC6472917E0761700C16A9D /* ModelRecentActivity.m in Sources */,
 				ADC6472A17E0761700C16A9D /* ModelUser.m in Sources */,
-				ADC6472C17E0761700C16A9D /* _HUPasswordBaseViewController+Style.m in Sources */,
-				ADC6472D17E0761700C16A9D /* _HUPasswordBaseViewController.m in Sources */,
-				ADC6472E17E0761700C16A9D /* HUBaseTableViewController+Style.m in Sources */,
-				ADC6472F17E0761700C16A9D /* HUBaseTableViewController.m in Sources */,
-				ADC6473017E0761700C16A9D /* HUBaseViewController+Style.m in Sources */,
-				ADC6473117E0761700C16A9D /* HUBaseViewController.m in Sources */,
-				ADC6473217E0761700C16A9D /* HUDigitInputViewController.m in Sources */,
-				ADC6473317E0761700C16A9D /* HUEULAViewController.m in Sources */,
-				ADC6473717E0761700C16A9D /* HUGroupsViewController+Style.m in Sources */,
+				B37479CD18745EDA001CE0E7 /* HUPhotoDetailViewController.m in Sources */,
 				CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */,
-				ADC6473817E0761700C16A9D /* HUGroupsViewController.m in Sources */,
-				ADC6473917E0761700C16A9D /* HUImageUploadViewController+Style.m in Sources */,
-				ADC6473A17E0761700C16A9D /* HUImageUploadViewController.m in Sources */,
-				ADC6473D17E0761700C16A9D /* HUMediaViewController.m in Sources */,
-				ADC6474417E0761700C16A9D /* HUPasswordConfirmViewController.m in Sources */,
-				ADC6474517E0761700C16A9D /* HUPasswordSetNewViewController.m in Sources */,
 				B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */,
-				ADC6474617E0761700C16A9D /* HUPhotoDetailViewController+Style.m in Sources */,
-				ADC6474717E0761700C16A9D /* HUPhotoDetailViewController.m in Sources */,
-				ADC6474A17E0761700C16A9D /* HURecentActivityViewController+Style.m in Sources */,
-				ADC6474B17E0761700C16A9D /* HURecentActivityViewController.m in Sources */,
-				ADC6474C17E0761700C16A9D /* HUSearchBarController+Style.m in Sources */,
-				ADC6474D17E0761700C16A9D /* HUSearchBarController.m in Sources */,
-				ADC6474E17E0761700C16A9D /* HUSettingsViewController+Style.m in Sources */,
-				ADC6474F17E0761700C16A9D /* HUSettingsViewController.m in Sources */,
-				ADC6475017E0761700C16A9D /* HUSideMenuViewController+Style.m in Sources */,
-				ADC6475117E0761700C16A9D /* HUSideMenuViewController.m in Sources */,
-				ADC6475417E0761700C16A9D /* HUSubMenuViewController.m in Sources */,
-				ADC6475517E0761700C16A9D /* HUUsersViewController+Style.m in Sources */,
-				ADC6475617E0761700C16A9D /* HUUsersViewController.m in Sources */,
-				ADC6475717E0761700C16A9D /* HUVideoRecorderViewController+Style.m in Sources */,
-				ADC6475817E0761700C16A9D /* HUVideoRecorderViewController.m in Sources */,
-				ADC6475917E0761700C16A9D /* HUVoiceMessageDetailViewController.m in Sources */,
-				ADC6475A17E0761700C16A9D /* HUVoicePlayerViewController+Style.m in Sources */,
-				ADC6475B17E0761700C16A9D /* HUVoiceRecorderViewController+Style.m in Sources */,
-				ADC6475C17E0761700C16A9D /* HUVoiceRecorderViewController.m in Sources */,
-				ADC6475D17E0761700C16A9D /* HUWallViewController+Style.m in Sources */,
-				ADC6475E17E0761700C16A9D /* HUWallViewController.m in Sources */,
-				ADC6475F17E0761700C16A9D /* ImageDetailVC.m in Sources */,
-				ADC6476017E0761700C16A9D /* ImageUploadVC.m in Sources */,
-				ADC6476117E0761700C16A9D /* LocationViewController+Style.m in Sources */,
-				ADC6476217E0761700C16A9D /* LocationViewController.m in Sources */,
+				B374798F18745B82001CE0E7 /* HUBaseTableViewController.m in Sources */,
+				B374798E18745B82001CE0E7 /* HUBaseTableViewController+Style.m in Sources */,
 				ADC6476317E0761700C16A9D /* MapVC.m in Sources */,
 				ADC6476517E0761700C16A9D /* RootVC.m in Sources */,
 				ADC6476617E0761700C16A9D /* UINavigationItem+AutoScrollLabel.m in Sources */,
-				ADC6476717E0761700C16A9D /* UsersVC.m in Sources */,
-				ADC6476817E0761700C16A9D /* VideoDetailVC.m in Sources */,
+				B37479CB18745EDA001CE0E7 /* HUMediaViewController.m in Sources */,
 				ADC6476917E0761700C16A9D /* AlertViewManager.m in Sources */,
 				ADC6476A17E0761700C16A9D /* CSPageControl.m in Sources */,
+				B37479CF18745EDA001CE0E7 /* HUVideoRecorderViewController.m in Sources */,
+				B37479DC18745EDA001CE0E7 /* HURecentActivityViewController.m in Sources */,
 				ADC6476C17E0761700C16A9D /* HUActivityMessageCell+Style.m in Sources */,
 				ADC6476D17E0761700C16A9D /* HUActivityMessageCell.m in Sources */,
 				ADC6476E17E0761700C16A9D /* HUCounterBalloonView.m in Sources */,
@@ -2678,39 +2747,60 @@
 				ADC6477317E0761700C16A9D /* HUEditableLabelView.m in Sources */,
 				ADC6477417E0761700C16A9D /* HUExploreUsersView.m in Sources */,
 				ADC6477517E0761700C16A9D /* HUGroupsCategoryTableViewCell+Style.m in Sources */,
+				B37479D018745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m in Sources */,
 				B3CE0C00186E2AAE009372B0 /* HUSignUpViewController.m in Sources */,
+				B374798D18745B82001CE0E7 /* HUGroupsViewController.m in Sources */,
+				B37479ED18745EE0001CE0E7 /* HUSettingsViewController.m in Sources */,
+				B37479D418745EDA001CE0E7 /* ImageDetailVC.m in Sources */,
+				B37479DA18745EDA001CE0E7 /* HUSearchBarController.m in Sources */,
 				ADC6477617E0761700C16A9D /* HUGroupsCategoryTableViewCell.m in Sources */,
 				ADC6477717E0761700C16A9D /* HUGroupsTableViewCell+Style.m in Sources */,
 				ADC6477817E0761700C16A9D /* HUGroupsTableViewCell.m in Sources */,
 				ADC6477917E0761700C16A9D /* HUImageView+Style.m in Sources */,
 				ADC6477A17E0761700C16A9D /* HUImageView.m in Sources */,
 				ADC6477B17E0761700C16A9D /* HUMapBubbleView.m in Sources */,
+				B37479D918745EDA001CE0E7 /* HUSearchBarController+Style.m in Sources */,
+				B37479D118745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m in Sources */,
+				B37479D518745EDA001CE0E7 /* ImageUploadVC.m in Sources */,
 				ADC6477C17E0761700C16A9D /* HUMediaPanelView+Style.m in Sources */,
 				ADC6477D17E0761700C16A9D /* HUMediaPanelView.m in Sources */,
+				B374799018745B82001CE0E7 /* HUBaseViewController+Style.m in Sources */,
 				CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */,
+				B374799218745B82001CE0E7 /* HUEULAViewController.m in Sources */,
 				ADC6477E17E0761700C16A9D /* HUPasswordChangeDialog.m in Sources */,
 				ADC6477F17E0761700C16A9D /* HUPasswordDisplayView+Style.m in Sources */,
+				B37479EB18745EE0001CE0E7 /* HUSubMenuViewController.m in Sources */,
 				ADC6478017E0761700C16A9D /* HUPasswordDisplayView.m in Sources */,
 				ADC6478117E0761700C16A9D /* HUPickerTableView.m in Sources */,
 				ADC6478217E0761700C16A9D /* HURadioButton.m in Sources */,
 				ADC6478317E0761700C16A9D /* HUSearchBarCellView.m in Sources */,
 				ADC6478417E0761700C16A9D /* HUSearchByNameView.m in Sources */,
 				ADC6478517E0761700C16A9D /* HUSegmentedControl.m in Sources */,
+				B37479DB18745EDA001CE0E7 /* HURecentActivityViewController+Style.m in Sources */,
 				ADC6478617E0761700C16A9D /* HUSelectedTableViewCellVew.m in Sources */,
 				ADC6478717E0761700C16A9D /* HUVideoPlayerView.m in Sources */,
+				B374798A18745B82001CE0E7 /* HUUsersViewController+Style.m in Sources */,
 				ADC6478817E0761700C16A9D /* HUVoicePlayerControlBar.m in Sources */,
+				B374798B18745B82001CE0E7 /* HUUsersViewController.m in Sources */,
 				ADC6478917E0761700C16A9D /* ImageMessageCommentRow.m in Sources */,
+				B37479D318745EDA001CE0E7 /* HUVoiceRecorderViewController.m in Sources */,
 				ADC6478A17E0761700C16A9D /* LoadingViewCell.m in Sources */,
 				ADC6478B17E0761700C16A9D /* MessageTypeBasicCell.m in Sources */,
 				ADC6478C17E0761700C16A9D /* MessageTypeEmoticonCell.m in Sources */,
 				ADC6478D17E0761700C16A9D /* MessageTypeImageCell+Style.m in Sources */,
+				B37479C718745EDA001CE0E7 /* HUPasswordSetNewViewController.m in Sources */,
 				ADC6478E17E0761700C16A9D /* MessageTypeImageCell.m in Sources */,
+				B37479CC18745EDA001CE0E7 /* HUPhotoDetailViewController+Style.m in Sources */,
+				B37479D618745EDA001CE0E7 /* LocationViewController+Style.m in Sources */,
+				B37479C918745EDA001CE0E7 /* HUImageUploadViewController+Style.m in Sources */,
 				ADC6478F17E0761700C16A9D /* MessageTypeImageDetailCell+Style.m in Sources */,
 				ADC6479017E0761700C16A9D /* MessageTypeImageDetailCell.m in Sources */,
+				B37479C618745EDA001CE0E7 /* HUPasswordConfirmViewController.m in Sources */,
 				ADC6479117E0761700C16A9D /* MessageTypeLocationCell.m in Sources */,
 				ADC6479217E0761700C16A9D /* MessageTypeMediaCell+Style.m in Sources */,
 				ADC6479317E0761700C16A9D /* MessageTypeMediaCell.m in Sources */,
 				ADC6479417E0761700C16A9D /* MessageTypeNewsCell.m in Sources */,
+				B374798C18745B82001CE0E7 /* HUGroupsViewController+Style.m in Sources */,
 				ADC6479517E0761700C16A9D /* MessageTypeTextCell+Style.m in Sources */,
 				ADC6479617E0761700C16A9D /* MessageTypeTextCell.m in Sources */,
 				ADC6479717E0761700C16A9D /* MessageTypeVideoCell.m in Sources */,

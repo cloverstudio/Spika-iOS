@@ -55,9 +55,7 @@
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
 
     ModelUser           *_targetUser;
-    
     UIView              *_contentView;
-    
     UIView              *_messageInputContainer;
     UIButton            *_mediaButton;
     UIButton            *_sendButton;
