@@ -91,6 +91,9 @@
     
 }
 
+-(void) updateAddButton{
+}
+
 - (void) layoutViews{
     [super layoutViews];
     
