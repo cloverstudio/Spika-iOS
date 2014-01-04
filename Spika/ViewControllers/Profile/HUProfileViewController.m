@@ -275,6 +275,8 @@
     if(_birthdayDate != nil){
         NSString *dateString = [format stringFromDate:_birthdayDate];
         [_birthdayValueLabel setText:dateString];
+    }else{
+        [_birthdayValueLabel setText:@""];
     }
 
     if(_user.lastLogin != 0){

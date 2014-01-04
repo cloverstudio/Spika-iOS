@@ -282,6 +282,8 @@
         [format setDateFormat:kDefaultDateFormat];
         NSString *dateString = [format stringFromDate:_birthdayDate];
         [_birthdayValueLabel setText:dateString];
+    }else{
+        [_birthdayValueLabel setText:@""];
     }
 }
 
