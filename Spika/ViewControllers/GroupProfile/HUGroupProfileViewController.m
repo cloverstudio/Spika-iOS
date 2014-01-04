@@ -41,6 +41,7 @@
 #import "Utils.h"
 #import "HUTextView.h"
 #import "HUImageView.h"
+#import "HUNewGroupViewController.h"
 
 @interface HUGroupProfileViewController (){
     UIImage *_avatarImage;
@@ -196,14 +197,19 @@
     [_categoryValueLabel setText:_group.categoryName];
     [_nameValueLabel setText:_group.name];
     
-    [[DatabaseManager defaultManager] findUserWithID:_group.userId success:^(id result){
+    if(![self isKindOfClass:[HUNewGroupViewController class]]){
         
-        _owner = result;
-        [_groupOwnerValueLabel setText:_owner.name];
-        
-    } error:^(NSString *strError){
-        
-    }];
+        [[DatabaseManager defaultManager] findUserWithID:_group.userId success:^(id result){
+            
+            _owner = result;
+            [_groupOwnerValueLabel setText:_owner.name];
+            
+        } error:^(NSString *strError){
+            
+        }];
+    
+    }
+
     
     if(_group.password.length > 0)
         [_passwordValueLabel setText:NSLocalizedString(@"Password-Exists", nil)];

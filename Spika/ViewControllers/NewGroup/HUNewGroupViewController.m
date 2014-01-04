@@ -101,6 +101,9 @@
         CGPoint absolutePosition = [_cancelButton convertPoint:_cancelButton.frame.origin toView:_contentView];
         [_contentHeightConstraint setConstant:absolutePosition.y + _cancelButton.height + 20];
     });
+    
+    [_groupOwnerValueLabel setText:[[UserManager defaultManager] getLoginedUser].name];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
