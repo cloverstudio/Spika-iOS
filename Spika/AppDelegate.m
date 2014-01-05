@@ -692,8 +692,15 @@
             
             ModelUser *user = (ModelUser *)[notification object];
             
-            HUProfileViewController *viewController = [[HUProfileViewController alloc] initWithNibName:@"UserProfileView" withUser:user];
-            [_navigationController pushViewController:viewController animated:YES];
+            if([user._id isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]){
+                [self clearNavigationVC];
+                HUMyProfileViewController *myHUProfileViewController = [[HUMyProfileViewController alloc] initWithNibName:@"MyProflieView" bundle:nil];
+                [_navigationController pushViewController:myHUProfileViewController animated:YES];
+                
+            }else{
+                HUProfileViewController *viewController = [[HUProfileViewController alloc] initWithNibName:@"UserProfileView" withUser:user];
+                [_navigationController pushViewController:viewController animated:YES];
+            }
     }];
 
     [[NSNotificationCenter defaultCenter] addObserverForName:NotificationShowGroupProfile
