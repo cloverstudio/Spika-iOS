@@ -285,7 +285,7 @@
 "Violation Reported"        = "不正利用の通報を受理致しました。問題がないか確認後、投稿を削除致します。";
 "EULA-TITLE"                = "利用許諾契約";
 "EULA-AGREE"                = "承諾する";
-"EULA_FILE"                 = "japanese.html";
+"EULA_FILE"                 = "japanese";
 
 
 

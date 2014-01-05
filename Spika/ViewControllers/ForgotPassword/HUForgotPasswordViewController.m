@@ -42,6 +42,15 @@
     return NSLocalizedString(@"ForgetPassword-Title", @"");
 }
 
+- (void) loadView {
+    
+    [super loadView];
+     UIColor *color = [UIColor grayColor];
+    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    
+}
+
+
 -(void) sendForgotPasswordRequest {
     
     [self.view endEditing:YES];

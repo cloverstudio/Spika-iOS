@@ -65,48 +65,12 @@
     [_signInButton setTitle:NSLocalizedString(@"Login-Title", @"") forState:UIControlStateNormal];
     [_signUpButton setTitle:NSLocalizedString(@"SignUp-Title", @"") forState:UIControlStateNormal];
 
-    
-    /*
-    _mainView = [[UIView alloc] initWithFrame:self.view.bounds];
-    _mainView.autoresizingMask = self.view.autoresizingMask;
-    _mainView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_mainView];
-    
-    
-    _loginFieldsBackground = CS_RETAIN([self newLoginFieldsBackground]);
-    [_mainView addSubview:_loginFieldsBackground];
-    
-    _usernameField = CS_RETAIN([self newUsernameField]);
-    _usernameField.delegate = self;
-    [_loginFieldsBackground addSubview:_usernameField];
-    
-    _emailField = CS_RETAIN([self newEmailField]);
-    _emailField.delegate = self;
-    [_loginFieldsBackground addSubview:_emailField];
-    
-    _passwordField = CS_RETAIN([self newPasswordField]);
-    _passwordField.delegate = self;
-    [_loginFieldsBackground addSubview:_passwordField];
-    
-    _signInButton = [self newSignInButton];
-    [_signInButton addTarget:self
-                     action:@selector(onSignIn)
-           forControlEvents:UIControlEventTouchUpInside];
-    [_mainView addSubview:_signInButton];
-    
-    _signUpButton = CS_RETAIN([self newSignUpButton]);
-    [_signUpButton addTarget:self
-                     action:@selector(onSignUp)
-           forControlEvents:UIControlEventTouchUpInside];
-    [_mainView addSubview:_signUpButton];
+  
+    UIColor *color = [UIColor grayColor];
+    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_usernameField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
-    _loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-    _loadingView.autoresizingMask = self.view.autoresizingMask;
-    _loadingView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_loadingView];
-    
-     */
-    
 	 
 }
 
@@ -295,28 +259,6 @@
         return NO;
         
     }
-    
-    /*
-    NSDictionary *result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"email" value:_emailField.text];
-    
-    if(result != nil){
-        
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate email", @"")];
-        
-        return NO;
-        
-    }
-    
-    result = [[DatabaseManager defaultManager] checkUniqueSynchronous:@"username" value:_usernameField.text];
-    
-    if(result != nil){
-        
-        [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Duplicate username", @"")];
-        
-        return NO;
-        
-    }
-    */
     
     return YES;
 }

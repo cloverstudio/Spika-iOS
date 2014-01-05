@@ -94,72 +94,11 @@
     [_signInButton setTitle:NSLocalizedString(@"Login-Title", @"") forState:UIControlStateNormal];
     [_signUpButton setTitle:NSLocalizedString(@"SignUp-Title", @"") forState:UIControlStateNormal];
 
-    
-    /*
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(
-        0,0,[Utils getDisplayWidth],[Utils getDisplayHeight]
-    )];
-    
-        
-    _loginContainer = [self loginContainer];
-    [_mainView addSubview:_loginContainer];
-    
-    UIImageView *loginFieldsBackground = [self loginFieldsBackground];
-    [_loginContainer addSubview:loginFieldsBackground];
-    
-     
-    
-    
-    _emailField = CS_RETAIN([self emailField]);
-    _emailField.delegate = self;
-    _emailField.isAccessibilityElement = YES;
-    [loginFieldsBackground addSubview:_emailField];
-    
-    _passwordField = CS_RETAIN([self passwordField]);
-    _passwordField.delegate = self;
-    _emailField.isAccessibilityElement = YES;
-    [loginFieldsBackground addSubview:_passwordField];
-    
-      */
-    
-    /*
+    UIColor *color = [UIColor grayColor];
+    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
-    UIButton *forgotDetailsButton = [self forgotDetailsButton];
-    [forgotDetailsButton addTarget:self
-                            action:@selector(onForgotDetails)
-                  forControlEvents:UIControlEventTouchUpInside];
-    forgotDetailsButton.isAccessibilityElement = YES;
-    [_loginContainer addSubview:forgotDetailsButton];
     
-    
-    
-    
-    _signInButton = [self signInButton];
-    [_signInButton addTarget:self
-                      action:@selector(onSignIn)
-            forControlEvents:UIControlEventTouchUpInside];
-    _signInButton.isAccessibilityElement = YES;
-    _signInButton.accessibilityLabel = @"signin";
-   [_mainView addSubview:_signInButton];
-    
-    
-    _signUpButton = [self signUpButton];
-    [_signUpButton addTarget:self
-                  action:@selector(onSignUp)
-          forControlEvents:UIControlEventTouchUpInside];
-    _signUpButton.isAccessibilityElement = YES;
-    [_mainView addSubview:_signUpButton];
- */
-    
-}
-
-
-- (void) viewWillAppear:(BOOL)animated {
-
-    [super viewWillAppear:animated];
-	
-    self.navigationItem.leftBarButtonItem = nil;
-
     __weak HULoginViewController *this = self;
     
     [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
@@ -171,7 +110,14 @@
         
         [this animateKeyboardWillHide:note];
     }];
-     
+}
+
+
+- (void) viewWillAppear:(BOOL)animated {
+
+    [super viewWillAppear:animated];
+	
+    self.navigationItem.leftBarButtonItem = nil;
 
 }
 

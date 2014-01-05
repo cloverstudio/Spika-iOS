@@ -40,29 +40,29 @@
 	[super loadView];
 	
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"hp_wall_background_pattern"]];
-
+    
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.backgroundColor = kHUColorDarkDarkGray;
     titleLabel.textColor = kHUColorWhite;
     titleLabel.frame = CGRectMake(
-        0,
-        0,
-        [Utils getDisplayWidth],
-        40
-    );
+                                  0,
+                                  0,
+                                  [Utils getDisplayWidth],
+                                  40
+                                  );
     
     titleLabel.text = NSLocalizedString(@"EULA-TITLE", nil);
     titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.font = kFontArialMTBoldOfSize(kFontSizeBig);
     
 	okButton = [self newOkButtonWithSelector:@selector(okButtonDidPress:)];
-
+    
     okButton.frame = CGRectMake(
-                               0,
-                               self.view.height - 36,
-                               [Utils getDisplayWidth],
-                               36
-                               );
+                                0,
+                                self.view.height - 36,
+                                [Utils getDisplayWidth],
+                                36
+                                );
     
     okButton.hidden = YES;
     okButton.enabled = NO;
@@ -73,9 +73,9 @@
                                titleLabel.y + titleLabel.height,
                                [Utils getDisplayWidth],
                                self.view.height - titleLabel.height - okButton.height
-    );
+                               );
     
-    NSString *htmlURL = [NSString stringWithFormat:@"%@static_content/%@",DatabaseURL,NSLocalizedString(@"EULA_FILE", nil)];
+    NSString *htmlURL = [NSString stringWithFormat:@"%@/eula/%@",PageRootURL,NSLocalizedString(@"EULA_FILE", nil)];
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlURL]]];
     webView.delegate = self;
@@ -110,7 +110,7 @@
                      }
                      completion:^(BOOL finished){
                          okButton.enabled = YES;
-
+                         
                      }
      ];
 }
@@ -120,7 +120,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:@"OK" forKey:EULAAgreed];
     [userDefault synchronize];
-
+    
     [[AlertViewManager defaultManager] showTutorial:NSLocalizedString(@"tutorial-login",nil)];
     
     [self dismissModalViewControllerAnimated:YES];
