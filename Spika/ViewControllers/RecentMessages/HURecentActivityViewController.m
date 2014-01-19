@@ -185,13 +185,25 @@
 	//ModelMessage *message = category.allMessages[indexPath.row];
 	HUModelActivityNotification *note = category.notifications[indexPath.row];
 	
-	[HUAvatarManager findModelForModelId:note.targetId completion:^(id<HUAvatarModel> model) {
-		
-		NSString *notificationName = [model isKindOfClass:[ModelGroup class]] ? NotificationShowGroupWall : NotificationShowUserWall;
-		
-		[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
-        
-	}];
+    if([note.category.targetType isEqualToString:@"group"]){
+        [HUAvatarManager findModelForModelId:note.targetId forClasses:@[@"ModelGroup"].mutableCopy completion:^(id<HUAvatarModel> model) {
+            
+            NSString *notificationName = [model isKindOfClass:[ModelGroup class]] ? NotificationShowGroupWall : NotificationShowUserWall;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
+            
+        }];
+    }else{
+        [HUAvatarManager findModelForModelId:note.targetId forClasses:@[@"ModelUser"].mutableCopy completion:^(id<HUAvatarModel> model) {
+            
+            NSString *notificationName = [model isKindOfClass:[ModelGroup class]] ? NotificationShowGroupWall : NotificationShowUserWall;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
+            
+        }];
+    }
+    
+
 }
 
 @end
