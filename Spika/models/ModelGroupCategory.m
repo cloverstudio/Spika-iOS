@@ -78,20 +78,13 @@
         groupCategory.title = @"";
     }
     
-    if([dic objectForKey:@"_attachments"] != nil){
-        
-        for(NSString *key in [dic objectForKey:@"_attachments"]){
-            
-            if([key isEqualToString:@"picture.png"]){
-                
-                if([[[[dic objectForKey:@"_attachments"] objectForKey:key] objectForKey:@"content_type"] isEqualToString:@"image/png"]){
-                    groupCategory.imageUrl = [NSString stringWithFormat:@"%@%@/%@", DatabaseURL,groupCategory._id,@"picture.png"];
-                }
-            }
-            
+    if([dic objectForKey:@"avatar_file_id"] != nil){
+        NSString *str = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar_file_id"]];
+        if(str.length > 0){
+            groupCategory.imageUrl = [NSString stringWithFormat:@"%@%@?file=%@",HttpRootURL,FileDownloader,[dic objectForKey:@"avatar_file_id"]];
         }
-
     }
+
     
     return groupCategory;
     
