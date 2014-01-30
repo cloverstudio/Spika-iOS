@@ -31,43 +31,18 @@
 #import "Constants.h"
 #import "AlertViewManager.h"
 
-@implementation HUEULAViewController{
-    UIButton *okButton;
-}
+@implementation HUEULAViewController
 
 -(void) loadView {
 	
 	[super loadView];
 	
-	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"hp_wall_background_pattern"]];
-    
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.backgroundColor = kHUColorDarkDarkGray;
-    titleLabel.textColor = kHUColorWhite;
-    titleLabel.frame = CGRectMake(
-                                  0,
-                                  0,
-                                  [Utils getDisplayWidth],
-                                  40
-                                  );
-    
     titleLabel.text = NSLocalizedString(@"EULA-TITLE", nil);
-    titleLabel.textAlignment = UITextAlignmentCenter;
-    titleLabel.font = kFontArialMTBoldOfSize(kFontSizeBig);
-    
-	okButton = [self newOkButtonWithSelector:@selector(okButtonDidPress:)];
-    
-    okButton.frame = CGRectMake(
-                                0,
-                                self.view.height - 36,
-                                [Utils getDisplayWidth],
-                                36
-                                );
     
     okButton.hidden = YES;
     okButton.enabled = NO;
+    [okButton setTitle:NSLocalizedString(@"EULA-AGREE", nil) forState:UIControlStateNormal];
     
-    UIWebView *webView = [[UIWebView alloc] init];
     webView.frame = CGRectMake(
                                0,
                                titleLabel.y + titleLabel.height,
@@ -81,23 +56,10 @@
     webView.delegate = self;
     
     [self.view addSubview:titleLabel];
-	[self.view addSubview:webView];
-	[self.view addSubview:okButton];
     
 }
 -(NSString *) title {
 	return NSLocalizedString(@"Input password", nil);
-}
-
--(UIButton *) newOkButtonWithSelector:(SEL)aSelector {
-	UIButton *button = [HUBaseViewController buttonWithTitle:NSLocalizedString(@"EULA-AGREE", nil)
-													   frame:CGRectMake(0,0,0,0)
-											 backgroundColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeRed]
-													  target:self
-													selector:aSelector];
-    
-    
-	return button;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -115,7 +77,7 @@
      ];
 }
 
-- (void) okButtonDidPress:(id) sender{
+- (IBAction) okButtonDidPress:(id) sender{
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:@"OK" forKey:EULAAgreed];
