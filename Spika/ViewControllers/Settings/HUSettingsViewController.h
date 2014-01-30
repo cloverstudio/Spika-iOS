@@ -22,14 +22,21 @@
  THE SOFTWARE.
  */
 
-#import "HUBaseTableViewController.h"
+#import "HUBaseViewController.h"
 #import "HUDialog.h"
 
-@class RCSwitch;
+@interface HUSettingsViewController : HUBaseViewController <UITextFieldDelegate, HUDialogDelegate>
+{
+    IBOutlet UILabel *_passwordLabel;
+    IBOutlet UIButton *_changePasswordButton;
+    IBOutlet UILabel *_passcodeProtectLabel;
+    IBOutlet UISwitch *_passcodeProtectSwitch;
+    IBOutlet UIButton *_clearCacheButton;
+}
 
-@interface HUSettingsViewController : HUBaseTableViewController <UITextFieldDelegate,HUDialogDelegate>
-
-@property (nonatomic, strong) RCSwitch *passwordSwitch;
+- (IBAction) changePasswordClicked;
+- (IBAction) passcodeProtectClicked;
+- (IBAction) clearCacheClicked;
 
 -(void) passwordActiveDidChangeValue:(id)sender;
 -(void) apiEndpointDidChange:(UITextField *)textField;

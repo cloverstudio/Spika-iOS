@@ -398,7 +398,6 @@
 		B37479E918745EE0001CE0E7 /* HUSideMenuViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */; };
 		B37479EA18745EE0001CE0E7 /* HUSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */; };
 		B37479EB18745EE0001CE0E7 /* HUSubMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E318745EE0001CE0E7 /* HUSubMenuViewController.m */; };
-		B37479EC18745EE0001CE0E7 /* HUSettingsViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */; };
 		B37479ED18745EE0001CE0E7 /* HUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */; };
 		B37479F218746272001CE0E7 /* _HUPasswordBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */; };
 		B37479F318746272001CE0E7 /* _HUPasswordBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */; };
@@ -416,6 +415,7 @@
 		B3CE0C08186E347F009372B0 /* ForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */; };
 		CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1151E217EF4BCD00C14DA6 /* HUTextView.m */; };
 		CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB78BF717ECAEEB0053FBE3 /* HUButton.m */; };
+		FAB60E38189A8E43004EC13F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB60E37189A8E43004EC13F /* SettingsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1017,8 +1017,6 @@
 		B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSideMenuViewController.m; sourceTree = "<group>"; };
 		B37479E218745EE0001CE0E7 /* HUSubMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSubMenuViewController.h; sourceTree = "<group>"; };
 		B37479E318745EE0001CE0E7 /* HUSubMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSubMenuViewController.m; sourceTree = "<group>"; };
-		B37479E518745EE0001CE0E7 /* HUSettingsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSettingsViewController+Style.h"; sourceTree = "<group>"; };
-		B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSettingsViewController+Style.m"; sourceTree = "<group>"; };
 		B37479E718745EE0001CE0E7 /* HUSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSettingsViewController.h; sourceTree = "<group>"; };
 		B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSettingsViewController.m; sourceTree = "<group>"; };
 		B37479EE18746272001CE0E7 /* _HUPasswordBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HUPasswordBaseViewController.h; sourceTree = "<group>"; };
@@ -1047,6 +1045,7 @@
 		CE1151E217EF4BCD00C14DA6 /* HUTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUTextView.m; sourceTree = "<group>"; };
 		CEB78BF617ECAEEB0053FBE3 /* HUButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUButton.h; sourceTree = "<group>"; };
 		CEB78BF717ECAEEB0053FBE3 /* HUButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUButton.m; sourceTree = "<group>"; };
+		FAB60E37189A8E43004EC13F /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2288,10 +2287,9 @@
 		B37479E418745EE0001CE0E7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B37479E518745EE0001CE0E7 /* HUSettingsViewController+Style.h */,
-				B37479E618745EE0001CE0E7 /* HUSettingsViewController+Style.m */,
 				B37479E718745EE0001CE0E7 /* HUSettingsViewController.h */,
 				B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */,
+				FAB60E37189A8E43004EC13F /* SettingsView.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2517,6 +2515,7 @@
 				ADC646BF17E0761600C16A9D /* hu_loading_indicator.png in Resources */,
 				ADC646C017E0761600C16A9D /* hu_loading_indicator@2x.png in Resources */,
 				ADC646C117E0761600C16A9D /* hu_placeholder_small.png in Resources */,
+				FAB60E38189A8E43004EC13F /* SettingsView.xib in Resources */,
 				ADC646C217E0761600C16A9D /* hu_placeholder_small@2x.png in Resources */,
 				ADC646C317E0761600C16A9D /* hp_signup_fields_background.png in Resources */,
 				ADC646C417E0761600C16A9D /* hp_signup_fields_background@2x.png in Resources */,
@@ -2611,7 +2610,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37479EC18745EE0001CE0E7 /* HUSettingsViewController+Style.m in Sources */,
 				ADC6461117E0761600C16A9D /* AppDelegate.m in Sources */,
 				ADC6461317E0761600C16A9D /* CSLazyLoadController.m in Sources */,
 				ADC6461417E0761600C16A9D /* HUAvatarManager.m in Sources */,
@@ -2844,8 +2842,8 @@
 		36EBC3ACD3476584B85C547F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: ken yasue (ZLB2YFY6R2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ken yasue (ZLB2YFY6R2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -2859,8 +2857,8 @@
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "AE7108DE-2DC5-4076-8B0E-60BDBCFAE8C5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AE7108DE-2DC5-4076-8B0E-60BDBCFAE8C5";
+				PROVISIONING_PROFILE = "C403BBFF-CA80-419C-BD21-8C2BE0D75EB5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C403BBFF-CA80-419C-BD21-8C2BE0D75EB5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

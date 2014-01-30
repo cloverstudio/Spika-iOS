@@ -895,7 +895,7 @@
 		
 		[self clearNavigationVC];
 		
-		HUSettingsViewController *settingsViewController = [HUSettingsViewController new];
+        HUSettingsViewController *settingsViewController = [[HUSettingsViewController alloc] initWithNibName:@"SettingsView" bundle:nil];
 		[_navigationController pushViewController:settingsViewController animated:YES];
 		
 	}];

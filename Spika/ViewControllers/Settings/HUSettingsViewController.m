@@ -23,7 +23,6 @@
  */
 
 #import "HUSettingsViewController.h"
-#import "HUSettingsViewController+Style.h"
 #import "UILabel+Extensions.h"
 #import "HUPasswordConfirmViewController.h"
 #import "HUPasswordSetNewViewController.h"
@@ -53,6 +52,14 @@
     return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    return self;
+}
+
 #pragma mark - View lifecycle
 
 -(void) loadView {
@@ -62,20 +69,14 @@
     [self addSlideButtonItem];
     
 	self.title = NSLocalizedString(@"SETTINGS", nil);
-	
-	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	self.tableView.allowsSelection = NO;
-	self.tableView.scrollEnabled = NO;
-	
-	self.tableView.y = 10;
-	self.tableView.height -= 10;
-	
-	UIButton *clearCacheButton = [self newClearCacheButtonWithSelector:@selector(clearCacheDidTap:)];
-	clearCacheButton.center = self.view.center;
-	clearCacheButton.y = self.view.height - self.navigationController.navigationBar.height - clearCacheButton.height*1.5f - 18;
-	[self.view addSubview:clearCacheButton];
-    
-    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    _passwordLabel.text = NSLocalizedString(@"PASSWORD", nil);
+    _changePasswordButton.titleLabel.text = NSLocalizedString(@"Change Password", nil);
+    _passcodeProtectLabel.text = NSLocalizedString(@"PASSCODE PROTECT", nil);
+    [_passcodeProtectSwitch setOn:[self passwordExists]];
+    _clearCacheButton.titleLabel.text = NSLocalizedString(@"CLEAR CACHE", nil);
 }
 
 - (void)viewDidLoad
@@ -93,7 +94,7 @@
 #pragma mark - Selector
 
 -(void) clearCacheDidTap:(id)sender {
-	
+	   
 	[[DatabaseManager defaultManager] clearCache];
     [HUAvatarManager clearCache];
 	
@@ -129,7 +130,7 @@
 	[defaults synchronize];
 }
 
--(void) passwordActiveDidChangeValue:(RCSwitch *)sender {
+-(void) passwordActiveDidChangeValue:(UISwitch *)sender {
     
 	[[UIResponder currentFirstResponder] resignFirstResponder];
 	if (sender.isOn) {
@@ -145,7 +146,7 @@
 		if (isSuccess) {
 			[self savePassword:nil];
 		} else {
-			[self.passwordSwitch setOn:YES animated:NO];
+			[_passcodeProtectSwitch setOn:YES animated:NO];
 		}
 	}];
 	
@@ -158,7 +159,7 @@
 		if (isSuccess) {
 			[self savePassword:newPassword];
 		} else {
-			[self.passwordSwitch setOn:NO animated:NO];
+			[_passcodeProtectSwitch setOn:NO animated:NO];
 		}
 	}];
 	
@@ -169,36 +170,7 @@
 	return ([[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultPassword]);
 }
 
-#pragma mark - UITableViewDatasource
-
--(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-	
-	return 1;
-}
-
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	
-	return 2;
-}
-
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	
-	return 60;
-}
-
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	static NSString *cellIdentifier = @"CellIdentifier";
-	
-	UITableViewCell *cell = [CSKit tableViewCellDefault:cellIdentifier tableView:tableView];
-    
-	[self provideCellContent:cell forIndexPath:indexPath];
-	
-	return cell;
-}
-
-
-- (void)changePassword
+- (void) changePassword
 {
     HUDialog *dialog = [[HUDialog alloc] initWithText:NSLocalizedString(@"Confirm Email", nil)
                                              delegate:self
@@ -233,6 +205,18 @@
         
     }
     
+}
+
+- (void) changePasswordClicked {
+    [self changePassword];
+}
+
+- (void) passcodeProtectClicked {
+    [self passwordActiveDidChangeValue:_passcodeProtectSwitch];
+}
+
+- (void) clearCacheClicked {
+    [self clearCacheDidTap:nil];
 }
 
 
