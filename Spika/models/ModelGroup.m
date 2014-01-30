@@ -146,7 +146,7 @@
         group.categoryId = @"";
     }
 
-    if([dic objectForKey:@"category_name"] != nil){
+    if([dic objectForKey:@"category_name"] != nil && ![[dic objectForKey:@"category_name"] isKindOfClass:[NSNull class]]){
         group.categoryName = [dic objectForKey:@"category_name"];
     }
     else{
