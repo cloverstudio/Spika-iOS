@@ -25,6 +25,10 @@
 #import <UIKit/UIKit.h>
 #import "HUBaseViewController.h"
 
-@interface HUEULAViewController : UIViewController<UIWebViewDelegate>
+@interface HUEULAViewController : UIViewController<UIWebViewDelegate>{
+    IBOutlet UIWebView *webView;
+    IBOutlet UIButton *okButton;
+    IBOutlet UILabel *titleLabel;
+}
 
 @end
