@@ -296,10 +296,10 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *eulaAgreed = [userDefault objectForKey:EULAAgreed];
     
-    //if(eulaAgreed == nil){
+    if(eulaAgreed == nil){
         HUEULAViewController *eulaVC = [[HUEULAViewController alloc] initWithNibName:@"HUEULAView" bundle:nil];
         [loginNavController presentModalViewController:eulaVC animated:YES];
-    //}
+    }
     
     CS_RELEASE(loginNavController);
 }
