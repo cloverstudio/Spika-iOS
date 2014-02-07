@@ -89,6 +89,8 @@
     
     _isEditing = YES;
     
+    [self showKeyboardDoneButtonForTextView:_aboutValueLabel];
+    
 }
 
 -(void) updateAddButton{

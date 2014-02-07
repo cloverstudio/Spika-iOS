@@ -210,7 +210,7 @@
 "Token-Expired"                 = "Your token has expired, please login again.";
 
 /* tutorial */
-"tutorial-login"                = "Thank you for downloading HookUp. Enjoy chatting :)";
+"tutorial-login"                = "Thank you for downloading Spika. Enjoy chatting :)";
 "tutorial-recent"               = "Thank you for signing up! This screen shows all of your unread messages. It's empty at the moment but soon it will be full of messages from your friends :)";
 "tutorial-wall"                 = "This is the place where you can talk to a friend or post in a group. You can also send photo, voice and video. Try sending something to us!";
 "tutorial-users"                = "Find your friends here! You can search by name, explore by gender or age. Also, you can add friends to contact list so you could find conversations with them more easily.";

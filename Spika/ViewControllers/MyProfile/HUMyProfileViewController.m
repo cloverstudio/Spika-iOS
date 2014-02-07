@@ -170,6 +170,8 @@
     [self disableEditors];
     [self populateWithData];
     [self loadAvatar];
+    
+    [self showKeyboardDoneButtonForTextView:_aboutValueLabel];
 }
 
 

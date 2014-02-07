@@ -472,5 +472,24 @@
 		dispatch_sync(dispatch_get_main_queue(), block);
 }
 
+#pragma mark - Keyboard Done Button
+
+- (void) showKeyboardDoneButtonForTextView:(UITextView *) textView
+{
+    UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                     [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithKeyboardWithDoneButton)],
+                           nil];
+    [toolbar sizeToFit];
+    textView.inputAccessoryView = toolbar;
+    _textViewForKeyboardWithDoneButton = textView;
+}
+
+- (void) doneWithKeyboardWithDoneButton
+{
+    [_textViewForKeyboardWithDoneButton resignFirstResponder];
+}
 
 @end

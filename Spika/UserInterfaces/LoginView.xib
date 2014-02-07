@@ -40,7 +40,7 @@
                                     <accessibility key="accessibilityConfiguration" hint="Email" label=""/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="alert"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-fi-xnB" userLabel="TextField - Password">
                                     <rect key="frame" x="63" y="83" width="238" height="30"/>

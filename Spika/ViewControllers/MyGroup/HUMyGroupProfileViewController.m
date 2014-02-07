@@ -75,6 +75,8 @@
     _deleteButton.enabled = NO;
     
     [_avatarView setUserInteractionEnabled:NO];
+    
+    [self showKeyboardDoneButtonForTextView:_aboutValueLabel];
 }
 
 - (void) tuggleEdit{

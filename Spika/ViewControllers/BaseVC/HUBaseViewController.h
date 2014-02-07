@@ -49,6 +49,8 @@ typedef NS_ENUM(NSInteger, HUSharedColorType) {
     BOOL            _allowSwipe;
     UIBarButtonItem *_leftButtonShowMenu;
     UIBarButtonItem *_leftButtonHideMenu;
+    UITextView      *_textViewForKeyboardWithDoneButton;
+    
 }
 
 @property (nonatomic, readonly) BOOL isViewOpened;
@@ -93,7 +95,11 @@ typedef NS_ENUM(NSInteger, HUSharedColorType) {
 
 - (void) onBack:(id) sender;
 
--(void)runOnMainQueueWithoutDeadlocking:(CSVoidBlock)block;
+- (void)runOnMainQueueWithoutDeadlocking:(CSVoidBlock)block;
 
+#pragma mark - Keyboard Done Button
+
+- (void) showKeyboardDoneButtonForTextView:(UITextView *) textView;
+- (void) doneWithKeyboardWithDoneButton:(UITextView *) textView;
 
 @end

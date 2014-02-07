@@ -2851,8 +2851,8 @@
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "C403BBFF-CA80-419C-BD21-8C2BE0D75EB5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C403BBFF-CA80-419C-BD21-8C2BE0D75EB5";
+				PROVISIONING_PROFILE = "83FCF0BF-295E-45B2-BADB-BC7BD19E8DA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83FCF0BF-295E-45B2-BADB-BC7BD19E8DA1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2969,8 +2969,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -2984,8 +2984,8 @@
 					"\"$(SRCROOT)/Spika/External/CrittercismSDK\"",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "CB874C4A-5506-42DE-8E3E-01B61D4C46B4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB874C4A-5506-42DE-8E3E-01B61D4C46B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;
