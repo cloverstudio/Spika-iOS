@@ -41,7 +41,6 @@
         CGRect frame = CGRectMake(6, 5, 200, 44);
         CSTextField *textField = [[CSTextField alloc] initWithFrame:frame];
         textField.font = kFontArialMTOfSize(kFontSizeSmall);
-        textField.text = self.placeholderString;
         textField.textInset = CGPointMake(4, 0);
         textField.placeholderInset = CGPointMake(4, 0);
         textField.borderStyle = UITextBorderStyleNone;
@@ -65,7 +64,6 @@
 }
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField {
-    textField.text = [textField.text isEqualToString:self.placeholderString] ? @"" : textField.text;
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -74,13 +72,8 @@
 }
 
 -(void) search {
-    if (!([_searchField.text isWhiteSpacesString] || [_searchField.text isEqualToString:self.placeholderString])) {
-        [self.delegate searchView:self searchText:_searchField.text];
-        [self endEditing:YES];
-    }
-    else {
-        ///TODO: prompt user?
-    }
+    [self.delegate searchView:self searchText:_searchField.text];
+    [self endEditing:YES];
 }
 
 @end
