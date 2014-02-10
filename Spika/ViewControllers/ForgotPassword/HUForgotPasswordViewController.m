@@ -47,6 +47,7 @@
     [super loadView];
      UIColor *color = [UIColor grayColor];
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    [_sendButton setTitle:NSLocalizedString(@"ForgotPassword-Send", @"") forState:UIControlStateNormal];
     
 }
 
