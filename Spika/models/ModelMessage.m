@@ -302,6 +302,7 @@
         NSLog(@"from message: %@ %@", message.avatarThumbFileId, message.avatarThumbUrl);
     }else{
         message.avatarThumbFileId = @"";
+        message.avatarThumbUrl = @"";
     }
     return message;
     
@@ -393,6 +394,7 @@
     copy.pictureFileId = self.pictureFileId.copy;
     copy.pictureThumbFileId = self.pictureThumbFileId.copy;
     copy.avatarThumbFileId = self.avatarThumbFileId.copy;
+    copy.avatarThumbUrl = self.avatarThumbUrl.copy;
     
     return copy;
 }
