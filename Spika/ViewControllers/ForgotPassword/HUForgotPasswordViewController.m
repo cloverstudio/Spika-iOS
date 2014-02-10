@@ -65,7 +65,7 @@
             
             [[AlertViewManager defaultManager] dismiss];
             
-            if([result isEqualToString:@"OK"]){
+            if([result rangeOfString:@"OK"].location != NSNotFound){
                 [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"ForgotPassword-Sent", NULL)];
                 _emailField.text = @"";
             }else{

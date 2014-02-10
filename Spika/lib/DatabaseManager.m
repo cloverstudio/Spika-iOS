@@ -725,6 +725,9 @@
     
     NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
     
+    // disable to update email
+    [params removeObjectForKey:@"email"];
+    
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"updateUser"
