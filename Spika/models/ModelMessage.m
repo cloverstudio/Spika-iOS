@@ -52,6 +52,8 @@
 @synthesize emoticonImageURL = _emoticonImageURL;
 @synthesize longitude = _longitude;
 @synthesize latitude = _latitude;
+@synthesize avatarThumbUrl = _avatarThumbUrl;
+@synthesize avatarThumbFileId = _avatarThumbFileId;
 
 +(NSDictionary *) toDic:(ModelMessage *)message{
     NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc] init];
@@ -81,9 +83,7 @@
     [tmpDic setObject:message.emoticonImageURL forKey:@"emoticon_image_url"];
     [tmpDic setObject:[NSNumber numberWithDouble:message.longitude] forKey:@"longitude"];
     [tmpDic setObject:[NSNumber numberWithDouble:message.latitude] forKey:@"latitude"];
-
-    
-    
+    [tmpDic setObject:message.avatarThumbFileId forKey:@"avatar_thumb_file_id"];
 
     return tmpDic;
 }
@@ -296,6 +296,13 @@
         message.longitude = 0;
     }
     
+    if([dic objectForKey:@"avatar_thumb_file_id"] != nil) {
+        message.avatarThumbUrl =  [NSString stringWithFormat:@"%@%@?file=%@",HttpRootURL,FileDownloader,[dic objectForKey:@"avatar_thumb_file_id"]];
+        message.avatarThumbFileId = [dic objectForKey:@"avatar_thumb_file_id"];
+        NSLog(@"from message: %@ %@", message.avatarThumbFileId, message.avatarThumbUrl);
+    }else{
+        message.avatarThumbFileId = @"";
+    }
     return message;
     
 }
@@ -385,6 +392,7 @@
     copy.latitude = self.latitude;
     copy.pictureFileId = self.pictureFileId.copy;
     copy.pictureThumbFileId = self.pictureThumbFileId.copy;
+    copy.avatarThumbFileId = self.avatarThumbFileId.copy;
     
     return copy;
 }

@@ -56,6 +56,8 @@
 
 @property (strong, nonatomic) NSString *imageThumbUrl;
 @property (strong, nonatomic) NSString *pictureThumbFileId;
+@property (strong, nonatomic) NSString *avatarThumbUrl;
+@property (strong, nonatomic) NSString *avatarThumbFileId;
 
 
 @property (readwrite) long created;

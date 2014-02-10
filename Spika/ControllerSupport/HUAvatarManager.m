@@ -83,8 +83,11 @@ typedef void(^HUModelResultBlock)(id<HUAvatarModel> model, NSMutableArray *remai
                 [HUAvatarManager avatarImageForUrl:result.thumbImageUrl atIndexPath:indexPath width:width completionHandler:block];
             }];
         }];
-
     }
+}
+
++(void) avatarImageFromMessage:(ModelMessage *)message atIndexPath:(NSIndexPath *)indexPath width:(float)width completionHandler:(HUUsersImageResultBlock)block {
+    [HUAvatarManager avatarImageForUrl:message.avatarThumbUrl atIndexPath:indexPath width:width completionHandler:block];
 }
 
 
@@ -264,11 +267,7 @@ typedef void(^HUModelResultBlock)(id<HUAvatarModel> model, NSMutableArray *remai
 }
 
 +(void) avatarImageForMessage:(ModelMessage *)message atIndexPath:(NSIndexPath *)indexPath completionHandler:(HUUsersImageResultBlock)block {
-    
-    [HUAvatarManager avatarImageForId:message.from_user_id
-                                   atIndexPath:indexPath
-                                width:kListViewSmallWidht
-                             completionHandler:block];
+    [HUAvatarManager avatarImageFromMessage:message atIndexPath:indexPath width:kListViewSmallWidht completionHandler:block];
 }
 
 
