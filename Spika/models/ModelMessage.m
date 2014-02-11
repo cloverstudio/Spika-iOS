@@ -299,7 +299,6 @@
     if([dic objectForKey:@"avatar_thumb_file_id"] != nil) {
         message.avatarThumbUrl =  [NSString stringWithFormat:@"%@%@?file=%@",HttpRootURL,FileDownloader,[dic objectForKey:@"avatar_thumb_file_id"]];
         message.avatarThumbFileId = [dic objectForKey:@"avatar_thumb_file_id"];
-        NSLog(@"from message: %@ %@", message.avatarThumbFileId, message.avatarThumbUrl);
     }else{
         message.avatarThumbFileId = @"";
         message.avatarThumbUrl = @"";
