@@ -20,6 +20,8 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
+ 
+ test
  */
 
 #ifndef Bind_Constants_h
@@ -41,7 +43,7 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://192.168.1.28:8080/wwwroot/api"
+#define DatabaseURL             @"http://officialapi.spikaapp.com/api"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
 #define ReminderURL             @"resetPassword"
@@ -50,15 +52,15 @@
 #define PagingMessageFetchNum   20
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://192.168.1.28:8080/wwwroot/api"
-#define PageRootURL             @"http://192.168.1.28:8080/wwwroot/page"
+#define HttpRootURL             @"http://officialapi.spikaapp.com/api"
+#define PageRootURL             @"http://officialapi.spikaapp.com/page"
 #define FileUplaoder            @"/fileuploader"
 #define FileDownloader          @"/filedownloader"
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
 
-#define SupportUserId           @"4be639b10b600073ad0df83d8500067b"
+#define SupportUserId           @"1"
 
 // UI element constants
 #define StdUIElementHeight 35
