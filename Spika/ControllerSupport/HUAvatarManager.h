@@ -34,6 +34,7 @@ typedef void(^HUUsersImageResultBlock)(UIImage *image, NSIndexPath *indexPath);
 @interface HUAvatarManager : NSObject
 
 +(void) avatarImageForId:(NSString *)userId atIndexPath:(NSIndexPath *)indexPath width:(float) width completionHandler:(HUUsersImageResultBlock)block ;
++(void) avatarImageFromMessage:(ModelMessage *)message atIndexPath:(NSIndexPath *)indexPath width:(float) width completionHandler:(HUUsersImageResultBlock)block ;
 +(void) avatarImageForUrl:(NSString *)aURL atIndexPath:(NSIndexPath *)indexPath width:(float) width completionHandler:(HUUsersImageResultBlock)block ;
 
 +(ModelUser *) userForMessage:(ModelMessage *)message;

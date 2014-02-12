@@ -42,12 +42,12 @@ typedef void(^HUModelResultBlock)(id<HUAvatarModel> model, NSMutableArray *remai
 #pragma mark - Initialization
 
 +(id) defaultAvatarManager {
-    static HUAvatarManager *manager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [HUAvatarManager new];
-    });
-    return manager;
+    static HUAvatarManager *_sharedInstance = nil;
+    @synchronized(self) {
+        if (_sharedInstance == nil)
+            _sharedInstance = [HUAvatarManager new];
+        return _sharedInstance;
+    };
 }
 
 -(id) init {
@@ -83,7 +83,23 @@ typedef void(^HUModelResultBlock)(id<HUAvatarModel> model, NSMutableArray *remai
                 [HUAvatarManager avatarImageForUrl:result.thumbImageUrl atIndexPath:indexPath width:width completionHandler:block];
             }];
         }];
+    }
+}
 
++(void) avatarImageFromMessage:(ModelMessage *)message atIndexPath:(NSIndexPath *)indexPath width:(float)width completionHandler:(HUUsersImageResultBlock)block {
+
+    HUAvatarManager *manager = [HUAvatarManager defaultAvatarManager];
+    
+    id<HUAvatarModel> model = [manager.models objectForKey:message.from_user_id];
+    
+    if (model) {
+        [HUAvatarManager avatarImageForUrl:message.avatarThumbUrl atIndexPath:indexPath width:width completionHandler:block];
+    } else {
+        [HUAvatarManager findModelForModelId:message.from_user_id forClasses:MODELS.mutableCopy completion:^(id<HUAvatarModel> result) {
+            [CSDispatcher dispatchMainQueue:^{
+                [HUAvatarManager avatarImageForUrl:message.avatarThumbUrl atIndexPath:indexPath width:width completionHandler:block];
+            }];
+        }];
     }
 }
 
@@ -264,11 +280,7 @@ typedef void(^HUModelResultBlock)(id<HUAvatarModel> model, NSMutableArray *remai
 }
 
 +(void) avatarImageForMessage:(ModelMessage *)message atIndexPath:(NSIndexPath *)indexPath completionHandler:(HUUsersImageResultBlock)block {
-    
-    [HUAvatarManager avatarImageForId:message.from_user_id
-                                   atIndexPath:indexPath
-                                width:kListViewSmallWidht
-                             completionHandler:block];
+    [HUAvatarManager avatarImageFromMessage:message atIndexPath:indexPath width:kListViewSmallWidht completionHandler:block];
 }
 
 
