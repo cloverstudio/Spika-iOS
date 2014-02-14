@@ -43,7 +43,7 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://officialapi.spikaapp.com/api"
+#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
 #define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
 #define ReminderURL             @"resetPassword"
@@ -52,8 +52,8 @@
 #define PagingMessageFetchNum   20
 
 #define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://officialapi.spikaapp.com/api"
-#define PageRootURL             @"http://officialapi.spikaapp.com/page"
+#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
+#define PageRootURL             @"http://localhost:8080/wwwroot/page"
 #define FileUplaoder            @"/fileuploader"
 #define FileDownloader          @"/filedownloader"
 
