@@ -64,6 +64,7 @@
     [dictionary setObject:@[NSLocalizedString(@"Users", nil),
                             NSLocalizedString(@"Groups", nil),
                             NSLocalizedString(@"Profile", nil),
+                            NSLocalizedString(@"Information", nil),
                             NSLocalizedString(@"Settings", nil),
                             NSLocalizedString(@"User Support", nil),
                             NSLocalizedString(@"Logout", nil)]
@@ -120,12 +121,15 @@
             imageName = @"hu_profile_icon";
             break;
         case 3:
-            imageName = @"icon_settings";
+            imageName = @"hu_information_icon";
             break;
         case 4:
-            imageName = @"hu_personalwall_icon";
+            imageName = @"icon_settings";
             break;
         case 5:
+            imageName = @"hu_personalwall_icon";
+            break;
+        case 6:
             imageName = @"hu_logout_icon";
             break;
         default:

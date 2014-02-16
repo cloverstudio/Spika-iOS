@@ -443,9 +443,7 @@
     [request setHTTPShouldHandleCookies:NO];
     [request setTimeoutInterval:30];
     [request setHTTPMethod:@"POST"];
-    
-    [request setValue:DatabaseName forHTTPHeaderField:@"database"];
-    
+        
     // set Content-Type in HTTP header
     NSString *boundary = @"0xKhTmLbOuNdArY";
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];

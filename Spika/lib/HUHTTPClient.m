@@ -59,7 +59,6 @@
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Accept" value:@"audio/x-wav"];
     [self setDefaultHeader:@"Accept" value:@"audio/3gp"];
-    [self setDefaultHeader:@"database" value:DatabaseName];
 
     _downloadingImageURL = [[NSMutableArray alloc] init];
     

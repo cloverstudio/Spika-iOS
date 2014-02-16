@@ -52,6 +52,7 @@
 #import "HUAvatarManager.h"
 #import "HUEULAViewController.h"
 #import "HULoginViewController.h"
+#import "HUInformationViewController.h"
 
 @interface AppDelegate (){
     UIView *_disableTouchView;
@@ -891,6 +892,16 @@
 
         }];
 	
+	[NSNotificationCenter addObserverNamed:NotificationShowInformation usingBlock:^(NSNotification *note) {
+		
+		[self clearNavigationVC];
+		
+        HUInformationViewController *informtionViewController = [[HUInformationViewController alloc] initWithNibName:@"InformationView" bundle:nil];
+		[_navigationController pushViewController:informtionViewController animated:YES];
+		
+	}];
+
+    
 	[NSNotificationCenter addObserverNamed:NotificationShowSettings usingBlock:^(NSNotification *note) {
 		
 		[self clearNavigationVC];

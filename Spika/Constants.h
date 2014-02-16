@@ -21,8 +21,14 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  
- test
  */
+
+/* change here */
+#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
+#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
+#define PageRootURL             @"http://localhost:8080/wwwroot/page"
+#define InformationPageTopURL   @"http://localhost:8080/wwwroot/page/information"
+/* end change here */
 
 #ifndef Bind_Constants_h
 #define Bind_Constants_h
@@ -43,19 +49,13 @@
 /* Database */
 #pragma mark - Database
 
-#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
-#define DatabaseName            @"spikademo"
 #define AuthURL                 @"auth"
-#define ReminderURL             @"resetPassword"
-#define DatabaseUserName        @"binduser"
-#define DatabasePassword        @"cloverpass013"
-#define PagingMessageFetchNum   20
-
-#define SmileyWebURL            @"http://spikademo2.clover-studio.com/api/emoji.php"
-#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
-#define PageRootURL             @"http://localhost:8080/wwwroot/page"
 #define FileUplaoder            @"/fileuploader"
 #define FileDownloader          @"/filedownloader"
+#define ReminderURL             @"resetPassword"
+
+#define PagingMessageFetchNum   20
+
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
@@ -100,6 +100,7 @@
 #define NotificationGroupUpdated						@"groupUpdated"
 #define NotificationDeleteGroup                         @"groupDeleted"
 #define NotificationShowRecentActivity                  @"showRecentActivity"
+#define NotificationShowInformation                     @"showInformation"
 #define NotificationShowSettings                        @"showSettings"
 #define NotificationShowPassword                        @"showPassword"
 #define NotificationShowSubMenu                         @"showSubMenu"

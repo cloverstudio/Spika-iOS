@@ -271,14 +271,18 @@
     }
     
 	if(indexPath.row == 3){
+		[center postNotificationName:NotificationShowInformation object:nil];
+	}
+    
+	if(indexPath.row == 4){
 		[center postNotificationName:NotificationShowSettings object:nil];
 	}
 	
-    if(indexPath.row == 4){
+    if(indexPath.row == 5){
         [center postNotificationName:NotificationSideMenuPersonalWallSelected object:nil];
     }
     
-    if(indexPath.row == 5){
+    if(indexPath.row == 6){
 
         HUDialog *dialog = [[HUDialog alloc] initWithText:NSLocalizedString(@"Confirm Logout", nil)
                                                  delegate:self

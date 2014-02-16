@@ -349,6 +349,9 @@
 		ADC647B417E0796600C16A9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B317E0796600C16A9D /* AudioToolbox.framework */; };
 		ADC647B617E0798500C16A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B517E0798500C16A9D /* CoreMedia.framework */; };
 		ADC647B817E079B700C16A9D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC647B717E079B600C16A9D /* MobileCoreServices.framework */; };
+		B3142B7518B16763004A4E75 /* hu_information_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3142B7418B16763004A4E75 /* hu_information_icon@2x.png */; };
+		B3142B7818B16A92004A4E75 /* InformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3142B7718B16A92004A4E75 /* InformationView.xib */; };
+		B3142B7B18B16AC7004A4E75 /* HUInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3142B7A18B16AC7004A4E75 /* HUInformationViewController.m */; };
 		B32EA3EE186F92BF00733D07 /* HUProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EA3EC186F92BF00733D07 /* HUProfileViewController.m */; };
 		B32EA3F0186F92F800733D07 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32EA3EF186F92F800733D07 /* UserProfileView.xib */; };
 		B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */; };
@@ -929,6 +932,10 @@
 		ADC647B317E0796600C16A9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADC647B517E0798500C16A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ADC647B717E079B600C16A9D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B3142B7418B16763004A4E75 /* hu_information_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hu_information_icon@2x.png"; sourceTree = "<group>"; };
+		B3142B7718B16A92004A4E75 /* InformationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InformationView.xib; path = information/InformationView.xib; sourceTree = "<group>"; };
+		B3142B7918B16AC7004A4E75 /* HUInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HUInformationViewController.h; path = information/HUInformationViewController.h; sourceTree = "<group>"; };
+		B3142B7A18B16AC7004A4E75 /* HUInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HUInformationViewController.m; path = information/HUInformationViewController.m; sourceTree = "<group>"; };
 		B32EA3EB186F92BF00733D07 /* HUProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUProfileViewController.h; sourceTree = "<group>"; };
 		B32EA3EC186F92BF00733D07 /* HUProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUProfileViewController.m; sourceTree = "<group>"; };
 		B32EA3EF186F92F800733D07 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileView.xib; sourceTree = "<group>"; };
@@ -1656,6 +1663,7 @@
 		ADC6446F17E0761500C16A9D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B3142B7418B16763004A4E75 /* hu_information_icon@2x.png */,
 				ADC6447017E0761500C16A9D /* hu_background_pattern@2x.png */,
 				ADC6447117E0761500C16A9D /* hu_groups_icon@2x.png */,
 				ADC6447217E0761500C16A9D /* hu_logout_icon@2x.png */,
@@ -1918,6 +1926,7 @@
 		ADC6452917E0761600C16A9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3142B7618B16A61004A4E75 /* Information */,
 				B37479DD18745EE0001CE0E7 /* SideMenu */,
 				B37479E418745EE0001CE0E7 /* Settings */,
 				B374799318745EDA001CE0E7 /* Password */,
@@ -2098,6 +2107,16 @@
 				ADC6479F17E078CC00C16A9D /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3142B7618B16A61004A4E75 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				B3142B7718B16A92004A4E75 /* InformationView.xib */,
+				B3142B7918B16AC7004A4E75 /* HUInformationViewController.h */,
+				B3142B7A18B16AC7004A4E75 /* HUInformationViewController.m */,
+			);
+			name = Information;
 			sourceTree = "<group>";
 		};
 		B32EA3E8186F92BF00733D07 /* Profile */ = {
@@ -2572,6 +2591,7 @@
 				ADC646F517E0761600C16A9D /* location_more_icon_active.png in Resources */,
 				ADC646F617E0761600C16A9D /* location_more_icon_active@2x.png in Resources */,
 				ADC646F717E0761600C16A9D /* mic_voice_icon.png in Resources */,
+				B3142B7518B16763004A4E75 /* hu_information_icon@2x.png in Resources */,
 				ADC646F817E0761600C16A9D /* mic_voice_icon@2x.png in Resources */,
 				ADC646F917E0761700C16A9D /* mic_voice_icon_active.png in Resources */,
 				ADC646FA17E0761700C16A9D /* mic_voice_icon_active@2x.png in Resources */,
@@ -2586,6 +2606,7 @@
 				AD74BB4F17E0B3680061F786 /* hu_right_arrow@2x.png in Resources */,
 				AD74BB5017E0B3680061F786 /* messages_icon.png in Resources */,
 				AD74BB5117E0B3680061F786 /* messages_icon@2x.png in Resources */,
+				B3142B7818B16A92004A4E75 /* InformationView.xib in Resources */,
 				AD74BB5217E0B3680061F786 /* no_messages_icon.png in Resources */,
 				AD74BB5317E0B3680061F786 /* no_messages_icon@2x.png in Resources */,
 				AD74BB5417E0B3680061F786 /* not_in_favorites_icon.png in Resources */,
@@ -2722,6 +2743,7 @@
 				B37479C818745EDA001CE0E7 /* HUDigitInputViewController.m in Sources */,
 				ADC6472917E0761700C16A9D /* ModelRecentActivity.m in Sources */,
 				ADC6472A17E0761700C16A9D /* ModelUser.m in Sources */,
+				B3142B7B18B16AC7004A4E75 /* HUInformationViewController.m in Sources */,
 				B37479CD18745EDA001CE0E7 /* HUPhotoDetailViewController.m in Sources */,
 				CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */,
 				B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */,
