@@ -228,6 +228,8 @@
 
     [super loadView];
     
+    _allowSwipe = NO;
+    
     if(_targetUser != nil && [_targetUser._id isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]) {
     
     }else{
@@ -250,6 +252,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.allowsSelection = self.isCellSelectionEnabled;
+    
     [_contentView addSubview:self.tableView];
     
     
@@ -1040,6 +1043,28 @@
     
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    ModelMessage *message = [self.items objectAtIndex:indexPath.row];
+    if ([UserManager messageBelongsToUser:message]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+// Swipe to delete.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //TODO: real delete
+        [self.items removeObjectAtIndex:indexPath.row];
+        [tableView reloadData];
+    }
+}
+
 
 
 #pragma mark - UITableViewDelegate methods

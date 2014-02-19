@@ -417,6 +417,7 @@
 		FA14E5A1189BB1150068C213 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */; };
 		FA504DA7189BDB2D00DD12B8 /* HUEULAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */; };
 		FAB60E38189A8E43004EC13F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB60E37189A8E43004EC13F /* SettingsView.xib */; };
+		FABC54C718B4DA6700FE820B /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC54C618B4DA6700FE820B /* delete@2x.png */; };
 		FAE0CB3218A8F4E000AB0DFA /* Default@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0CB3018A8F4E000AB0DFA /* Default@2x~ipad.png */; };
 		FAE0CB3518A8F59F00AB0DFA /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0CB3418A8F59F00AB0DFA /* Default~ipad.png */; };
 /* End PBXBuildFile section */
@@ -1051,6 +1052,7 @@
 		FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUEULAView.xib; sourceTree = "<group>"; };
 		FAB60E37189A8E43004EC13F /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		FABC54C618B4DA6700FE820B /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		FAE0CB3018A8F4E000AB0DFA /* Default@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~ipad.png"; sourceTree = "<group>"; };
 		FAE0CB3418A8F59F00AB0DFA /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1749,6 +1751,7 @@
 		ADC6449917E0761500C16A9D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FABC54C618B4DA6700FE820B /* delete@2x.png */,
 				ADC6449A17E0761500C16A9D /* cell_arrow.png */,
 				ADC6449B17E0761500C16A9D /* cell_arrow@2x.png */,
 				ADC6449C17E0761500C16A9D /* cell_location_more_icon.png */,
@@ -2451,6 +2454,7 @@
 				ADC6465B17E0761600C16A9D /* hp_email_field@2x.png in Resources */,
 				ADC6465C17E0761600C16A9D /* group_stub.png in Resources */,
 				ADC6465D17E0761600C16A9D /* group_stub@2x.png in Resources */,
+				FABC54C718B4DA6700FE820B /* delete@2x.png in Resources */,
 				ADC6465E17E0761600C16A9D /* group_stub_large.png in Resources */,
 				ADC6465F17E0761600C16A9D /* group_stub_large@2x.png in Resources */,
 				ADC6466017E0761600C16A9D /* hu_dismiss_button.png in Resources */,
