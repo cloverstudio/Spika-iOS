@@ -51,6 +51,8 @@
 #import "HUVideoRecorderViewController.h"
 #import "NSNotification+Extensions.h"
 #import "HUBaseViewController+Style.h"
+#import "HUDeleteDialog.h"
+#import "TransitionDelegate.h"
 
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
 
@@ -74,11 +76,11 @@
 	
 	id					_notificationObserver;
     
-    
 }
 
 @property (nonatomic, strong) ModelGroup *targetGroup;
 @property (readwrite) BOOL isKeyboardShown;
+@property (nonatomic, strong) TransitionDelegate *transitionDelegate;
 
 #pragma mark - Animations
 - (void) animateKeyboardWillShow:(NSNotification *)aNotification;
@@ -344,6 +346,7 @@
     [super viewDidLoad];
     
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-wall",nil)];
+    self.transitionDelegate = [[TransitionDelegate alloc] init];
 }
 
 #pragma mark - Override
@@ -1059,9 +1062,16 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        //TODO: real delete
-        [self.items removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
+//        //TODO: real delete
+//        [self.items removeObjectAtIndex:indexPath.row];
+//        [tableView reloadData];
+        
+        HUDeleteDialog *deleteDialog =[[HUDeleteDialog alloc] initWithNibName:@"DeleteDialogView" bundle:nil];
+        
+        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+        
+        [self presentViewController:deleteDialog animated:YES completion:NULL];
     }
 }
 

@@ -415,6 +415,11 @@
 		FA14E59F189BB1150068C213 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59C189BB1150068C213 /* Icon-60@2x.png */; };
 		FA14E5A0189BB1150068C213 /* Icon-Spotlight-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59D189BB1150068C213 /* Icon-Spotlight-40@2x.png */; };
 		FA14E5A1189BB1150068C213 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */; };
+		FA3AFF9B18B611B600BC2BED /* DeleteDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */; };
+		FA3AFF9D18B6128E00BC2BED /* dialog_bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */; };
+		FA3AFFA018B6151000BC2BED /* HUDeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */; };
+		FA3AFFA618B6541700BC2BED /* AnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */; };
+		FA3AFFA718B6541700BC2BED /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */; };
 		FA504DA7189BDB2D00DD12B8 /* HUEULAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */; };
 		FAB60E38189A8E43004EC13F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB60E37189A8E43004EC13F /* SettingsView.xib */; };
 		FABC54C718B4DA6700FE820B /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC54C618B4DA6700FE820B /* delete@2x.png */; };
@@ -1050,6 +1055,14 @@
 		FA14E59C189BB1150068C213 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		FA14E59D189BB1150068C213 /* Icon-Spotlight-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-40@2x.png"; sourceTree = "<group>"; };
 		FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteDialogView.xib; sourceTree = "<group>"; };
+		FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_bubble@2x.png"; sourceTree = "<group>"; };
+		FA3AFF9E18B6151000BC2BED /* HUDeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDeleteDialog.h; sourceTree = "<group>"; };
+		FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDeleteDialog.m; sourceTree = "<group>"; };
+		FA3AFFA218B6541700BC2BED /* AnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedTransitioning.h; sourceTree = "<group>"; };
+		FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedTransitioning.m; sourceTree = "<group>"; };
+		FA3AFFA418B6541700BC2BED /* TransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionDelegate.h; sourceTree = "<group>"; };
+		FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionDelegate.m; sourceTree = "<group>"; };
 		FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUEULAView.xib; sourceTree = "<group>"; };
 		FAB60E37189A8E43004EC13F /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FABC54C618B4DA6700FE820B /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
@@ -1153,6 +1166,7 @@
 				ADC6450217E0761600C16A9D /* Model */,
 				ADC6452917E0761600C16A9D /* ViewControllers */,
 				ADC645A317E0761600C16A9D /* Views */,
+				FA3AFFA118B6541700BC2BED /* Transition Delegate */,
 				ADC6479E17E078BE00C16A9D /* Frameworks */,
 				FA14E59A189BAECB0068C213 /* Images.xcassets */,
 			);
@@ -1743,6 +1757,7 @@
 				ADC644A917E0761600C16A9D /* hp_wall_tableview_bottom_shadow@2x.png */,
 				ADC644AA17E0761600C16A9D /* hp_wall_tableview_top_shadow.png */,
 				ADC644AB17E0761600C16A9D /* hp_wall_tableview_top_shadow@2x.png */,
+				FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */,
 				ADC644AC17E0761600C16A9D /* MediaPanel */,
 			);
 			path = Wall;
@@ -2157,6 +2172,9 @@
 				B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */,
 				B37479701874566E001CE0E7 /* HUWallViewController.h */,
 				B37479711874566E001CE0E7 /* HUWallViewController.m */,
+				FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */,
+				FA3AFF9E18B6151000BC2BED /* HUDeleteDialog.h */,
+				FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -2376,6 +2394,17 @@
 			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
+		FA3AFFA118B6541700BC2BED /* Transition Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA3AFFA218B6541700BC2BED /* AnimatedTransitioning.h */,
+				FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */,
+				FA3AFFA418B6541700BC2BED /* TransitionDelegate.h */,
+				FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */,
+			);
+			path = "Transition Delegate";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2467,6 +2496,7 @@
 				ADC6466617E0761600C16A9D /* mine_icon@2x.png in Resources */,
 				ADC6466717E0761600C16A9D /* favourite_off@2x.png in Resources */,
 				ADC6466817E0761600C16A9D /* favourite_on@2x.png in Resources */,
+				FA3AFF9D18B6128E00BC2BED /* dialog_bubble@2x.png in Resources */,
 				B32EA3F0186F92F800733D07 /* UserProfileView.xib in Resources */,
 				ADC6466E17E0761600C16A9D /* Icon-Small@2x.png in Resources */,
 				ADC6467117E0761600C16A9D /* iTunesArtwork.png in Resources */,
@@ -2489,6 +2519,7 @@
 				ADC6468017E0761600C16A9D /* delete_arrow@2x.png in Resources */,
 				ADC6469317E0761600C16A9D /* hu_push_close.png in Resources */,
 				ADC6469417E0761600C16A9D /* hu_push_close@2x.png in Resources */,
+				FA3AFF9B18B611B600BC2BED /* DeleteDialogView.xib in Resources */,
 				ADC6469517E0761600C16A9D /* btn_slider_international_off.png in Resources */,
 				ADC6469617E0761600C16A9D /* btn_slider_international_off@2x.png in Resources */,
 				FA14E59B189BAECB0068C213 /* Images.xcassets in Resources */,
@@ -2680,6 +2711,7 @@
 				ADC6463B17E0761600C16A9D /* UIResponder+Extension.m in Sources */,
 				ADC6463C17E0761600C16A9D /* UIToolbar+BackgroundColor.m in Sources */,
 				ADC6463D17E0761600C16A9D /* UIView+Apperance.m in Sources */,
+				FA3AFFA018B6151000BC2BED /* HUDeleteDialog.m in Sources */,
 				ADC6463E17E0761600C16A9D /* UIView+CoreGraphics.m in Sources */,
 				ADC6463F17E0761600C16A9D /* UIView+Extensions.m in Sources */,
 				ADC6464017E0761600C16A9D /* UIView+Margin.m in Sources */,
@@ -2714,6 +2746,7 @@
 				ADC6470E17E0761700C16A9D /* SBJsonUTF8Stream.m in Sources */,
 				ADC6470F17E0761700C16A9D /* SBJsonWriter.m in Sources */,
 				ADC6471017E0761700C16A9D /* NSObject+MKBlockAdditions.m in Sources */,
+				FA3AFFA618B6541700BC2BED /* AnimatedTransitioning.m in Sources */,
 				ADC6471117E0761700C16A9D /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				ADC6471217E0761700C16A9D /* UIAlertView+MKBlockAdditions.m in Sources */,
 				B37479D218745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.m in Sources */,
@@ -2794,6 +2827,7 @@
 				ADC6477E17E0761700C16A9D /* HUPasswordChangeDialog.m in Sources */,
 				ADC6477F17E0761700C16A9D /* HUPasswordDisplayView+Style.m in Sources */,
 				B37479EB18745EE0001CE0E7 /* HUSubMenuViewController.m in Sources */,
+				FA3AFFA718B6541700BC2BED /* TransitionDelegate.m in Sources */,
 				ADC6478017E0761700C16A9D /* HUPasswordDisplayView.m in Sources */,
 				ADC6478117E0761700C16A9D /* HUPickerTableView.m in Sources */,
 				ADC6478217E0761700C16A9D /* HURadioButton.m in Sources */,
