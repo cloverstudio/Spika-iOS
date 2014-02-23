@@ -32,6 +32,7 @@
 #import "CSToast.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "HUCachedImageLoader.h"
 
 @interface HUVideoRecorderViewController () {
     
@@ -112,7 +113,8 @@
     
     UIImageView *usersAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 12, 52, 52)];
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
-    [HUAvatarManager avatarImageForUser:user completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+    
+    [HUCachedImageLoader imageFromUrl:user.imageUrl completionHandler:^(UIImage *image) {
         usersAvatarImageView.image = image;
     }];
     

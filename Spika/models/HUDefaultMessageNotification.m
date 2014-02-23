@@ -26,8 +26,8 @@
 #import "NSDictionary+KeyPath.h"
 #import "HUImageView.h"
 #import "CSGraphics.h"
-#import "HUAvatarManager.h"
 #import "UILabel+Extensions.h"
+#import "HUCachedImageLoader.h"
 
 @implementation HUDefaultMessageNotification
 
@@ -61,10 +61,11 @@
     [contentView addSubview:messageLabel];
     
     NSString *userId = [self.target targetId];
-    [HUAvatarManager avatarImageForId:userId atIndexPath:nil width:kListViewSmallWidht completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+    [HUCachedImageLoader thumbnailFromUserId:userId completionHandler:^(UIImage *image) {
         avatarIconView.image = image;
     }];
-        
+
+    
     return contentView;
     
 }

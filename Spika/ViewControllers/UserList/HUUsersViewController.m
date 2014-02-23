@@ -27,7 +27,6 @@
 #import "HUBaseViewController+Style.h"
 #import "UserListCell.h"
 #import "UserManager.h"
-#import "HUAvatarManager.h"
 #import "UIResponder+Extension.h"
 #import "UIColor+Aditions.h"
 #import "HUMenuNavigationItem+Users.h"  

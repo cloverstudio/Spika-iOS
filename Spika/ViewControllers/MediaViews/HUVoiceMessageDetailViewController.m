@@ -29,6 +29,8 @@
 #import "CSToast.h"
 #import "AlertViewManager.h"
 #import "DatabaseManager.h"
+#import "HUCachedImageLoader.h"
+
 @interface HUVoiceMessageDetailViewController () {
     HUVoicePlayerControlBar *_controlBar;
     UILabel *_reportViolationBtn;
@@ -120,15 +122,11 @@
     UIImageView *usersAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 12, 52, 52)];
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
     
-    [ModelUser findModelWithModelId:self.message.from_user_id completion:^(id fetchedModel) {
-        
-        ModelUser *user = fetchedModel;
-        
-        [HUAvatarManager avatarImageForUser:user completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-            usersAvatarImageView.image = image;
-        }];
-
+    [HUCachedImageLoader thumbnailFromUserId:self.message.from_user_id completionHandler:^(UIImage *image) {
+        usersAvatarImageView.image = image;
     }];
+    
+
     
     [mainView addSubview:usersAvatarImageView];
     

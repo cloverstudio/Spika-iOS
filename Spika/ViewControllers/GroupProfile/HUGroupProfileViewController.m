@@ -42,6 +42,7 @@
 #import "HUTextView.h"
 #import "HUImageView.h"
 #import "HUNewGroupViewController.h"
+#import "HUCachedImageLoader.h"
 
 @interface HUGroupProfileViewController (){
     UIImage *_avatarImage;
@@ -523,9 +524,9 @@
 			
 			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
 			
-			[HUAvatarManager avatarImageForUrl:groupCategory.imageUrl atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+            [HUCachedImageLoader imageFromUrl:groupCategory.imageUrl completionHandler:^(UIImage *image) {
 				cell.avatarImageView.image = image;
-			}];
+            }];
 			
 			return cell;
 		}

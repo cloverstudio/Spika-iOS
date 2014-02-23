@@ -32,11 +32,11 @@
 #import "MapViewAnnotation.h"
 #import "MapViewBubbleAnnotation.h"
 #import "HUMapBubbleView.h"
-#import "HUAvatarManager.h"
 #import "NSDateFormatter+SharedFormatter.h"
 #import "AppDelegate.h"
 #import "AlertViewManager.h"
 #import "Utils.h"
+#import "HUCachedImageLoader.h"
 
 @interface LocationViewController () {
 
@@ -125,12 +125,13 @@
 
     __block UIImageView *usersAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 7, 52, 52)];
 	usersAvatarImageView.image = [UIImage imageWithBundleImage:@"user_stub"];
-    [HUAvatarManager avatarImageForUser:user completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+    
+    [HUCachedImageLoader thumbnailFromUserId:user._id completionHandler:^(UIImage *image) {
         usersAvatarImageView.image = image;
     }];
     
-    [header addSubview:usersAvatarImageView];
     
+    [header addSubview:usersAvatarImageView];
     [header addSubview:usersNameLabel];
     
     return header;

@@ -24,10 +24,10 @@
  */
 
 /* change here */
-#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
-#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
-#define PageRootURL             @"http://localhost:8080/wwwroot/page"
-#define InformationPageTopURL   @"http://localhost:8080/wwwroot/page/information"
+#define DatabaseURL             @"http://officialapi.spikaapp.com/api"
+#define HttpRootURL             @"http://officialapi.spikaapp.com/api"
+#define PageRootURL             @"http://officialapi.spikaapp.com/page"
+#define InformationPageTopURL   @"hhttp://officialapi.spikaapp.com/page/information"
 /* end change here */
 
 #ifndef Bind_Constants_h

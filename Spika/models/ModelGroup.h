@@ -24,9 +24,8 @@
 
 #import <Foundation/Foundation.h>
 #import "HUPushNotificationManager.h"
-#import "HUAvatarManager.h"
 
-@interface ModelGroup : NSObject <HUPushNotificationTarget,HUAvatarModel>
+@interface ModelGroup : NSObject <HUPushNotificationTarget>
 
 @property (strong, nonatomic) NSString *_id;
 @property (strong, nonatomic) NSString *_rev;

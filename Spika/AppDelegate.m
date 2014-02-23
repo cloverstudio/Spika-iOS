@@ -40,7 +40,6 @@
 #import "HUOfflinePushNotification.h"
 #import "HUDefaultMessageNotification.h"
 #import "CSDispatcher.h"
-#import "HUAvatarManager.h"
 #import "NSDictionary+KeyPath.h"
 #import "NSNotification+Extensions.h"
 #import "AlertViewManager.h"
@@ -49,7 +48,6 @@
 #import "UIImage+Aditions.h"
 #import "HUMyGroupProfileViewController.h"
 #import "Crittercism.h"
-#import "HUAvatarManager.h"
 #import "HUEULAViewController.h"
 #import "HULoginViewController.h"
 #import "HUInformationViewController.h"
@@ -162,9 +160,6 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    
-    [HUAvatarManager clearCacheIfNeed];
-    
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 	[[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowPassword object:nil];
 }
@@ -382,8 +377,13 @@
             
         };
         
-        [HUAvatarManager findModelForModelId:_id completion:searchValidTargetBlock];
+        [[DatabaseManager defaultManager] findUserWithID:_id success:^(id result) {
+            completion:searchValidTargetBlock(result);
+        } error:^(NSString *errorString) {
+            
+        }];
         
+
     }else { // Background
 
         NSDictionary *dic2 = [userInfo objectForKey:@"data"];
@@ -393,28 +393,38 @@
 
             if(valueUser){
                 
-                [ModelUser findModelWithModelId:valueUser completion:^(id fetchedModel) {
-                    if(fetchedModel){
-                        ModelUser *user = fetchedModel;
+                [[DatabaseManager defaultManager] findUserWithID:valueUser success:^(id result) {
+                    
+                    if(result){
+                        ModelUser *user = result;
                         
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                         });
                     }
+
+                    
+                } error:^(NSString *errorString) {
+                    
                 }];
                 
                 
             }else if(valueGroup){
                 
-                [ModelGroup findModelWithModelId:valueGroup completion:^(id fetchedModel) {
-                    if(fetchedModel){
-                        ModelGroup *group = fetchedModel;
+                [[DatabaseManager defaultManager] findGroupByID:valueGroup success:^(id result) {
+                    
+                    if(result){
+                        ModelGroup *group = result;
                         
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
                         });
                     }
+                    
+                } error:^(NSString *errorString) {
+                    
                 }];
+                
             }
         }
     }
@@ -439,30 +449,33 @@
     
     if(userId){
         
-        [ModelUser findModelWithModelId:userId completion:^(id fetchedModel) {
-            
+        [[DatabaseManager defaultManager] findUserWithID:userId success:^(id result) {
+
             [[AlertViewManager defaultManager] dismiss];
             
-            if(fetchedModel){
-                ModelUser *user = fetchedModel;
+            if(result){
+                ModelUser *user = result;
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                 });
+                
             }else{
                 [self openRecentActivity];
             }
-        }];
 
+        } error:^(NSString *errorString) {
+            
+        }];
+        
         
     }else if(groupId){
         
-        [ModelGroup findModelWithModelId:groupId completion:^(id fetchedModel) {
-            
+        [[DatabaseManager defaultManager] findGroupByID:groupId success:^(id result) {
             [[AlertViewManager defaultManager] dismiss];
             
-            if(fetchedModel){
-                ModelGroup *group = fetchedModel;
+            if(result){
+                ModelGroup *group = result;
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
@@ -470,6 +483,7 @@
             }else{
                 [self openRecentActivity];
             }
+        } error:^(NSString *errorString) {
             
         }];
         

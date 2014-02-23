@@ -200,4 +200,47 @@
     }
 }
 
+-(void)willTransitionToState:(UITableViewCellStateMask)state{
+    NSLog(@"EventTableCell willTransitionToState");
+    [super willTransitionToState:state];
+    if((state & UITableViewCellStateShowingDeleteConfirmationMask) == UITableViewCellStateShowingDeleteConfirmationMask){
+        [self recurseAndReplaceSubViewIfDeleteConfirmationControl:self.subviews];
+        [self performSelector:@selector(recurseAndReplaceSubViewIfDeleteConfirmationControl:) withObject:self.subviews afterDelay:0];
+    }
+}
+-(void)recurseAndReplaceSubViewIfDeleteConfirmationControl:(NSArray*)subviews{
+    NSString *delete_button_name = @"delete";
+    for (UIView *subview in subviews)
+    {
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationButton"])
+        {
+            UIButton *deleteButton = (UIButton *)subview;
+            
+            int y = [MessageCell frameForAvatarIconView:self.message].origin.y;
+            
+            [deleteButton setFrame:CGRectMake( 0, y, 82, 52)];
+            [deleteButton setImage:[UIImage imageNamed:delete_button_name] forState:UIControlStateNormal];
+            [deleteButton setTitle:@"" forState:UIControlStateNormal];
+            [deleteButton setBackgroundColor:[UIColor clearColor]];
+            for(UIView* view in subview.subviews){
+                if([view isKindOfClass:[UILabel class]]){
+                    [view removeFromSuperview];
+                }
+            }
+        }
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"])
+        {
+            for(UIView* innerSubView in subview.subviews){
+                if(![innerSubView isKindOfClass:[UIButton class]]){
+                    [innerSubView removeFromSuperview];
+                }
+            }
+        }
+        if([subview.subviews count]>0){
+            [self recurseAndReplaceSubViewIfDeleteConfirmationControl:subview.subviews];
+        }
+        
+    }
+}
+
 @end

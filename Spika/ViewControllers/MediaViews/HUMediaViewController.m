@@ -32,7 +32,6 @@
 #import "UserManager.h"
 #import "CSToast.h"
 #import "MessageTypeImageDetailCell.h"
-#import "HUAvatarManager.h"
 #import "AlertViewManager.h"
 #import "HUDialog.h"
 

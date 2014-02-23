@@ -41,7 +41,6 @@
 #import "HUPickerTableView.h"
 #import "AlertViewManager.h"
 #import "HUDataManager.h"
-#import "HUAvatarManager.h"
 #import "HUTextView.h"
 
 @interface HUMyProfileViewController () <HUImageUploadViewConrollerDelegate>{
@@ -602,8 +601,6 @@
             this.user = [[UserManager defaultManager] getLoginedUser];
             [this populateWithData];
             [this loadAvatar];
-            
-            [HUAvatarManager removeModelByID:this.user._id];
             
         });
     }];

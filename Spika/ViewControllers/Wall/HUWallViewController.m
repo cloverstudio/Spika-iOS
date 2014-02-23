@@ -26,7 +26,6 @@
 #import <AVFoundation/AVAsset.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <QuartzCore/QuartzCore.h>
-
 #import "HUWallViewController.h"
 #import "HUWallViewController+Style.h"
 #import "Utils.h"
@@ -39,7 +38,6 @@
 #import "HUPhotoDetailViewController.h"
 #import "VideoDetailVC.h"
 #import "LocationViewController.h"
-#import "HUAvatarManager.h"
 #import "LoadingViewCell.h"
 #import "AlertViewManager.h"
 #import "HPGrowingTextView.h"
@@ -51,6 +49,9 @@
 #import "HUVideoRecorderViewController.h"
 #import "NSNotification+Extensions.h"
 #import "HUBaseViewController+Style.h"
+#import "HUDeleteDialog.h"
+#import "TransitionDelegate.h"
+#import "HUCachedImageLoader.h"
 
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
 
@@ -74,11 +75,11 @@
 	
 	id					_notificationObserver;
     
-    
 }
 
 @property (nonatomic, strong) ModelGroup *targetGroup;
 @property (readwrite) BOOL isKeyboardShown;
+@property (nonatomic, strong) TransitionDelegate *transitionDelegate;
 
 #pragma mark - Animations
 - (void) animateKeyboardWillShow:(NSNotification *)aNotification;
@@ -228,6 +229,8 @@
 
     [super loadView];
     
+    _allowSwipe = NO;
+    
     if(_targetUser != nil && [_targetUser._id isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]) {
     
     }else{
@@ -250,6 +253,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.allowsSelection = self.isCellSelectionEnabled;
+    
     [_contentView addSubview:self.tableView];
     
     
@@ -341,6 +345,7 @@
     [super viewDidLoad];
     
     [self showTutorialIfCan:NSLocalizedString(@"tutorial-wall",nil)];
+    self.transitionDelegate = [[TransitionDelegate alloc] init];
 }
 
 #pragma mark - Override
@@ -1028,18 +1033,42 @@
     
     wallCell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
-    [HUAvatarManager avatarImageForMessage:message
-                              atIndexPath:indexPath
-                        completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-                            
+    
+    [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
         wallCell.avatarIconView.image = image;
-                            
     }];
-    
-    
-    
+
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    ModelMessage *message = [self.items objectAtIndex:indexPath.row];
+    if ([UserManager messageBelongsToUser:message]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+// Swipe to delete.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+//        //TODO: real delete
+//        [self.items removeObjectAtIndex:indexPath.row];
+//        [tableView reloadData];
+        
+        HUDeleteDialog *deleteDialog =[[HUDeleteDialog alloc] initWithNibName:@"DeleteDialogView" bundle:nil];
+        
+        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+        
+        [self presentViewController:deleteDialog animated:YES completion:NULL];
+    }
+}
+
 
 
 #pragma mark - UITableViewDelegate methods
@@ -1241,14 +1270,21 @@ didSelectLocationButton:(UIButton *)button {
 
 -(void) messageCell:(MessageTypeBasicCell *)cell didTapAvatarImage:(ModelMessage *)message {
     
-	ModelUser *user = [HUAvatarManager userForMessage:message];
+    [[DatabaseManager defaultManager] findUserWithID:message.from_user_id success:^(id result) {
+        
+        ModelUser *user = (ModelUser *) result;
+        
+        NSString *notificationName = [UserManager messageBelongsToUser:message] ?
+        NotificationSideMenuMyProfileSelected :
+        NotificationShowProfile ;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                            object:user];
+
+    } error:^(NSString *errorString) {
+ 
+    }];
     
-	NSString *notificationName = [UserManager messageBelongsToUser:message] ?
-									NotificationSideMenuMyProfileSelected :
-									NotificationShowProfile ;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-                                                        object:user];
 }
 
 #pragma mark - MessageImageCellDelegate

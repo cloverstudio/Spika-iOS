@@ -34,7 +34,6 @@
 #import "AlertViewManager.h"
 #import "CSToast.h"
 
-#import "HUAvatarManager.h"
 #import "UserManager.h"
 #import "HUMenuNavigationItem+Groups.h"
 #import "HUGroupsCategoryTableViewCell.h"
