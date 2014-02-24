@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "HUBaseViewController.h"
+#import "ModelMessage.h"
 
 @interface HUDeleteInformationViewController : HUBaseViewController {
+    IBOutlet UILabel        *deleteTimeLabel;
     IBOutlet UIButton       *closeButton;
 }
 
 -(IBAction) onClose;
+
+@property (nonatomic) ModelMessage *message;
 
 @end

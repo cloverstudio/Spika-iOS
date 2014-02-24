@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HUDeleteInformationViewController">
             <connections>
                 <outlet property="closeButton" destination="k0p-s6-aD9" id="aZz-Dy-0za"/>
+                <outlet property="deleteTimeLabel" destination="eu4-aq-0eN" id="C1Z-UE-n5S"/>
                 <outlet property="view" destination="1" id="Kgx-8l-fne"/>
             </connections>
         </placeholder>

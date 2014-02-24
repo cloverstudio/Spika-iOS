@@ -420,6 +420,7 @@
 		FA3AFFA018B6151000BC2BED /* HUDeleteInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFF9F18B6151000BC2BED /* HUDeleteInformationViewController.m */; };
 		FA3AFFA618B6541700BC2BED /* AnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */; };
 		FA3AFFA718B6541700BC2BED /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */; };
+		FA4159BE18BB6727002F7F48 /* delete_timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4159BD18BB6727002F7F48 /* delete_timer@2x.png */; };
 		FA504DA7189BDB2D00DD12B8 /* HUEULAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */; };
 		FAB60E38189A8E43004EC13F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB60E37189A8E43004EC13F /* SettingsView.xib */; };
 		FABC54C718B4DA6700FE820B /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC54C618B4DA6700FE820B /* delete@2x.png */; };
@@ -1066,6 +1067,7 @@
 		FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedTransitioning.m; sourceTree = "<group>"; };
 		FA3AFFA418B6541700BC2BED /* TransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionDelegate.h; sourceTree = "<group>"; };
 		FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionDelegate.m; sourceTree = "<group>"; };
+		FA4159BD18BB6727002F7F48 /* delete_timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_timer@2x.png"; sourceTree = "<group>"; };
 		FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUEULAView.xib; sourceTree = "<group>"; };
 		FAB60E37189A8E43004EC13F /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FABC54C618B4DA6700FE820B /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
@@ -1766,6 +1768,7 @@
 				ADC644AB17E0761600C16A9D /* hp_wall_tableview_top_shadow@2x.png */,
 				FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */,
 				FAE3709518B7650500A2B37A /* dialog_bubble_large@2x.png */,
+				FA4159BD18BB6727002F7F48 /* delete_timer@2x.png */,
 				ADC644AC17E0761600C16A9D /* MediaPanel */,
 			);
 			path = Wall;
@@ -2479,6 +2482,7 @@
 				ADC6461817E0761600C16A9D /* Default.png in Resources */,
 				ADC6461917E0761600C16A9D /* Default@2x.png in Resources */,
 				B3409E02186DEDB50033A4B3 /* MainWindow.xib in Resources */,
+				FA4159BE18BB6727002F7F48 /* delete_timer@2x.png in Resources */,
 				ADC6461A17E0761600C16A9D /* InfoPlist.strings in Resources */,
 				ADC6461B17E0761600C16A9D /* Localizable.strings in Resources */,
 				ADC6464A17E0761600C16A9D /* LICENSE in Resources */,

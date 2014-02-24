@@ -153,13 +153,8 @@
             
             [defaults removeObjectForKey:LastOpenedGroupWall];
             [defaults synchronize];
-            
-            
         }
-        
-        
     }
-
     return self;
 }
 
@@ -1039,7 +1034,6 @@
     
     wallCell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
-    
     [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
         wallCell.avatarIconView.image = image;
     }];
@@ -1061,23 +1055,20 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
         ModelMessage *message = [self.items objectAtIndex:indexPath.row];
-        
-//        //TODO: real delete
-//        [self.items removeObjectAtIndex:indexPath.row];
-//        [tableView reloadData];
-        
-        HUDeleteViewController *deleteDialog =[[HUDeleteViewController alloc] initWithNibName:@"HUDeleteViewController" bundle:nil];
-        deleteDialog.message = message;
-        
-        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
-        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
-        
-        [self presentViewController:deleteDialog animated:YES completion:NULL];
+        [self showDeleteDialogForMessage:message];
     }
 }
 
+- (void) showDeleteDialogForMessage:(ModelMessage*) message{
+    HUDeleteViewController *deleteDialog =[[HUDeleteViewController alloc] initWithNibName:@"HUDeleteViewController" bundle:nil];
+    deleteDialog.message = message;
+    
+    [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+    deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+    
+    [self presentViewController:deleteDialog animated:YES completion:NULL];
+}
 
 
 #pragma mark - UITableViewDelegate methods
@@ -1295,6 +1286,23 @@ didSelectLocationButton:(UIButton *)button {
     }];
     
 }
+
+-(void) messageCell:(MessageTypeBasicCell *)cell didTapDeleteTimer:(ModelMessage *)message {
+    
+    if ([UserManager messageBelongsToUser:message]) {
+        [self showDeleteDialogForMessage:message];
+    }
+    else {
+        HUDeleteInformationViewController *deleteDialog =[[HUDeleteInformationViewController alloc] initWithNibName:@"HUDeleteInformationViewController" bundle:nil];
+        deleteDialog.message = message;
+        
+        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+        
+        [self presentViewController:deleteDialog animated:YES completion:NULL];
+    }
+}
+
 
 #pragma mark - MessageImageCellDelegate
 
