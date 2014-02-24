@@ -672,7 +672,11 @@
     if(_targetMode == ModeGroup){
         [self loadGroupMessages:0 shouldHideLoadingCell:NO];
     }
-    
+}
+
+- (void) reloadAll {
+    [self.items removeAllObjects];
+    [self reload];
 }
 
 - (void) loadUserMessages:(NSInteger)page shouldHideLoadingCell:(BOOL)hideLoadingCell {
@@ -685,7 +689,7 @@
                                                      success:^(NSArray *aryMessages){
                                                          
          dispatch_async(dispatch_get_main_queue(), ^{
-             
+                          
              NSArray *tmpMessages = [Utils filterMessagesForApperaToWall:aryMessages];
              
              BOOL somethingChenged = [this isFindChanges:tmpMessages];
@@ -717,7 +721,6 @@
                      [_loadingViewCell hide];
                  });
              }
-             
          });
                                                          
      } error:^(NSString *errStr){

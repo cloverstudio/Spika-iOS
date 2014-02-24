@@ -101,10 +101,7 @@
                                                                if (baseVC) {
                                                                    if ([baseVC isKindOfClass:[HUWallViewController class]]) {
                                                                        HUWallViewController *parent = (HUWallViewController *)baseVC;
-                                                                       [parent reload];
-//                                                                       [parent.tableView removeAllSubviews];
-//                                                                       [parent.items removeAllObjects];
-                                                                       
+                                                                       [parent reloadAll];
                                                                    }
                                                                }
                                                            });
