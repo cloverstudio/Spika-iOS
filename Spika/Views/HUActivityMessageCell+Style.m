@@ -46,4 +46,16 @@
 	return textLabel;
 }
 
+-(UILabel *) newDateLabel {
+	
+	UILabel *textLabel = [UILabel new];
+	textLabel.numberOfLines = 1;
+	textLabel.font = [UIFont systemFontOfSize:kFontSizeSmall];
+	textLabel.backgroundColor = [UIColor clearColor];
+    textLabel.textColor = [UIColor lightGrayColor];
+    textLabel.textAlignment = NSTextAlignmentRight;
+    
+	return textLabel;
+}
+
 @end

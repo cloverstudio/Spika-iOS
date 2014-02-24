@@ -123,7 +123,8 @@
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
     
     [HUCachedImageLoader thumbnailFromUserId:self.message.from_user_id completionHandler:^(UIImage *image) {
-        usersAvatarImageView.image = image;
+        if(image)
+            usersAvatarImageView.image = image;
     }];
     
 

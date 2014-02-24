@@ -142,6 +142,7 @@
 	ModelMessage *message = [ModelMessage new];
 	message.from_user_id = [dictionary objectForKeyPath:@"from_user_id"];
 	message.body = [dictionary objectForKeyPath:@"message"];
+	message.modified = [[dictionary objectForKeyPath:@"modified"] longValue];
 	
 	return message;
 }

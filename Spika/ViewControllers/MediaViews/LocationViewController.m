@@ -127,7 +127,8 @@
 	usersAvatarImageView.image = [UIImage imageWithBundleImage:@"user_stub"];
     
     [HUCachedImageLoader thumbnailFromUserId:user._id completionHandler:^(UIImage *image) {
-        usersAvatarImageView.image = image;
+        if(image)
+            usersAvatarImageView.image = image;
     }];
     
     

@@ -28,6 +28,7 @@
 #import "HUActivityMessageCell.h"
 #import "MAKVONotificationCenter.h"
 #import "HUCachedImageLoader.h"
+#import "Utils.h"
 
 @interface HURecentActivityViewController ()
 
@@ -153,12 +154,15 @@
 																			tableView:tableView];
 	
 	cell.textLabel.text = message.body;
+    cell.timestampLabel.text = [Utils formatDate:[NSDate dateWithTimeIntervalSince1970:message.modified]];
+                           
 	cell.counterView.count = notification.count;
 	
 	cell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
     [HUCachedImageLoader thumbnailFromUserId:message.from_user_id completionHandler:^(UIImage *image) {
-        cell.avatarIconView.image = image;
+        if(image)
+            cell.avatarIconView.image = image;
     }];
     
 	return cell;

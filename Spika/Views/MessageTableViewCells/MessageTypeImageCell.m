@@ -125,7 +125,8 @@
         
         [[HUHTTPClient sharedClient] imageFromURL:[NSURL URLWithString:[MessageCell imageUrlForMessage:message]]
             completion:^(NSURL *imageURL, UIImage *image) {
-                [this downloadDone:[imageURL absoluteString] image:image];
+                if(image)
+                    [this downloadDone:[imageURL absoluteString] image:image];
         }];
     }
 

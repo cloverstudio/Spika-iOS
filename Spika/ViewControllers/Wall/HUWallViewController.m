@@ -1035,7 +1035,8 @@
     
     
     [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
-        wallCell.avatarIconView.image = image;
+        if(image)
+            wallCell.avatarIconView.image = image;
     }];
 
     return cell;

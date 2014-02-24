@@ -62,7 +62,8 @@
     
     NSString *userId = [self.target targetId];
     [HUCachedImageLoader thumbnailFromUserId:userId completionHandler:^(UIImage *image) {
-        avatarIconView.image = image;
+        if(image)
+            avatarIconView.image = image;
     }];
 
     

@@ -232,8 +232,8 @@
 "GroupDeleted"              = "このグループはオーナーにより削除されました。お気に入りに追加されている場合には、削除をしてください。";
 "Confirm Logout"            = "ログアウトします。\nよろしいですか？";
 
-"CHAT ACTIVITY"             = "未読メッセージ";
-"GROUPS ACTIVITY"           = "新規グループ投稿";
+"CHAT ACTIVITY"             = "メッセージ履歴";
+"GROUPS ACTIVITY"           = "グループ投稿履歴";
 "No Recent Activities"      = "未読メッセージはありません。";
 "NOTIFICATIONS"             = "未読通知";
 "User Support"              = "サポートホットライン";

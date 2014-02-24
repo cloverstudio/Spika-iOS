@@ -409,6 +409,7 @@
 		B3CE0C02186E2C21009372B0 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C01186E2C21009372B0 /* SignupView.xib */; };
 		B3CE0C06186E343A009372B0 /* HUForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */; };
 		B3CE0C08186E347F009372B0 /* ForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */; };
+		B3E3A37A18BBA572003E8863 /* iconUnread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E3A37918BBA572003E8863 /* iconUnread@2x.png */; };
 		CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1151E217EF4BCD00C14DA6 /* HUTextView.m */; };
 		CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB78BF717ECAEEB0053FBE3 /* HUButton.m */; };
 		FA14E59B189BAECB0068C213 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59A189BAECB0068C213 /* Images.xcassets */; };
@@ -1047,6 +1048,7 @@
 		B3CE0C04186E343A009372B0 /* HUForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B3CE0C05186E343A009372B0 /* HUForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B3CE0C07186E347F009372B0 /* ForgotPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordView.xib; sourceTree = "<group>"; };
+		B3E3A37918BBA572003E8863 /* iconUnread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconUnread@2x.png"; sourceTree = "<group>"; };
 		CE1151E117EF4BCD00C14DA6 /* HUTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTextView.h; sourceTree = "<group>"; };
 		CE1151E217EF4BCD00C14DA6 /* HUTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUTextView.m; sourceTree = "<group>"; };
 		CEB78BF617ECAEEB0053FBE3 /* HUButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUButton.h; sourceTree = "<group>"; };
@@ -1766,6 +1768,7 @@
 		ADC6449917E0761500C16A9D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B3E3A37918BBA572003E8863 /* iconUnread@2x.png */,
 				FABC54C618B4DA6700FE820B /* delete@2x.png */,
 				ADC6449A17E0761500C16A9D /* cell_arrow.png */,
 				ADC6449B17E0761500C16A9D /* cell_arrow@2x.png */,
@@ -2610,6 +2613,7 @@
 				ADC646E217E0761600C16A9D /* hp_wall_background_pattern@2x.png in Resources */,
 				ADC646E317E0761600C16A9D /* hp_wall_tableview_bottom_shadow.png in Resources */,
 				ADC646E417E0761600C16A9D /* hp_wall_tableview_bottom_shadow@2x.png in Resources */,
+				B3E3A37A18BBA572003E8863 /* iconUnread@2x.png in Resources */,
 				ADC646E517E0761600C16A9D /* hp_wall_tableview_top_shadow.png in Resources */,
 				ADC646E617E0761600C16A9D /* hp_wall_tableview_top_shadow@2x.png in Resources */,
 				ADC646E717E0761600C16A9D /* albums_more_icon.png in Resources */,

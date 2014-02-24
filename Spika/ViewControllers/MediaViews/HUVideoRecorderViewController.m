@@ -115,7 +115,8 @@
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
     
     [HUCachedImageLoader imageFromUrl:user.imageUrl completionHandler:^(UIImage *image) {
-        usersAvatarImageView.image = image;
+        if(image)
+            usersAvatarImageView.image = image;
     }];
     
     [mainView addSubview:usersAvatarImageView];
