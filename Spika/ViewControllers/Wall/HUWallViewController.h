@@ -73,6 +73,7 @@
 
 #pragma mark - Override
 - (void) reload;
+- (void) reloadAll;
 - (void) onSend;
 - (void) sendMessage:(NSString *)messageText;
 - (void) dropViewDidBeginRefreshing:(id)sender;

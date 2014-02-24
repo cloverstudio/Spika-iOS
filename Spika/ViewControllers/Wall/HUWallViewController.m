@@ -49,7 +49,8 @@
 #import "HUVideoRecorderViewController.h"
 #import "NSNotification+Extensions.h"
 #import "HUBaseViewController+Style.h"
-#import "HUDeleteDialog.h"
+#import "HUDeleteViewController.h"
+#import "HUDeleteInformationViewController.h"
 #import "TransitionDelegate.h"
 #import "HUCachedImageLoader.h"
 
@@ -95,6 +96,8 @@
 #pragma mark - Memory Management
 
 - (void) dealloc{
+    
+    [self.tableView setEditing:NO];
     
     [_contentView removeObserver:self
                       forKeyPath:@"frame"];
@@ -150,13 +153,8 @@
             
             [defaults removeObjectForKey:LastOpenedGroupWall];
             [defaults synchronize];
-            
-            
         }
-        
-        
     }
-
     return self;
 }
 
@@ -642,7 +640,7 @@
 
 - (void) reload {
     
-    
+    NSLog(@"did reload");
     // find index of message to update
     for(int i = 0; i < self.items.count ; i++){
         
@@ -669,7 +667,11 @@
     if(_targetMode == ModeGroup){
         [self loadGroupMessages:0 shouldHideLoadingCell:NO];
     }
-    
+}
+
+- (void) reloadAll {
+    [self.items removeAllObjects];
+    [self reload];
 }
 
 - (void) loadUserMessages:(NSInteger)page shouldHideLoadingCell:(BOOL)hideLoadingCell {
@@ -682,7 +684,7 @@
                                                      success:^(NSArray *aryMessages){
                                                          
          dispatch_async(dispatch_get_main_queue(), ^{
-             
+                          
              NSArray *tmpMessages = [Utils filterMessagesForApperaToWall:aryMessages];
              
              BOOL somethingChenged = [this isFindChanges:tmpMessages];
@@ -714,7 +716,6 @@
                      [_loadingViewCell hide];
                  });
              }
-             
          });
                                                          
      } error:^(NSString *errStr){
@@ -1033,7 +1034,6 @@
     
     wallCell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
-    
     [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
         if(image)
             wallCell.avatarIconView.image = image;
@@ -1056,20 +1056,20 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-//        //TODO: real delete
-//        [self.items removeObjectAtIndex:indexPath.row];
-//        [tableView reloadData];
-        
-        HUDeleteDialog *deleteDialog =[[HUDeleteDialog alloc] initWithNibName:@"DeleteDialogView" bundle:nil];
-        
-        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
-        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
-        
-        [self presentViewController:deleteDialog animated:YES completion:NULL];
+        ModelMessage *message = [self.items objectAtIndex:indexPath.row];
+        [self showDeleteDialogForMessage:message];
     }
 }
 
+- (void) showDeleteDialogForMessage:(ModelMessage*) message{
+    HUDeleteViewController *deleteDialog =[[HUDeleteViewController alloc] initWithNibName:@"HUDeleteViewController" bundle:nil];
+    deleteDialog.message = message;
+    
+    [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+    deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+    
+    [self presentViewController:deleteDialog animated:YES completion:NULL];
+}
 
 
 #pragma mark - UITableViewDelegate methods
@@ -1287,6 +1287,23 @@ didSelectLocationButton:(UIButton *)button {
     }];
     
 }
+
+-(void) messageCell:(MessageTypeBasicCell *)cell didTapDeleteTimer:(ModelMessage *)message {
+    
+    if ([UserManager messageBelongsToUser:message]) {
+        [self showDeleteDialogForMessage:message];
+    }
+    else {
+        HUDeleteInformationViewController *deleteDialog =[[HUDeleteInformationViewController alloc] initWithNibName:@"HUDeleteInformationViewController" bundle:nil];
+        deleteDialog.message = message;
+        
+        [deleteDialog setTransitioningDelegate:self.transitionDelegate];
+        deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
+        
+        [self presentViewController:deleteDialog animated:YES completion:NULL];
+    }
+}
+
 
 #pragma mark - MessageImageCellDelegate
 

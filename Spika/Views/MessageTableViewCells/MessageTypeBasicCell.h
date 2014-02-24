@@ -55,6 +55,7 @@
 @property (nonatomic, strong) UILabel *timestampLabel;
 @property (nonatomic, strong) ModelMessage *message;
 @property (nonatomic) BOOL isUserMessage;
+@property (nonatomic, strong) UIImageView *deleteTimerButtonView;
 
 @property (nonatomic, weak) id delegate;
 
@@ -63,5 +64,6 @@
 @protocol MessageCellDelegate <NSObject>
 
 -(void) messageCell:(MessageTypeBasicCell *)cell didTapAvatarImage:(ModelMessage *)message;
+-(void) messageCell:(MessageTypeBasicCell *)cell didTapDeleteTimer:(ModelMessage *)message;
 
 @end

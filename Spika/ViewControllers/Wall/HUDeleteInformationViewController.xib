@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HUDeleteInformationViewController">
+            <connections>
+                <outlet property="closeButton" destination="k0p-s6-aD9" id="aZz-Dy-0za"/>
+                <outlet property="deleteTimeLabel" destination="eu4-aq-0eN" id="C1Z-UE-n5S"/>
+                <outlet property="view" destination="1" id="Kgx-8l-fne"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dialog_bubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="pNg-W9-Lci">
+                    <rect key="frame" x="39" y="139" width="242" height="290"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="290" id="K0k-YE-6bO"/>
+                        <constraint firstAttribute="width" constant="242" id="gWQ-Bp-Pcc"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5b-Kg-pFF">
+                    <rect key="frame" x="39" y="139" width="242" height="290"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-s6-aD9">
+                            <rect key="frame" x="36" y="164" width="170" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.18431372939999999" green="0.80000007149999997" blue="0.48235297199999999" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="170" id="RNZ-SH-aJl"/>
+                                <constraint firstAttribute="height" constant="30" id="VWH-oi-3bi"/>
+                            </constraints>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="onClose" destination="-1" eventType="touchUpInside" id="Dbo-gP-vKU"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-aq-0eN">
+                            <rect key="frame" x="36" y="99" width="170" height="39"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="170" id="qka-C5-HoC"/>
+                                <constraint firstAttribute="height" constant="39" id="sjq-Cg-Tfi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="eu4-aq-0eN" firstAttribute="top" secondItem="g5b-Kg-pFF" secondAttribute="top" constant="99" id="0aX-xH-o9o"/>
+                        <constraint firstAttribute="centerX" secondItem="k0p-s6-aD9" secondAttribute="centerX" id="DNe-gi-avu"/>
+                        <constraint firstAttribute="width" constant="242" id="HWU-3I-ahi"/>
+                        <constraint firstAttribute="centerX" secondItem="eu4-aq-0eN" secondAttribute="centerX" id="hbW-dG-Rnd"/>
+                        <constraint firstItem="k0p-s6-aD9" firstAttribute="top" secondItem="eu4-aq-0eN" secondAttribute="bottom" constant="26" id="ob1-n1-rmK"/>
+                        <constraint firstAttribute="height" constant="290" id="pWl-QO-eoo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="pNg-W9-Lci" secondAttribute="centerX" id="De4-eH-yyA"/>
+                <constraint firstAttribute="centerY" secondItem="pNg-W9-Lci" secondAttribute="centerY" id="FOo-sZ-Xtc"/>
+                <constraint firstAttribute="centerX" secondItem="g5b-Kg-pFF" secondAttribute="centerX" id="Roe-FY-pSB"/>
+                <constraint firstAttribute="centerY" secondItem="g5b-Kg-pFF" secondAttribute="centerY" id="UD1-hE-eqj"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dialog_bubble.png" width="242" height="290"/>
+    </resources>
+</document>

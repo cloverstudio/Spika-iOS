@@ -43,7 +43,7 @@
 -(void) dealloc {
     
     [_avatarIconView removeAllGestureRecognizers];
-    
+    [_deleteTimerButtonView removeAllGestureRecognizers];
 }
 
 #pragma mark - Initialization
@@ -77,6 +77,12 @@
         }
         
         _unreadIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconUnread"]];
+
+        _deleteTimerButtonView = [[UIImageView alloc] init];
+        _deleteTimerButtonView.image = [UIImage imageNamed:@"delete_timer"];
+        _deleteTimerButtonView.userInteractionEnabled = YES;
+        [_deleteTimerButtonView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerDidTap:)]];
+        [self.contentView addSubview:_deleteTimerButtonView];
         
         self.backgroundColor = [UIColor clearColor];
     }
@@ -130,6 +136,7 @@
         
     }
     
+    [self makeFrameForDeleteTimer];
 }
 
 #pragma mark - Override
@@ -201,17 +208,40 @@
                        viewFrame.size.width - kUIElementMargin * 2,
                        [[self class] heightForTimestampLabel]
                        );
+}
+
+- (void) makeFrameForDeleteTimer {
     
-    
+    if (_message.deleteType > 0) {
+        
+//        CGRect rect = self.contentView.frame;
+//        [_deleteTimerButtonView setFrame:rect];
+        if ([UserManager messageBelongsToUser:_message]) {
+            [_deleteTimerButtonView setFrame:CGRectMake(10, 0, 19, 22)];
+        } else {
+            [_deleteTimerButtonView setFrame:CGRectMake(288, 0, 19, 22)];
+        }
+        
+        [self.contentView bringSubviewToFront:_deleteTimerButtonView];
+        [_deleteTimerButtonView setHidden:NO];
+    } else {
+        [_deleteTimerButtonView setHidden:YES];
+    }
 }
 
 #pragma mark - Selectors
 
 -(void) tapGestureRecognizerDidTap:(UIGestureRecognizer *)tapRecognizer {
-    
+        
     if ([tapRecognizer.view isEqual:_avatarIconView]) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(messageCell:didTapAvatarImage:)]) {
             [self.delegate messageCell:self didTapAvatarImage:self.message];
+        }
+    }
+    
+    if ([tapRecognizer.view isEqual:_deleteTimerButtonView]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(messageCell:didTapDeleteTimer:)]) {
+            [self.delegate messageCell:self didTapDeleteTimer:self.message];
         }
     }
 }
