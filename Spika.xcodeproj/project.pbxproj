@@ -28,7 +28,6 @@
 		AD74BB5D17E0B3680061F786 /* user_online_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD74BB4B17E0B3680061F786 /* user_online_icon@2x.png */; };
 		ADC6461117E0761600C16A9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6436A17E0761500C16A9D /* AppDelegate.m */; };
 		ADC6461317E0761600C16A9D /* CSLazyLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6437017E0761500C16A9D /* CSLazyLoadController.m */; };
-		ADC6461417E0761600C16A9D /* HUAvatarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6437217E0761500C16A9D /* HUAvatarManager.m */; };
 		ADC6461517E0761600C16A9D /* HUPushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC6437417E0761500C16A9D /* HUPushNotificationManager.m */; };
 		ADC6461617E0761600C16A9D /* CSCodingConventions-MUST_READ in Resources */ = {isa = PBXBuildFile; fileRef = ADC6437517E0761500C16A9D /* CSCodingConventions-MUST_READ */; };
 		ADC6461717E0761600C16A9D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC6437817E0761500C16A9D /* Default-568h@2x.png */; };
@@ -397,6 +396,7 @@
 		B37479ED18745EE0001CE0E7 /* HUSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479E818745EE0001CE0E7 /* HUSettingsViewController.m */; };
 		B37479F218746272001CE0E7 /* _HUPasswordBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */; };
 		B37479F318746272001CE0E7 /* _HUPasswordBaseViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */; };
+		B3AFCE8918BA809D0076A687 /* HUCachedImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AFCE8818BA809D0076A687 /* HUCachedImageLoader.m */; };
 		B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */; };
 		B3C69A6B18718BA20055DD19 /* MyProflieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C69A6A18718BA20055DD19 /* MyProflieView.xib */; };
 		B3C69A741872DF060055DD19 /* HUGroupProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C69A721872DF060055DD19 /* HUGroupProfileViewController.m */; };
@@ -457,8 +457,6 @@
 		ADC6436D17E0761500C16A9D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		ADC6436F17E0761500C16A9D /* CSLazyLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLazyLoadController.h; sourceTree = "<group>"; };
 		ADC6437017E0761500C16A9D /* CSLazyLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLazyLoadController.m; sourceTree = "<group>"; };
-		ADC6437117E0761500C16A9D /* HUAvatarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUAvatarManager.h; sourceTree = "<group>"; };
-		ADC6437217E0761500C16A9D /* HUAvatarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUAvatarManager.m; sourceTree = "<group>"; };
 		ADC6437317E0761500C16A9D /* HUPushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPushNotificationManager.h; sourceTree = "<group>"; };
 		ADC6437417E0761500C16A9D /* HUPushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPushNotificationManager.m; sourceTree = "<group>"; };
 		ADC6437517E0761500C16A9D /* CSCodingConventions-MUST_READ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSCodingConventions-MUST_READ"; sourceTree = "<group>"; };
@@ -1032,6 +1030,8 @@
 		B37479EF18746272001CE0E7 /* _HUPasswordBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HUPasswordBaseViewController.m; sourceTree = "<group>"; };
 		B37479F018746272001CE0E7 /* _HUPasswordBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_HUPasswordBaseViewController+Style.h"; sourceTree = "<group>"; };
 		B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_HUPasswordBaseViewController+Style.m"; sourceTree = "<group>"; };
+		B3AFCE8718BA809D0076A687 /* HUCachedImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCachedImageLoader.h; sourceTree = "<group>"; };
+		B3AFCE8818BA809D0076A687 /* HUCachedImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCachedImageLoader.m; sourceTree = "<group>"; };
 		B3C69A6618718B440055DD19 /* HUMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMyProfileViewController.h; sourceTree = "<group>"; };
 		B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMyProfileViewController.m; sourceTree = "<group>"; };
 		B3C69A6A18718BA20055DD19 /* MyProflieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProflieView.xib; sourceTree = "<group>"; };
@@ -1185,10 +1185,10 @@
 			children = (
 				ADC6436F17E0761500C16A9D /* CSLazyLoadController.h */,
 				ADC6437017E0761500C16A9D /* CSLazyLoadController.m */,
-				ADC6437117E0761500C16A9D /* HUAvatarManager.h */,
-				ADC6437217E0761500C16A9D /* HUAvatarManager.m */,
 				ADC6437317E0761500C16A9D /* HUPushNotificationManager.h */,
 				ADC6437417E0761500C16A9D /* HUPushNotificationManager.m */,
+				B3AFCE8718BA809D0076A687 /* HUCachedImageLoader.h */,
+				B3AFCE8818BA809D0076A687 /* HUCachedImageLoader.m */,
 			);
 			path = ControllerSupport;
 			sourceTree = "<group>";
@@ -2443,6 +2443,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HU;
+				TargetAttributes = {
+					36EBCFF260C77D50801513EE = {
+						DevelopmentTeam = YU755VYJCP;
+					};
+				};
 			};
 			buildConfigurationList = 36EBC29149579B38EAD70952 /* Build configuration list for PBXProject "Spika" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2681,7 +2686,6 @@
 			files = (
 				ADC6461117E0761600C16A9D /* AppDelegate.m in Sources */,
 				ADC6461317E0761600C16A9D /* CSLazyLoadController.m in Sources */,
-				ADC6461417E0761600C16A9D /* HUAvatarManager.m in Sources */,
 				ADC6461517E0761600C16A9D /* HUPushNotificationManager.m in Sources */,
 				ADC6461C17E0761600C16A9D /* AFHTTPClient+Synchronous.m in Sources */,
 				ADC6461D17E0761600C16A9D /* AFHTTPClient.m in Sources */,
@@ -2838,6 +2842,7 @@
 				B374799018745B82001CE0E7 /* HUBaseViewController+Style.m in Sources */,
 				CEB78BF817ECAEEB0053FBE3 /* HUButton.m in Sources */,
 				B374799218745B82001CE0E7 /* HUEULAViewController.m in Sources */,
+				B3AFCE8918BA809D0076A687 /* HUCachedImageLoader.m in Sources */,
 				ADC6477E17E0761700C16A9D /* HUPasswordChangeDialog.m in Sources */,
 				ADC6477F17E0761700C16A9D /* HUPasswordDisplayView+Style.m in Sources */,
 				B37479EB18745EE0001CE0E7 /* HUSubMenuViewController.m in Sources */,
@@ -2918,8 +2923,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -3000,8 +3005,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -3051,8 +3056,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",

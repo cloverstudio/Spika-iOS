@@ -26,7 +26,6 @@
 #import <AVFoundation/AVAsset.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <QuartzCore/QuartzCore.h>
-
 #import "HUWallViewController.h"
 #import "HUWallViewController+Style.h"
 #import "Utils.h"
@@ -39,7 +38,6 @@
 #import "HUPhotoDetailViewController.h"
 #import "VideoDetailVC.h"
 #import "LocationViewController.h"
-#import "HUAvatarManager.h"
 #import "LoadingViewCell.h"
 #import "AlertViewManager.h"
 #import "HPGrowingTextView.h"
@@ -54,6 +52,7 @@
 #import "HUDeleteViewController.h"
 #import "HUDeleteInformationViewController.h"
 #import "TransitionDelegate.h"
+#import "HUCachedImageLoader.h"
 
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
 
@@ -1035,16 +1034,11 @@
     
     wallCell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
-    [HUAvatarManager avatarImageForMessage:message
-                              atIndexPath:indexPath
-                        completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-                            
+    
+    [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
         wallCell.avatarIconView.image = image;
-                            
     }];
-    
-    
-    
+
     return cell;
 }
 
@@ -1280,14 +1274,21 @@ didSelectLocationButton:(UIButton *)button {
 
 -(void) messageCell:(MessageTypeBasicCell *)cell didTapAvatarImage:(ModelMessage *)message {
     
-	ModelUser *user = [HUAvatarManager userForMessage:message];
+    [[DatabaseManager defaultManager] findUserWithID:message.from_user_id success:^(id result) {
+        
+        ModelUser *user = (ModelUser *) result;
+        
+        NSString *notificationName = [UserManager messageBelongsToUser:message] ?
+        NotificationSideMenuMyProfileSelected :
+        NotificationShowProfile ;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                            object:user];
+
+    } error:^(NSString *errorString) {
+ 
+    }];
     
-	NSString *notificationName = [UserManager messageBelongsToUser:message] ?
-									NotificationSideMenuMyProfileSelected :
-									NotificationShowProfile ;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-                                                        object:user];
 }
 
 #pragma mark - MessageImageCellDelegate

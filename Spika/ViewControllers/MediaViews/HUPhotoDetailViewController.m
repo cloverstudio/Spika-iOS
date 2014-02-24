@@ -29,8 +29,8 @@
 #import "UserManager.h"
 #import "CSToast.h"
 #import "MessageTypeImageDetailCell.h"
-#import "HUAvatarManager.h"
 #import "AlertViewManager.h"
+#import "HUCachedImageLoader.h"
 
 @interface HUPhotoDetailViewController (){
 
@@ -66,10 +66,9 @@
     MessageTypeBasicCell *wallCell = (MessageTypeBasicCell *)cell;
     [wallCell updateWithModel:message];
     
-    [HUAvatarManager avatarImageForMessage:self.message atIndexPath:indexPath completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+    [HUCachedImageLoader imageFromUrl:self.message.imageUrl completionHandler:^(UIImage *image) {
         wallCell.avatarIconView.image = image;
     }];
-    
     
     return wallCell;
     

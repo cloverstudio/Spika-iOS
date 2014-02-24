@@ -96,8 +96,6 @@
 -(void) clearCacheDidTap:(id)sender {
 	   
 	[[DatabaseManager defaultManager] clearCache];
-    [HUAvatarManager clearCache];
-	
 	[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Cache cleared", nil)];
 }
 

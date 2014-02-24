@@ -30,6 +30,7 @@
 #import "DatabaseManager.h"
 #import "AlertViewManager.h"
 #import "UserManager.h"
+#import "HUCachedImageLoader.h"
 
 #define fadeIn_fadOut_animation_duration	0.5f
 #define kTimerUpdateInterval				1.0f
@@ -133,10 +134,10 @@ typedef enum {
     
     UIImageView *usersAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 12, 52, 52)];
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
-    [HUAvatarManager avatarImageForUser:user completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
+    [HUCachedImageLoader imageFromUrl:user.imageUrl completionHandler:^(UIImage *image) {
         usersAvatarImageView.image = image;
     }];
-    
+
     [mainView addSubview:usersAvatarImageView];
     
     _recordingsTitle = [[UITextField alloc] initWithFrame:CGRectMake(75, 45, 220, 25)];

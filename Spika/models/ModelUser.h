@@ -24,14 +24,13 @@
 
 #import "HUBaseModel.h"
 #import "HUPushNotificationManager.h"
-#import "HUAvatarManager.h"
 
 #define kUserOnlineStatusKey	@"online"
 #define kUserAwayStatusKey		@"away"
 #define kUserBusyStatusKey		@"busy"
 #define kUserOfflineStatusKey	@"offline"
 
-@interface ModelUser : HUBaseModel <HUPushNotificationTarget, HUAvatarModel>
+@interface ModelUser : HUBaseModel <HUPushNotificationTarget>
 
 @property (strong, nonatomic) NSString *_id;
 @property (strong, nonatomic) NSString *_rev;

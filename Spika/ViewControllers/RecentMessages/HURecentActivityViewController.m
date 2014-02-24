@@ -26,8 +26,8 @@
 #import "HURecentActivityViewController+Style.h"
 #import "DatabaseManager.h"
 #import "HUActivityMessageCell.h"
-#import "HUAvatarManager.h"
 #import "MAKVONotificationCenter.h"
+#import "HUCachedImageLoader.h"
 
 @interface HURecentActivityViewController ()
 
@@ -155,12 +155,12 @@
 	cell.textLabel.text = message.body;
 	cell.counterView.count = notification.count;
 	
-
 	cell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
-	[HUAvatarManager avatarImageForId:message.from_user_id atIndexPath:indexPath width:kListViewBigWidth completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-		cell.avatarIconView.image = image;
-	}];
-	
+    
+    [HUCachedImageLoader thumbnailFromUserId:message.from_user_id completionHandler:^(UIImage *image) {
+        cell.avatarIconView.image = image;
+    }];
+    
 	return cell;
 }
 
@@ -186,21 +186,28 @@
 	HUModelActivityNotification *note = category.notifications[indexPath.row];
 	
     if([note.category.targetType isEqualToString:@"group"]){
-        [HUAvatarManager findModelForModelId:note.targetId forClasses:@[@"ModelGroup"].mutableCopy completion:^(id<HUAvatarModel> model) {
+        
+        [[DatabaseManager defaultManager] findGroupByID:note.targetId success:^(id result) {
             
-            NSString *notificationName = [model isKindOfClass:[ModelGroup class]] ? NotificationShowGroupWall : NotificationShowUserWall;
+            ModelGroup *group = (ModelGroup *) result;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
+        } error:^(NSString *errorString) {
+
             
         }];
+
+        
     }else{
-        [HUAvatarManager findModelForModelId:note.targetId forClasses:@[@"ModelUser"].mutableCopy completion:^(id<HUAvatarModel> model) {
+
+        [[DatabaseManager defaultManager] findUserWithID:note.targetId success:^(id result) {
+            ModelUser *user = (ModelUser *)result;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
             
-            NSString *notificationName = [model isKindOfClass:[ModelGroup class]] ? NotificationShowGroupWall : NotificationShowUserWall;
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:model];
+        } error:^(NSString *errorString) {
             
         }];
+        
     }
     
 
