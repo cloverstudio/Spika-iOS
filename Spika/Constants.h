@@ -27,7 +27,7 @@
 #define DatabaseURL             @"http://localhost:8080/wwwroot/api"
 #define HttpRootURL             @"http://localhost:8080/wwwroot/api"
 #define PageRootURL             @"http://localhost:8080/wwwroot/page"
-#define InformationPageTopURL   @"hhttp://localhost:8080/wwwroot/page/information"
+#define InformationPageTopURL   @"http://localhost:8080/wwwroot/page/information"
 /* end change here */
 
 #ifndef Bind_Constants_h
