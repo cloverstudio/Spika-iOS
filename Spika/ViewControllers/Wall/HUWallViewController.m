@@ -97,6 +97,8 @@
 
 - (void) dealloc{
     
+    [self.tableView setEditing:NO];
+    
     [_contentView removeObserver:self
                       forKeyPath:@"frame"];
     
