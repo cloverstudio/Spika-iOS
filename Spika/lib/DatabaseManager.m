@@ -2640,6 +2640,26 @@
                  downloadProgressBlock:nil];
 }
 
+-(void) setDeleteOnMessageId:(NSString*)messageId
+                  deleteType:(int)deleteType
+                     success:(DMFindOneBlock)successBlock {
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:messageId forKey:@"message_id"];
+    [params setObject:[NSString stringWithFormat:@"%d", deleteType] forKey:@"delete_type"];
+    
+    NSLog(@"%@", params);
+    
+    [self setDefaultHeaderValues];
+    
+    [[HUHTTPClient sharedClient] doPost:@"setDelete"
+                          operationType:CSWebOperatonTypeJSON
+                                 params:params
+                            resultBlock:successBlock
+                           failureBlock:nil
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
+}
 
 -(void) test{
     

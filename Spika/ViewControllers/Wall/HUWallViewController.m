@@ -51,7 +51,8 @@
 #import "HUVideoRecorderViewController.h"
 #import "NSNotification+Extensions.h"
 #import "HUBaseViewController+Style.h"
-#import "HUDeleteDialog.h"
+#import "HUDeleteViewController.h"
+#import "HUDeleteInformationViewController.h"
 #import "TransitionDelegate.h"
 
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
@@ -643,7 +644,7 @@
 
 - (void) reload {
     
-    
+    NSLog(@"did reload");
     // find index of message to update
     for(int i = 0; i < self.items.count ; i++){
         
@@ -1062,11 +1063,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
+        ModelMessage *message = [self.items objectAtIndex:indexPath.row];
+        
 //        //TODO: real delete
 //        [self.items removeObjectAtIndex:indexPath.row];
 //        [tableView reloadData];
         
-        HUDeleteDialog *deleteDialog =[[HUDeleteDialog alloc] initWithNibName:@"DeleteDialogView" bundle:nil];
+        HUDeleteViewController *deleteDialog =[[HUDeleteViewController alloc] initWithNibName:@"HUDeleteViewController" bundle:nil];
+        deleteDialog.message = message;
         
         [deleteDialog setTransitioningDelegate:self.transitionDelegate];
         deleteDialog.modalPresentationStyle = UIModalPresentationCustom;

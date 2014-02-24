@@ -415,9 +415,9 @@
 		FA14E59F189BB1150068C213 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59C189BB1150068C213 /* Icon-60@2x.png */; };
 		FA14E5A0189BB1150068C213 /* Icon-Spotlight-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59D189BB1150068C213 /* Icon-Spotlight-40@2x.png */; };
 		FA14E5A1189BB1150068C213 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */; };
-		FA3AFF9B18B611B600BC2BED /* DeleteDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */; };
+		FA3AFF9B18B611B600BC2BED /* HUDeleteInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AFF9A18B611B600BC2BED /* HUDeleteInformationViewController.xib */; };
 		FA3AFF9D18B6128E00BC2BED /* dialog_bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */; };
-		FA3AFFA018B6151000BC2BED /* HUDeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */; };
+		FA3AFFA018B6151000BC2BED /* HUDeleteInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFF9F18B6151000BC2BED /* HUDeleteInformationViewController.m */; };
 		FA3AFFA618B6541700BC2BED /* AnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */; };
 		FA3AFFA718B6541700BC2BED /* TransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3AFFA518B6541700BC2BED /* TransitionDelegate.m */; };
 		FA504DA7189BDB2D00DD12B8 /* HUEULAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA504DA6189BDB2D00DD12B8 /* HUEULAView.xib */; };
@@ -425,6 +425,9 @@
 		FABC54C718B4DA6700FE820B /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC54C618B4DA6700FE820B /* delete@2x.png */; };
 		FAE0CB3218A8F4E000AB0DFA /* Default@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0CB3018A8F4E000AB0DFA /* Default@2x~ipad.png */; };
 		FAE0CB3518A8F59F00AB0DFA /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0CB3418A8F59F00AB0DFA /* Default~ipad.png */; };
+		FAE3708F18B75A4100A2B37A /* HUDeleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE3708D18B75A4100A2B37A /* HUDeleteViewController.m */; };
+		FAE3709018B75A4100A2B37A /* HUDeleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE3708E18B75A4100A2B37A /* HUDeleteViewController.xib */; };
+		FAE3709618B7650500A2B37A /* dialog_bubble_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE3709518B7650500A2B37A /* dialog_bubble_large@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1055,10 +1058,10 @@
 		FA14E59C189BB1150068C213 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		FA14E59D189BB1150068C213 /* Icon-Spotlight-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-40@2x.png"; sourceTree = "<group>"; };
 		FA14E59E189BB1150068C213 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteDialogView.xib; sourceTree = "<group>"; };
+		FA3AFF9A18B611B600BC2BED /* HUDeleteInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDeleteInformationViewController.xib; sourceTree = "<group>"; };
 		FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_bubble@2x.png"; sourceTree = "<group>"; };
-		FA3AFF9E18B6151000BC2BED /* HUDeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDeleteDialog.h; sourceTree = "<group>"; };
-		FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDeleteDialog.m; sourceTree = "<group>"; };
+		FA3AFF9E18B6151000BC2BED /* HUDeleteInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDeleteInformationViewController.h; sourceTree = "<group>"; };
+		FA3AFF9F18B6151000BC2BED /* HUDeleteInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDeleteInformationViewController.m; sourceTree = "<group>"; };
 		FA3AFFA218B6541700BC2BED /* AnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedTransitioning.h; sourceTree = "<group>"; };
 		FA3AFFA318B6541700BC2BED /* AnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedTransitioning.m; sourceTree = "<group>"; };
 		FA3AFFA418B6541700BC2BED /* TransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionDelegate.h; sourceTree = "<group>"; };
@@ -1068,6 +1071,10 @@
 		FABC54C618B4DA6700FE820B /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		FAE0CB3018A8F4E000AB0DFA /* Default@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~ipad.png"; sourceTree = "<group>"; };
 		FAE0CB3418A8F59F00AB0DFA /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
+		FAE3708C18B75A4100A2B37A /* HUDeleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDeleteViewController.h; sourceTree = "<group>"; };
+		FAE3708D18B75A4100A2B37A /* HUDeleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDeleteViewController.m; sourceTree = "<group>"; };
+		FAE3708E18B75A4100A2B37A /* HUDeleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDeleteViewController.xib; sourceTree = "<group>"; };
+		FAE3709518B7650500A2B37A /* dialog_bubble_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_bubble_large@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1758,6 +1765,7 @@
 				ADC644AA17E0761600C16A9D /* hp_wall_tableview_top_shadow.png */,
 				ADC644AB17E0761600C16A9D /* hp_wall_tableview_top_shadow@2x.png */,
 				FA3AFF9C18B6128E00BC2BED /* dialog_bubble@2x.png */,
+				FAE3709518B7650500A2B37A /* dialog_bubble_large@2x.png */,
 				ADC644AC17E0761600C16A9D /* MediaPanel */,
 			);
 			path = Wall;
@@ -2172,9 +2180,12 @@
 				B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */,
 				B37479701874566E001CE0E7 /* HUWallViewController.h */,
 				B37479711874566E001CE0E7 /* HUWallViewController.m */,
-				FA3AFF9A18B611B600BC2BED /* DeleteDialogView.xib */,
-				FA3AFF9E18B6151000BC2BED /* HUDeleteDialog.h */,
-				FA3AFF9F18B6151000BC2BED /* HUDeleteDialog.m */,
+				FA3AFF9A18B611B600BC2BED /* HUDeleteInformationViewController.xib */,
+				FA3AFF9E18B6151000BC2BED /* HUDeleteInformationViewController.h */,
+				FA3AFF9F18B6151000BC2BED /* HUDeleteInformationViewController.m */,
+				FAE3708C18B75A4100A2B37A /* HUDeleteViewController.h */,
+				FAE3708D18B75A4100A2B37A /* HUDeleteViewController.m */,
+				FAE3708E18B75A4100A2B37A /* HUDeleteViewController.xib */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -2488,6 +2499,7 @@
 				ADC6465F17E0761600C16A9D /* group_stub_large@2x.png in Resources */,
 				ADC6466017E0761600C16A9D /* hu_dismiss_button.png in Resources */,
 				ADC6466117E0761600C16A9D /* hu_dismiss_button@2x.png in Resources */,
+				FAE3709018B75A4100A2B37A /* HUDeleteViewController.xib in Resources */,
 				FA14E5A0189BB1150068C213 /* Icon-Spotlight-40@2x.png in Resources */,
 				ADC6466217E0761600C16A9D /* hu_magnifying_glass.png in Resources */,
 				ADC6466317E0761600C16A9D /* hu_magnifying_glass@2x.png in Resources */,
@@ -2519,7 +2531,7 @@
 				ADC6468017E0761600C16A9D /* delete_arrow@2x.png in Resources */,
 				ADC6469317E0761600C16A9D /* hu_push_close.png in Resources */,
 				ADC6469417E0761600C16A9D /* hu_push_close@2x.png in Resources */,
-				FA3AFF9B18B611B600BC2BED /* DeleteDialogView.xib in Resources */,
+				FA3AFF9B18B611B600BC2BED /* HUDeleteInformationViewController.xib in Resources */,
 				ADC6469517E0761600C16A9D /* btn_slider_international_off.png in Resources */,
 				ADC6469617E0761600C16A9D /* btn_slider_international_off@2x.png in Resources */,
 				FA14E59B189BAECB0068C213 /* Images.xcassets in Resources */,
@@ -2613,6 +2625,7 @@
 				ADC646E817E0761600C16A9D /* albums_more_icon@2x.png in Resources */,
 				ADC646E917E0761600C16A9D /* albums_more_icon_active.png in Resources */,
 				ADC646EA17E0761600C16A9D /* albums_more_icon_active@2x.png in Resources */,
+				FAE3709618B7650500A2B37A /* dialog_bubble_large@2x.png in Resources */,
 				ADC646EB17E0761600C16A9D /* camera_more_icon.png in Resources */,
 				ADC646EC17E0761600C16A9D /* camera_more_icon@2x.png in Resources */,
 				ADC646ED17E0761600C16A9D /* camera_more_icon_active.png in Resources */,
@@ -2711,7 +2724,7 @@
 				ADC6463B17E0761600C16A9D /* UIResponder+Extension.m in Sources */,
 				ADC6463C17E0761600C16A9D /* UIToolbar+BackgroundColor.m in Sources */,
 				ADC6463D17E0761600C16A9D /* UIView+Apperance.m in Sources */,
-				FA3AFFA018B6151000BC2BED /* HUDeleteDialog.m in Sources */,
+				FA3AFFA018B6151000BC2BED /* HUDeleteInformationViewController.m in Sources */,
 				ADC6463E17E0761600C16A9D /* UIView+CoreGraphics.m in Sources */,
 				ADC6463F17E0761600C16A9D /* UIView+Extensions.m in Sources */,
 				ADC6464017E0761600C16A9D /* UIView+Margin.m in Sources */,
@@ -2798,6 +2811,7 @@
 				ADC6476D17E0761700C16A9D /* HUActivityMessageCell.m in Sources */,
 				ADC6476E17E0761700C16A9D /* HUCounterBalloonView.m in Sources */,
 				ADC6476F17E0761700C16A9D /* HUDatePicker.m in Sources */,
+				FAE3708F18B75A4100A2B37A /* HUDeleteViewController.m in Sources */,
 				ADC6477017E0761700C16A9D /* HUDialog+Style.m in Sources */,
 				ADC6477117E0761700C16A9D /* HUDialog.m in Sources */,
 				ADC6477217E0761700C16A9D /* HUDoubleSliderView.m in Sources */,

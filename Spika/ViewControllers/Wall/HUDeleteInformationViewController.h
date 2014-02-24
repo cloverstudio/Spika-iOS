@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HUBaseViewController.h"
 
-@interface HUDeleteDialog : HUBaseViewController {
-    IBOutlet UIImageView    *image;
+@interface HUDeleteInformationViewController : HUBaseViewController {
     IBOutlet UIButton       *closeButton;
 }
 

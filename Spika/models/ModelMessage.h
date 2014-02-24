@@ -59,6 +59,8 @@
 @property (strong, nonatomic) NSString *avatarThumbUrl;
 @property (strong, nonatomic) NSString *avatarThumbFileId;
 
+@property (readwrite) int deleteAt;
+@property (readwrite) int deleteType;
 
 @property (readwrite) long created;
 @property (readwrite) long modified;

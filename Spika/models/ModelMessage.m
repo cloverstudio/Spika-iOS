@@ -54,6 +54,8 @@
 @synthesize latitude = _latitude;
 @synthesize avatarThumbUrl = _avatarThumbUrl;
 @synthesize avatarThumbFileId = _avatarThumbFileId;
+@synthesize deleteAt = _deleteAt;
+@synthesize deleteType = _deleteType;
 
 +(NSDictionary *) toDic:(ModelMessage *)message{
     NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc] init];
@@ -84,6 +86,8 @@
     [tmpDic setObject:[NSNumber numberWithDouble:message.longitude] forKey:@"longitude"];
     [tmpDic setObject:[NSNumber numberWithDouble:message.latitude] forKey:@"latitude"];
     [tmpDic setObject:message.avatarThumbFileId forKey:@"avatar_thumb_file_id"];
+    [tmpDic setObject:[NSNumber numberWithInt:message.deleteAt] forKey:@"delete_at"];
+    [tmpDic setObject:[NSNumber numberWithInt:message.deleteType] forKey:@"delete_type"];
 
     return tmpDic;
 }
@@ -303,6 +307,19 @@
         message.avatarThumbFileId = @"";
         message.avatarThumbUrl = @"";
     }
+    
+    if([dic objectForKey:@"delete_at"] != nil){
+        message.deleteAt = [[dic objectForKey:@"delete_at"] intValue];
+    }else{
+        message.deleteAt = 0;
+    }
+    
+    if([dic objectForKey:@"delete_type"] != nil){
+        message.deleteType = [[dic objectForKey:@"delete_type"] intValue];
+    }else{
+        message.deleteType = 0;
+    }
+
     return message;
     
 }
@@ -394,6 +411,8 @@
     copy.pictureThumbFileId = self.pictureThumbFileId.copy;
     copy.avatarThumbFileId = self.avatarThumbFileId.copy;
     copy.avatarThumbUrl = self.avatarThumbUrl.copy;
+    copy.deleteAt = self.deleteAt;
+    copy.deleteType = self.deleteType;
     
     return copy;
 }

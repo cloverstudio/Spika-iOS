@@ -343,6 +343,8 @@ typedef void (^DMLoadVoice)(NSData *data);
 -(void) doLogout:(CSResultBlock) successBlock;
 -(void) report:(ModelMessage *)message success:(CSResultBlock) successBlock;
 
+-(void) setDeleteOnMessageId:(NSString *)_id deleteType:(int)deleteType success:(DMFindOneBlock)successBlock;
+
 -(void) test;
 
 @end
