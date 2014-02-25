@@ -670,6 +670,7 @@
 }
 
 - (void) reloadAll {
+    [self.tableView setEditing:NO];
     [self.items removeAllObjects];
     [self reload];
 }
