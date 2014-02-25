@@ -38,6 +38,7 @@
 @end
 
 @implementation MessageTypeImageDetailCell
+@synthesize containerView = _containerView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

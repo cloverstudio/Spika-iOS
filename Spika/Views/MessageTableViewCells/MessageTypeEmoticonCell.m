@@ -23,8 +23,13 @@
  */
 
 #import "MessageTypeEmoticonCell.h"
+#import "HUImageView.h"
 
 @interface MessageTypeEmoticonCell ()
+
+//@property (nonatomic, strong) UIView *containerView;
+//@property (nonatomic, strong) HUImageView *anImageView;
+
 @end
 
 @implementation MessageTypeEmoticonCell
@@ -56,6 +61,14 @@
 +(NSString *) imageUrlForMessage:(ModelMessage *)message {
     
     return message.emoticonImageURL;
+}
+
+-(void) layoutDeleteTimerInCorner {
+    
+    CGFloat xDeletePos = self.isUserMessage ? self.containerView.x + 5 : self.containerView.x + self.anImageView.relativeWidth - 5;
+    CGFloat yDeletePos = self.containerView.y + self.anImageView.relativeHeight - 5;
+    
+    self.deleteTimerButtonView.center = CGPointMake(xDeletePos, yDeletePos);
 }
 
 @end

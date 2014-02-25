@@ -32,14 +32,11 @@
 #import "NSString+MD5.h"
 #import "CSGraphics.h"
 
-#import "HUImageView.h"
 
 @interface MessageTypeImageCell ()
 
 //@property (nonatomic, strong) UIImageView *photoView;
-@property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) HUCounterBalloonView *counterView;
-@property (nonatomic, strong) HUImageView *anImageView;
 
 @end
 
@@ -93,7 +90,7 @@
 - (void) layoutSubviews {
     
     [super layoutSubviews];
-    
+        
     _containerView.frame = [MessageCell frameForContainerView:self.message];
 //    CGFloat x = self.isUserMessage ? _photoView.x : _photoView.relativeWidth;
 //    _counterView.center = CGPointMake(x, _photoView.y);
@@ -102,6 +99,16 @@
     _counterView.center = CGPointMake(x, _anImageView.y);
     
     [self layoutTimestampLabelBelowView:_containerView];
+    
+    [self layoutDeleteTimerInCorner];
+}
+
+-(void) layoutDeleteTimerInCorner {
+    
+    CGFloat xDeletePos = self.isUserMessage ? _containerView.x + 5 : _containerView.x + _anImageView.relativeWidth;
+    CGFloat yDeletePos = _containerView.y + _anImageView.relativeHeight;
+    
+    self.deleteTimerButtonView.center = CGPointMake(xDeletePos, yDeletePos);
 }
 
 -(void) updateWithModel:(ModelMessage *)message {

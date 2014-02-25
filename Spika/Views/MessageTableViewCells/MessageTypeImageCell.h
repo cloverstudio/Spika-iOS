@@ -24,10 +24,14 @@
 
 #import "MessageTypeBasicCell.h"
 #import "Models.h"
+#import "HUImageView.h"
 
 @protocol MessageImageCellDelegate;
 
 @interface MessageTypeImageCell : MessageTypeBasicCell
+
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) HUImageView *anImageView;
 
 @property (nonatomic, weak) id delegate;
 

@@ -104,6 +104,7 @@
     
     _unreadIconView.frame = CGRectMake(_arrowImageView.x + 5,CGRectGetMaxY(_arrowImageView.frame) + 18,10,8);
     
+//    [self makeFrameForDeleteTimer];
 }
 
 -(UILabel *) layoutTimestampLabelBelowView:(UIView *)view {
@@ -122,7 +123,7 @@
 }
 
 -(void) updateWithModel:(ModelMessage *)message {
-    
+        
     ModelUser *user = [[UserManager defaultManager] getLoginedUser];
     
     _message = message;
@@ -136,7 +137,7 @@
         
     }
     
-    [self makeFrameForDeleteTimer];
+    [self enableDeleteTimerIfNeeded];
 }
 
 #pragma mark - Override
@@ -210,23 +211,35 @@
                        );
 }
 
-- (void) makeFrameForDeleteTimer {
-    
+- (void) enableDeleteTimerIfNeeded {
     if (_message.deleteType > 0) {
-        
-//        CGRect rect = self.contentView.frame;
-//        [_deleteTimerButtonView setFrame:rect];
-        if ([UserManager messageBelongsToUser:_message]) {
-            [_deleteTimerButtonView setFrame:CGRectMake(10, 0, 19, 22)];
-        } else {
-            [_deleteTimerButtonView setFrame:CGRectMake(288, 0, 19, 22)];
-        }
-        
+        [_deleteTimerButtonView setFrame:CGRectMake(0, 0, 19, 22)];
         [self.contentView bringSubviewToFront:_deleteTimerButtonView];
         [_deleteTimerButtonView setHidden:NO];
     } else {
         [_deleteTimerButtonView setHidden:YES];
     }
+}
+
+- (void) layoutDeleteTimerInCorner {
+    
+    // override this in subclasses
+    
+//    if (_message.deleteType > 0) {
+//        
+////        CGRect rect = self.contentView.frame;
+////        [_deleteTimerButtonView setFrame:rect];
+//        if ([UserManager messageBelongsToUser:_message]) {
+//            [_deleteTimerButtonView setFrame:CGRectMake(10, 0, 19, 22)];
+//        } else {
+//            [_deleteTimerButtonView setFrame:CGRectMake(288, 0, 19, 22)];
+//        }
+//        
+//        [self.contentView bringSubviewToFront:_deleteTimerButtonView];
+//        [_deleteTimerButtonView setHidden:NO];
+//    } else {
+//        [_deleteTimerButtonView setHidden:YES];
+//    }
 }
 
 #pragma mark - Selectors

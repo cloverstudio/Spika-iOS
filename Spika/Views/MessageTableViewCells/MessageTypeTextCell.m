@@ -72,7 +72,18 @@
     
     _messageLabel.frame = [MessageCell frameForMessageLabel:self.message];
     [self layoutTimestampLabelBelowView:_messageLabel];
+    
+    [self layoutDeleteTimerInCorner];
 }
+
+-(void) layoutDeleteTimerInCorner {
+        
+    CGFloat xDeletePos = self.isUserMessage ? _messageLabel.x : _messageLabel.x + _messageLabel.width;
+    CGFloat yDeletePos = _messageLabel.y + _messageLabel.relativeHeight - 10;
+    
+    self.deleteTimerButtonView.center = CGPointMake(xDeletePos, yDeletePos);
+}
+
 
 + (BOOL) isArrowHidden {
     

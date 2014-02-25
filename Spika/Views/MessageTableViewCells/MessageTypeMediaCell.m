@@ -66,11 +66,7 @@
         
         _counterView = [self newCommentCounterView];
         
-        
-        
         [_containerView addSubview:_counterView];
-        
-
     }
     
     return self;
@@ -83,7 +79,18 @@
     
     _containerView.frame = [MessageCell frameForContainerView:self.message];
     [self layoutTimestampLabelBelowView:_containerView];
+    
+    [self layoutDeleteTimerInCorner];
 }
+
+-(void) layoutDeleteTimerInCorner {
+    
+    CGFloat xDeletePos = self.isUserMessage ? _containerView.x : _containerView.x + _containerView.width;
+    CGFloat yDeletePos = _containerView.y + _containerView.height - 5;
+    
+    self.deleteTimerButtonView.center = CGPointMake(xDeletePos, yDeletePos);
+}
+
 
 -(void) updateWithModel:(ModelMessage *)message {
     
