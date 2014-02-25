@@ -819,8 +819,16 @@
                                                       
                                                       NSString *errStr = (NSString *) [notification object];
                                                       [[AlertViewManager defaultManager] showAlert:errStr];
+                                                      
+                                                      [self presentLoginViewController:NO];
+                                                      
+                                                      if(_sideMenuShowing)
+                                                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHideSideMenu object:nil];
+                                                      
+                                                      if(_subMenuShowing)
+                                                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHideSubMenu object:nil];
 
-                                                      //[[AlertViewManager defaultManager] dismiss];
+                                                      
                                                   }];
     
     

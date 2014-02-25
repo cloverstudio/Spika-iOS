@@ -227,6 +227,10 @@
 
     [super loadView];
     
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
+    [self.view addGestureRecognizer:tap];
+    
     _allowSwipe = NO;
     
     if(_targetUser != nil && [_targetUser._id isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]) {
@@ -285,6 +289,11 @@
     [_refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
 	[self reload];
+}
+
+-(void) didTapOnTableView:(UIGestureRecognizer*) recognizer {
+    [self.view endEditing:YES];
+    [self hideMediaMenu];
 }
 
 -(void) backButtonDidPress:(id)sender {
@@ -1388,5 +1397,12 @@ didSelectLocationButton:(UIButton *)button {
     
     
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+	[self hideMediaMenu];
+}
+
 
 @end
