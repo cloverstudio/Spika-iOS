@@ -66,7 +66,7 @@
     MessageTypeBasicCell *wallCell = (MessageTypeBasicCell *)cell;
     [wallCell updateWithModel:message];
     
-    [HUCachedImageLoader imageFromUrl:self.message.imageUrl completionHandler:^(UIImage *image) {
+    [HUCachedImageLoader imageFromUrl:self.message.avatarThumbUrl completionHandler:^(UIImage *image) {
         if(image)
             wallCell.avatarIconView.image = image;
     }];
