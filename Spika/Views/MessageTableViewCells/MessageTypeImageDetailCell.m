@@ -100,6 +100,8 @@
         _photoView.width,
         kReportHeight
     );
+    
+    [self.deleteTimerButtonView setHidden:YES];
 }
 
 -(void) updateWithModel:(ModelMessage *)message {
@@ -109,6 +111,8 @@
     self.photoView.image = message.value;
     _message = message;
 //    self.photoView.imageURL = [NSURL URLWithString:message.imageUrl];
+    
+    [self.deleteTimerButtonView setHidden:YES];
 }
 
 +(CGFloat) cellHeightForImage:(UIImage *)image {
