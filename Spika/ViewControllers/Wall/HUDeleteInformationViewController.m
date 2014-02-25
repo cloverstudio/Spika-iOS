@@ -39,8 +39,12 @@
 }
 
 -(NSString *) getTimeAsStringForLabel : (int) deleteAt {
-    int now = [[NSDate date] timeIntervalSince1970] / 1000;
+    int now = [[NSDate date] timeIntervalSince1970];
+    
     int seconds = deleteAt - now;
+    
+    NSLog(@"seconds: %d %d %d", now, deleteAt, deleteAt-now);
+    
     int minutes = seconds / 60;
     int hours = minutes / 60;
     int days = hours / 24;
