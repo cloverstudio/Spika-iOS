@@ -63,6 +63,7 @@
 @property (readwrite) int deleteType;
 
 @property (readwrite) long created;
+@property (readwrite) long readAt;
 @property (readwrite) long modified;
 @property (readwrite) double longitude;
 @property (readwrite) double latitude;

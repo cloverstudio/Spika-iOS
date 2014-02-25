@@ -28,11 +28,13 @@
 #import "CSGraphics.h"
 #import "UIImage+Aditions.h"
 #import "HUSelectedTableViewCellVew.h"
+#import "Utils.h"
 
 @implementation HUActivityMessageCell {
 	UIView *_backgroundView;
 	UILabel *_textLabel;
 	UIImageView *_arrowView;
+    UILabel *_dateLabel;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -46,6 +48,9 @@
 		_textLabel = [self newTextLabel];
 		[self.contentView addSubview:_textLabel];
 		
+		_dateLabel = [self newDateLabel];
+		[self.contentView addSubview:_dateLabel];
+		
 		_counterView = [HUCounterBalloonView counterView];
 		[self.contentView addSubview:_counterView];
 		
@@ -54,8 +59,8 @@
 
         self.selectedBackgroundView = [[HUSelectedTableViewCellVew alloc] initWithFrame:self.frame withHeight:[HUActivityMessageCell cellHeightForMessage:nil]];
     
-    
 		[self.contentView bringSubviewToFront:self.avatarIconView];
+        
     }
     return self;
 }
@@ -86,11 +91,24 @@
 	labelFrame.size.width = endX - labelFrame.origin.x;
 	_textLabel.frame = labelFrame;
 	
+    _dateLabel.frame = CGRectMake(
+            _textLabel.frame.origin.x,
+            self.height - 25,
+            _textLabel.frame.size.width,
+            25
+    );
+    
+    
 }
 
 -(UILabel *)textLabel {
 	
 	return _textLabel;
+}
+
+-(UILabel *)timestampLabel {
+	
+	return _dateLabel;
 }
 
 +(BOOL) isArrowHidden {

@@ -28,5 +28,6 @@
 
 -(UIView *) newBackgroundView;
 -(UILabel *) newTextLabel;
+-(UILabel *) newDateLabel;
 
 @end

@@ -35,6 +35,7 @@
 
 @implementation MessageTypeBasicCell {
     UIImageView *_arrowImageView;
+    UIImageView *_unreadIconView;
 }
 
 #pragma mark - Dealloc 
@@ -57,6 +58,7 @@
             [self.contentView addSubview:_arrowImageView];
         }
         
+        
         _avatarIconView = [[UIImageView alloc] initWithFrame:[MessageCell frameForAvatarIconView:nil]];
         _avatarIconView.backgroundColor = [UIColor clearColor];
 		_avatarIconView.contentMode = UIViewContentModeScaleAspectFit;
@@ -74,6 +76,8 @@
             [self.contentView addSubview:_timestampLabel];
         }
         
+        _unreadIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconUnread"]];
+
         _deleteTimerButtonView = [[UIImageView alloc] init];
         _deleteTimerButtonView.image = [UIImage imageNamed:@"delete_timer"];
         _deleteTimerButtonView.userInteractionEnabled = YES;
@@ -94,8 +98,12 @@
     
     _arrowImageView.frame = [MessageCell frameForArrowImageView:self.message];
     _arrowImageView.transform = self.isUserMessage ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformIdentity ;
+
     _timestampLabel.frame = [MessageCell frameForInfoLabel:CGRectMake(0, 0, 300, _avatarIconView.height)];
     [_timestampLabel sizeToFit];
+    
+    _unreadIconView.frame = CGRectMake(_arrowImageView.x + 5,CGRectGetMaxY(_arrowImageView.frame) + 18,10,8);
+    
 }
 
 -(UILabel *) layoutTimestampLabelBelowView:(UIView *)view {
@@ -115,10 +123,18 @@
 
 -(void) updateWithModel:(ModelMessage *)message {
     
+    ModelUser *user = [[UserManager defaultManager] getLoginedUser];
+    
     _message = message;
 
     _isUserMessage = [UserManager messageBelongsToUser:message];
     _timestampLabel.text = [Utils generateMessageInfoText:message];
+    
+    if([user._id isEqualToString:message.from_user_id] && message.readAt == 0){
+        
+        [self.contentView addSubview:_unreadIconView];
+        
+    }
     
     [self makeFrameForDeleteTimer];
 }

@@ -67,7 +67,8 @@
     [wallCell updateWithModel:message];
     
     [HUCachedImageLoader imageFromUrl:self.message.imageUrl completionHandler:^(UIImage *image) {
-        wallCell.avatarIconView.image = image;
+        if(image)
+            wallCell.avatarIconView.image = image;
     }];
     
     return wallCell;

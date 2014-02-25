@@ -135,7 +135,8 @@ typedef enum {
     UIImageView *usersAvatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 12, 52, 52)];
 	usersAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
     [HUCachedImageLoader imageFromUrl:user.imageUrl completionHandler:^(UIImage *image) {
-        usersAvatarImageView.image = image;
+        if(image)
+            usersAvatarImageView.image = image;
     }];
 
     [mainView addSubview:usersAvatarImageView];

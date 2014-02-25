@@ -232,9 +232,9 @@
 "GroupDeleted"              = "This group has been deleted by it's owner. Please unsubscribe if you are still subscribed.";
 "Confirm Logout"            = "Do you really want to logout?";
 
-"CHAT ACTIVITY"             = "UNREAD MESSAGES";
+"CHAT ACTIVITY"             = "RECENT MESSAGES";
 "GROUPS ACTIVITY"           = "GROUP ACTIVITY";
-"No Recent Activities"      = "There are no unread messages";
+"No Recent Activities"      = "There are no messages";
 "NOTIFICATIONS"             = "NOTIFICATIONS";
 "User Support"              = "User support";
 "ACCOUNT"                   = "ACCOUNT";

@@ -525,7 +525,8 @@
 			cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
 			
             [HUCachedImageLoader imageFromUrl:groupCategory.imageUrl completionHandler:^(UIImage *image) {
-				cell.avatarImageView.image = image;
+                if(image)
+                    cell.avatarImageView.image = image;
             }];
 			
 			return cell;

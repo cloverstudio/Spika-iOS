@@ -79,6 +79,7 @@
     [tmpDic setObject:message.messageUrl forKey:@"message_url"];
     [tmpDic setObject:[NSNumber numberWithLong:message.created] forKey:@"created"];
     [tmpDic setObject:[NSNumber numberWithLong:message.modified] forKey:@"modified"];
+    [tmpDic setObject:[NSNumber numberWithLong:message.readAt] forKey:@"read_at"];
     [tmpDic setObject:[NSNumber numberWithBool:message.valid] forKey:@"valid"];
     //[tmpDic setObject:message.attachmentsOrig forKey:@"_attachments"];
     [tmpDic setObject:message.comments forKey:@"comments"];
@@ -192,6 +193,12 @@
         message.modified = [[dic objectForKey:@"modified"] longValue];
     }else{
         message.modified = 0;
+    }
+    
+    if([dic objectForKey:@"read_at"] != nil){
+        message.readAt = [[dic objectForKey:@"read_at"] longValue];
+    }else{
+        message.readAt = 0;
     }
     
     if([dic objectForKey:@"body"] != nil){
@@ -407,6 +414,7 @@
     copy.emoticonImageURL = self.comments.copy;
     copy.longitude = self.longitude;
     copy.latitude = self.latitude;
+    copy.readAt = self.readAt;
     copy.pictureFileId = self.pictureFileId.copy;
     copy.pictureThumbFileId = self.pictureThumbFileId.copy;
     copy.avatarThumbFileId = self.avatarThumbFileId.copy;

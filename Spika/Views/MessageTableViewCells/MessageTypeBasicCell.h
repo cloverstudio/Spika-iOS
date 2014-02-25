@@ -40,6 +40,7 @@
 + (CGFloat) cellHeightForMessage:(ModelMessage *)message;
 + (CGRect) frameForAvatarIconView:(ModelMessage *)message;
 + (CGRect) frameForArrowImageView:(ModelMessage *)message;
++ (CGRect) frameForUnreadIconImageView:(ModelMessage *)message;
 
 + (CGFloat) heightForTimestampLabel;
 + (CGFloat) extraSpaceAtTheBottom;
