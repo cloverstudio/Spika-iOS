@@ -77,6 +77,8 @@
         }
         
         _unreadIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconUnread"]];
+        [self.contentView addSubview:_unreadIconView];
+        [_unreadIconView setHidden:YES];
 
         _deleteTimerButtonView = [[UIImageView alloc] init];
         _deleteTimerButtonView.image = [UIImage imageNamed:@"delete_timer"];
@@ -102,9 +104,7 @@
     _timestampLabel.frame = [MessageCell frameForInfoLabel:CGRectMake(0, 0, 300, _avatarIconView.height)];
     [_timestampLabel sizeToFit];
     
-    _unreadIconView.frame = CGRectMake(_arrowImageView.x + 5,CGRectGetMaxY(_arrowImageView.frame) + 18,10,8);
-    
-//    [self makeFrameForDeleteTimer];
+    _unreadIconView.frame = CGRectMake(_timestampLabel.x + _timestampLabel.width + 5, _timestampLabel.y + 8, 10, 8);
 }
 
 -(UILabel *) layoutTimestampLabelBelowView:(UIView *)view {
@@ -119,6 +119,8 @@
         _timestampLabel.x = view.relativeWidth - _timestampLabel.width;
     }
     
+    _unreadIconView.frame = CGRectMake(_timestampLabel.x + _timestampLabel.width + 5, _timestampLabel.y + 8, 10, 8);
+    
     return _timestampLabel;
 }
 
@@ -131,10 +133,10 @@
     _isUserMessage = [UserManager messageBelongsToUser:message];
     _timestampLabel.text = [Utils generateMessageInfoText:message];
     
-    if([user._id isEqualToString:message.from_user_id] && message.readAt == 0){
-        
-        [self.contentView addSubview:_unreadIconView];
-        
+    if([user._id isEqualToString:message.from_user_id] && message.readAt == 0 && [message.message_target_type isEqualToString:@"user"]) {
+        [_unreadIconView setHidden:NO];
+    } else {
+        [_unreadIconView setHidden:YES];
     }
     
     [self enableDeleteTimerIfNeeded];
@@ -222,24 +224,7 @@
 }
 
 - (void) layoutDeleteTimerInCorner {
-    
     // override this in subclasses
-    
-//    if (_message.deleteType > 0) {
-//        
-////        CGRect rect = self.contentView.frame;
-////        [_deleteTimerButtonView setFrame:rect];
-//        if ([UserManager messageBelongsToUser:_message]) {
-//            [_deleteTimerButtonView setFrame:CGRectMake(10, 0, 19, 22)];
-//        } else {
-//            [_deleteTimerButtonView setFrame:CGRectMake(288, 0, 19, 22)];
-//        }
-//        
-//        [self.contentView bringSubviewToFront:_deleteTimerButtonView];
-//        [_deleteTimerButtonView setHidden:NO];
-//    } else {
-//        [_deleteTimerButtonView setHidden:YES];
-//    }
 }
 
 #pragma mark - Selectors
