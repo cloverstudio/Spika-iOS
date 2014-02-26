@@ -76,6 +76,7 @@
 	
 	id					_notificationObserver;
     
+    NSTimer             *timer;
 }
 
 @property (nonatomic, strong) ModelGroup *targetGroup;
@@ -336,7 +337,17 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [self startTimer];
+
+}
+
 - (void) viewWillDisappear:(BOOL)animated {
+    
+    [self stopTimer];
     
     [super viewWillDisappear:animated];
     
@@ -649,7 +660,6 @@
 
 - (void) reload {
     
-    NSLog(@"did reload");
     // find index of message to update
     for(int i = 0; i < self.items.count ; i++){
         
@@ -1404,5 +1414,49 @@ didSelectLocationButton:(UIButton *)button {
 	[self hideMediaMenu];
 }
 
+#pragma mark - Timer functions
+
+- (void) startTimer {
+    
+    if ([self isMemberOfClass:[HUWallViewController class]]) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkMessageTimestampsForDelete) userInfo:nil repeats:YES];
+    }
+}
+
+- (void) stopTimer {
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+}
+
+- (void) checkMessageTimestampsForDelete {
+    
+    NSLog(@"check");
+    
+    int now = [[NSDate date] timeIntervalSince1970];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        for(int i = 0; i < self.items.count ; i++){
+            
+            ModelMessage *message = [self.items objectAtIndex:i];
+            
+            if ((message.deleteAt > 0) && (message.deleteAt < now)) {
+                [self reloadAll];
+            }
+
+            
+        }
+        
+        
+//        for (ModelMessage *message in self.items) {
+//            if ((message.deleteAt > 0) && (message.deleteAt < now)) {
+//                [self reloadAll];
+//            }
+//        }
+    });
+    
+}
 
 @end
