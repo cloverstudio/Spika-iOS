@@ -287,3 +287,10 @@
 "EULA-AGREE"                = "Agree";
 "EULA_FILE"                 = "english";
 
+"delete-dont"               = "Don't Delete";
+"delete-now"               = "Delete Now";
+"delete-5min"               = "In 5min";
+"delete-day"               = "After 1 day";
+"delete-week"               = "After 1 week";
+"delete-read"               = "When user see it";
+"delete-close"               = "OK";

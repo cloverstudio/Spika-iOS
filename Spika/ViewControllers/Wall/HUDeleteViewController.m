@@ -49,6 +49,15 @@
     
     UIButton *button = [self.buttons objectAtIndex:deleteType];
     [self setButtonSelection:button selected:YES];
+ 
+    [deleteDontButton setTitle:NSLocalizedString(@"delete-dont",nil) forState:UIControlStateNormal];
+    [deleteNowButton setTitle:NSLocalizedString(@"delete-now",nil) forState:UIControlStateNormal];
+    [deleteIn5MinButton setTitle:NSLocalizedString(@"delete-5min",nil) forState:UIControlStateNormal];
+    [deleteAfterDayButton setTitle:NSLocalizedString(@"delete-day",nil) forState:UIControlStateNormal];
+    [deleteAfterWeekButton setTitle:NSLocalizedString(@"delete-week",nil) forState:UIControlStateNormal];
+    [deleteAfterReadButton setTitle:NSLocalizedString(@"delete-read",nil) forState:UIControlStateNormal];
+    [closeButton setTitle:NSLocalizedString(@"delete-close",nil) forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning

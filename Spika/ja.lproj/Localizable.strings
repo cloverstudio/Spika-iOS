@@ -145,7 +145,7 @@
 "Video Detail"			= "ビデオ詳細";
 
 /*AlertViewManager*/
-"Recent activity"		= "未読メッセージ一覧";
+"Recent activity"		= "メッセージ履歴";
 "Uploading image"		= "画像アップロード";
 "Processing"			= "処理中...";
 "Downloading voice"		= "音声ファイルダウンロード中...";
@@ -235,7 +235,7 @@
 "CHAT ACTIVITY"             = "メッセージ履歴";
 "GROUPS ACTIVITY"           = "グループ投稿履歴";
 "No Recent Activities"      = "未読メッセージはありません。";
-"NOTIFICATIONS"             = "未読通知";
+"NOTIFICATIONS"             = "履歴";
 "User Support"              = "サポートホットライン";
 "ACCOUNT"                   = "メニュー";
 "Type name..."              = "名前を入力して下さい。";
@@ -288,7 +288,11 @@
 "EULA-AGREE"                = "承諾する";
 "EULA_FILE"                 = "japanese";
 
-
-
-
+"delete-dont"               = "削除しない";
+"delete-now"               = "今すぐ削除";
+"delete-5min"               = "5分後";
+"delete-day"               = "１日後";
+"delete-week"               = "１週間後";
+"delete-read"               = "相手ユーザーが見たら";
+"delete-close"               = "決定";
 
