@@ -1432,8 +1432,6 @@ didSelectLocationButton:(UIButton *)button {
 
 - (void) checkMessageTimestampsForDelete {
     
-    NSLog(@"check");
-    
     int now = [[NSDate date] timeIntervalSince1970];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -1448,13 +1446,6 @@ didSelectLocationButton:(UIButton *)button {
 
             
         }
-        
-        
-//        for (ModelMessage *message in self.items) {
-//            if ((message.deleteAt > 0) && (message.deleteAt < now)) {
-//                [self reloadAll];
-//            }
-//        }
     });
     
 }

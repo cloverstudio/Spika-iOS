@@ -124,6 +124,7 @@
 		self.targetId = [dictionary objectForKeyPath:@"target_id"];
 		self.count = [[dictionary objectForKeyPath:@"count"] integerValue];
 		self.messages = [NSMutableArray new];
+        
 		
 		NSDictionary *messages = [dictionary objectForKeyPath:@"messages"];
 		for (NSDictionary *rawMessage in messages) {
@@ -143,6 +144,14 @@
 	message.from_user_id = [dictionary objectForKeyPath:@"from_user_id"];
 	message.body = [dictionary objectForKeyPath:@"message"];
 	message.modified = [[dictionary objectForKeyPath:@"modified"] longValue];
+    
+    if([dictionary objectForKey:@"avatar_thumb_file_id"] != nil) {
+        message.avatarThumbUrl =  [NSString stringWithFormat:@"%@%@?file=%@",HttpRootURL,FileDownloader,[dictionary objectForKey:@"avatar_thumb_file_id"]];
+        message.avatarThumbFileId = [dictionary objectForKey:@"avatar_thumb_file_id"];
+    }else{
+        message.avatarThumbFileId = @"";
+        message.avatarThumbUrl = @"";
+    }
 	
 	return message;
 }

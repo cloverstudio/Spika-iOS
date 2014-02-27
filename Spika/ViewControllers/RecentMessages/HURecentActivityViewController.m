@@ -108,6 +108,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.view.userInteractionEnabled = true;
+}
+
 #pragma mark - UITableViewDatasource
 
 -(HUModelActivityCategory *) categoryForIndexPath:(NSIndexPath *)indexPath {
@@ -160,7 +165,7 @@
 	
 	cell.avatarIconView.image = [UIImage imageNamed:@"user_stub"];
     
-    [HUCachedImageLoader thumbnailFromUserId:message.from_user_id completionHandler:^(UIImage *image) {
+    [HUCachedImageLoader imageFromUrl:message.avatarThumbUrl completionHandler:^(UIImage *image) {
         if(image)
             cell.avatarIconView.image = image;
     }];
@@ -183,6 +188,8 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    self.view.userInteractionEnabled = false;
+    
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	HUModelActivityCategory *category = [self categoryForIndexPath:indexPath];
