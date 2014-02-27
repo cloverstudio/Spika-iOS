@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    [titleLabel setText:NSLocalizedString(@"delete-info-title", nil)];
+    
     if (_message.deleteType > 0) {
         deleteTimeLabel.text = [self getTimeAsStringForLabel:_message.deleteAt];
     }

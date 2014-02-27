@@ -287,6 +287,8 @@
 "EULA-AGREE"                = "Agree";
 "EULA_FILE"                 = "english";
 
+"delete-title"              = "Delete the message";
+"delete-info-title"         = "This message is deleted";
 "delete-dont"               = "Don't Delete";
 "delete-now"               = "Delete Now";
 "delete-5min"               = "In 5min";

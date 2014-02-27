@@ -288,6 +288,8 @@
 "EULA-AGREE"                = "承諾する";
 "EULA_FILE"                 = "japanese";
 
+"delete-title"              = "メッセージの削除";
+"delete-info-title"         = "削除予定のメッセージです";
 "delete-dont"               = "削除しない";
 "delete-now"               = "今すぐ削除";
 "delete-5min"               = "5分後";

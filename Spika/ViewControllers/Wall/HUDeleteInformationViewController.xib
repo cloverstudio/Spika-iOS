@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="closeButton" destination="k0p-s6-aD9" id="aZz-Dy-0za"/>
                 <outlet property="deleteTimeLabel" destination="eu4-aq-0eN" id="C1Z-UE-n5S"/>
+                <outlet property="titleLabel" destination="CLM-0Z-Lf4" id="4hl-fi-UZz"/>
                 <outlet property="view" destination="1" id="Kgx-8l-fne"/>
             </connections>
         </placeholder>
@@ -28,8 +29,20 @@
                     <rect key="frame" x="39" y="139" width="242" height="290"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="CLM-0Z-Lf4">
+                            <rect key="frame" x="36" y="45" width="170" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="170" id="0sQ-o8-K22"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-s6-aD9">
-                            <rect key="frame" x="36" y="164" width="170" height="30"/>
+                            <rect key="frame" x="36" y="160" width="170" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.18431372939999999" green="0.80000007149999997" blue="0.48235297199999999" alpha="1" colorSpace="deviceRGB"/>
                             <constraints>
@@ -49,15 +62,14 @@
                                 <action selector="onClose" destination="-1" eventType="touchUpInside" id="Dbo-gP-vKU"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-aq-0eN">
-                            <rect key="frame" x="36" y="99" width="170" height="39"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-aq-0eN">
+                            <rect key="frame" x="36" y="99" width="170" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="170" id="qka-C5-HoC"/>
-                                <constraint firstAttribute="height" constant="39" id="sjq-Cg-Tfi"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
                             <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -66,11 +78,13 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="eu4-aq-0eN" firstAttribute="top" secondItem="g5b-Kg-pFF" secondAttribute="top" constant="99" id="0aX-xH-o9o"/>
+                        <constraint firstAttribute="centerX" secondItem="CLM-0Z-Lf4" secondAttribute="centerX" id="BNe-7l-qC4"/>
                         <constraint firstAttribute="centerX" secondItem="k0p-s6-aD9" secondAttribute="centerX" id="DNe-gi-avu"/>
                         <constraint firstAttribute="width" constant="242" id="HWU-3I-ahi"/>
+                        <constraint firstItem="k0p-s6-aD9" firstAttribute="top" secondItem="eu4-aq-0eN" secondAttribute="bottom" constant="26" id="MxI-5x-WJl"/>
                         <constraint firstAttribute="centerX" secondItem="eu4-aq-0eN" secondAttribute="centerX" id="hbW-dG-Rnd"/>
-                        <constraint firstItem="k0p-s6-aD9" firstAttribute="top" secondItem="eu4-aq-0eN" secondAttribute="bottom" constant="26" id="ob1-n1-rmK"/>
                         <constraint firstAttribute="height" constant="290" id="pWl-QO-eoo"/>
+                        <constraint firstItem="CLM-0Z-Lf4" firstAttribute="top" secondItem="g5b-Kg-pFF" secondAttribute="top" constant="45" id="tgR-nE-en4"/>
                     </constraints>
                 </view>
             </subviews>

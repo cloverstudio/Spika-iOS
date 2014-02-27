@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -13,6 +13,7 @@
                 <outlet property="deleteDontButton" destination="NQO-Uy-CXs" id="2vB-HJ-unM"/>
                 <outlet property="deleteIn5MinButton" destination="XRo-Vd-JJj" id="8Fr-yh-OgT"/>
                 <outlet property="deleteNowButton" destination="EZe-XW-sI6" id="jfX-M1-WnB"/>
+                <outlet property="titleLabel" destination="xL6-PW-zpw" id="xEt-pf-k3e"/>
                 <outlet property="view" destination="1" id="3Ws-lq-jGQ"/>
             </connections>
         </placeholder>
@@ -33,6 +34,20 @@
                     <rect key="frame" x="39" y="66" width="242" height="436"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xL6-PW-zpw">
+                            <rect key="frame" x="36" y="39" width="170" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Whl-Gh-hIE"/>
+                                <constraint firstAttribute="width" constant="170" id="ahr-3I-itd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dta-if-kmZ">
                             <rect key="frame" x="36" y="241" width="170" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -189,6 +204,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="centerX" secondItem="xL6-PW-zpw" secondAttribute="centerX" id="9Cs-oN-Nix"/>
                         <constraint firstAttribute="centerX" secondItem="Dta-if-kmZ" secondAttribute="centerX" id="AbO-cd-7Nb"/>
                         <constraint firstItem="huI-Az-pVG" firstAttribute="top" secondItem="XRo-Vd-JJj" secondAttribute="bottom" constant="8" id="IKX-2C-pnZ"/>
                         <constraint firstItem="rk2-U8-k8d" firstAttribute="top" secondItem="6oP-Nd-UUa" secondAttribute="bottom" constant="8" id="KoH-Nc-EDi"/>
@@ -199,6 +215,7 @@
                         <constraint firstAttribute="centerX" secondItem="EZe-XW-sI6" secondAttribute="centerX" id="ckf-vH-YTl"/>
                         <constraint firstAttribute="centerX" secondItem="huI-Az-pVG" secondAttribute="centerX" id="dFW-2Z-nUb"/>
                         <constraint firstAttribute="width" constant="242" id="fGT-jf-rbf"/>
+                        <constraint firstItem="xL6-PW-zpw" firstAttribute="top" secondItem="DOB-AK-oDC" secondAttribute="top" constant="39" id="iJq-yN-Mkf"/>
                         <constraint firstItem="EZe-XW-sI6" firstAttribute="top" secondItem="NQO-Uy-CXs" secondAttribute="bottom" constant="8" id="kEs-Cf-vJK"/>
                         <constraint firstAttribute="centerX" secondItem="6oP-Nd-UUa" secondAttribute="centerX" id="rcI-iY-Lw3"/>
                         <constraint firstItem="6oP-Nd-UUa" firstAttribute="top" secondItem="Dta-if-kmZ" secondAttribute="bottom" constant="8" id="sfW-Sl-YBb"/>

@@ -11,7 +11,7 @@
 #import "ModelMessage.h"
 
 @interface HUDeleteViewController : HUBaseViewController {
-    IBOutlet UIImageView    *image;
+    IBOutlet UILabel        *titleLabel;
     IBOutlet UIButton       *deleteDontButton;
     IBOutlet UIButton       *deleteNowButton;
     IBOutlet UIButton       *deleteIn5MinButton;

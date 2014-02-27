@@ -11,6 +11,7 @@
 #import "ModelMessage.h"
 
 @interface HUDeleteInformationViewController : HUBaseViewController {
+    IBOutlet UILabel        *titleLabel;
     IBOutlet UILabel        *deleteTimeLabel;
     IBOutlet UIButton       *closeButton;
 }

@@ -50,6 +50,7 @@
     UIButton *button = [self.buttons objectAtIndex:deleteType];
     [self setButtonSelection:button selected:YES];
  
+    [titleLabel setText:NSLocalizedString(@"delete-title", nil)];
     [deleteDontButton setTitle:NSLocalizedString(@"delete-dont",nil) forState:UIControlStateNormal];
     [deleteNowButton setTitle:NSLocalizedString(@"delete-now",nil) forState:UIControlStateNormal];
     [deleteIn5MinButton setTitle:NSLocalizedString(@"delete-5min",nil) forState:UIControlStateNormal];
