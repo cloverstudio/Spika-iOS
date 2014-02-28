@@ -187,18 +187,22 @@
 }
 
 -(void) exploreView:(HUExploreUsersView *)exploreView exploreGender:(HUGender)gender fromAge:(NSInteger)fromAge toAge:(NSInteger)toAge {
+    
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Loading", nil) message:nil];
+    
 	__weak HUUsersViewController *this = self;
     [[DatabaseManager defaultManager] findUsersContainingString:@""
                                                         fromAge:[NSNumber numberWithInteger:fromAge]
                                                           toAge:[NSNumber numberWithInteger:toAge]
                                                          gender:gender
                                                         success:^(NSArray *users) {
+                                                            [[AlertViewManager defaultManager] dismiss];
 															[this showHideNoUsersLabelForDatasource:users];
                                                             [this setTableItems:users];
                                                             [this showViewType:HUViewTypeMain animated:YES];
                                                         }
                                                           error:^(NSString *errorString) {
-                                                              
+                                                              [[AlertViewManager defaultManager] dismiss];
                                                           }];
 }
 
@@ -246,17 +250,23 @@
 }
 
 -(void) searchView:(HUSearchByNameView *)searchView searchText:(NSString *)text {
+    
 	__weak HUUsersViewController *this = self;
+    
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Loading", nil) message:nil];
+    
     [[DatabaseManager defaultManager] findUsersContainingString:text
                                                         fromAge:@0
                                                           toAge:@0
                                                          gender:@""
                                                         success:^(NSArray *users) {
+                                                            [[AlertViewManager defaultManager] dismiss];
 															[this showHideNoUsersLabelForDatasource:users];
                                                             [this setTableItems:users];
                                                             [this showViewType:HUViewTypeMain animated:YES];
                                                         }
                                                           error:^(NSString *errorString) {
+                                                              [[AlertViewManager defaultManager] dismiss];
                                                               
                                                           }];
 }
@@ -387,7 +397,7 @@
 
 -(void) searchUsersWithText:(NSString *)text {
     
-    [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Loading", nil) message:nil];
     
 	__weak HUUsersViewController *this = self;
     [[DatabaseManager defaultManager] findUsersContainingString:text
