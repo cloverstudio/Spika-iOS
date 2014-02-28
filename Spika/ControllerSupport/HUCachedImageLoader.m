@@ -83,5 +83,20 @@
     
 }
 
++(void) thumbnailFromUser:(ModelUser *)user completionHandler:(HUImageResultBlockWithUser)block{
+    
+    [HUCachedImageLoader imageFromUrl:user.thumbImageUrl completionHandler:^(UIImage *image) {
+        block(image,user);
+    }];
+    
+}
+
++(void) thumbnailFromGroup:(ModelGroup *)group completionHandler:(HUImageResultBlockWithGroup)block{
+    
+    [HUCachedImageLoader imageFromUrl:group.thumbImageUrl completionHandler:^(UIImage *image) {
+        block(image,group);
+    }];
+    
+}
 
 @end

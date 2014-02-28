@@ -104,6 +104,10 @@
     
 }
 
+- (void) viewDidLoad{
+    _userAvatarImageView.delegate = self;
+}
+
 - (void) hideView:(UIView *)view{
     CGRect rect = view.frame;
     rect.size.height = 0;

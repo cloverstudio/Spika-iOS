@@ -36,6 +36,7 @@
 #import "DatabaseManager.h"
 #import "CSDispatcher.h"
 #import "DatabaseManager.h"
+#import "HUCachedImageLoader.h"
 
 #define MODELS @[@"ModelUser",@"ModelGroup"]    
 
@@ -438,19 +439,17 @@
     
     cell.userAvatarImageView.image = [UIImage imageNamed:@"user_stub"];
     
-    NSString *url = user.thumbImageUrl;
 
-    [[DatabaseManager defaultManager] loadImage:url
-                                        success:^(UIImage *image){
-                                            
-                                            if(image == nil)
-                                                return;
-                                            
-                                            cell.userAvatarImageView.image = [image copy];
-                                            
-                                        }error:^(NSString *error) {
-                                            
-                                        }];
+    [HUCachedImageLoader thumbnailFromUser:user completionHandler:^(UIImage *image, ModelUser *targetUser) {
+        
+        if(image == nil)
+            return;
+        
+        if([targetUser._id isEqualToString:user._id])
+            cell.userAvatarImageView.image = [image copy];
+        
+    }];
+
     return cell;
     
 }

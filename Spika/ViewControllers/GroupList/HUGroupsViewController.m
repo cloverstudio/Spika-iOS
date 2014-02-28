@@ -37,6 +37,7 @@
 #import "UserManager.h"
 #import "HUMenuNavigationItem+Groups.h"
 #import "HUGroupsCategoryTableViewCell.h"
+#import "HUCachedImageLoader.h"
 
 @interface HUGroupsViewController () {
 
@@ -533,19 +534,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         NSString *url = group.thumbImageUrl;
         
-        [[DatabaseManager defaultManager] loadImage:url
-                                            success:^(UIImage *image){
-                                                
-                                                if(image == nil)
-                                                    return;
-                                                
-                                                cell.avatarImageView.image = [image copy];
-                                                
-                                            }error:^(NSString *error) {
-                                                
-                                            }];
-
-        
+        [HUCachedImageLoader thumbnailFromGroup:group completionHandler:^(UIImage *image, ModelGroup *targetGroup) {
+            
+            if(image == nil)
+                return;
+            
+            if([targetGroup._id isEqualToString:group._id])
+                cell.avatarImageView.image = [image copy];
+            
+        }];
+                
         return cell;
 
         

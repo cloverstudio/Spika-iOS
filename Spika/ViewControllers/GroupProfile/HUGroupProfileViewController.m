@@ -105,6 +105,12 @@
 }
 
 
+
+- (void) viewDidLoad{
+    _avatarView.delegate = self;
+}
+
+
 - (void) layoutViews{
     
     CGSize imageSize = _avatarView.downloadedImageSize;
