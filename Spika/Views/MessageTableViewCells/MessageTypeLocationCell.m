@@ -40,7 +40,14 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(messageLocationCell:didTapLocationMessage:)]) {
         [self.delegate messageLocationCell:self didTapLocationMessage:self.message];
     }
-    
+}
+
+-(void) initCounter {
+    //do nothing
+}
+
+-(void) updateCounterWithModel:(ModelMessage *)message {
+    //do nothing
 }
 
 @end

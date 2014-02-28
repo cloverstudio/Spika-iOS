@@ -64,12 +64,15 @@
         
         [self.contentView addSubview:_containerView];
         
-        _counterView = [self newCommentCounterView];
-        
-        [_containerView addSubview:_counterView];
+        [self initCounter];
     }
     
     return self;
+}
+
+- (void) initCounter {
+    _counterView = [self newCommentCounterView];
+    [_containerView addSubview:_counterView];
 }
 
 #pragma mark - View lifecycle
@@ -98,6 +101,14 @@
     
     _mediaIconView.frame = [MessageCell frameForLeftImageView:message];
     _label.frame = [MessageCell frameForRightLabelView:message];
+    
+    [self updateCounterWithModel:message];
+
+    _label.text = [self textForRightContentView:message];
+}
+
+
+-(void) updateCounterWithModel:(ModelMessage *)message {
     [_counterView updateWithModel:message];
     
     BOOL isMine = [UserManager messageBelongsToUser:message];
@@ -112,11 +123,6 @@
                                         -1 * [MessageTypeMediaCell extraSpaceAtTheTop],
                                         _counterView.width,
                                         _counterView.height);
-    
-    
-
-    
-    _label.text = [self textForRightContentView:message];
 }
 
 #pragma mark - Override
