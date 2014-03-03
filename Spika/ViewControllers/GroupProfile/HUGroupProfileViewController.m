@@ -409,42 +409,49 @@
         
     };
     
-    [[DatabaseManager defaultManager]
-     addGroupToFavorite:_group
-     toUser:[[UserManager defaultManager] getLoginedUser]
-     success:successBlock error:errorBlock];
-    
+    if ([self isPasswordAlertNeeded:_group]) {
+        [[AlertViewManager defaultManager] dismiss];
+        [[AlertViewManager defaultManager] showInputPassword:@"Please input password"
+                                                 resultBlock:^(NSString *password){
+                                                     
+                                                     if(password != nil && [[Utils MD5:password] isEqualToString:_group.password]) {
+                                                         [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
+                                                         [self savePassword:_group.password forGroup:_group._id];
+                                                         [[DatabaseManager defaultManager] addGroupToFavorite:_group
+                                                                                                       toUser:[[UserManager defaultManager] getLoginedUser]
+                                                                                                      success:successBlock
+                                                                                                        error:errorBlock];
+                                                     }
+                                                     else {
+                                                         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password", nil)];
+                                                     }
+                                                 }];
+    } else {
+        [[DatabaseManager defaultManager] addGroupToFavorite:_group
+                                                      toUser:[[UserManager defaultManager] getLoginedUser]
+                                                     success:successBlock
+                                                       error:errorBlock];
+    }
 }
 
 - (IBAction) startConversation{
     
-    
-    if(_group.password != nil && _group.password.length > 0 && ![_group.userId isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]){
-        
+    if ([self isPasswordAlertNeeded:_group]) {
         [[AlertViewManager defaultManager] showInputPassword:@"Please input password"
                                                  resultBlock:^(NSString *password){
                                                      
-                                                     if(password != nil && [[Utils MD5:password] isEqualToString:_group.password])
-                                                         
+                                                     if(password != nil && [[Utils MD5:password] isEqualToString:_group.password]) {
+                                                         [self savePassword:_group.password forGroup:_group._id];
                                                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:_group];
-                                                     
-                                                     else{
-                                                         
-                                                         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password", nil)];
-                                                         
                                                      }
-                                                     
+                                                     else {
+                                                         [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Wrong password", nil)];
+                                                     }
                                                  }];
-        
-    } else {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:_group];
-        
     }
-    
-    
-    
-    
+    else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:_group];
+    }
 }
 
 -(IBAction) openOwner{
@@ -596,5 +603,47 @@
     return YES;
 }
 
+#pragma mark - Group Password handeling
+- (void)savePassword:(NSString *) password forGroup:(NSString *)groupId {
+    
+    NSString *key = [NSString stringWithFormat:@"group_pass_%@", groupId];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:password forKey:key];
+    [userDefault synchronize];
+}
+
+- (NSString *)loadPasswordForGroup:(NSString *) groupId {
+    
+    NSString *key = [NSString stringWithFormat:@"group_pass_%@", groupId];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *password = [userDefault objectForKey:key];
+    return password;
+}
+
+- (BOOL) isPasswordSavedForGroupCorrect:(ModelGroup *) group {
+    BOOL isCorrect = NO;
+    
+    if ([group.password isEqualToString:[self loadPasswordForGroup:group._id]]) {
+        isCorrect = YES;
+    }
+    
+    return isCorrect;
+}
+
+- (BOOL) isPasswordAlertNeeded:(ModelGroup *) group {
+    BOOL isNeeded = NO;
+    
+    if (group.password != nil && group.password.length > 0 && ![group.userId isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]) {
+        if ([self isPasswordSavedForGroupCorrect:group]) {
+            isNeeded = NO;
+        }
+        else {
+            isNeeded = YES;
+        }
+    }
+    return isNeeded;
+}
 
 @end
