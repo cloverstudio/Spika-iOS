@@ -34,6 +34,8 @@
 @property (strong, nonatomic) NSString *user_id;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSString *comment;
+@property (strong, nonatomic) NSString *avatarThumbFileId;
+@property (strong, nonatomic) NSString *avatarThumbUrl;
 @property (nonatomic) long created;
 
 @end

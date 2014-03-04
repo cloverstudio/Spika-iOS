@@ -352,6 +352,8 @@
     message.body = comment.comment;
     message.created = comment.created;
     message.message_type = MessageTypeText;
+    message.avatarThumbUrl = comment.avatarThumbUrl;
+    message.avatarThumbFileId = comment.avatarThumbFileId;
     
     return message;
 }
