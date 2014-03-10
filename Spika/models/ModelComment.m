@@ -54,6 +54,7 @@
     [tmpDic setObject:comment.user_name forKey:@"user_name"];
     [tmpDic setObject:comment.message_id forKey:@"message_id"];
     [tmpDic setObject:@(comment.created) forKey:@"created"];
+    [tmpDic setObject:comment.avatarThumbFileId forKey:@"avatar_thumb_file_id"];
         
     return tmpDic;
 }
@@ -118,6 +119,15 @@
     }else{
         comment.comment = @"";
     }
+    
+    if([dic objectForKey:@"avatar_thumb_file_id"] != nil) {
+        comment.avatarThumbUrl =  [NSString stringWithFormat:@"%@%@?file=%@",HttpRootURL,FileDownloader,[dic objectForKey:@"avatar_thumb_file_id"]];
+        comment.avatarThumbFileId = [dic objectForKey:@"avatar_thumb_file_id"];
+    }else{
+        comment.avatarThumbFileId = @"";
+        comment.avatarThumbUrl = @"";
+    }
+
     
     return comment;
 }
