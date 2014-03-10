@@ -285,10 +285,6 @@
     _HUMediaPanelView.delegate = self;
     [_contentView addSubview:_HUMediaPanelView];
     
-    
-    _refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
-    [_refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-    
 	[self reload];
 }
 
@@ -599,6 +595,16 @@
                                   animated: YES];
 }
 
+- (void) scrollToFirstRowInLastPage {
+    
+    if(self.items.count == 0)
+        return;
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.items.count-PagingMessageFetchNum inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition: UITableViewScrollPositionTop
+                                  animated: NO];
+}
 #pragma mark - Timer Selectors
 /*
 - (void) onReloadTimer {
@@ -726,15 +732,16 @@
                  _loadingNewPage = NO;
                  
                  if([tmpMessages count] == 0)
-                     
                      _flgLoadAll = YES;
                  
                  double delayInSeconds = 1.0;
                  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                     [_refreshControl endRefreshing];
+                     [[AlertViewManager defaultManager] dismiss];
                      [_loadingViewCell hide];
                  });
+                 
+                 [self scrollToFirstRowInLastPage];
              }
          });
                                                          
@@ -783,9 +790,11 @@
                                                               double delayInSeconds = 1.0;
                                                               dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                                                               dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                                                  [_refreshControl endRefreshing];
+                                                                  [[AlertViewManager defaultManager] dismiss];
                                                                   [_loadingViewCell hide];
                                                               });
+                                                              
+                                                              [self scrollToFirstRowInLastPage];
                                                           }
                                                       });
                                                   } error:^(NSString *errStr){
@@ -1102,38 +1111,23 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
-    //[self.view endEditing:YES];
 
-    /*
-         
-    if(scrollView.contentOffset.y < -100){
-        
-        if(_flgLoadAll == NO && _loadingNewPage == NO && _flgPullEnough == NO){
-            _flgPullEnough = YES;
-            [_loadingViewCell show];
-        }
+    if(scrollView.contentOffset.y < 0 && _loadingNewPage == NO){
+        [self dropViewDidBeginRefreshing];
     }
-    
-    if(_flgPullEnough && scrollView.contentOffset.y > -10){
-        _flgPullEnough = NO;
-        _currentPage++;
-        _loadingNewPage = YES;
-        [self getPage:_currentPage];
-    }
-     
-    */
 }
 
-- (void) dropViewDidBeginRefreshing:(id)sender{
+- (void) dropViewDidBeginRefreshing{
 
-    [self killScroll];
+    //[self killScroll];
     
     _currentPage++;
     _loadingNewPage = YES;
     [self getPage:_currentPage];
 
     [_loadingViewCell show];
+    
+    [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
 }
 
 #pragma mark - HPGrowingTextViewDelegate

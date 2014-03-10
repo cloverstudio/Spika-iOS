@@ -61,7 +61,6 @@
     BOOL _loadingNewPage;
     BOOL _flgPullEnough;
     BOOL _flgLoadAll;
-    ODRefreshControl    *_refreshControl;
 }
 
 @property (nonatomic, readonly) CGRect contentViewFrame;
