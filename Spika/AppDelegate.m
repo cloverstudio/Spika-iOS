@@ -837,6 +837,7 @@
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notification) {
                                                       
+                                                      [[AlertViewManager defaultManager] dismiss];
                                                       [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Token-Expired", nil)];
                                                       [self clearNavigationVC];
                                                       [self presentLoginViewController:NO];
@@ -859,6 +860,7 @@
                                                       
                                                       NSString *errStr = (NSString *) [notification object];
                                                       
+                                                      [[AlertViewManager defaultManager] dismiss];
                                                       [[AlertViewManager defaultManager] showAlert:errStr];
                                                       [self clearNavigationVC];
                                                       [self presentLoginViewController:NO];

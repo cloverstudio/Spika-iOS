@@ -129,6 +129,7 @@
         _currentPage = 0;
         _flgPullEnough = NO;
         _flgLoadAll = NO;
+        _isLastPage = NO;
         
         _lazyLoadController = [CSLazyLoadController new];
     }
@@ -708,9 +709,12 @@
                                                      partner:_targetUser
                                                         page:page
                                                      success:^(NSArray *aryMessages){
-                                                         
+
          dispatch_async(dispatch_get_main_queue(), ^{
-                          
+            
+             if(aryMessages.count < PagingMessageFetchNum)
+                 _isLastPage = YES;
+             
              NSArray *tmpMessages = [Utils filterMessagesForApperaToWall:aryMessages];
              
              BOOL somethingChenged = [this isFindChanges:tmpMessages];
@@ -1112,7 +1116,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 
-    if(scrollView.contentOffset.y < 0 && _loadingNewPage == NO){
+    if(scrollView.contentOffset.y < 0 && _loadingNewPage == NO && _isLastPage == NO){
         [self dropViewDidBeginRefreshing];
     }
 }

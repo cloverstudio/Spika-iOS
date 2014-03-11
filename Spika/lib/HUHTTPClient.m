@@ -97,9 +97,6 @@
            }
            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                
-               if(errorBlock)
-                   errorBlock(error);
-               
                NSString *responseBody = [error localizedRecoverySuggestion];
                SBJsonParser *parser = [[SBJsonParser alloc] init];
                id repr = [parser objectWithString:responseBody];
@@ -107,8 +104,13 @@
                if([repr isKindOfClass:[NSDictionary class]] && [repr objectForKey:@"message"] != nil){
                    [self handleLogicError:[repr objectForKey:@"message"]];
                }else{
-                   [self handleCriticalError:error operation:operation];
+                   BOOL abort = [self handleCriticalError:error operation:operation];
+                   if(abort)
+                       return;
                }
+               
+               if(errorBlock)
+                   errorBlock(error);
                
            }];
 
@@ -392,29 +394,30 @@
     [center postNotificationName:NotificationLogicError object:errStr];
 }
 
-- (void) handleCriticalError:(NSError *)err operation:(AFHTTPRequestOperation *)operation{
+- (BOOL) handleCriticalError:(NSError *)err operation:(AFHTTPRequestOperation *)operation{
     
     if([operation.response statusCode] == 404)
-        return;
+        return false;
     
     if([operation.response statusCode] == 409)
-        return;
+        return false;
     
     if([operation.response statusCode] == 403){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center postNotificationName:NotificationTokenExpiredError object:nil];
-        return;
+        return true;
     }
     
     if([operation.response statusCode] == 503){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center postNotificationName:NotificationServiceUnavailable object:operation.responseString];
-        return;
+        return true;
     }
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotificationName:NotificationCriticalError object:nil];
     
+    return false;
     
 }
 

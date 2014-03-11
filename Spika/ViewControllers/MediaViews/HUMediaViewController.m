@@ -253,15 +253,24 @@
                                                        
                                                        dispatch_async(dispatch_get_main_queue(), ^{
                                                            
+                                                           if(aryComments.count < PagingMessageFetchNum)
+                                                               _isLastPage = YES;
+
                                                            _comments = [[NSMutableArray alloc] initWithArray:[self filterComments:aryComments]];
                                                            successBlock();
                                                            
+                                                           _loadingNewPage = NO;
+
+                                                           [[AlertViewManager defaultManager] dismiss];
                                                            [self setViewType:HUViewTypeLoading];
+                                                           
+                                                           [self scrollToFirstRowInLastPage];
                                                            
                                                        });
                                                        
                                                    } error:^(NSString *errStr){
                                                        
+                                                       [[AlertViewManager defaultManager] dismiss];
                                                        [CSToast showToast:errStr withDuration:3.0];
                                                        
                                                    }];

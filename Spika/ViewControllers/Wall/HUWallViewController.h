@@ -61,6 +61,7 @@
     BOOL _loadingNewPage;
     BOOL _flgPullEnough;
     BOOL _flgLoadAll;
+    BOOL _isLastPage;
 }
 
 @property (nonatomic, readonly) CGRect contentViewFrame;
@@ -77,6 +78,6 @@
 - (void) sendMessage:(NSString *)messageText;
 - (void) dropViewDidBeginRefreshing:(id)sender;
 
-#pragma mark - Getter
+- (void) scrollToFirstRowInLastPage;
 
 @end
