@@ -696,7 +696,6 @@
 }
 
 - (void) reloadAll {
-    [self.tableView setEditing:NO];
     [self.items removeAllObjects];
     [self reload];
 }
@@ -1037,17 +1036,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    /*
-    if(indexPath.section == 0){
-        
-        if(_loadingViewCell == nil){
+    //Hackish temp solution for crash
+    if (!(indexPath.row < [self.items count])) {
+        if(_loadingViewCell == nil) {
             _loadingViewCell =  [[LoadingViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"loadingview"];
             [_loadingViewCell hide];
         }
-        
         return _loadingViewCell;
     }
-    */
+    
     
     ModelMessage *message = [self.items objectAtIndex:indexPath.row];
     
@@ -1076,6 +1073,12 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (!(indexPath.row < [self.items count])) {
+        //Hackish temp solution for crash
+        return NO;
+    }
+    
     ModelMessage *message = [self.items objectAtIndex:indexPath.row];
     if ([UserManager messageBelongsToUser:message]) {
         return YES;
@@ -1102,6 +1105,7 @@
     deleteDialog.modalPresentationStyle = UIModalPresentationCustom;
     
     [self presentViewController:deleteDialog animated:YES completion:NULL];
+    [self.tableView setEditing:NO];
 }
 
 
