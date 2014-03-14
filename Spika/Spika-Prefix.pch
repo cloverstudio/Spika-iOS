@@ -12,7 +12,18 @@
     #import <UIKit/UIKit.h>
 
     #import <Foundation/Foundation.h>
-    #import <CSKit/CSKit.h>
+
+//    #import <CSKit/CSKit.h>
+    #import "CSKit+Helper.h"
+    #import "CSConstants.h"
+    #import "CSBlocks.h"
+    #import "CSGraphics.h"
+    #import "CSArcMacros.h"
+    #import "CSButton.h"
+    #import "CSLabel.h"
+    #import "CSTextField.h"
+    #import "CSNavigationController.h"
+
     #import "Constants.h"
     #import "UIView+Extensions.h"
     #import "HUControls.h"

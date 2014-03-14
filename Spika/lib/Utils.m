@@ -189,7 +189,7 @@
         [result removeObject:[removeTarget objectAtIndex:ii]];
     }
 
-    NSArray *sortedAry = [result sortedArrayUsingComparator:^(ModelMessage *a, ModelMessage *b) {
+    NSArray *sortedAry = [result sortedArrayUsingComparator:^NSComparisonResult(ModelMessage *a, ModelMessage *b) {
         return a.modified> b.modified;
     }];
     

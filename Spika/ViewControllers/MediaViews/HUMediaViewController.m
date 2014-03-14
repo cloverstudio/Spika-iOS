@@ -430,7 +430,7 @@
     }
     
     
-    NSArray *sortedAry = [resultArray sortedArrayUsingComparator:^(ModelMessage *a, ModelMessage *b) {
+    NSArray *sortedAry = [resultArray sortedArrayUsingComparator:^NSComparisonResult(ModelMessage *a, ModelMessage *b) {
         return a.created> b.created;
     }];
 

@@ -1,138 +1,175 @@
 //
 //  Crittercism.h
-//  Crittercism-iOS
+//  Crittercism iOS Library
 //
-//  Created by Robert Kwok on 8/15/10.
-//  Copyright 2010-2012 Crittercism Corp. All rights reserved.
+//  Copyright 2010-2013 Crittercism, Inc. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 #import "CrittercismDelegate.h"
+#import "CRFilter.h"
 
-@class CritterImpl;
-
-@interface Crittercism : NSObject {
- @private
-  CritterImpl *critter_;
-}
-
+// Operating System Support
 //
-// Methods for Enabling Crittercism
+// The Crittercism iOS library supports iOS v5.0+
+
+// Additional Requirements:
 //
-// You must call one of these before using any other Crittercism functionality
+// Crittercism requires that you link to the SystemConfiguration framework.
+
+// Basic Integration
+//
+// In your Application Delegate's application:didFinishLaunchingWithOptions:
+// method, add a call to +[Crittercism enableWithAppID:], supplying the app ID
+// of an app you created via the Crittercism Web Portal.
+//
+// Example:
+//
+// [Crittercism enableWithAppID:@"YOURAPPIDGOESHERE"];
+
+@class CLLocation;
+
+@interface Crittercism : NSObject
+
+// Enabling Crittercism
+//
+// !! You must call one of these methods before using any other Crittercism
+// functionality. !!
+//
+// You can pass in a delegate that conforms to the CrittercismDelegate protocol
+// if you wish to be notified that your app crashed on the previous load.
+// This protocol currently has only one method:
+//
+//   - (void)crittercismDidCrashOnLastLoad;
+//
+// Alternatively, you can check the didCrashOnLastLoad BOOL property.
+//
+// The filters parameter can be used to prevent sensitive URLs from being
+// captured by the network instrumentation. To use this, pass in an
+// NSArray of CRFilter objects that will be matched against URLs captured by the
+// library.
+//
+// (Note - the filtering will take place off of your application's main thread.)
 
 + (void)enableWithAppID:(NSString *)appId;
 
-// Designated "initializer"
 + (void)enableWithAppID:(NSString *)appId
             andDelegate:(id <CrittercismDelegate>)critterDelegate;
 
-// When async breadcrumb mode is enabled, writes to the breadcrumb file will be
-// conflated into at most one batch write per iteration of the main thread's
-// run loop.
-// Enabling this mode can cause breadcrumbs to be lost if your app crashes
-// before the breadcrumb file has been flushed. Crittercism only recommends
-// use of this mode if you are rapidly leaving breadcrumbs within a performance
-// critical section of code.
++ (void)enableWithAppID:(NSString *)appId
+            andDelegate:(id <CrittercismDelegate>)critterDelegate
+          andURLFilters:(NSArray *)filters;
+
++ (void)enableWithAppID:(NSString *)appId
+          andURLFilters:(NSArray *)filters;
+
+// Designated "initializer"
++ (void)enableWithAppID:(NSString *)appId
+            andDelegate:(id <CrittercismDelegate>)critterDelegate
+          andURLFilters:(NSArray *)filters
+ disableInstrumentation:(BOOL)disableInstrumentation;
+
+// Adds an additional filter for network instrumentation.
+// See CRFilter.h for additional details.
++ (void)addFilter:(CRFilter *)filter;
+
+// Breadcrumbs provide the ability to track activity within your app.
+//
+// A breadcrumb is a free form string you supply, which will be timestamped,
+// and stored in case a crash occurs. Crash reports will contain the breadcrumb
+// trail from the run of your app that crashed, as well as that of the prior
+// run.
+//
+// Breadcrumbs are limited to 140 characters, and only the most recent 100 are
+// kept. Crittercism will automatically insert a breadcrumb marked
+//   "session_start"
+// on each initial launch, or foreground of your app.
+//
+// Note - Breadcrumbs are an Enterprise level feature.
+
++ (void)leaveBreadcrumb:(NSString *)breadcrumb;
+
+// By default, breadcrumbs are flushed to disk immediately when written.
+// This is by design - in order to provide an accurate record of everything
+// that happened up until the point your app crashed.
+//
+// If you are concerned about the performance costs of writing the file, you can
+// instruct the library to perform all breadcrumb writes on a background thread.
+
 + (void)setAsyncBreadcrumbMode:(BOOL)writeAsync;
 
-// Disable or enable all communication with Crittercism servers.
-// If called to disable (status == YES), any pending crash reports will be
-// purged, and feedback will be reset (if using the forum feature.)
+// Inform Crittercism of the device's most recent location for use with
+// performance monitoring.
++ (void)updateLocation:(CLLocation *)location;
+
+// Handled exceptions are a way of reporting exceptions your app intentionally
+// caught. If the passed in NSException object was @thrown, the stack trace
+// of the thread that threw the exception will be displayed on the Crittercism
+// web portal.
+
+// Reporting of handled exceptions is throttled to once per minute. During
+// that minute period, up to 5 handled exceptions will be buffered.
+
+// Note - Handled exceptions are a Premium level feature.
+
++ (BOOL)logHandledException:(NSException *)exception;
+
+// If you wish to offer your users the ability to opt out of Crittercism
+// crash reporting, you can set the OptOutStatus to YES. If you do so, any
+// pending crash reports will be purged.
+
 + (void)setOptOutStatus:(BOOL)status;
 
-// Retrieve currently stored opt out status.
+// Retrieve current opt out status.
+
 + (BOOL)getOptOutStatus;
 
-// Set the maximum number of Crittercism crash reports that will be stored on
-// the local device if the device does not have internet connectivity.  If
-// more than |maxOfflineCrashReports| crashes occur, then the oldest crash
-// will be overwritten. Decreasing the value of this setting will not delete
+// Set the maximum number of crash reports that will be stored on
+// the local device if the device does not have internet connectivity. If
+// more than |maxOfflineCrashReports| crashes occur, the oldest crash will be
+// overwritten. Decreasing the value of this setting will not delete
 // any offline crash reports. Unsent crash reports will be kept until they are
-// sent to the Crittercism server, hence there may be more than
+// successfully transmitted to Crittercism, hence there may be more than
 // |maxOfflineCrashReports| stored on the device for a short period of time.
 //
-// The default value is 3
+// The default value is 3, and there is an upper bound of 10.
+
 + (void)setMaxOfflineCrashReports:(NSUInteger)max;
 
 // Get the maximum number of Crittercism crash reports that will be stored on
 // the local device if the device does not have internet connectivity.
+
 + (NSUInteger)maxOfflineCrashReports;
 
-// Retrieve the Crittercism generated unique identifier for this device.
-// Note, this is NOT the iPhone's UDID.
+// Get the Crittercism generated unique identifier for this device.
+// !! This is NOT the device's UDID.
 //
-// If called before enabling the library, will return an empty string.
+// If called before enabling the library, this will return an empty string.
+//
+// All Crittercism enabled apps on a device will share the UUID created by the
+// first installed Crittercism enabled app.
+//
+// If all Crittercism enabled applications are removed from a device, a new
+// UUID will be generated when the next one is installed.
+
 + (NSString *)getUserUUID;
 
-// Record an exception that you purposely caught via Crittercism.
-//
-// Note: Crittercism limits logging handled exceptions to once per minute. If
-// you've logged an exception within the last minute, we buffer the last five
-// exceptions and send those after a minute has passed.
-+ (BOOL)logHandledException:(NSException *)exception;
+// Associate a username string with the device's Crittercism UUID. This will
+// send the association to Crittercism's back end.
 
-// Leave a breadcrumb for the current run of your app. If the app ever crashes,
-// these breadcrumbs will be uploaded along with that crash report to
-// Crittercism's servers.
-+ (void)leaveBreadcrumb:(NSString *)breadcrumb;
-
-//
-// Methods for User Metadata
-//
-
-+ (void)setAge:(int)age;
-+ (void)setGender:(NSString *)gender;
 + (void)setUsername:(NSString *)username;
-+ (void)setEmail:(NSString *)email;
-// Set an arbitrary key/value pair in the User Metadata
+
+// Associate an arbitrary key/value pair with the device's Crittercism UUID.
+
 + (void)setValue:(NSString *)value forKey:(NSString *)key;
 
-////////////////////////////////////////////////////////////////////////////////
-// DEPRECATED METHODS
-////////////////////////////////////////////////////////////////////////////////
+// Crittercism delegate property
 
-+ (Crittercism *)sharedInstance;
++ (id <CrittercismDelegate>)delegate;
 
-- (id <CrittercismDelegate>)delegate;
-- (void)setDelegate:(id <CrittercismDelegate>)delegate;
++ (void)setDelegate:(id <CrittercismDelegate>)delegate;
 
-- (BOOL)didCrashOnLastLoad;
-- (void)setDidCrashOnLastLoad:(BOOL)didCrash;
+// Did the application crash on the previous load?
 
-//
-// Initializers - Will be removed in a future release. Please change your code
-// to use one of the enable* methods
-//
-
-+ (void)initWithAppID:(NSString *)appId __attribute__((deprecated));
-
-+ (void)initWithAppID:(NSString *)appId
-    andMainViewController:(UIViewController *)viewController
-    __attribute__((deprecated));
-
-+ (void)initWithAppID:(NSString *)appId
-    andMainViewController:(UIViewController *)viewController
-    andDelegate:(id)critterDelegate
-    __attribute__((deprecated));
-
-// Deprecated in v3.3.1 - key and secret are no longer needed
-+ (void)initWithAppID:(NSString *)appId
-    andKey:(NSString *)keyStr
-    andSecret:(NSString *)secretStr
-    __attribute__((deprecated));
-
-// Deprecated in v3.3.1 - key and secret are no longer needed
-+ (void)initWithAppID:(NSString *)appId
-    andKey:(NSString *)keyStr
-    andSecret:(NSString *)secretStr
-    andMainViewController:(UIViewController *)viewController
-    __attribute__((deprecated));
-
-// This method does nothing and will be removed in a future release.
-+ (void)configurePushNotification:(NSData *)deviceToken
-    __attribute__((deprecated));
++ (BOOL)didCrashOnLastLoad;
 
 @end
