@@ -81,7 +81,7 @@
 	
 	_counterView.center = CGPointShiftLeft(_arrowView.center, _counterView.width);
 	
-	BOOL hasCount = _counterView.count > 1;
+	BOOL hasCount = _counterView.count > 0;
 	_counterView.hidden = !hasCount;
 	
 	CGFloat endX = hasCount ? _counterView.x : _arrowView.x;

@@ -2625,8 +2625,8 @@
 
 -(void) report:(ModelMessage *)message success:(CSResultBlock) successBlock{
     
-    NSString *method = [self getURL:@"reportViolation.php"
-                     withParameters:@{@"docment_id":message._id}];
+    NSString *method = [self getURL:@"reportViolation"
+                     withParameters:@{@"message_id":message._id}];
     
     [[HUHTTPClient sharedClient] doGet:method
                          operationType:CSWebOperatonTypeJSON
