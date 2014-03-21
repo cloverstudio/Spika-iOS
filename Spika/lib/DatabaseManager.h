@@ -109,6 +109,12 @@ typedef void (^DMLoadVoice)(NSData *data);
               success:(DMFindOneBlock)successBlock
                 error:(DMErrorBlock)errorBlock;
 
+- (void)findUserListByGroupID:(NSString *)groupId
+                   count:(int)count
+                  offset:(int)offset
+                 success:(DMArrayBlock)successBlock
+                   error:(DMErrorBlock)errorBlock;
+
 -(void)findUserContactList:(ModelUser *)user
                    success:(DMFindOneBlock)successBlock
                      error:(DMErrorBlock)errorBlock;

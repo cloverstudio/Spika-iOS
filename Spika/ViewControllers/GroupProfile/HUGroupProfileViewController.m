@@ -43,6 +43,7 @@
 #import "HUImageView.h"
 #import "HUNewGroupViewController.h"
 #import "HUCachedImageLoader.h"
+#import "HUUsersInGroupViewController.h"
 
 @interface HUGroupProfileViewController (){
     UIImage *_avatarImage;
@@ -434,8 +435,29 @@
     }
 }
 
-- (IBAction) startConversation{
+- (void) findUserList
+{
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
+                                           message:nil];
     
+//    __weak HUGroupProfileViewController *this = self;
+    
+    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
+                                                      count:PagingUserFetchNum offset:0
+                                                    success:^(NSArray *result) {
+                                                        [[AlertViewManager defaultManager] dismiss];
+                                                        if (result) {
+                                                            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                                                            [dict setValue:_group forKey:@"group"];
+                                                            [dict setValue:result forKey:@"userItems"];
+                                                            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:dict];
+                                                        }
+                                                    } error:^(NSString *errorString) {
+                                                        [[AlertViewManager defaultManager] dismiss];
+                                                    }];
+}
+
+- (IBAction) startConversation{
     if ([self isPasswordAlertNeeded:_group]) {
         [[AlertViewManager defaultManager] showInputPassword:@"Please input password"
                                                  resultBlock:^(NSString *password){
@@ -456,6 +478,10 @@
 
 -(IBAction) openOwner{
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:_owner];
+}
+
+- (IBAction)findUserList:(id)sender {
+    [self findUserList];
 }
 
 

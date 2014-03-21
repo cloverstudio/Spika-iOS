@@ -165,7 +165,7 @@
     
 
     if([dic objectForKey:@"birthday"] != nil && ![[dic objectForKey:@"birthday"] isEqual:@""]){
-        user.birthday = [[dic objectForKey:@"birthday"] longValue];
+        user.birthday = [[dic objectForKey:@"birthday"] doubleValue];
     }else{
         user.birthday = 0;
     }

@@ -350,7 +350,7 @@
 }
 
 -(IBAction) onSave{
-	
+    
     [self.view endEditing:YES];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -472,6 +472,19 @@
                                                                       cancelTitle:NSLocalizedString(@"Cancel", nil)
                                                                        otherTitle:[NSArray arrayWithObjects:NSLocalizedString(@"Save", nil),nil]];
     [dialog show];
+}
+
+- (IBAction)findUserList:(id)sender {
+    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
+                                           message:nil];
+    
+    __weak HUMyGroupProfileViewController *this = self;
+    
+    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
+                                                      count:0 offset:1
+                                                    success:^(NSArray *result) {
+    } error:^(NSString *errorString) {
+    }];
 }
 
 #pragma mark - HUImageUploadViewConrollerDelegate Methods

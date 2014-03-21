@@ -32,6 +32,7 @@
     if(fileExists){
         UIImage *img = [UIImage imageWithContentsOfFile:filePath];
         block(img);
+        return;
     }
     
     [[DatabaseManager defaultManager] loadImage:url success:^(UIImage *image) {

@@ -102,8 +102,6 @@
         _groupsArray = [[NSMutableArray alloc] init];
         _searchGroupsArray = [[NSMutableArray alloc] init];
         
-
-
     }
     
     return self;
