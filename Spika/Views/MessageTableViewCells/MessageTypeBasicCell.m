@@ -144,7 +144,7 @@
 
 #pragma mark - Override
 
-+ (CGFloat) cellHeightForMessage:(ModelMessage *)message{
++ (float) cellHeightForMessage:(ModelMessage *)message{
     
     NSAssert(NO, @"You have to override this method!");
     return 0;

@@ -153,7 +153,7 @@
 
 #pragma mark - Override
 
-+(float) cellHeightForMessage:(ModelMessage *)message{
++(CGFloat) cellHeightForMessage:(ModelMessage *)message{
     
     CGFloat height = ImageWidth;
     height += [MessageCell totalExtraHeight];

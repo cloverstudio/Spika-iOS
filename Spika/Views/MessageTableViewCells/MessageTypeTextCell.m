@@ -90,7 +90,7 @@
     return NO;
 }
 
-+ (float) cellHeightForMessage:(ModelMessage *)message {
++ (CGFloat) cellHeightForMessage:(ModelMessage *)message {
     
     CGFloat height = CGRectGetHeight([MessageCell frameForMessageLabel:message]);
     height += [MessageCell totalExtraHeight];

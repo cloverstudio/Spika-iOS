@@ -103,7 +103,6 @@
         _searchGroupsArray = [[NSMutableArray alloc] init];
         
 
-
     }
     
     return self;
@@ -248,11 +247,13 @@
     [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
         
         [this animateKeyboardWillShow:note];
+        
     }];
     
     [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
         
         [this animateKeyboardWillHide:note];
+        
     }];
 
 }

@@ -254,6 +254,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+    cell.clipsToBounds = YES;
+    
     if (!cell) {
         
         cell = CS_AUTORELEASE([[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]);
