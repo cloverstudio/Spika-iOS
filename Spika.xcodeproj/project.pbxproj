@@ -354,6 +354,7 @@
 		B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */; };
 		B3409E02186DEDB50033A4B3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E01186DEDB50033A4B3 /* MainWindow.xib */; };
 		B3409E0A186DF2B60033A4B3 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3409E09186DF2B60033A4B3 /* LoginView.xib */; };
+		B357D36918E3262B008FF3DD /* hp_server_field_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B357D36818E3262B008FF3DD /* hp_server_field_background@2x.png */; };
 		B37479721874566E001CE0E7 /* HUWallViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */; };
 		B37479731874566E001CE0E7 /* HUWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37479711874566E001CE0E7 /* HUWallViewController.m */; };
 		B374798A18745B82001CE0E7 /* HUUsersViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = B374797618745B82001CE0E7 /* HUUsersViewController+Style.m */; };
@@ -957,6 +958,7 @@
 		B3409DFC186DEB3F0033A4B3 /* HULoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HULoginViewController.m; sourceTree = "<group>"; };
 		B3409E01186DEDB50033A4B3 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B3409E09186DF2B60033A4B3 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = ../../UserInterfaces/LoginView.xib; sourceTree = "<group>"; };
+		B357D36818E3262B008FF3DD /* hp_server_field_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hp_server_field_background@2x.png"; sourceTree = "<group>"; };
 		B374796E1874566E001CE0E7 /* HUWallViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUWallViewController+Style.h"; sourceTree = "<group>"; };
 		B374796F1874566E001CE0E7 /* HUWallViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUWallViewController+Style.m"; sourceTree = "<group>"; };
 		B37479701874566E001CE0E7 /* HUWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUWallViewController.h; sourceTree = "<group>"; };
@@ -1039,6 +1041,8 @@
 		B37479F118746272001CE0E7 /* _HUPasswordBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_HUPasswordBaseViewController+Style.m"; sourceTree = "<group>"; };
 		B3AFCE8718BA809D0076A687 /* HUCachedImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCachedImageLoader.h; sourceTree = "<group>"; };
 		B3AFCE8818BA809D0076A687 /* HUCachedImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCachedImageLoader.m; sourceTree = "<group>"; };
+		B3B66A3418E215FD00CEDAC6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B3B66A3518E215FE00CEDAC6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3C69A6618718B440055DD19 /* HUMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMyProfileViewController.h; sourceTree = "<group>"; };
 		B3C69A6718718B440055DD19 /* HUMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMyProfileViewController.m; sourceTree = "<group>"; };
 		B3C69A6A18718BA20055DD19 /* MyProflieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProflieView.xib; sourceTree = "<group>"; };
@@ -1628,6 +1632,7 @@
 		ADC6443017E0761500C16A9D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B357D36818E3262B008FF3DD /* hp_server_field_background@2x.png */,
 				ADC6443117E0761500C16A9D /* hp_login_fields_background.png */,
 				ADC6443217E0761500C16A9D /* hp_login_fields_background@2x.png */,
 			);
@@ -2550,6 +2555,7 @@
 				hr,
 				"hr-HR",
 				ja,
+				ar,
 			);
 			mainGroup = 36EBCBE1892A80D43E9D3D77;
 			productRefGroup = 36EBC07448B218D60B2C2A43 /* Products */;
@@ -2580,6 +2586,7 @@
 				ADC6465017E0761600C16A9D /* LoadingAnimation2.png in Resources */,
 				ADC6465117E0761600C16A9D /* LoadingAnimation2@2x.png in Resources */,
 				ADC6465217E0761600C16A9D /* LoadingAnimation3.png in Resources */,
+				B357D36918E3262B008FF3DD /* hp_server_field_background@2x.png in Resources */,
 				ADC6465317E0761600C16A9D /* LoadingAnimation3@2x.png in Resources */,
 				B3CE0C02186E2C21009372B0 /* SignupView.xib in Resources */,
 				ADC6465417E0761600C16A9D /* LoadingAnimation4.png in Resources */,
@@ -3005,6 +3012,7 @@
 				ADC6437C17E0761500C16A9D /* hr-HR */,
 				ADC6437D17E0761500C16A9D /* hr */,
 				ADC6437E17E0761500C16A9D /* en */,
+				B3B66A3418E215FD00CEDAC6 /* ar */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3015,6 +3023,7 @@
 				ADC6438017E0761500C16A9D /* en */,
 				ADC644C517E0761600C16A9D /* hr */,
 				ADC644C617E0761600C16A9D /* ja */,
+				B3B66A3518E215FE00CEDAC6 /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

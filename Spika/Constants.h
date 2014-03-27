@@ -24,11 +24,13 @@
  */
 
 /* change here */
-#define DatabaseURL             @"http://localhost:8080/wwwroot/api"
-#define HttpRootURL             @"http://localhost:8080/wwwroot/api"
-#define PageRootURL             @"http://localhost:8080/wwwroot/page"
-#define InformationPageTopURL   @"http://localhost:8080/wwwroot/page/information"
+#define APIEndPoint             @"http://officialapi.spikaapp.com"
 /* end change here */
+
+#define DatabaseURL             [NSString stringWithFormat:@"%@/api",APIEndPoint]
+#define HttpRootURL             [NSString stringWithFormat:@"%@/api",APIEndPoint]
+#define PageRootURL             [NSString stringWithFormat:@"%@/page",APIEndPoint]
+#define InformationPageTopURL   [NSString stringWithFormat:@"%@/page/information",APIEndPoint]
 
 #ifndef Bind_Constants_h
 #define Bind_Constants_h
