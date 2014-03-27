@@ -1,0 +1,298 @@
+/*
+ The MIT License (MIT)
+ 
+ Copyright (c) 2013 Clover Studio Ltd. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+/* Shared */
+"OK"                    = "موافق";
+"Cancel"                = "الغاء";
+
+/* BaseViewController */
+"Back"                  = "رجوع";
+"Loading"               = "تحميل";
+"No-Items"              = "لا شيء";
+
+/* LoginViewController */
+"Login-Title"           = "تسجيل الدخول";
+"ForgetPassword-Title"	= "ارسال كلمة المرور";
+"Email"                 = "البريد";
+"Password"              = "كلمة المرور";
+"Loading"               = "تحميل";
+"Missing-Email"         = "الرجاء ادخال التأكد من البريد الالكتروني";
+"Missing-Password"      = "الرجاء التأكد من كلمة المرور";
+"Incorrect-Login"       = "البريد أو كلمة المرور خطأ";
+"Wrong password message"= "كلمة المرور يجب ان تكون اكثر من 5 أحرف";
+"Wrong email message"   = "الرجاء ادخال بريد الكتروني صالح";
+"Forgot-Details"        = "نسيت البيانات ؟";
+
+/* SignUpViewControlle */
+"SignUp-Title"          = "التسجيل";
+"Username"              = "اسم المستخدم";
+"Missing-Username"      = "الرجاء ادخال اسم المستخدم";
+"SignUp-Succeeded"      = "تم التسجيل بنجاح";
+"Invalid-Name"          = "على الاسم ان يكون اكثر من حرفين";
+"Duplicate email"       = "لديك عضوية مسبقا , الرجاء تسجيل الدخول";
+"Duplicate username"    = "اسم المستخدم هذا مسجل مسبقا ، الرجاء اختيار آخر";
+
+/* ForgotPasswordView */
+"ForgotPassword-Send"   = "ارسال";
+"ForgotPassword-Sent"   = "كلمة المرور ارسلت لبريدك الالتكروني";
+"Invalid-Email-Title"   = "البريد الالكتروني خاطئ";
+"Invalid-Email-Message" = "الرجاء ادخال بريد الكتروني صحيح";
+
+/* WallVC */
+"Wall-Title"            = "الحائظ";
+"Send"                  = "ارسال";
+"Video-Time-Too-Long"	= "على الفيديو ان يكون في اقل من 30 ثانية";
+"Audio-Time-Too-Long"	= "على الصوت ان يكون اقل من 3دقائق";
+
+/* HUProfileViewController  */
+"Profile-Title"         = "الملف الشخصي";
+"Last-Login"            = "آخر دخول";
+"Add-Contact"           = "إضافة صديق";
+"Remove-Contact"        = "حذف صديق";
+"Start-Conversation"    = "بدء محادثة";
+
+/* LocationViewController */
+"Location-Title-Search" = "المنطقة";
+"Location-Title-Show"   = "معلومات المنطقة";
+"Share"                 = "نشر";
+
+/* HUGroupProfileViewController */
+"Groups-Title"           = "المجموعات";
+"Group-Name"            = "اسم المجموعة";
+"Description"           = "الوصف";
+"Add-Group-Title"       = "اضافة مجموعة";
+"GroupCategory-Title"   = "التصنيفات";
+"Search-Groups"         = "بحث في المجموعات";
+"Group-Profile"         = "ملف المجموعة";
+"Group-Owner"           = "المنشء";
+"Add-Favorite"          = "اضافة المفضلة";
+"Remove-Favorite"       = "حذف";
+"Search"				= "بحث";
+"Name"					= "الاسم";
+"Password"				= "كلمة المرور";
+"About"					= "حول";
+"Max Favorite Exceeded" = "بامكانك حفظ %d من المفضلات على الاكثر";
+"Subscribe"             = "اشتراك";
+"Unsubscribe"           = "الغاء الاشتراك";
+"Confirm delete group"  = "هل انت متاكد من حذف هذه المجوعة ؟";
+"Password-Exists"       = "تعم";
+"No-Password"           = "لا";
+"GroupOwner"            = "منشء المجموعة";
+"Change Group Password" = "تغيير كلمة مرور المجموعة";
+
+/*HUNewGroupController*/
+"Enter-Name"            = "الاسم";
+"Enter-Password"        = "كلمة المرور";
+"Enter-Description"     = "الوصف";
+"Missing-Group-Name"    = "الرحاء وضع اسم للجموعة";
+"Processing"            = "جاري ...";
+"Missing-Group-Description"    = "الرجاء ادراج وصف للمجموعة";
+"New-Group-Created."    = "تم انشاء المجموعة الجديدة";
+"Make-Favourite-Button" = "حفظ في المفضلة";
+"Remove-Favourite-Button"= "حذف من المفضلة";
+"Duplicate groupname"    = "اسم المجموعة هذا مستخدم من قبل ، الرجاء استخدام اسم اخر";
+
+/*HUGroupsViewController*/
+"Favorites"				 = "المجموعات المشترك بها";
+"My Groups"              = "مشترك به";
+"No Favorite Advice"     = "ليس لديك اي مجموعات مفضلة  , بوضع مجموعة في المفضلة ستحصل على اخر الاشعارات";
+
+/*HUNewGroupViewController*/
+"New Group"				= "مجموعة جديدة";
+
+/*HUUsersViewController*/
+"Explore"				= "استكشاف";
+"Search"				= "بحث";
+"My Contacts"			= "قائمة اصدقائي";
+"No Users"				= "لا مستخدمين";
+"Search-Title"			= "بحث";
+"No Contact Advice"     = "ليس لديك اي اصدقاء الان .";
+
+/*HUVoiceMessageDetailViewController*/
+"Wall"					= "الحائظ";
+
+/*HUVoiceRecorderViewController*/
+"Wall"					= "الحائظ";
+"Microphon-device-busy" = "الميكروفون مشغول حاليا ، الرجاء اعادة تشغيل البرنامج";
+/*ImageDetailVC*/
+"Image Detail"			= "تفاصيل الصورة";
+
+/*ImageUploadVC*/
+"Preview"				= "معاينة";
+
+/*VideoDetailVC*/
+"Video Detail"			= "تفاصيل الفيديو";
+
+/*AlertViewManager*/
+"Recent activity"		= "آخر النشاطات";
+"Uploading image"		= "رفع صورة";
+"Processing"			= "جاري ...";
+"Downloading voice"		= "تحميل الصوت ...";
+"Sending voice"			= "ارسال الصوت ...";
+"Sending video"			= "ارسال الفيديو ...";
+"Sending"				= "ارسال ...";
+"Error"					= "خطأ";
+
+/*CSToast*/
+"Succeed to get notification token"				= "تم الحصول على الاشعارات";
+"Failed to get notification token"				= "لم يتم الحصول على الاشعارات";
+"Wrong password"								= "خطأ في كلمة المرور";
+"ERROR: No onUploadBlock() has been provided"	= "خطا : لا يوجدonUploadBlock()";
+"Message sent"									= "تم ارسال الرسالة";
+"Avatar uploaded"								= "تم رفع الصورة";
+"Failed to post comment"						= "خطأ في ادراج التعليق";
+"Group deleted"									= "تم حذف المجموعة";
+"Missing-Group-Name"							= "خطأ في اسم المجموعة !";
+"Group updated"									= "تم تحديث المجموعة";
+"Saved"											= "تم الحفظ";
+"Failed to save"								= "فشل الحفظ";
+"Group created successfully"					= "تم انشاء المجموعة بنجاح";
+"Success"										= "تم !";
+"Cache cleared"									= "تم حذف الكاش !";
+"API Endpoint contains error"					= "API يوجد خطأ في";
+"Failed to save voice locally"					= "فشل في حفظ الصوت";
+"Voice download failed"							= "فشل في تحميل الصوت";
+"Voice sent"									= "تم ارسال الصوت";
+"Video sent"									= "تم ارسال الفيديو";
+"Location sent"									= "تم ارسال المنطقة";
+"Camera is not supported in Simulator"			= "لا وجود لكاميرا !";
+
+/*HUVoiceRecorderViewController*/
+"Voice"				= "صوت";
+"TAP AND RECORD"	= "اضفط لبدء التسجيل";
+"RECORDING"			= "تسجيل ...";
+"RECORDING DONE"	= "تم انهاء التسجيل";
+"NONAME TITLE VOICE"      = "%@'s صوت";
+
+/*SideMenuView*/
+"Users"				= "المستخدمون";
+"Groups"			= "المجموعات";
+"Profile"			= "الملف الشخصي";
+"Settings"			= "الاعدادات";
+"Information"		= "معلومات";
+"Logout"			= "خروج";
+
+/*HUMyProfileViewController*/
+"My Profile"		= "ملفي";
+"Birthday"			= "تاريخ الميلاد";
+"Gender"			= "الجنس";
+
+/*HUProfileViewController*/
+"Last Login"		= "آخر تسحيل دخول";
+"Max Contact Exceeded" = "يمكنك حفظ %d كأصدقاء على الاكثر .";
+
+/*VideoDetailVC*/
+"Failed to save video locally"	= "فشل حفظ الفيديو";
+"Video download failed"			= "فشل في تحميل الفيديو";
+"NONAME TITLE VIDEO"            = "%@'s فيديو";
+"Server-Error"                  = "هناك مشكل في اتصالك بالانترنت ، حاول مجددا";
+"Loading-Error"                 = "هناك مشكل في اتصالك بالانترنت ، حاول مجددا";
+"Token-Expired"                 = "لقد تم انهاء جلستك ، الرجاء تسجيل الدخول مجددا";
+
+/* tutorial */
+"tutorial-login"                = "أهلا بك في تطبيق سبيكا";
+"tutorial-recent"               = "سيتم عرض بعض التعليمات لانك تستخدم البرنامج لاول مرة";
+"tutorial-wall"                 = "هذه الشاشة تظهر جميع الرسائل غير المقروءة الخاصة بك. هي فارغة الان لكن سوف تكون كاملة من الرسائل من أصدقائك";
+"tutorial-users"                = "يمكنك البحث عن طريق الاسم، استكشاف حسب نوع الجنس أو السن. أيضا، يمكنك إضافة أصدقاء إلى قائمة الاتصال بحيث يمكن أن تجد المحادثات معهم بسهولة أكبر";
+"tutorial-groups"               = "هنا يمكنك أن تجد المجموعات التي تريد. الاشتراك في المجموعة المفضلة لديك وسيتم إعلامك كلما شخص على وظائف هذه المجموعة . يمكنك أيضا إنشاء مجموعة خاصة بك";
+"tutorial-group-add"            = "يمكنك تأمين مجموعتك بكلمة مرور الناس وذلك فقط تقاسمها مع يمكن الوصول إلى الجدار.";
+"tutorial-userprofile"          = "يمكنك إضافة أصدقائك إلى جهات الاتصال، ولكن كن حذرا، عدد من الاتصالات يقتصر على 20";
+"tutorial-groupprofile"         = "يمكنك الاشتراك في مجموعة وسوف تحصل على إخطار عندما يقوم شخص ما وظائف على الجدار في تلك المجموعة، ولكن كن حذرا، عدد الاشتراكات مجموعة محدودة إلى 10";
+
+/* settings */
+"Enter current password"	= "ادخل كلمة المرور الحالية";
+"Enter new password"		= "ادخل كلمة المرور الجديدة";
+"Re-enter new password"		= "اعد ادخال كلمة المرور";
+"InvalidPassword"           = "كلمة المرور المدخلة خاطئة";
+"InvalidNewPassword"        = "عليك ملئ كافة الحقول";
+"PasswordChanged"           = "تم تغيير كلمة المرور بنجاح";
+"Confirm Email"             = "الرجاء مراجعة بريدك";
+"FailedToChangePassword"    = "فشل تغيير كلمة المرور";
+"GroupDeleted"              = "تم حذف هذه المجموعة عن طريق المنشء";
+"Confirm Logout"            = "هل تريد الخروج حقا ؟";
+
+"CHAT ACTIVITY"             = "نشاطات المحادثات";
+"GROUPS ACTIVITY"           = "نشاطات المجموعات";
+"No Recent Activities"      = "لا توجد اي رسالة";
+"NOTIFICATIONS"             = "الاشعارات";
+"User Support"              = "الدعم الفني";
+"ACCOUNT"                   = "الحساب";
+"Type name..."              = "الرجاء ادخال اسم";
+"Online Status"             = "الحالة";
+"Edit"                      = "تعديل";
+"ExploreBtn"				= "بحث";
+"all"                       = "الكل";
+"female"                    = "انثى";
+"male"                      = "ذكر";
+"Slide to pick age..."      = "حرك لتحديد العمر";
+"Male"                      = "ذكر";
+"Female"                    = "انثى";
+"No declaration"            = "غير محدد";
+"online"                    = "متواجد";
+"away"                      = "بالخارج";
+"busy"                      = "مشغول";
+"offline"                   = "غير متواجد";
+"Category"                  = "التصنيف";
+"Categories"                = "تصنيفات";
+"Add Group"                 = "انشاء مجموعة";
+"Save"						= "حفظ";
+"Upload"                    = "رفع";
+"PASSWORD"                  = "كلمة المرور";
+"Change Password"           = "تغيير كلمة المرور";
+"PASSCODE PROTECT"          = "حماية الباسكود";
+"CLEAR CACHE"               = "حذف الكاش";
+"SETTINGS"                  = "إعدادات";
+"Delete"                    = "حذف";
+"PLEASE ENTER NEW PASSCODE" = "الرجاء ادخال باسكود";
+"PLEASE ENTER CURRENT PASSCODE" = "الرجاء ادخال الباسكود الحالي";
+"PLEASE ENTER NEW PASSCODE AGAIN" = "الرجاء ادخال باسكود جديد";
+"No Groups"                 = "لا يمكن ايجاد المجموعة";
+"No Favorite Groups"        = "قائمة مفضلات المجموعات فارغة";
+"No Users"                  = "لا يمكن ايجاد المستخدم";
+"No Users Contacts"         = "قائمة الاصدقاء فارغة";
+"VIDEO TITLE"               = "ارسال فيديو";
+"Add video title"           = "ضع عنوان للفيديو";
+"VOICE TITLE"               = "ارسال صوت";
+"Add voice title"           = "ضع عنوان للصوت";
+"LocationTitle"             = "ضع منطقة %@";
+"LOCATION WALL TITLE"       = "%@ نشر منطقته.\n%@";
+"VIDEO WALL TITLE"          = "%@";
+"VOICE WALL TITLE"          = "%@";
+"Close"                     = "اغلاق";
+"ReportViolation"           = "تقرير";
+"ReportViolationConfirm"    = "هل تريد ارسال تقرير حول هذه المادة حقا ؟";
+"Violation Reported"        = "تم استلام تقريرك ، و سيتم حذف المخالفة حال استعراضها";
+"EULA-TITLE"                = "شروط الخدمة";
+"EULA-AGREE"                = "موافق";
+"EULA_FILE"                 = "انجليزي";
+
+"delete-title"              = "حذف الرسالة";
+"delete-info-title"         = "تم حذف هذه الرسالة";
+"delete-dont"               = "لا تحذف";
+"delete-now"               = "حذف الان";
+"delete-5min"               = "في 5 دقائق";
+"delete-day"               = "بعد يوم";
+"delete-week"               = "بعد اسبوع";
+"delete-read"               = "عندما يراها المستخدم";
+"delete-close"               = "موافق";

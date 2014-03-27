@@ -53,6 +53,10 @@
 #import "HUDeleteInformationViewController.h"
 #import "TransitionDelegate.h"
 #import "HUCachedImageLoader.h"
+#import "MessageTypeEmoticonCell.h"
+#import "MessageTypeNewsCell.h"
+#import "MessageTypeTextCell.h"
+
 
 @interface HUWallViewController () <HPGrowingTextViewDelegate> {
 
@@ -1029,8 +1033,34 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     ModelMessage *message = [self.items objectAtIndex:indexPath.row];
-    return [message.tableViewCellClass cellHeightForMessage:message];
+    
+    float height = 0.0;
+    
+    if([message.message_type isEqualToString:MessageTypeImage]){
+        height = [MessageTypeImageCell cellHeightForMessage:message];
+        
+    }else if([message.message_type isEqualToString:MessageTypeEmoticon]){
+        height = [MessageTypeEmoticonCell cellHeightForMessage:message];
+        
+    }else if([message.message_type isEqualToString:MessageTypeVideo]){
+        height = [MessageTypeVideoCell cellHeightForMessage:message];
+        
+    }else if([message.message_type isEqualToString:MessageTypeLocation]){
+        height = [MessageTypeLocationCell cellHeightForMessage:message];
+        
+    }else if([message.message_type isEqualToString:MessageTypeVoice]){
+        height = [MessageTypeVoiceCell cellHeightForMessage:message];
+        
+    }else if([message.message_type isEqualToString:MessageTypeNews]){
+        height = [MessageTypeNewsCell cellHeightForMessage:message];
+        
+    }else{
+        height = [MessageTypeTextCell cellHeightForMessage:message];
+    }
+    
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

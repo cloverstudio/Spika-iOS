@@ -145,7 +145,7 @@
     return YES;
 }
 
-+ (float) calcLabelHeight:(ModelMessage *)message {
++ (CGFloat) calcLabelHeight:(ModelMessage *)message {
     CGSize messageBodySize = [message.body sizeWithFont:[MessageCell fontForMessageLabel]
                                       constrainedToSize:CGSizeMake(NewsLabelWidth, NSNotFound)];
     messageBodySize.width = NewsLabelWidth;

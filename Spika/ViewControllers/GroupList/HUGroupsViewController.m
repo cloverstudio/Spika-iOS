@@ -246,11 +246,13 @@
     [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
         
         [this animateKeyboardWillShow:note];
+        
     }];
     
     [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
         
         [this animateKeyboardWillHide:note];
+        
     }];
 
 }
