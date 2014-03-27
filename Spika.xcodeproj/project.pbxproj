@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4012FAB518D9794D004B1538 /* HUUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012FAB318D9794D004B1538 /* HUUserListCell.m */; };
+		4012FAB618D9794D004B1538 /* HUUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4012FAB418D9794D004B1538 /* HUUserListCell.xib */; };
+		4012FABE18D97B39004B1538 /* HUUsersInGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */; };
+		4012FABF18D97B39004B1538 /* HUUsersInGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4012FABD18D97B39004B1538 /* HUUsersInGroupViewController.xib */; };
 		AD74BB3817E0AB200061F786 /* CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = AD74BB3717E0AB200061F786 /* CSToast.m */; };
 		AD74BB4C17E0B3680061F786 /* favorites_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AD74BB3A17E0B3680061F786 /* favorites_icon.png */; };
 		AD74BB4D17E0B3680061F786 /* favorites_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD74BB3B17E0B3680061F786 /* favorites_icon@2x.png */; };
@@ -443,6 +447,12 @@
 
 /* Begin PBXFileReference section */
 		36EBC6D2B81D2E1E98E5955D /* Spika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spika.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4012FAB218D9794D004B1538 /* HUUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUserListCell.h; sourceTree = "<group>"; };
+		4012FAB318D9794D004B1538 /* HUUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUserListCell.m; sourceTree = "<group>"; };
+		4012FAB418D9794D004B1538 /* HUUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUUserListCell.xib; sourceTree = "<group>"; };
+		4012FABB18D97B39004B1538 /* HUUsersInGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUsersInGroupViewController.h; sourceTree = "<group>"; };
+		4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUsersInGroupViewController.m; sourceTree = "<group>"; };
+		4012FABD18D97B39004B1538 /* HUUsersInGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUUsersInGroupViewController.xib; sourceTree = "<group>"; };
 		AD74BB3617E0AB200061F786 /* CSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSToast.h; sourceTree = "<group>"; };
 		AD74BB3717E0AB200061F786 /* CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSToast.m; sourceTree = "<group>"; };
 		AD74BB3A17E0B3680061F786 /* favorites_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites_icon.png; sourceTree = "<group>"; };
@@ -1153,6 +1163,13 @@
 				ADC6436817E0761400C16A9D /* Spika */,
 				36EBC07448B218D60B2C2A43 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		4012FAB718D97ACF004B1538 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		AD74BB3917E0B3680061F786 /* Profile */ = {
@@ -1982,6 +1999,7 @@
 		ADC6452917E0761600C16A9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4012FAB718D97ACF004B1538 /* User */,
 				B3142B7618B16A61004A4E75 /* Information */,
 				B37479DD18745EE0001CE0E7 /* SideMenu */,
 				B37479E418745EE0001CE0E7 /* Settings */,
@@ -2090,6 +2108,9 @@
 				CEB78BF717ECAEEB0053FBE3 /* HUButton.m */,
 				CE1151E117EF4BCD00C14DA6 /* HUTextView.h */,
 				CE1151E217EF4BCD00C14DA6 /* HUTextView.m */,
+				4012FAB218D9794D004B1538 /* HUUserListCell.h */,
+				4012FAB318D9794D004B1538 /* HUUserListCell.m */,
+				4012FAB418D9794D004B1538 /* HUUserListCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2227,6 +2248,9 @@
 				B374797618745B82001CE0E7 /* HUUsersViewController+Style.m */,
 				B374797718745B82001CE0E7 /* HUUsersViewController.h */,
 				B374797818745B82001CE0E7 /* HUUsersViewController.m */,
+				4012FABB18D97B39004B1538 /* HUUsersInGroupViewController.h */,
+				4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */,
+				4012FABD18D97B39004B1538 /* HUUsersInGroupViewController.xib */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -2617,6 +2641,7 @@
 				ADC6467617E0761600C16A9D /* user_stub.png in Resources */,
 				ADC6467717E0761600C16A9D /* user_stub@2x.png in Resources */,
 				ADC6467817E0761600C16A9D /* user_stub_large.png in Resources */,
+				4012FAB618D9794D004B1538 /* HUUserListCell.xib in Resources */,
 				ADC6467917E0761600C16A9D /* user_stub_large@2x.png in Resources */,
 				ADC6467A17E0761600C16A9D /* hp_login_fields_background.png in Resources */,
 				ADC6467B17E0761600C16A9D /* hp_login_fields_background@2x.png in Resources */,
@@ -2739,6 +2764,7 @@
 				ADC646F717E0761600C16A9D /* mic_voice_icon.png in Resources */,
 				B3142B7518B16763004A4E75 /* hu_information_icon@2x.png in Resources */,
 				ADC646F817E0761600C16A9D /* mic_voice_icon@2x.png in Resources */,
+				4012FABF18D97B39004B1538 /* HUUsersInGroupViewController.xib in Resources */,
 				ADC646F917E0761700C16A9D /* mic_voice_icon_active.png in Resources */,
 				ADC646FA17E0761700C16A9D /* mic_voice_icon_active@2x.png in Resources */,
 				ADC646FB17E0761700C16A9D /* video_more_icon.png in Resources */,
@@ -2806,6 +2832,7 @@
 				ADC6462B17E0761600C16A9D /* NSArray+Extensions.m in Sources */,
 				ADC6462C17E0761600C16A9D /* NSDateFormatter+SharedFormatter.m in Sources */,
 				ADC6462D17E0761600C16A9D /* NSDictionary+KeyPath.m in Sources */,
+				4012FABE18D97B39004B1538 /* HUUsersInGroupViewController.m in Sources */,
 				ADC6462E17E0761600C16A9D /* NSNotification+Extensions.m in Sources */,
 				ADC6462F17E0761600C16A9D /* NSString+Extensions.m in Sources */,
 				ADC6463017E0761600C16A9D /* NSString+NoNull.m in Sources */,
@@ -2836,6 +2863,7 @@
 				ADC6464617E0761600C16A9D /* HPGrowingTextView.m in Sources */,
 				ADC6464717E0761600C16A9D /* HPTextViewInternal.m in Sources */,
 				ADC6464817E0761600C16A9D /* MAKVONotificationCenter.m in Sources */,
+				4012FAB518D9794D004B1538 /* HUUserListCell.m in Sources */,
 				ADC6464917E0761600C16A9D /* OrderedDictionary.m in Sources */,
 				ADC6464B17E0761600C16A9D /* RCSwitch.m in Sources */,
 				B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */,
@@ -3027,7 +3055,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tue Nguyen (VT3AJKX67V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mislav Bagovic (P8U377UYHS)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3043,8 +3071,8 @@
 					"$(PROJECT_DIR)/Spika/External/CrittercismSDK",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "42DA25C1-D9EC-4F74-83E9-051A231E4A5F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42DA25C1-D9EC-4F74-83E9-051A231E4A5F";
+				PROVISIONING_PROFILE = "AD8EAD59-DF75-4561-9406-42FC533FD242";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "88B0CC53-8CBB-4824-9B69-F8DDFBE6B721";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3110,8 +3138,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tue Nguyen (VT3AJKX67V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tue Nguyen (VT3AJKX67V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -3126,8 +3154,8 @@
 					"$(PROJECT_DIR)/Spika/External/CrittercismSDK",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "A3CE8E37-7832-4D89-A226-F7CC51D91863";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A3CE8E37-7832-4D89-A226-F7CC51D91863";
+				PROVISIONING_PROFILE = "AD8EAD59-DF75-4561-9406-42FC533FD242";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AD8EAD59-DF75-4561-9406-42FC533FD242";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3162,8 +3190,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CLOVER STUDIO Ltd. (YU755VYJCP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tue Nguyen (VT3AJKX67V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tue Nguyen (VT3AJKX67V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -3178,8 +3206,8 @@
 					"$(PROJECT_DIR)/Spika/External/CrittercismSDK",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "CB874C4A-5506-42DE-8E3E-01B61D4C46B4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB874C4A-5506-42DE-8E3E-01B61D4C46B4";
+				PROVISIONING_PROFILE = "AD8EAD59-DF75-4561-9406-42FC533FD242";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AD8EAD59-DF75-4561-9406-42FC533FD242";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;

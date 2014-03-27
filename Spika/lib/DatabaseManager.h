@@ -33,6 +33,7 @@
 
 typedef void (^DMFindOneBlock)(id result);
 typedef void (^DMArrayBlock)(NSArray *);
+typedef void (^DMArrayPagingBlock)(NSArray *results, NSInteger totalResults);
 typedef void (^DMUpdateBlock)(BOOL, NSString *);
 typedef void (^DMUpdateDocumentBlock)(BOOL, NSDictionary *result);
 typedef void (^DMErrorBlock)(NSString *errorString);
@@ -108,6 +109,12 @@ typedef void (^DMLoadVoice)(NSData *data);
 -(void)findUserByName:(NSString *)userName
               success:(DMFindOneBlock)successBlock
                 error:(DMErrorBlock)errorBlock;
+
+- (void)findUserListByGroupID:(NSString *)groupId
+                   count:(int)count
+                  offset:(int)offset
+                 success:(DMArrayPagingBlock)successBlock
+                   error:(DMErrorBlock)errorBlock;
 
 -(void)findUserContactList:(ModelUser *)user
                    success:(DMFindOneBlock)successBlock

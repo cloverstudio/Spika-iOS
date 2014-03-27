@@ -83,5 +83,6 @@
 
 -(IBAction) startConversation;
 -(IBAction) openOwner;
+- (IBAction)findUserList:(id)sender;
 
 @end

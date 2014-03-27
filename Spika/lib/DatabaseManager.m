@@ -658,6 +658,37 @@
 
 }
 
+- (void) findUserListByGroupID:(NSString *)groupId
+                         count:(int)count
+                        offset:(int)offset
+                       success:(DMArrayPagingBlock)successBlock
+                         error:(DMErrorBlock)errorBlock
+{
+    NSString *strUrl = [NSString stringWithFormat:@"groupUsers/%@/%d/%d", groupId, count, offset];
+    [self setDefaultHeaderValues];
+    [[HUHTTPClient sharedClient] doGet:strUrl operationType:CSWebOperatonTypeJSON resultBlock:^(id result) {
+        
+        NSDictionary *dictionary  = result;
+        NSInteger totalResults = [dictionary[@"count"] integerValue];
+        NSArray *arrayUsers = dictionary[@"users"];
+        CSLog(@"Group:%@ have:%d total: %ld", groupId, [arrayUsers count], (long)totalResults);
+        NSMutableArray *arrayModel = [NSMutableArray arrayWithCapacity:arrayUsers.count];
+        for (NSDictionary *dict in arrayUsers) {
+            ModelUser *user = [ModelUser objectWithDictionary:dict];
+            [arrayModel addObject:user];
+        }
+        
+        successBlock(arrayModel, totalResults);
+        errorBlock(nil);
+        ;
+    } failureBlock:^(NSError *error) {
+        errorBlock([error localizedDescription]);
+    }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
+    
+}
+
 -(void) findUserContactList:(ModelUser *)user
                     success:(DMFindOneBlock)successBlock
                       error:(DMErrorBlock)errorBlock {
