@@ -444,12 +444,13 @@
     
     [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
                                                       count:PagingUserFetchNum offset:0
-                                                    success:^(NSArray *result) {
+                                                    success:^(NSArray *result, NSInteger totalResults) {
                                                         [[AlertViewManager defaultManager] dismiss];
                                                         if (result) {
                                                             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                                                            [dict setValue:_group forKey:@"group"];
-                                                            [dict setValue:result forKey:@"userItems"];
+                                                            [dict setObject:_group forKey:@"group"];
+                                                            [dict setObject:result forKey:@"userItems"];
+                                                            [dict setObject:@(totalResults) forKey:@"totalItems"];
                                                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:dict];
                                                         }
                                                     } error:^(NSString *errorString) {

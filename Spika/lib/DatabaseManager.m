@@ -661,25 +661,27 @@
 - (void) findUserListByGroupID:(NSString *)groupId
                          count:(int)count
                         offset:(int)offset
-                       success:(DMArrayBlock)successBlock
+                       success:(DMArrayPagingBlock)successBlock
                          error:(DMErrorBlock)errorBlock
 {
-    NSString *strUrl = [NSString stringWithFormat:@"groupUsers/%@/%d/%d",groupId,offset,count];
+    NSString *strUrl = [NSString stringWithFormat:@"groupUsers/%@/%d/%d", groupId, count, offset];
     [self setDefaultHeaderValues];
     [[HUHTTPClient sharedClient] doGet:strUrl operationType:CSWebOperatonTypeJSON resultBlock:^(id result) {
-        NSLog(@"group :%@ have :%@",groupId,result);
-        NSArray *array  = (NSArray *)result;
-        NSMutableArray *arrayModel = [NSMutableArray arrayWithCapacity:array.count];
-        for (NSDictionary *dict in array) {
+        
+        NSDictionary *dictionary  = result;
+        NSInteger totalResults = [dictionary[@"count"] integerValue];
+        NSArray *arrayUsers = dictionary[@"users"];
+        CSLog(@"Group:%@ have:%d total: %ld", groupId, [arrayUsers count], (long)totalResults);
+        NSMutableArray *arrayModel = [NSMutableArray arrayWithCapacity:arrayUsers.count];
+        for (NSDictionary *dict in arrayUsers) {
             ModelUser *user = [ModelUser objectWithDictionary:dict];
             [arrayModel addObject:user];
         }
         
-        successBlock(arrayModel);
+        successBlock(arrayModel, totalResults);
         errorBlock(nil);
         ;
     } failureBlock:^(NSError *error) {
-        successBlock(nil);
         errorBlock([error localizedDescription]);
     }
                    uploadProgressBlock:nil

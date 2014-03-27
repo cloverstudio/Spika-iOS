@@ -728,10 +728,12 @@
                                                       NSDictionary *dict = (NSDictionary *)[notification object];
                                                       NSArray *userItems = (NSArray *)(dict[@"userItems"]);
                                                       ModelGroup *group = (ModelGroup *)dict[@"group"];
+                                                      NSInteger totalItems = [dict[@"totalItems"] integerValue];
                                                       
                                                       HUUsersInGroupViewController *userListVC = [[HUUsersInGroupViewController alloc] initWithNibName:@"HUUsersInGroupViewController" bundle:nil];
                                                       userListVC.group = group;
                                                       userListVC.usersArray = [NSMutableArray arrayWithArray:userItems];
+                                                      userListVC.totalUsers = totalItems;
                                                       [_navigationController pushViewController:userListVC animated:YES];
                                                   }];
 

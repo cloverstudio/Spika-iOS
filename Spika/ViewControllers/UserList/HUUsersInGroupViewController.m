@@ -37,6 +37,7 @@
     if (self) {
         // Custom initialization
         self.title = NSLocalizedString(@"Members", nil);
+        self.totalUsers = -1;
     }
     return self;
 }
@@ -45,6 +46,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if (self.usersArray && self.totalUsers != -1) {
+        if (self.usersArray.count >= self.totalUsers) {
+            _isEnd = YES;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,15 +156,14 @@
     
     [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
                                                       count:PagingUserFetchNum offset:index
-                                                    success:^(NSArray *result) {
+                                                    success:^(NSArray *result, NSInteger totalResults) {
                                                         [[AlertViewManager defaultManager] dismiss];
                                                         if (result) {
-                                                            if (result.count < PagingUserFetchNum) {
-                                                                _isEnd = TRUE;
-                                                            }
-                                                            
                                                             [_usersArray addObjectsFromArray:result];
                                                             [_tableViewUsers reloadData];
+                                                            if (index + PagingUserFetchNum >= totalResults) {
+                                                                _isEnd = TRUE;
+                                                            }
                                                         }
                                                         _isLoading = FALSE;
                                                     } error:^(NSString *errorString) {

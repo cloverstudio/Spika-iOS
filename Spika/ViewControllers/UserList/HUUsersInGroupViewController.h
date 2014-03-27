@@ -12,5 +12,6 @@
 @interface HUUsersInGroupViewController : HUBaseViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableViewUsers;
 @property (nonatomic, strong) NSMutableArray *usersArray;
+@property (assign, nonatomic) NSInteger totalUsers;
 @property (nonatomic, strong) ModelGroup *group;
 @end

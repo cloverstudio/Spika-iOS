@@ -474,19 +474,6 @@
     [dialog show];
 }
 
-- (IBAction)findUserList:(id)sender {
-    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
-                                           message:nil];
-    
-    __weak HUMyGroupProfileViewController *this = self;
-    
-    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
-                                                      count:0 offset:1
-                                                    success:^(NSArray *result) {
-    } error:^(NSString *errorString) {
-    }];
-}
-
 #pragma mark - HUImageUploadViewConrollerDelegate Methods
 
 - (void) imageUploadViewController:(HUImageUploadViewController *)viewController

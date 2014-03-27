@@ -37,6 +37,5 @@
 -(IBAction) onDelete;
 -(IBAction) confirmDelete;
 -(IBAction) onChangePassword;
-- (IBAction)findUserList:(id)sender;
 
 @end
