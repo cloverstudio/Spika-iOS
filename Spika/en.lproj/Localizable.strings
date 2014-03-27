@@ -129,6 +129,9 @@
 "Search-Title"			= "SEARCH";
 "No Contact Advice"     = "You have no contacts yet... Add some friends to your contacts, so you could reach them more easily.";
 
+/*HUUsersInGroupViewController*/
+"Members"               = "Members";
+
 /*HUVoiceMessageDetailViewController*/
 "Wall"					= "WALL";
 

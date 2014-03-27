@@ -128,6 +128,9 @@
 "Search-Title"			= "Pretraži";
 "No Contact Advice"     = "Nemate kontakata... Dodajte nekoliko prijatelja u vaše kontakte, tako da kaše spikate s njima.";
 
+/*HUUsersInGroupViewController*/
+"Members"               = "članovi";
+
 /*HUVoiceMessageDetailViewController*/
 "Wall"					= "Wall";
 

@@ -57,7 +57,7 @@
 #define ReminderURL             @"resetPassword"
 
 #define PagingMessageFetchNum   20
-
+#define PagingUserFetchNum      20
 
 #define DefaultContactNum       20
 #define DefaultFavoriteNum      10
@@ -121,6 +121,7 @@
 #define NotificationTuggleSideMenu                      @"tuggleSideMenu"
 #define NotificationTuggleSubMenu                       @"tuggleSubMenu"
 #define NotificationReportViolation                     @"reportViolation"
+#define NotificationUsersInGroup                        @"usersInGroup"
 
 // UserDefaultKeys
 #define UserDefaultLastLoginEmail @"lastLoginEmail"

@@ -129,6 +129,9 @@
 "Search-Title"			= "検索";
 "No Contact Advice"     = "現在コンタクトリストが空です。お気に入りのユーザーを追加すればここから簡単にチャットが開始出来ます。";
 
+/*HUUsersInGroupViewController*/
+"Members"               = "メンバー";
+
 /*HUVoiceMessageDetailViewController*/
 "Wall"					= "チャット";
 

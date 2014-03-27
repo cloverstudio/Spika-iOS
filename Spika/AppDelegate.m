@@ -51,6 +51,7 @@
 #import "HUEULAViewController.h"
 #import "HULoginViewController.h"
 #import "HUInformationViewController.h"
+#import "HUUsersInGroupViewController.h"
 
 @interface AppDelegate (){
     UIView *_disableTouchView;
@@ -717,6 +718,24 @@
                 [_navigationController pushViewController:viewController animated:YES];
             }
     }];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:NotificationUsersInGroup
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *notification) {
+                                                      
+                                                      NSDictionary *dict = (NSDictionary *)[notification object];
+                                                      NSArray *userItems = (NSArray *)(dict[@"userItems"]);
+                                                      ModelGroup *group = (ModelGroup *)dict[@"group"];
+                                                      NSInteger totalItems = [dict[@"totalItems"] integerValue];
+                                                      
+                                                      HUUsersInGroupViewController *userListVC = [[HUUsersInGroupViewController alloc] initWithNibName:@"HUUsersInGroupViewController" bundle:nil];
+                                                      userListVC.group = group;
+                                                      userListVC.usersArray = [NSMutableArray arrayWithArray:userItems];
+                                                      userListVC.totalUsers = totalItems;
+                                                      [_navigationController pushViewController:userListVC animated:YES];
+                                                  }];
 
     [[NSNotificationCenter defaultCenter] addObserverForName:NotificationShowGroupProfile
         object:nil
