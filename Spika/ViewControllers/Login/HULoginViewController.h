@@ -29,6 +29,7 @@
     IBOutlet UIView          *_loginContainer;
     IBOutlet UITextField     *_emailField;
     IBOutlet UITextField     *_passwordField;
+    IBOutlet UILabel         *_serverURLLabel;
     IBOutlet UIButton        *_signInButton;
     IBOutlet UIButton        *_signUpButton;
     IBOutlet UIButton        *_forgotDetailsButton;
@@ -37,4 +38,5 @@
 -(IBAction) onSignIn;
 -(IBAction) onSignUp;
 -(IBAction) onForgotDetails;
+-(IBAction) onServerTap;
 @end

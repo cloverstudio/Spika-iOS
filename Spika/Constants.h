@@ -23,14 +23,16 @@
  
  */
 
+#define ServerListAPIURL        @"http://officialapi.spikaapp.com/api/servers"
+
 /* change here */
-#define APIEndPoint             @"http://officialapi.spikaapp.com"
+#define DefaultAPIEndPoint             @"http://officialapi.spikaapp.com"
 /* end change here */
 
-#define DatabaseURL             [NSString stringWithFormat:@"%@/api",APIEndPoint]
-#define HttpRootURL             [NSString stringWithFormat:@"%@/api",APIEndPoint]
-#define PageRootURL             [NSString stringWithFormat:@"%@/page",APIEndPoint]
-#define InformationPageTopURL   [NSString stringWithFormat:@"%@/page/information",APIEndPoint]
+#define DatabaseURL             [NSString stringWithFormat:@"%@/api",DefaultAPIEndPoint]
+#define HttpRootURL             [NSString stringWithFormat:@"%@/api",DefaultAPIEndPoint]
+#define PageRootURL             [NSString stringWithFormat:@"%@/page",DefaultAPIEndPoint]
+#define InformationPageTopURL   [NSString stringWithFormat:@"%@/page/information",DefaultAPIEndPoint]
 
 #ifndef Bind_Constants_h
 #define Bind_Constants_h

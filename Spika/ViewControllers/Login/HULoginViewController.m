@@ -98,6 +98,8 @@
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
+    [_serverURLLabel setText:DefaultAPIEndPoint];
+    _serverURLLabel.adjustsFontSizeToFitWidth = YES;
     
     __weak HULoginViewController *this = self;
     
@@ -274,6 +276,11 @@
                                            animated:YES];
 }
 
+-(IBAction) onServerTap{
+    
+    NSLog(@"tes");
+    
+}
 
 #pragma mark - UITextFieldDelegate
 

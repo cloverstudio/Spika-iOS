@@ -12,6 +12,7 @@
                 <outlet property="_loginContainer" destination="2zr-EA-bfT" id="kOS-P6-Aku"/>
                 <outlet property="_mainView" destination="F4s-Tl-ebP" id="LPh-aQ-pOO"/>
                 <outlet property="_passwordField" destination="Ui7-fi-xnB" id="dXW-DX-zpp"/>
+                <outlet property="_serverURLLabel" destination="OFf-IL-5KZ" id="HzI-Q0-HpS"/>
                 <outlet property="_signInButton" destination="Tws-TO-Whn" id="iyo-Vb-Rkz"/>
                 <outlet property="_signUpButton" destination="fe6-xM-icv" id="7GZ-gY-vzC"/>
                 <outlet property="view" destination="1" id="Ftx-MB-bey"/>
@@ -103,12 +104,16 @@
                             <rect key="frame" x="20" y="32" width="288" height="51"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFf-IL-5KZ">
+                        <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Server" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFf-IL-5KZ">
                             <rect key="frame" x="63" y="47" width="223" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <gestureRecognizers/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="WtA-HD-2h9" appends="YES" id="JJS-MN-urk"/>
+                            </connections>
                         </label>
                     </subviews>
                 </view>
@@ -117,6 +122,11 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <tapGestureRecognizer id="WtA-HD-2h9">
+            <connections>
+                <action selector="onServerTap" destination="-1" id="05i-BF-zOV"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="hp_login_fields_background.png" width="284" height="102"/>
