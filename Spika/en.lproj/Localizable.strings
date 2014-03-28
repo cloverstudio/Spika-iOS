@@ -46,7 +46,7 @@
 
 /* ServerList */
 "ServerList-Title"      = "SERVER LIST";
-"AddServerHint"         = "Add Server";
+"AddServerHint"         = "Custom URL";
 
 /* SignUpViewControlle */
 "SignUp-Title"          = "SIGN UP";

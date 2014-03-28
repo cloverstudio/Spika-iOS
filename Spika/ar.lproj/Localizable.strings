@@ -53,6 +53,10 @@
 "Duplicate email"       = "لديك عضوية مسبقا , الرجاء تسجيل الدخول";
 "Duplicate username"    = "اسم المستخدم هذا مسجل مسبقا ، الرجاء اختيار آخر";
 
+/* ServerList */
+"ServerList-Title"      = "حدد الخادم";
+"AddServerHint"         = "URL مخصص";
+
 /* ForgotPasswordView */
 "ForgotPassword-Send"   = "ارسال";
 "ForgotPassword-Sent"   = "كلمة المرور ارسلت لبريدك الالتكروني";

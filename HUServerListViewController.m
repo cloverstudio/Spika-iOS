@@ -33,6 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIColor *color = [UIColor grayColor];
+    self.addServerText.attributedPlaceholder = [[NSAttributedString alloc]
+                                                initWithString: NSLocalizedString(@"AddServerHint", @"")
+                                                attributes:@{NSForegroundColorAttributeName: color}];
+    
     serverList = [NSMutableArray array];
     NSLog(@"poziv prije database managera");
     DMArrayBlock successBlock = ^(NSArray *servers) {

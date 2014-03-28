@@ -53,6 +53,10 @@
 "Duplicate email"       = "既に登録済のメールアドレスです。";
 "Duplicate username"    = "ニックネームが既に登録されています。別のニックネームを設定して下さい。";
 
+/* Server List */
+"ServerList-Title"      = "サーバーを選択";
+"AddServerHint"         = "URLを設定";
+
 /* ForgotPasswordView */
 "ForgotPassword-Send"   = "送信";
 "ForgotPassword-Sent"   = "メールアドレスにパスワードを送信しました。";
