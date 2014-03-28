@@ -60,26 +60,6 @@
 - (id)init {
     
     if (self = [super init]) {
-        
-		//NOTE: TEMPORARY SOLUTION
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		NSString *APIEndpoint = ([defaults objectForKey:UserDefaultAPIEndpoint]);
-		if (!APIEndpoint) {
-			[defaults setObject:DatabaseURL forKey:UserDefaultAPIEndpoint];
-			[defaults synchronize];
-			APIEndpoint = DatabaseURL;
-		}
-		
-        //Configure our webServicesManager
-        
-        /*
-        [[HUHTTPClient sharedClient] setBaseUrl:APIEndpoint];
-        [[HUHTTPClient sharedClient] setShouldUseFastCaching:YES];
-        [[HUHTTPClient sharedClient] addAcceptableContentTypes:[NSSet setWithObjects:@"image/png", @"audio/wav", @"audio/3gp", nil]
-                                                            forOperationType:AFJSONParameterEncoding];
-        [[HUHTTPClient sharedClient] setImagesCacheQueuePriority:DISPATCH_QUEUE_PRIORITY_LOW];
-         */
-        
         _offlineNotificationModel = [HUOfflinePushNotification new];
     }
     
@@ -110,43 +90,6 @@
     return dic;
 }
 
-#pragma mark - API Endpoint
-
--(void) changeAPIEndpoint:(NSString *)apiEndpoint success:(DMUpdateBlock)successBlock error:(DMErrorBlock)errorBlock {
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *oldAPIEndpoint = [defaults objectForKey:UserDefaultAPIEndpoint];
-	
-	[[HUHTTPClient sharedClient] setBaseUrl:apiEndpoint];
-	
-	CSErrorBlock errors = ^(NSError *error) {
-		[[HUHTTPClient sharedClient] setBaseUrl:oldAPIEndpoint];
-		errorBlock(error.localizedDescription);
-	};
-	
-	CSResultBlock results = ^(id result) {
-		NSString *string = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
-		if ([string isEqual:@"yes"]) {
-			[defaults setObject:apiEndpoint forKey:UserDefaultAPIEndpoint];
-			[defaults synchronize];
-			successBlock(YES,nil);
-			[CSDispatcher dispatchMainQueue:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:NotificationSideMenuLogoutSelected object:nil];
-			}];
-		} else {
-			errors(nil);
-		}
-	};
-	
-	[[HUHTTPClient sharedClient] doGet:@"checkhookupserver"
-									   operationType:AFJSONParameterEncoding
-										 resultBlock:results
-										failureBlock:errors
-								 uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
-	
-	
-}
 
 #pragma mark - check methods
 -(NSDictionary *) checkUniqueSynchronous:(NSString *) key
