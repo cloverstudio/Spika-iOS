@@ -31,6 +31,7 @@
 #import "Utils.h"
 #import "HUSignUpViewController.h"
 #import "HUForgotPasswordViewController.h"
+#import "HUServerListViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -46,6 +47,7 @@
 @end
 
 @implementation HULoginViewController
+@synthesize selectedUrl = _selectedUrl;
 
 #pragma mark - Memory Managemnt
 
@@ -98,7 +100,13 @@
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
-    [_serverURLLabel setText:DefaultAPIEndPoint];
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_serverURLLabel setText:name];
+    }
+    else {
+        [_serverURLLabel setText:[ServerManager serverBaseUrl]];
+    }
     _serverURLLabel.adjustsFontSizeToFitWidth = YES;
     
     __weak HULoginViewController *this = self;
@@ -277,9 +285,11 @@
 }
 
 -(IBAction) onServerTap{
-    
-    NSLog(@"tes");
-    
+
+    HUServerListViewController *vcServerList = [[HUServerListViewController alloc] initWithNibName:@"HUServerListViewController" bundle:nil];
+    vcServerList.delegate = self;
+    [self.navigationController pushViewController:vcServerList animated:YES];
+
 }
 
 #pragma mark - UITextFieldDelegate
@@ -299,6 +309,13 @@
     }
     
     return YES;
+}
+
+-(void)addItemViewController:(id)controller didFinishEnteringItem:(NSString *)item
+{
+    self.selectedUrl = item;
+    _serverURLLabel.text = item;
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

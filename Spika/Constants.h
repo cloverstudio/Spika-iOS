@@ -22,6 +22,7 @@
  THE SOFTWARE.
  
  */
+#import "ServerManager.h"
 
 #define ServerListAPIURL        @"http://officialapi.spikaapp.com/api/servers"
 
@@ -29,10 +30,10 @@
 #define DefaultAPIEndPoint             @"http://officialapi.spikaapp.com"
 /* end change here */
 
-#define DatabaseURL             [NSString stringWithFormat:@"%@/api",DefaultAPIEndPoint]
-#define HttpRootURL             [NSString stringWithFormat:@"%@/api",DefaultAPIEndPoint]
-#define PageRootURL             [NSString stringWithFormat:@"%@/page",DefaultAPIEndPoint]
-#define InformationPageTopURL   [NSString stringWithFormat:@"%@/page/information",DefaultAPIEndPoint]
+#define DatabaseURL             [NSString stringWithFormat:@"%@/api",[ServerManager serverBaseUrl]]
+#define HttpRootURL             [NSString stringWithFormat:@"%@/api",[ServerManager serverBaseUrl]]
+#define PageRootURL             [NSString stringWithFormat:@"%@/page",[ServerManager serverBaseUrl]]
+#define InformationPageTopURL   [NSString stringWithFormat:@"%@/page/information",[ServerManager serverBaseUrl]]
 
 #ifndef Bind_Constants_h
 #define Bind_Constants_h
@@ -139,6 +140,8 @@
 #define DidAlreadyAutoSignedIn             @"DidAlreadyAutoSignedIn"
 #define LastOpenedGroupWall             @"LastOpenedGroupWall"
 #define EULAAgreed              @"EULAAgreed"
+#define serverBaseURLprefered @"serverBaseUrlPrefered"
+#define serverBaseNamePrefered @"serverBaseNamePrefered"
 
 // Timer
 #define AutoReloadInterval 5.0f
@@ -185,6 +188,8 @@
 #define kGenderDataSource    @[ @"Male", @"Female", @"No declaration" ]
 #define kStatusDataSource   @[ @"online", @"away", @"busy", @"offline" ]
 #define kStatusImageNames @[ @"user_online_icon", @"user_away_icon", @"user_busy_icon", @"user_offline_icon" ]
+#define kServerListName @"name"
+#define kServerListURL @"url"
 
 #endif
 

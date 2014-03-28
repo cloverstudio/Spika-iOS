@@ -27,5 +27,6 @@
     #import "Constants.h"
     #import "UIView+Extensions.h"
     #import "HUControls.h"
+    #import "ServerManager.h"
 
 #endif

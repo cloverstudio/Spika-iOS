@@ -250,7 +250,7 @@
         
     };
     
-
+ 
     [[HUHTTPClient sharedClient] doPost:AuthURL
                                         operationType:AFJSONParameterEncoding
                                                params:params
@@ -2691,6 +2691,23 @@
                     uploadProgressBlock:nil
                   downloadProgressBlock:nil];
 }
+
+-(void) getServerListWithSuccess:(DMArrayBlock)successBlock
+                        andError:(DMErrorBlock)errorBlock
+{
+    NSString *method = [self getURL:ServerListAPIURL withParameters:nil];
+    
+    [[HUHTTPClient sharedClient] doGet:method
+                         operationType:CSWebOperatonTypeJSON
+                           resultBlock:successBlock
+                          failureBlock:^(NSError *error) {
+                              //successBlock(error);
+                              NSLog(@"%@", error);
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
+}
+
 
 -(void) test{
     

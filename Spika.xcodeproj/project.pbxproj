@@ -11,6 +11,13 @@
 		4012FAB618D9794D004B1538 /* HUUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4012FAB418D9794D004B1538 /* HUUserListCell.xib */; };
 		4012FABE18D97B39004B1538 /* HUUsersInGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */; };
 		4012FABF18D97B39004B1538 /* HUUsersInGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4012FABD18D97B39004B1538 /* HUUsersInGroupViewController.xib */; };
+		74B0EDBF18E46281006D0F54 /* HUServerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B0EDBD18E46281006D0F54 /* HUServerListCell.m */; };
+		74B0EDC018E46281006D0F54 /* HUServerListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B0EDBE18E46281006D0F54 /* HUServerListCell.xib */; };
+		74B0EDC618E48298006D0F54 /* HUServerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B0EDC418E48298006D0F54 /* HUServerListViewController.m */; };
+		74B0EDC718E48298006D0F54 /* HUServerListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B0EDC518E48298006D0F54 /* HUServerListViewController.xib */; };
+		74B0EDCA18E58283006D0F54 /* ModelServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B0EDC918E58283006D0F54 /* ModelServer.m */; };
+		74B0EDCC18E59CB1006D0F54 /* hp_server_field_background_no_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B0EDCB18E59CB1006D0F54 /* hp_server_field_background_no_arrow.png */; };
+		74B0EDCF18E5A6F6006D0F54 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B0EDCE18E5A6F6006D0F54 /* ServerManager.m */; };
 		AD74BB3817E0AB200061F786 /* CSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = AD74BB3717E0AB200061F786 /* CSToast.m */; };
 		AD74BB4C17E0B3680061F786 /* favorites_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AD74BB3A17E0B3680061F786 /* favorites_icon.png */; };
 		AD74BB4D17E0B3680061F786 /* favorites_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD74BB3B17E0B3680061F786 /* favorites_icon@2x.png */; };
@@ -454,6 +461,17 @@
 		4012FABB18D97B39004B1538 /* HUUsersInGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUsersInGroupViewController.h; sourceTree = "<group>"; };
 		4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUsersInGroupViewController.m; sourceTree = "<group>"; };
 		4012FABD18D97B39004B1538 /* HUUsersInGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUUsersInGroupViewController.xib; sourceTree = "<group>"; };
+		74B0EDBC18E46281006D0F54 /* HUServerListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUServerListCell.h; sourceTree = "<group>"; };
+		74B0EDBD18E46281006D0F54 /* HUServerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUServerListCell.m; sourceTree = "<group>"; };
+		74B0EDBE18E46281006D0F54 /* HUServerListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUServerListCell.xib; sourceTree = "<group>"; };
+		74B0EDC318E48298006D0F54 /* HUServerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUServerListViewController.h; sourceTree = SOURCE_ROOT; };
+		74B0EDC418E48298006D0F54 /* HUServerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUServerListViewController.m; sourceTree = SOURCE_ROOT; };
+		74B0EDC518E48298006D0F54 /* HUServerListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUServerListViewController.xib; sourceTree = SOURCE_ROOT; };
+		74B0EDC818E58283006D0F54 /* ModelServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelServer.h; sourceTree = "<group>"; };
+		74B0EDC918E58283006D0F54 /* ModelServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelServer.m; sourceTree = "<group>"; };
+		74B0EDCB18E59CB1006D0F54 /* hp_server_field_background_no_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_server_field_background_no_arrow.png; sourceTree = "<group>"; };
+		74B0EDCD18E5A6F6006D0F54 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
+		74B0EDCE18E5A6F6006D0F54 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
 		AD74BB3617E0AB200061F786 /* CSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSToast.h; sourceTree = "<group>"; };
 		AD74BB3717E0AB200061F786 /* CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSToast.m; sourceTree = "<group>"; };
 		AD74BB3A17E0B3680061F786 /* favorites_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites_icon.png; sourceTree = "<group>"; };
@@ -1176,6 +1194,16 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		74B0EDBB18E46201006D0F54 /* ServerListCell */ = {
+			isa = PBXGroup;
+			children = (
+				74B0EDBC18E46281006D0F54 /* HUServerListCell.h */,
+				74B0EDBD18E46281006D0F54 /* HUServerListCell.m */,
+				74B0EDBE18E46281006D0F54 /* HUServerListCell.xib */,
+			);
+			name = ServerListCell;
+			sourceTree = "<group>";
+		};
 		AD74BB3917E0B3680061F786 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1649,6 +1677,7 @@
 		ADC6443017E0761500C16A9D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				74B0EDCB18E59CB1006D0F54 /* hp_server_field_background_no_arrow.png */,
 				B357D36818E3262B008FF3DD /* hp_server_field_background@2x.png */,
 				ADC6443117E0761500C16A9D /* hp_login_fields_background.png */,
 				ADC6443217E0761500C16A9D /* hp_login_fields_background@2x.png */,
@@ -1898,6 +1927,8 @@
 				ADC644FE17E0761600C16A9D /* UserManager.m */,
 				ADC644FF17E0761600C16A9D /* Utils.h */,
 				ADC6450017E0761600C16A9D /* Utils.m */,
+				74B0EDCD18E5A6F6006D0F54 /* ServerManager.h */,
+				74B0EDCE18E5A6F6006D0F54 /* ServerManager.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -1996,6 +2027,8 @@
 				ADC6452417E0761600C16A9D /* ModelUser.h */,
 				ADC6452517E0761600C16A9D /* ModelUser.m */,
 				ADC6452617E0761600C16A9D /* NSString+MD5.h */,
+				74B0EDC818E58283006D0F54 /* ModelServer.h */,
+				74B0EDC918E58283006D0F54 /* ModelServer.m */,
 			);
 			name = Model;
 			path = models;
@@ -2038,8 +2071,9 @@
 		ADC645A317E0761600C16A9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */,
+				74B0EDBB18E46201006D0F54 /* ServerListCell */,
 				ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */,
+				ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */,
 				ADC645A417E0761600C16A9D /* AlertViewManager.h */,
 				ADC645A517E0761600C16A9D /* AlertViewManager.m */,
 				ADC645A617E0761600C16A9D /* CSPageControl.h */,
@@ -2468,6 +2502,9 @@
 		B3E38A2718E4579D00470451 /* ServerList */ = {
 			isa = PBXGroup;
 			children = (
+				74B0EDC318E48298006D0F54 /* HUServerListViewController.h */,
+				74B0EDC418E48298006D0F54 /* HUServerListViewController.m */,
+				74B0EDC518E48298006D0F54 /* HUServerListViewController.xib */,
 			);
 			path = ServerList;
 			sourceTree = "<group>";
@@ -2648,6 +2685,7 @@
 				ADC6466817E0761600C16A9D /* favourite_on@2x.png in Resources */,
 				B32EA3F0186F92F800733D07 /* UserProfileView.xib in Resources */,
 				ADC6466E17E0761600C16A9D /* Icon-Small@2x.png in Resources */,
+				74B0EDCC18E59CB1006D0F54 /* hp_server_field_background_no_arrow.png in Resources */,
 				ADC6467117E0761600C16A9D /* iTunesArtwork.png in Resources */,
 				ADC6467217E0761600C16A9D /* location_bubble.png in Resources */,
 				ADC6467317E0761600C16A9D /* location_bubble@2x.png in Resources */,
@@ -2688,6 +2726,7 @@
 				ADC646A317E0761600C16A9D /* btn_slider_track_pressed.png in Resources */,
 				ADC646A417E0761600C16A9D /* btn_slider_track_pressed@2x.png in Resources */,
 				ADC646A517E0761600C16A9D /* hu_mic_button_new.png in Resources */,
+				74B0EDC018E46281006D0F54 /* HUServerListCell.xib in Resources */,
 				ADC646A617E0761600C16A9D /* hu_mic_button_new@2x.png in Resources */,
 				ADC646A717E0761600C16A9D /* hu_mic_button_new_recording.png in Resources */,
 				ADC646A817E0761600C16A9D /* hu_mic_button_new_recording@2x.png in Resources */,
@@ -2793,6 +2832,7 @@
 				B3C69A8B18732B320055DD19 /* MyGroupView.xib in Resources */,
 				AD74BB4F17E0B3680061F786 /* hu_right_arrow@2x.png in Resources */,
 				AD74BB5017E0B3680061F786 /* messages_icon.png in Resources */,
+				74B0EDC718E48298006D0F54 /* HUServerListViewController.xib in Resources */,
 				AD74BB5117E0B3680061F786 /* messages_icon@2x.png in Resources */,
 				B3142B7818B16A92004A4E75 /* InformationView.xib in Resources */,
 				AD74BB5217E0B3680061F786 /* no_messages_icon.png in Resources */,
@@ -2900,6 +2940,7 @@
 				ADC6470B17E0761700C16A9D /* SBJsonStreamWriterAccumulator.m in Sources */,
 				ADC6470C17E0761700C16A9D /* SBJsonStreamWriterState.m in Sources */,
 				ADC6470D17E0761700C16A9D /* SBJsonTokeniser.m in Sources */,
+				74B0EDCF18E5A6F6006D0F54 /* ServerManager.m in Sources */,
 				ADC6470E17E0761700C16A9D /* SBJsonUTF8Stream.m in Sources */,
 				ADC6470F17E0761700C16A9D /* SBJsonWriter.m in Sources */,
 				ADC6471017E0761700C16A9D /* NSObject+MKBlockAdditions.m in Sources */,
@@ -2923,6 +2964,7 @@
 				ADC6471D17E0761700C16A9D /* HUMenuNavigationItem+Users.m in Sources */,
 				ADC6471E17E0761700C16A9D /* HUMenuNavigationItem.m in Sources */,
 				B37479721874566E001CE0E7 /* HUWallViewController+Style.m in Sources */,
+				74B0EDCA18E58283006D0F54 /* ModelServer.m in Sources */,
 				ADC6471F17E0761700C16A9D /* HUOfflinePushNotification.m in Sources */,
 				ADC6472017E0761700C16A9D /* HUPushNotificationModel+Style.m in Sources */,
 				ADC6472117E0761700C16A9D /* HUPushNotificationModel.m in Sources */,
@@ -2934,6 +2976,7 @@
 				ADC6472517E0761700C16A9D /* ModelComment.m in Sources */,
 				ADC6472617E0761700C16A9D /* ModelGroup.m in Sources */,
 				ADC6472717E0761700C16A9D /* ModelGroupCategory.m in Sources */,
+				74B0EDC618E48298006D0F54 /* HUServerListViewController.m in Sources */,
 				ADC6472817E0761700C16A9D /* ModelMessage.m in Sources */,
 				B37479C818745EDA001CE0E7 /* HUDigitInputViewController.m in Sources */,
 				ADC6472917E0761700C16A9D /* ModelRecentActivity.m in Sources */,
@@ -2981,6 +3024,7 @@
 				ADC6477A17E0761700C16A9D /* HUImageView.m in Sources */,
 				ADC6477B17E0761700C16A9D /* HUMapBubbleView.m in Sources */,
 				B37479D918745EDA001CE0E7 /* HUSearchBarController+Style.m in Sources */,
+				74B0EDBF18E46281006D0F54 /* HUServerListCell.m in Sources */,
 				B37479D118745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m in Sources */,
 				B37479D518745EDA001CE0E7 /* ImageUploadVC.m in Sources */,
 				ADC6477C17E0761700C16A9D /* HUMediaPanelView+Style.m in Sources */,

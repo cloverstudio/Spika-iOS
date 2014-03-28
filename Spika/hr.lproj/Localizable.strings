@@ -44,6 +44,10 @@
 "Wrong email message"   = "Molimo upišite valjanu email adresu.";
 "Forgot-Details"        = "Zaboravili ste svoje podatke?";
 
+/* ServerList */
+"ServerList-Title"      = "Lista poslužitelja";
+"AddServerHint"         = "Dodajte poslužitelj";
+
 /* SignUpViewControlle */
 "SignUp-Title"          = "Registriraj se";
 "Username"              = "Korisničko ime";
