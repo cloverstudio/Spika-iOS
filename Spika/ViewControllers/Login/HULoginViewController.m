@@ -99,15 +99,6 @@
     UIColor *color = [UIColor grayColor];
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
-
-    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
-    if ([name length] > 0) {
-        [_serverURLLabel setText:name];
-    }
-    else {
-        [_serverURLLabel setText:[ServerManager serverBaseUrl]];
-    }
-    _serverURLLabel.adjustsFontSizeToFitWidth = YES;
     
     __weak HULoginViewController *this = self;
     
@@ -128,6 +119,16 @@
     [super viewWillAppear:animated];
 	
     self.navigationItem.leftBarButtonItem = nil;
+    
+    // update server label with correct server name or url
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_serverURLLabel setText:name];
+    }
+    else {
+        [_serverURLLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _serverURLLabel.adjustsFontSizeToFitWidth = YES;
 
 }
 

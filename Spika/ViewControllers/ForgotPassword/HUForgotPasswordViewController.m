@@ -35,6 +35,16 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self addBackButton];
+    
+    // update server label with correct server name or url
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectedServerLabel setText:name];
+    }
+    else {
+        [_selectedServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectedServerLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (NSString *) title {
@@ -48,15 +58,6 @@
      UIColor *color = [UIColor grayColor];
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     [_sendButton setTitle:NSLocalizedString(@"ForgotPassword-Send", @"") forState:UIControlStateNormal];
-    
-    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
-    if ([name length] > 0) {
-        [_selectedServerLabel setText:name];
-    }
-    else {
-        [_selectedServerLabel setText:[ServerManager serverBaseUrl]];
-    }
-    _selectedServerLabel.adjustsFontSizeToFitWidth = YES;
 
 }
 

@@ -100,6 +100,16 @@
         
         [this animateKeyboardWillHide:note];
     }];
+    
+    // update server label with correct server name or url
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectServerLabel setText:name];
+    }
+    else {
+        [_selectServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectServerLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
