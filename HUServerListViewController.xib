@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wLz-yz-OZp">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wLz-yz-OZp">
                     <rect key="frame" x="20" y="58" width="300" height="510"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.16078431900000001" green="0.16078431900000001" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
@@ -26,13 +26,20 @@
                         <outlet property="delegate" destination="-1" id="a7q-A7-0Yv"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hp_server_field_background_no_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="EZR-C7-Nty">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hp_server_field_background_no_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="EZR-C7-Nty">
                     <rect key="frame" x="14" y="10" width="286" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="qox-dK-hux"/>
+                    </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add server" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AYf-nP-ZzI">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add server" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AYf-nP-ZzI">
                     <rect key="frame" x="57" y="15" width="225" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="225" id="9SX-U6-gbp"/>
+                        <constraint firstAttribute="height" constant="38" id="Nfm-Td-Tp5"/>
+                    </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="URL" keyboardAppearance="alert" returnKeyType="done"/>
@@ -42,6 +49,17 @@
                 </textField>
             </subviews>
             <color key="backgroundColor" red="0.16078431900000001" green="0.16078431900000001" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wLz-yz-OZp" secondAttribute="bottom" id="1pq-Ln-7Xx"/>
+                <constraint firstItem="wLz-yz-OZp" firstAttribute="top" secondItem="EZR-C7-Nty" secondAttribute="bottom" id="AmG-c6-Gop"/>
+                <constraint firstItem="EZR-C7-Nty" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="AoS-xN-OwQ"/>
+                <constraint firstItem="EZR-C7-Nty" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="CCh-zO-h98"/>
+                <constraint firstItem="EZR-C7-Nty" firstAttribute="top" secondItem="AYf-nP-ZzI" secondAttribute="bottom" constant="-43" id="D2f-Jt-gdd"/>
+                <constraint firstAttribute="trailing" secondItem="EZR-C7-Nty" secondAttribute="trailing" constant="20" id="KAh-gg-55t"/>
+                <constraint firstAttribute="trailing" secondItem="wLz-yz-OZp" secondAttribute="trailing" id="NXN-IA-CoK"/>
+                <constraint firstItem="wLz-yz-OZp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Tfa-nU-wdZ"/>
+                <constraint firstItem="AYf-nP-ZzI" firstAttribute="leading" secondItem="EZR-C7-Nty" secondAttribute="trailing" constant="-243" id="glW-bM-9gG"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

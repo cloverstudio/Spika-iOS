@@ -141,6 +141,7 @@
                          _loginFieldsBackground.y -= 10;
                          _signInButton.y -= 25;
                          _signUpButton.y -= 25;
+                         _signUpInfoView.y -= 25;
                      }
                      completion:nil];
 }
@@ -158,6 +159,7 @@
                          _loginFieldsBackground.y += 20;
                          _signInButton.y += 50;
                          _signUpButton.y += 50;
+                         _signUpInfoView.y += 50;
                      }
                      completion:nil];
 }

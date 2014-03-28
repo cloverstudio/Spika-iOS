@@ -35,6 +35,7 @@
     IBOutlet UIButton        *_signInButton;
     IBOutlet UIButton        *_signUpButton;
     IBOutlet UILabel         *_selectServerLabel;
+    IBOutlet UIView          *_signUpInfoView;
 }
 
 -(IBAction) onSignIn;

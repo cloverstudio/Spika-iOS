@@ -13,6 +13,7 @@
                 <outlet property="_selectServerLabel" destination="RWW-9s-rAu" id="rha-QE-EK4"/>
                 <outlet property="_signInButton" destination="T1L-IQ-zRA" id="OtF-Wr-Ka3"/>
                 <outlet property="_signUpButton" destination="lc7-nU-GJu" id="3U8-69-3Au"/>
+                <outlet property="_signUpInfoView" destination="20a-aI-rVv" id="ms2-bY-p0z"/>
                 <outlet property="_usernameField" destination="GEZ-gY-GEN" id="9JQ-M3-GkL"/>
                 <outlet property="view" destination="1" id="ssv-TX-JJR"/>
             </connections>
@@ -39,21 +40,30 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="1Cp-p3-06H"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="PqM-8M-REg" userLabel="TextField - Email">
                                     <rect key="frame" x="56" y="101" width="239" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="x2f-DB-MB8"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zvK-Db-BTK" userLabel="TextField - Password">
                                     <rect key="frame" x="56" y="153" width="239" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="MoI-mf-Ivq"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
