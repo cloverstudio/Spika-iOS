@@ -28,6 +28,7 @@
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
 #import "HUDialog.h"
+#import "HUServerListViewController.h";
 
 #define kTagSignUpSucceededAlert    700
 
@@ -52,6 +53,7 @@
     CS_RELEASE(_usernameField);
     CS_RELEASE(_emailField);
     CS_RELEASE(_passwordField);
+    CS_RELEASE(_selectServerLabel);
     
     CS_SUPER_DEALLOC;
 }
@@ -71,7 +73,14 @@
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
-	 
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectServerLabel setText:name];
+    }
+    else {
+        [_selectServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectServerLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -211,6 +220,12 @@
 
 }
 
+- (IBAction)onServerTap:(id)sender {
+    HUServerListViewController *vcServerList = [[HUServerListViewController alloc] initWithNibName:@"HUServerListViewController" bundle:nil];
+    vcServerList.delegate = self;
+    [self.navigationController pushViewController:vcServerList animated:YES];
+}
+
 - (BOOL) validationAsync{
     
     if (!_usernameField.text || _usernameField.text.length == 0) {
@@ -310,5 +325,11 @@
     return YES;
 }
 
+-(void)addItemViewController:(id)controller didFinishEnteringItem:(NSString *)item
+{
+    self.selectedUrl = item;
+    _selectServerLabel.text = item;
+    [self.navigationController popToViewController:self animated:YES];
+}
 
 @end
