@@ -23,13 +23,17 @@
  */
 
 #import "HUBaseViewController.h"
+#import "HUServerListViewController.h"
 
-@interface HUForgotPasswordViewController : HUBaseViewController <UITextFieldDelegate>{
+@interface HUForgotPasswordViewController : HUBaseViewController <UITextFieldDelegate, ServerListSelectionDelegate>{
     IBOutlet UIButton        *_sendButton;
     IBOutlet UITextField     *_emailField;
-
+    IBOutlet UILabel         *_selectedServerLabel;
 }
 
 -(IBAction) sendForgotPasswordRequest;
+-(IBAction) onServerTap:(id)sender;
+
+@property (nonatomic, strong) NSString *serverUrl;
 
 @end

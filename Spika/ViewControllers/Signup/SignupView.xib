@@ -74,7 +74,7 @@
                             </connections>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc7-nU-GJu" userLabel="Button - SignUp">
-                            <rect key="frame" x="72" y="300" width="176" height="36"/>
+                            <rect key="frame" x="72" y="280" width="176" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.18431372939999999" green="0.80000007149999997" blue="0.48235297199999999" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -92,7 +92,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1L-IQ-zRA" userLabel="Button - SignIn">
-                            <rect key="frame" x="72" y="360" width="176" height="36"/>
+                            <rect key="frame" x="72" y="325" width="176" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.023529414089999999" green="0.0039215688589999999" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>

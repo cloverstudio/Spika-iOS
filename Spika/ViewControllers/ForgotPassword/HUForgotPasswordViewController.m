@@ -49,6 +49,15 @@
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     [_sendButton setTitle:NSLocalizedString(@"ForgotPassword-Send", @"") forState:UIControlStateNormal];
     
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectedServerLabel setText:name];
+    }
+    else {
+        [_selectedServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectedServerLabel.adjustsFontSizeToFitWidth = YES;
+
 }
 
 
@@ -82,5 +91,17 @@
     }
 }
 
+- (IBAction)onServerTap:(id)sender {
+    HUServerListViewController *vcServerList = [[HUServerListViewController alloc] initWithNibName:@"HUServerListViewController" bundle:nil];
+    vcServerList.delegate = self;
+    [self.navigationController pushViewController:vcServerList animated:YES];
+}
+
+-(void)addItemViewController:(id)controller didFinishEnteringItem:(NSString *)item
+{
+    self.serverUrl = item;
+    _selectedServerLabel.text = item;
+    [self.navigationController popToViewController:self animated:YES];
+}
 
 @end
