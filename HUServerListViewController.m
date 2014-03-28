@@ -11,6 +11,7 @@
 #import "DatabaseManager.h"
 #import "ModelServer.h"
 #import "AlertViewManager.h"
+#import "HUHTTPClient.h"
 
 @interface HUServerListViewController ()
 
@@ -87,6 +88,8 @@
     ModelServer *server = [serverList objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults] setObject:server.url forKey:serverBaseURLprefered];
     [[NSUserDefaults standardUserDefaults] setObject:server.name forKey:serverBaseNamePrefered];
+    [HUHTTPClient refreshClient];
+    
     NSString *selected = server.name;
     NSLog(@"returning: %@", selected);
     [self.delegate addItemViewController:self didFinishEnteringItem:selected];
@@ -114,6 +117,8 @@
     NSString *selected = textField.text;
     [[NSUserDefaults standardUserDefaults] setObject:selected forKey:serverBaseURLprefered];
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:serverBaseNamePrefered];
+    [HUHTTPClient refreshClient];
+
     NSLog(@"returning: %@", selected);
     [self.delegate addItemViewController:self didFinishEnteringItem:selected];
     return NO;

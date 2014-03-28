@@ -45,6 +45,18 @@
     return _sharedClient;
 }
 
++ (HUHTTPClient *)refreshClient {
+    static HUHTTPClient *_sharedClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedClient = [[HUHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:HttpRootURL]];
+    });
+    
+    return _sharedClient;
+}
+
+
+
 - (id)initWithBaseURL:(NSURL *)url {
     
     [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
