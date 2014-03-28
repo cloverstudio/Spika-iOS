@@ -34,24 +34,20 @@
 
 @implementation HUHTTPClient
 
+HUHTTPClient *_sharedClient = nil;
 
 + (HUHTTPClient *)sharedClient {
-    static HUHTTPClient *_sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    
+    if(_sharedClient == nil){
         _sharedClient = [[HUHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:HttpRootURL]];
-    });
+    }
     
     return _sharedClient;
 }
 
 + (HUHTTPClient *)refreshClient {
-    static HUHTTPClient *_sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedClient = [[HUHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:HttpRootURL]];
-    });
-    
+    NSLog(@"server change : %@",HttpRootURL);
+    _sharedClient = [[HUHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:HttpRootURL]];
     return _sharedClient;
 }
 

@@ -175,8 +175,8 @@
                      animations:^(){
                          
                          _loginContainer.y -= 10;
-                         _signInButton.y -= 50;
-                         _signUpButton.y -= 50;
+                         _signInButton.y -= 25;
+                         _signUpButton.y -= 25;
 
                      }
                      completion:nil];
@@ -193,8 +193,8 @@
                      animations:^(){
 
                          _loginContainer.y += 20;
-                         _signInButton.y += 100;
-                         _signUpButton.y += 100;
+                         _signInButton.y += 50;
+                         _signUpButton.y += 50;
                          
                      }
                      completion:nil];

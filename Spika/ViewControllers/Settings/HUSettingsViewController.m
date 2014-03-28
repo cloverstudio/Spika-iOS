@@ -99,28 +99,6 @@
 	[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Cache cleared", nil)];
 }
 
--(void) apiEndpointDidChange:(UITextField *)textField {
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	
-	DMErrorBlock errorBlock = ^(NSString *error) {
-		[CSToast showToast:NSLocalizedString(@"API Endpoint contains error", nil) withDuration:1.0f];
-		textField.text = [defaults objectForKey:UserDefaultAPIEndpoint];
-	};
-	
-	DMUpdateBlock successBlock = ^(BOOL success, NSString *error) {
-		if (success) {
-			
-		} else {
-			errorBlock(error);
-		}
-	};
-	
-	[[DatabaseManager defaultManager] changeAPIEndpoint:textField.text
-												success:successBlock
-												  error:errorBlock];
-	
-}
 
 -(void) savePassword:(NSString *)newPassword {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
