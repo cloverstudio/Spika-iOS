@@ -15,9 +15,14 @@
 
 @interface HUUsersInGroupViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    BOOL _isLoading;
-    BOOL _isEnd;
+
 }
+
+@property (strong, nonatomic, readwrite) NSString *groupID;
+@property (strong, nonatomic) NSMutableArray *usersArray;
+@property (assign, nonatomic) NSInteger totalUsers;
+@property (assign, nonatomic) BOOL isLoading;
+
 @end
 
 @implementation HUUsersInGroupViewController
@@ -37,7 +42,15 @@
     if (self) {
         // Custom initialization
         self.title = NSLocalizedString(@"Members", nil);
-        self.totalUsers = -1;
+        self.usersArray = [NSMutableArray array];
+        _isLoading = NO;
+    }
+    return self;
+}
+- (id)initWithGroupID:(NSString *)groupID {
+    self = [self initWithNibName:@"HUUsersInGroupViewController" bundle:nil];
+    if (self) {
+        self.groupID = groupID;
     }
     return self;
 }
@@ -46,11 +59,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    if (self.usersArray && self.totalUsers != -1) {
-        if (self.usersArray.count >= self.totalUsers) {
-            _isEnd = YES;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +72,10 @@
     NSIndexPath *indexPath = [self.tableViewUsers indexPathForSelectedRow];
     if (indexPath) {
         [self.tableViewUsers deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    //Load user list if users array is empty
+    if (self.usersArray.count == 0) {
+        [self findUsersInGroupWithOffset:0];
     }
 }
 
@@ -129,45 +141,36 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1) {//Last Row Will Display
-        if (_isLoading) {
-            return;
-        }
-        
-        if (!_isEnd) {
-            [self reloadTable];
+        if (self.usersArray.count < self.totalUsers) {
+            [self loadMoreUsers];
         }
     }
 }
 
-- (void)reloadTable
+- (void)loadMoreUsers
 {
-    if (!_isLoading ) {
-        [self findUsersInGroupWithOffset:[_usersArray count]];
+    if (!self.isLoading) {
+        [self findUsersInGroupWithOffset:[self.usersArray count]];
     }
 }
 - (void) findUsersInGroupWithOffset:(int)index
 {
-    if (_isLoading) {
-        return;
-    }
-    _isLoading = YES;
+    self.isLoading = YES;
     [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Loading", nil)
                                            message:nil];
     
-    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
+    [[DatabaseManager defaultManager] findUserListByGroupID:self.groupID
                                                       count:PagingUserFetchNum offset:index
                                                     success:^(NSArray *result, NSInteger totalResults) {
                                                         [[AlertViewManager defaultManager] dismiss];
                                                         if (result) {
-                                                            [_usersArray addObjectsFromArray:result];
-                                                            [_tableViewUsers reloadData];
-                                                            if (index + PagingUserFetchNum >= totalResults) {
-                                                                _isEnd = TRUE;
-                                                            }
+                                                            self.totalUsers = totalResults;
+                                                            [self.usersArray addObjectsFromArray:result];
+                                                            [self.tableViewUsers reloadData];
                                                         }
-                                                        _isLoading = FALSE;
+                                                        self.isLoading = FALSE;
                                                     } error:^(NSString *errorString) {
-                                                        _isLoading = FALSE;
+                                                        self.isLoading = FALSE;
                                                         [[AlertViewManager defaultManager] dismiss];
                                                     }];
 }

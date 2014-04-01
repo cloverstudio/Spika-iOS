@@ -724,16 +724,14 @@
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *notification) {
-                                                      
                                                       NSDictionary *dict = (NSDictionary *)[notification object];
-                                                      NSArray *userItems = (NSArray *)(dict[@"userItems"]);
-                                                      ModelGroup *group = (ModelGroup *)dict[@"group"];
-                                                      NSInteger totalItems = [dict[@"totalItems"] integerValue];
+                                                      NSString *groupID = dict[@"groupID"];
                                                       
-                                                      HUUsersInGroupViewController *userListVC = [[HUUsersInGroupViewController alloc] initWithNibName:@"HUUsersInGroupViewController" bundle:nil];
-                                                      userListVC.group = group;
-                                                      userListVC.usersArray = [NSMutableArray arrayWithArray:userItems];
-                                                      userListVC.totalUsers = totalItems;
+//                                                      NSArray *userItems = (NSArray *)(dict[@"userItems"]);
+//                                                      ModelGroup *group = (ModelGroup *)dict[@"group"];
+//                                                      NSInteger totalItems = [dict[@"totalItems"] integerValue];
+//                                                      
+                                                      HUUsersInGroupViewController *userListVC = [[HUUsersInGroupViewController alloc] initWithGroupID:groupID];
                                                       [_navigationController pushViewController:userListVC animated:YES];
                                                   }];
 

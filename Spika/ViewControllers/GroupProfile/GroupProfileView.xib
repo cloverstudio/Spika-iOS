@@ -53,7 +53,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" id="IT0-JT-a4E" userLabel="Category">
-                                    <rect key="frame" x="5" y="311" width="310" height="40"/>
+                                    <rect key="frame" x="5" y="356" width="310" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GSE-kT-B6Z">
@@ -77,7 +77,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="Pyn-if-5z2" userLabel="Category">
-                                    <rect key="frame" x="5" y="356" width="311" height="40"/>
+                                    <rect key="frame" x="5" y="401" width="311" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GroupName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSX-ae-lmw">
@@ -97,7 +97,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="lJH-IJ-PIW" userLabel="Category">
-                                    <rect key="frame" x="5" y="401" width="311" height="40"/>
+                                    <rect key="frame" x="5" y="447" width="311" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aJP-2A-PaG">
@@ -145,7 +145,7 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" id="IPa-Jm-uBV" userLabel="Category">
-                                    <rect key="frame" x="5" y="447" width="311" height="40"/>
+                                    <rect key="frame" x="5" y="311" width="311" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EsQ-Zx-BfM">
