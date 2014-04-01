@@ -112,7 +112,7 @@
 }
 
 
-- (void) layoutViews{
+- (void) layoutViews {
     
     CGSize imageSize = _avatarView.downloadedImageSize;
     float viewHeight = 212;
