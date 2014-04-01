@@ -44,6 +44,10 @@
 "Wrong email message"   = "Please provide a valid email address.";
 "Forgot-Details"        = "Forgot details?";
 
+/* ServerList */
+"ServerList-Title"      = "SERVER LIST";
+"AddServerHint"         = "Custom URL";
+
 /* SignUpViewControlle */
 "SignUp-Title"          = "SIGN UP";
 "Username"              = "Username";

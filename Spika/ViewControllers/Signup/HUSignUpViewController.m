@@ -28,6 +28,7 @@
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
 #import "HUDialog.h"
+#import "HUServerListViewController.h";
 
 #define kTagSignUpSucceededAlert    700
 
@@ -52,6 +53,7 @@
     CS_RELEASE(_usernameField);
     CS_RELEASE(_emailField);
     CS_RELEASE(_passwordField);
+    CS_RELEASE(_selectServerLabel);
     
     CS_SUPER_DEALLOC;
 }
@@ -71,7 +73,14 @@
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 
-	 
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectServerLabel setText:name];
+    }
+    else {
+        [_selectServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectServerLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -91,6 +100,16 @@
         
         [this animateKeyboardWillHide:note];
     }];
+    
+    // update server label with correct server name or url
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_selectServerLabel setText:name];
+    }
+    else {
+        [_selectServerLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _selectServerLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -120,8 +139,9 @@
                      animations:^(){
                          
                          _loginFieldsBackground.y -= 10;
-                         _signInButton.y -= 50;
-                         _signUpButton.y -= 50;
+                         _signInButton.y -= 25;
+                         _signUpButton.y -= 25;
+                         _signUpInfoView.y -= 25;
                      }
                      completion:nil];
 }
@@ -137,8 +157,9 @@
                      animations:^(){
                          
                          _loginFieldsBackground.y += 20;
-                         _signInButton.y += 100;
-                         _signUpButton.y += 100;
+                         _signInButton.y += 50;
+                         _signUpButton.y += 50;
+                         _signUpInfoView.y += 50;
                      }
                      completion:nil];
 }
@@ -209,6 +230,12 @@
     });
     
 
+}
+
+- (IBAction)onServerTap:(id)sender {
+    HUServerListViewController *vcServerList = [[HUServerListViewController alloc] initWithNibName:@"HUServerListViewController" bundle:nil];
+    vcServerList.delegate = self;
+    [self.navigationController pushViewController:vcServerList animated:YES];
 }
 
 - (BOOL) validationAsync{
@@ -310,5 +337,11 @@
     return YES;
 }
 
+-(void)addItemViewController:(id)controller didFinishEnteringItem:(NSString *)item
+{
+    self.selectedUrl = item;
+    _selectServerLabel.text = item;
+    [self.navigationController popToViewController:self animated:YES];
+}
 
 @end

@@ -352,6 +352,9 @@ typedef void (^DMLoadVoice)(NSData *data);
 
 -(void) setDeleteOnMessageId:(NSString *)_id deleteType:(int)deleteType success:(DMFindOneBlock)successBlock;
 
+-(void) getServerListWithSuccess:(DMArrayBlock)successBlock
+                andError:(DMErrorBlock)errorBlock;
+
 -(void) test;
 
 @end

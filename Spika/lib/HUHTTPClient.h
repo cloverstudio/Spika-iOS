@@ -31,6 +31,8 @@
 }
 
 + (HUHTTPClient *)sharedClient;
++ (HUHTTPClient *)refreshClient;
+
 - (void) setBaseUrl:(NSString *)url;
 
 - (void) imageFromURL:(NSURL*) imageURL

@@ -23,18 +23,23 @@
  */
 
 #import "HUBaseViewController.h"
+#import "HUServerListViewController.h"
 
-@interface HULoginViewController : HUBaseViewController <UITextFieldDelegate>{
+@interface HULoginViewController : HUBaseViewController <UITextFieldDelegate, ServerListSelectionDelegate>{
     IBOutlet UIView          *_mainView;
     IBOutlet UIView          *_loginContainer;
     IBOutlet UITextField     *_emailField;
     IBOutlet UITextField     *_passwordField;
+    IBOutlet UILabel         *_serverURLLabel;
     IBOutlet UIButton        *_signInButton;
     IBOutlet UIButton        *_signUpButton;
     IBOutlet UIButton        *_forgotDetailsButton;
 }
 
+@property (nonatomic) NSString *selectedUrl;
+
 -(IBAction) onSignIn;
 -(IBAction) onSignUp;
 -(IBAction) onForgotDetails;
+-(IBAction) onServerTap;
 @end

@@ -31,6 +31,7 @@
 #import "Utils.h"
 #import "HUSignUpViewController.h"
 #import "HUForgotPasswordViewController.h"
+#import "HUServerListViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -46,6 +47,7 @@
 @end
 
 @implementation HULoginViewController
+@synthesize selectedUrl = _selectedUrl;
 
 #pragma mark - Memory Managemnt
 
@@ -97,7 +99,6 @@
     UIColor *color = [UIColor grayColor];
     _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_emailField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_passwordField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
-
     
     __weak HULoginViewController *this = self;
     
@@ -118,6 +119,16 @@
     [super viewWillAppear:animated];
 	
     self.navigationItem.leftBarButtonItem = nil;
+    
+    // update server label with correct server name or url
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:serverBaseNamePrefered];
+    if ([name length] > 0) {
+        [_serverURLLabel setText:name];
+    }
+    else {
+        [_serverURLLabel setText:[ServerManager serverBaseUrl]];
+    }
+    _serverURLLabel.adjustsFontSizeToFitWidth = YES;
 
 }
 
@@ -165,8 +176,8 @@
                      animations:^(){
                          
                          _loginContainer.y -= 10;
-                         _signInButton.y -= 50;
-                         _signUpButton.y -= 50;
+                         _signInButton.y -= 25;
+                         _signUpButton.y -= 25;
 
                      }
                      completion:nil];
@@ -183,8 +194,8 @@
                      animations:^(){
 
                          _loginContainer.y += 20;
-                         _signInButton.y += 100;
-                         _signUpButton.y += 100;
+                         _signInButton.y += 50;
+                         _signUpButton.y += 50;
                          
                      }
                      completion:nil];
@@ -274,6 +285,13 @@
                                            animated:YES];
 }
 
+-(IBAction) onServerTap{
+
+    HUServerListViewController *vcServerList = [[HUServerListViewController alloc] initWithNibName:@"HUServerListViewController" bundle:nil];
+    vcServerList.delegate = self;
+    [self.navigationController pushViewController:vcServerList animated:YES];
+
+}
 
 #pragma mark - UITextFieldDelegate
 
@@ -292,6 +310,13 @@
     }
     
     return YES;
+}
+
+-(void)addItemViewController:(id)controller didFinishEnteringItem:(NSString *)item
+{
+    self.selectedUrl = item;
+    _serverURLLabel.text = item;
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

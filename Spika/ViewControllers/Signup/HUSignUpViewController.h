@@ -24,8 +24,9 @@
 
 #import "HUBaseViewController.h"
 #import "HUDialog.h"
+#import "HUServerListViewController.h"
 
-@interface HUSignUpViewController : HUBaseViewController <UITextFieldDelegate, HUDialogDelegate>{
+@interface HUSignUpViewController : HUBaseViewController <UITextFieldDelegate, HUDialogDelegate, ServerListSelectionDelegate>{
     IBOutlet UIView          *_mainView;
     IBOutlet UIImageView     *_loginFieldsBackground;
     IBOutlet UITextField     *_usernameField;
@@ -33,9 +34,14 @@
     IBOutlet UITextField     *_passwordField;
     IBOutlet UIButton        *_signInButton;
     IBOutlet UIButton        *_signUpButton;
+    IBOutlet UILabel         *_selectServerLabel;
+    IBOutlet UIView          *_signUpInfoView;
 }
 
 -(IBAction) onSignIn;
 -(IBAction) onSignUp;
+-(IBAction) onServerTap:(id)sender;
+
+@property (nonatomic, strong) NSString *selectedUrl;
 
 @end
