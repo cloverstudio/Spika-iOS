@@ -50,6 +50,7 @@
     IBOutlet UITextField    *_passwordValueLabel;
     IBOutlet UILabel        *_groupOwnerLabel;
     IBOutlet UITextField    *_groupOwnerValueLabel;
+    IBOutlet UILabel        *_memberLabel;
     
     IBOutlet NSLayoutConstraint *_aboutViewHeightConstraint;
     IBOutlet UIButton *_startConversationBtn;
@@ -83,6 +84,6 @@
 
 -(IBAction) startConversation;
 -(IBAction) openOwner;
-- (IBAction)findUserList:(id)sender;
+-(IBAction) viewMembers:(id)sender;
 
 @end

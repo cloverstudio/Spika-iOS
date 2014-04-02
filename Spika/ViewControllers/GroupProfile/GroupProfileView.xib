@@ -18,6 +18,7 @@
                 <outlet property="_contentView" destination="rta-1w-NH2" id="FVF-PY-mlI"/>
                 <outlet property="_groupOwnerLabel" destination="X2o-qu-gkd" id="7FY-RV-CeX"/>
                 <outlet property="_groupOwnerValueLabel" destination="sFa-py-jaX" id="GAa-Rb-SIU"/>
+                <outlet property="_memberLabel" destination="fsF-fa-bqG" id="dWl-Sk-tkg"/>
                 <outlet property="_nameLabel" destination="NSX-ae-lmw" id="8HR-CH-hCn"/>
                 <outlet property="_nameValueLabel" destination="Mgp-SB-mwx" id="XhF-0b-0hM"/>
                 <outlet property="_passwordLabel" destination="aJP-2A-PaG" id="Rcg-xT-ZYf"/>
@@ -39,15 +40,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1004"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="group_stub_large.png" translatesAutoresizingMaskIntoConstraints="NO" id="g9t-6D-Ss4" customClass="HUImageView">
-                                    <rect key="frame" x="5" y="5" width="310" height="216"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group_stub_large.png" translatesAutoresizingMaskIntoConstraints="NO" id="g9t-6D-Ss4" customClass="HUImageView">
+                                    <rect key="frame" x="5" y="5" width="311" height="216"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="216" id="Hfs-t6-bZT"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrZ-AV-Dn0">
-                                    <rect key="frame" x="5" y="229" width="310" height="80"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrZ-AV-Dn0">
+                                    <rect key="frame" x="5" y="229" width="311" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.12549020350000001" green="0.79607850309999995" blue="0.48235297199999999" alpha="1" colorSpace="deviceRGB"/>
                                     <constraints>
@@ -358,7 +359,7 @@
         </tapGestureRecognizer>
         <tapGestureRecognizer id="jns-gY-7Rf">
             <connections>
-                <action selector="findUserList:" destination="-1" id="eJF-FR-Bnp"/>
+                <action selector="viewMembers:" destination="-1" id="Pnr-zP-3nC"/>
             </connections>
         </tapGestureRecognizer>
     </objects>
