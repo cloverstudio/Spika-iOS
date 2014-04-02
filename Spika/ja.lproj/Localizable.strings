@@ -134,7 +134,7 @@
 "No Contact Advice"     = "現在コンタクトリストが空です。お気に入りのユーザーを追加すればここから簡単にチャットが開始出来ます。";
 
 /*HUUsersInGroupViewController*/
-"Members"               = "メンバー";
+"Members"               = "メンバー一覧";
 
 /*HUVoiceMessageDetailViewController*/
 "Wall"					= "チャット";

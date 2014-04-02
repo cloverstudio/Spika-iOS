@@ -133,6 +133,9 @@
 "Search-Title"			= "بحث";
 "No Contact Advice"     = "ليس لديك اي اصدقاء الان .";
 
+/*HUUsersInGroupViewController*/
+"Members"               = "أعضاء";
+
 /*HUVoiceMessageDetailViewController*/
 "Wall"					= "الحائظ";
 
