@@ -112,7 +112,7 @@
 }
 
 
-- (void) layoutViews{
+- (void) layoutViews {
     
     CGSize imageSize = _avatarView.downloadedImageSize;
     float viewHeight = 212;
@@ -437,25 +437,27 @@
 
 - (void) findUserList
 {
-    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
-                                           message:nil];
-    
-//    __weak HUGroupProfileViewController *this = self;
-    
-    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
-                                                      count:PagingUserFetchNum offset:0
-                                                    success:^(NSArray *result, NSInteger totalResults) {
-                                                        [[AlertViewManager defaultManager] dismiss];
-                                                        if (result) {
-                                                            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                                                            [dict setObject:_group forKey:@"group"];
-                                                            [dict setObject:result forKey:@"userItems"];
-                                                            [dict setObject:@(totalResults) forKey:@"totalItems"];
-                                                            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:dict];
-                                                        }
-                                                    } error:^(NSString *errorString) {
-                                                        [[AlertViewManager defaultManager] dismiss];
-                                                    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:@{@"groupID" : _group._id}];
+//    
+//    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
+//                                           message:nil];
+//    
+////    __weak HUGroupProfileViewController *this = self;
+//    
+//    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
+//                                                      count:PagingUserFetchNum offset:0
+//                                                    success:^(NSArray *result, NSInteger totalResults) {
+//                                                        [[AlertViewManager defaultManager] dismiss];
+//                                                        if (result) {
+//                                                            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//                                                            [dict setObject:_group forKey:@"group"];
+//                                                            [dict setObject:result forKey:@"userItems"];
+//                                                            [dict setObject:@(totalResults) forKey:@"totalItems"];
+//                                                            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:dict];
+//                                                        }
+//                                                    } error:^(NSString *errorString) {
+//                                                        [[AlertViewManager defaultManager] dismiss];
+//                                                    }];
 }
 
 - (IBAction) startConversation{

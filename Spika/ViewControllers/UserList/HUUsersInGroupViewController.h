@@ -11,7 +11,7 @@
 
 @interface HUUsersInGroupViewController : HUBaseViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableViewUsers;
-@property (nonatomic, strong) NSMutableArray *usersArray;
-@property (assign, nonatomic) NSInteger totalUsers;
-@property (nonatomic, strong) ModelGroup *group;
+
+@property (strong, nonatomic, readonly) NSString *groupID;
+- (id)initWithGroupID:(NSString *)groupID;
 @end
