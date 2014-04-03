@@ -161,6 +161,7 @@
     [_aboutLabel setText:NSLocalizedString(@"Group-Profile", nil)];
     [_passwordLabel setText:NSLocalizedString(@"Password", nil)];
     [_groupOwnerLabel setText:NSLocalizedString(@"Group-Owner", nil)];
+    [_memberLabel setText:NSLocalizedString(@"Members", nil)];
     
     _categoryValueLabel.enabled = NO;
     _nameValueLabel.enabled = NO;
@@ -435,31 +436,6 @@
     }
 }
 
-- (void) findUserList
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:@{@"groupID" : _group._id}];
-//    
-//    [[AlertViewManager defaultManager] showWaiting:NSLocalizedString(@"Sending", nil)
-//                                           message:nil];
-//    
-////    __weak HUGroupProfileViewController *this = self;
-//    
-//    [[DatabaseManager defaultManager] findUserListByGroupID:_group._id
-//                                                      count:PagingUserFetchNum offset:0
-//                                                    success:^(NSArray *result, NSInteger totalResults) {
-//                                                        [[AlertViewManager defaultManager] dismiss];
-//                                                        if (result) {
-//                                                            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//                                                            [dict setObject:_group forKey:@"group"];
-//                                                            [dict setObject:result forKey:@"userItems"];
-//                                                            [dict setObject:@(totalResults) forKey:@"totalItems"];
-//                                                            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:dict];
-//                                                        }
-//                                                    } error:^(NSString *errorString) {
-//                                                        [[AlertViewManager defaultManager] dismiss];
-//                                                    }];
-}
-
 - (IBAction) startConversation{
     if ([self isPasswordAlertNeeded:_group]) {
         [[AlertViewManager defaultManager] showInputPassword:@"Please input password"
@@ -483,8 +459,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:_owner];
 }
 
-- (IBAction)findUserList:(id)sender {
-    [self findUserList];
+- (IBAction)viewMembers:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUsersInGroup object:@{@"groupID" : _group._id}];
 }
 
 
