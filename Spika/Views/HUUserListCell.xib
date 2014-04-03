@@ -17,33 +17,6 @@
                         <rect key="frame" x="12" y="9" width="57" height="54"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zYX-hd-bZz">
-                        <rect key="frame" x="173" y="50" width="17" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="not_in_favorites_icon.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="favoriteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dEV-iC-jXf"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2b8-zP-9Gg">
-                        <rect key="frame" x="206" y="50" width="17" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="no_messages_icon.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="messageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Cnn-JU-c0N"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rvw-xM-Z1I">
-                        <rect key="frame" x="239" y="50" width="17" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="user_online_icon.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GPQ-re-epO">
                         <rect key="frame" x="77" y="25" width="209" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,17 +28,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="On9-Sv-k37" id="fgd-tT-S9B"/>
-                <outlet property="favoriteButton" destination="zYX-hd-bZz" id="Mhm-v1-CMW"/>
-                <outlet property="messageButton" destination="2b8-zP-9Gg" id="Dlc-B0-Rbc"/>
-                <outlet property="statusButton" destination="rvw-xM-Z1I" id="DmU-Ye-O6z"/>
                 <outlet property="usernameLabel" destination="GPQ-re-epO" id="drc-45-GGg"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="no_messages_icon.png" width="16" height="15"/>
-        <image name="not_in_favorites_icon.png" width="17" height="15"/>
-        <image name="user_online_icon.png" width="17" height="17"/>
         <image name="user_stub.png" width="61" height="55"/>
     </resources>
 </document>
