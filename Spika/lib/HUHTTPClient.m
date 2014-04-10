@@ -379,8 +379,6 @@ HUHTTPClient *_sharedClient = nil;
         [request setValue:[headers objectForKey:key] forHTTPHeaderField:key];
     }
     
-    [AFHTTPRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"audio/x-wav",@"audio/3gp",@"video/quicktime",@"video/mp4",nil]];
-    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     
     [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -391,6 +389,7 @@ HUHTTPClient *_sharedClient = nil;
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             fileRequestBlock(fileURL,nil);
         }
+     
     ];
     
     [operation start];
