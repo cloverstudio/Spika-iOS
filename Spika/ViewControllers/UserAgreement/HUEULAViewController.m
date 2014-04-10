@@ -50,7 +50,7 @@
                                self.view.height - titleLabel.height - okButton.height
                                );
     
-    NSString *htmlURL = [NSString stringWithFormat:@"%@/eula/%@",PageRootURL,NSLocalizedString(@"EULA_FILE", nil)];
+    NSString *htmlURL = [NSString stringWithFormat:@"%@/eula/%@",DefaultPageUrl,NSLocalizedString(@"EULA_FILE", nil)];
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlURL]]];
     webView.delegate = self;

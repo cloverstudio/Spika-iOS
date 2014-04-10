@@ -28,6 +28,7 @@
 
 /* change here */
 #define DefaultAPIEndPoint             @"http://officialapi.spikaapp.com"
+#define DefaultPageUrl             @"http://officialapi.spikaapp.com/page"
 /* end change here */
 
 #define DatabaseURL             [NSString stringWithFormat:@"%@/api",[ServerManager serverBaseUrl]]
