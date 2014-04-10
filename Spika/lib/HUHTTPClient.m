@@ -64,6 +64,7 @@ HUHTTPClient *_sharedClient = nil;
     }
     
     [self registerHTTPOperationClass:[HUHTTPClient class]];
+    [self setDefaultHeader:@"Accept" value:@"text/html"];
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Accept" value:@"audio/x-wav"];
     [self setDefaultHeader:@"Accept" value:@"audio/3gp"];
@@ -378,7 +379,7 @@ HUHTTPClient *_sharedClient = nil;
         [request setValue:[headers objectForKey:key] forHTTPHeaderField:key];
     }
     
-    [AFHTTPRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"audio/x-wav",@"audio/3gp",@"video/quicktime",@"video/mp4",nil]];
+    [AFHTTPRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"audio/x-wav",@"audio/3gp",@"video/quicktime",@"video/mp4",nil]];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     
