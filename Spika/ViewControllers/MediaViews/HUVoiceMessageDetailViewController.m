@@ -92,7 +92,7 @@
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
     NSString *soundFilePath = [docsDir stringByAppendingFormat:@"/%@", MessageTypeVoiceRecievedFileName];
-    soundFilePath = [soundFilePath stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
     _controlBar.voicePlayerPath = soundFilePath;
     
     _reportViolationBtn = [[UILabel alloc] init];

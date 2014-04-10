@@ -31,10 +31,11 @@
     UIButton *_pauseButton;
     UIButton *_stopButton;
     UIButton *_playButton;
-    UIProgressView *_progress;
+    UIView *_progressBar;
     AVAudioPlayer *_playerLocal;
     float _duration;
     NSTimer *_progressTimer;
+    float _maxBarWidth;
 }
 
 @end
@@ -76,19 +77,23 @@
     _playButton.frame = _pauseButton.frame;
     [_playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
-    
-    _progress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    CGRect progressFrame = CGRectMake(_pauseButton.frame.size.width + _pauseButton.frame.origin.x + CONTROL_BUTTONS_GAP, _pauseButton.frame.origin.y, self.frame.size.width - 2 * _pauseButton.frame.size.width - 2 * CONTROL_BUTTONS_GAP, self.frame.size.height);
 
 
-    UIImage *progressImage = [UIImage imageWithColor:[HUBaseViewController colorWithSharedColorType:HUSharedColorTypeGreen] andSize:progressFrame.size];
-    _progress.progressImage = progressImage;
+    _progressBar = [[UIView alloc] init];
+    _progressBar.backgroundColor = [HUBaseViewController colorWithSharedColorType:HUSharedColorTypeGreen];
     
-    UIImage *trackImage = [UIImage imageWithColor:[UIColor whiteColor] andSize:progressFrame.size];
-    _progress.trackImage = trackImage;
+    _maxBarWidth = self.frame.size.width - 2 * _pauseButton.frame.size.width - 2 * CONTROL_BUTTONS_GAP;
     
-    _progress.frame = progressFrame;
-    [self addSubview:_progress];
+    CGRect progressFrame = CGRectMake(_pauseButton.frame.size.width + _pauseButton.frame.origin.x + CONTROL_BUTTONS_GAP, _pauseButton.frame.origin.y, _maxBarWidth , self.frame.size.height);
+    _progressBar.frame = progressFrame;
+    _progressBar.width = 0;
+    
+    UIView *backgroundBarView = [[UIView alloc] init];
+    backgroundBarView.backgroundColor = [UIColor whiteColor];
+    backgroundBarView.frame = progressFrame;
+    [self addSubview:backgroundBarView];
+    [self addSubview:_progressBar];
+    
 }
 
 
@@ -115,27 +120,34 @@
 #pragma mark Progress tracking methods
 
 - (void)updateProgress {
+    
     if (!_playerLocal || _playerLocal.duration <= 0) {        
         [self reset];
         return;
     }
     float progress = (float)_playerLocal.currentTime / (float)_playerLocal.duration;
-    [_progress setProgress:progress animated:YES];
+    
+    _progressBar.width = _maxBarWidth * progress;
+
 }
 
 #pragma mark AVAudioPlayer control methods
 
 - (void)play {
     
+    if(_voicePlayerPath == nil)
+        return;
+    
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:_voicePlayerPath];
+    if(!fileExists)
+        return;
+    
     if (!_playerLocal) {
-        if (!_voicePlayerPath) {
-            NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-            NSString *docsDir = [dirPaths objectAtIndex:0];
-            _voicePlayerPath = [docsDir stringByAppendingFormat:@"/%@", MessageTypeVoiceFileName];
-            _voicePlayerPath = [_voicePlayerPath stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        }
+
         NSError *error = nil;
-        _playerLocal = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:_voicePlayerPath] error:&error];
+
+        NSData* data = [NSData dataWithContentsOfFile:_voicePlayerPath];
+        _playerLocal = [[AVAudioPlayer alloc] initWithData:data error:&error];
         if (error) {
             NSLog(@"AVAudioPlayer error:'%@'", [error description]);
         }
@@ -144,7 +156,9 @@
         AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof (doChangeDefaultRoute), &doChangeDefaultRoute);
         
         _playerLocal.delegate = self;
+        
     }
+    
 	[_playerLocal prepareToPlay];
     [_playerLocal play];
 
@@ -163,36 +177,27 @@
 }
 
 - (void)stop {
-    _playButton.hidden = NO;
-    _pauseButton.hidden = YES;
-    [_playerLocal stop];
-    [_progressTimer invalidate];
-    _progressTimer = nil;
-    [_playerLocal setCurrentTime:0];
     [self reset];
 }
 
 - (void)reset {
-	_voicePlayerPath = nil;
     [_progressTimer invalidate];
     _progressTimer = nil;
     _pauseButton.hidden = YES;
     _playButton.hidden = NO;
+    _progressBar.width = 0;
     _playerLocal = nil;
-    [_progress setProgress:0];
 }
 
 #pragma mark AVAudioPlayerDelegate methods
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    [_progress setProgress:1];
-    [_progressTimer invalidate];
-    double delayInSeconds = .2;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    
 	__weak HUVoicePlayerControlBar *this = self;
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
         [this reset];
     });
+    
 }
 
 #pragma mark UIButton actions

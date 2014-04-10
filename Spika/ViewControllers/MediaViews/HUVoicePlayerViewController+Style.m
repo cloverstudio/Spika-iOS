@@ -32,7 +32,7 @@
 }
 
 - (CGRect)frameForAvatarTitleView{
-    CGRect frame = CGRectMake(0, 44, 320, 75);
+    CGRect frame = CGRectMake(0, 0, 320, 75);
     return frame;
 }
 @end

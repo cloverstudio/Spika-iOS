@@ -1386,6 +1386,7 @@ didSelectLocationButton:(UIButton *)button {
     HUVoiceMessageDetailViewController *voicePlayerViewController = [[HUVoiceMessageDetailViewController alloc] init];
     voicePlayerViewController.message = message;
     [self.navigationController pushViewController:voicePlayerViewController animated:YES];
+    
 }
 #pragma mark - MessageLocationCellDelegate
 

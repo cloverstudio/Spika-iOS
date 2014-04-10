@@ -186,6 +186,12 @@ typedef enum {
     controlBar.alpha = 0;
     [_scrollView addSubview:controlBar];
 	_controlBar = controlBar;
+
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    NSString *soundFilePath = [docsDir stringByAppendingFormat:@"/%@", MessageTypeVoiceFileName];
+
+    _controlBar.voicePlayerPath = soundFilePath;
 }
 
 -(void)loadTimerLabel
