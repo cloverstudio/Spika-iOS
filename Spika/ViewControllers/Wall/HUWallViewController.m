@@ -943,7 +943,7 @@
                 
                 messageExists = YES;
                 
-                if(origMessage.modified != newMessage.modified){
+                if((origMessage.modified != newMessage.modified) || (origMessage.comment_count != newMessage.comment_count)){
                     somethingChanged = YES;
                     break;
                 }

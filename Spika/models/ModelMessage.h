@@ -61,6 +61,7 @@
 
 @property (readwrite) int deleteAt;
 @property (readwrite) int deleteType;
+@property (readwrite) int comment_count;
 
 @property (readwrite) long created;
 @property (readwrite) long readAt;

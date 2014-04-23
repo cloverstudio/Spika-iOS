@@ -56,6 +56,7 @@
 @synthesize avatarThumbFileId = _avatarThumbFileId;
 @synthesize deleteAt = _deleteAt;
 @synthesize deleteType = _deleteType;
+@synthesize comment_count = _comment_count;
 
 +(NSDictionary *) toDic:(ModelMessage *)message{
     NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc] init];
@@ -89,7 +90,8 @@
     [tmpDic setObject:message.avatarThumbFileId forKey:@"avatar_thumb_file_id"];
     [tmpDic setObject:[NSNumber numberWithInt:message.deleteAt] forKey:@"delete_at"];
     [tmpDic setObject:[NSNumber numberWithInt:message.deleteType] forKey:@"delete_type"];
-
+    [tmpDic setObject:[NSNumber numberWithInt:message.comment_count] forKey:@"comment_count"];
+    
     return tmpDic;
 }
 
@@ -327,6 +329,12 @@
         message.deleteType = 0;
     }
 
+    if ([dic objectForKey:@"comment_count"] != nil) {
+        message.comment_count = [[dic objectForKey:@"comment_count"] intValue];
+    }else{
+        message.comment_count = 0;
+    }
+    
     return message;
     
 }
@@ -423,6 +431,7 @@
     copy.avatarThumbUrl = self.avatarThumbUrl.copy;
     copy.deleteAt = self.deleteAt;
     copy.deleteType = self.deleteType;
+    copy.comment_count = self.comment_count;
     
     return copy;
 }
