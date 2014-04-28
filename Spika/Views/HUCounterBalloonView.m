@@ -78,39 +78,48 @@
 
 -(void) updateWithModel:(ModelMessage *)message {
     
-    [self setHidden:YES];
     
-    [[DatabaseManager defaultManager]
-     getCommentsCountByMessage:message
-     success:^(NSString *result){
+    
+//    [[DatabaseManager defaultManager]
+//     getCommentsCountByMessage:message
+//     success:^(NSString *result){
+//         
+//         dispatch_async(dispatch_get_main_queue(), ^{
+    
+    if (message.comment_count > 0) {
+        [self setHidden:NO];
+        [self setBaloonCount:message.comment_count];
+    } else {
+        [self setHidden:YES];
+    }
+    
+    
+             
+//             if(result != nil){
+//                 
+//                 if(result != nil && [result isKindOfClass:[NSString class]]){
+//                     
+//                     NSInteger *integer = [result integerValue];
+//                     
+//                     [self setHidden:NO];
+//                     [self setBaloonCount:integer];
+//                     
+//                     return;
+//                 }
+//                 
+//             }
+             
+//         });
+//
+//
+//     } error:^(NSString *errStr){
          
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             if(result != nil){
-                 
-                 if(result != nil && [result isKindOfClass:[NSString class]]){
-                     
-                     NSInteger *integer = [result integerValue];
-                     
-                     [self setHidden:NO];
-                     [self setBaloonCount:integer];
-                     
-                     return;
-                 }
-                 
-             }
-             
-         });
-
-
-     } error:^(NSString *errStr){
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             
-             
-         });
-         
-     }];
+//         dispatch_async(dispatch_get_main_queue(), ^{
+//             
+//             
+//         });
+//         
+//     }];
     
     
     
