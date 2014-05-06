@@ -92,7 +92,7 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
-	UILabel *label = [self noUsersLabel];
+	UILabel *label = [self createNoUsersLabel];
     
 	[self.view addSubview:label];
     
@@ -129,7 +129,6 @@
     
     __weak UIButton *button = (UIButton*)self.navigationItem.rightBarButtonItem.customView;
     __weak HUUsersViewController *this = self;
-    __weak UILabel *noUsersLabel = _noUsersLabel;
     
     ///take care of the case when the sub menu is dismissed from another source
     [[NSNotificationCenter defaultCenter] addObserverForName:NotificationHideSubMenu
@@ -524,8 +523,6 @@
     [self hideSearchBar:YES];
     
     NSString *name = parameters[@"name"];
-    BOOL isMale = [parameters[@"gender"] boolValue];
-    
     [self searchUsersWithText:name];
 }
 

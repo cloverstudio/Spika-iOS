@@ -292,9 +292,7 @@
 
 
 -(void) loadAvatar{
-    
-    __weak HUProfileViewController *this = self;
-    
+        
     if( _user.imageUrl != nil &&  _user.imageUrl.length > 0){
         NSString *url = _user.imageUrl;
         

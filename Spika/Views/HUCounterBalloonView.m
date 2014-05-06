@@ -58,7 +58,7 @@
         _label = [UILabel labelWithText:@"0"];
         _label.numberOfLines = 1;
         _label.textColor = [UIColor whiteColor];
-        _label.textAlignment = UITextAlignmentCenter;
+        _label.textAlignment = NSTextAlignmentCenter;
         _label.frame = CGRectMake(
             -3,
             0,

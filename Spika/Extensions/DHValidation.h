@@ -43,8 +43,6 @@ extern NSString * const DHCancelAsync;
 - (int) errorCountForTag: (NSString *) tag;
 - (void) reset;
 
-// Delegates
-- (void) updateErrorFieldDelegate:errorField withErrors:errors;
 
 // Basic Validators
 - (BOOL) validateAlpha: (NSString *) candidate;
@@ -58,10 +56,5 @@ extern NSString * const DHCancelAsync;
 // Complex validators (requires second parameter)
 - (BOOL) validateMatchesConfirmation: (NSString *) candidate parameter: (NSString *) confirmation;
 - (BOOL) validateMinimumLength: (NSString *) candidate parameter: (int) length;
-- (void) asyncValidationMethod: (id) candidate parameter: (NSInvocation *) invocation;
-- (void) asyncMethodComplete: (NSString *) tag withResult: (BOOL) result withMessage: (NSString *) message;
-
-// Valiator Cancels
-- (BOOL) cancelAsync: (id) candidate parameter: (NSArray *) tagAndTarget;
 
 @end

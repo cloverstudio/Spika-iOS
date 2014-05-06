@@ -56,7 +56,7 @@
     UILabel *label = [CSKit labelWithFrame:[HUGroupsTableViewCell frameForGroupNameLabel]
                                       font:[HUGroupsTableViewCell fontForGroupNameLabel]
                                  textColor:[self textColorForGroupNameLabel]
-                             textAlignment:UITextAlignmentLeft
+                             textAlignment:NSTextAlignmentLeft
                                       text:nil];
     label.numberOfLines = 0;
     

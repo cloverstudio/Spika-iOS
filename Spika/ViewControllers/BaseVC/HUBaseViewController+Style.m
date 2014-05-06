@@ -49,7 +49,7 @@
      forControlEvents:UIControlEventTouchUpInside];
     
     [button titleLabel].numberOfLines = 0;
-    [button titleLabel].lineBreakMode = UILineBreakModeWordWrap;
+    [button titleLabel].lineBreakMode = NSLineBreakByWordWrapping;
     
     return button;
 }

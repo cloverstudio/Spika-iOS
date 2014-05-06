@@ -192,7 +192,8 @@
 
 - (CGRect) frameForSendButton {
     
-    CGSize sendTitleSize = [NSLocalizedString(@"Send", @"") sizeWithFont:[self fontForSendButton]];
+    CGSize sendTitleSize = [NSLocalizedString(@"Send", @"") sizeForBoundingSize:CGSizeMake(NSNotFound, NSNotFound)
+                                                                           font:[self fontForSendButton]];
     CGFloat width = sendTitleSize.width > 65 ? sendTitleSize.width : 65;
     
     CGRect messageInputContainerFrame = [self frameForMessageInputContainer];

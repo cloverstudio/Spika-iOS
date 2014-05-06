@@ -82,11 +82,6 @@
             [self setButtonSelection:button selected:NO];
         }
     }
-    
-    for (UIButton *button in self.buttons) {
-        
-        
-    }
 }
 
 - (void)setButtonSelection:(UIButton*)button selected:(bool)selected {

@@ -145,8 +145,6 @@
 }
 
 - (void) showViewType:(HUViewType)viewType animated:(BOOL)animated {
-
-     __weak HUBaseTableViewController *this = self;
     
     BOOL showMainView = NO;
     BOOL showLoadingView = NO;

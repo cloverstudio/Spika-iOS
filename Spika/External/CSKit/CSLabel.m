@@ -73,7 +73,8 @@
     CGFloat width = self.bounds.size.width;
     
     CGRect frame = self.frame;
-    frame.size = [self.text sizeWithFont:[UIFont systemFontOfSize:self.font.pointSize + 2] constrainedToSize:CGSizeMake(frame.size.width - self.margin.left - self.margin.right*2, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    frame.size = [self.text sizeForBoundingSize:CGSizeMake(frame.size.width - self.margin.left - self.margin.right*2, 9999)
+                                           font:[UIFont systemFontOfSize:self.font.pointSize + 2]];
     frame.size.width = width;
     
     self.frame = frame;
@@ -176,11 +177,11 @@
                 mPartOfTextStringWidth = [mPartOfTextString sizeWithFont:self.font constrainedToSize:CGSizeMake(self.frame.size.width, 9999)].width;
                 
                 //--- set extra space from beginning
-                if(self.textAlignment == UITextAlignmentCenter)
+                if(self.textAlignment == NSTextAlignmentCenter)
                 {
                     extraSpaceFromBeginning = (self.frame.size.width-mPartOfTextStringWidth)/2;
                 }
-                else if(self.textAlignment == UITextAlignmentRight)
+                else if(self.textAlignment == NSTextAlignmentRight)
                 {
                     extraSpaceFromBeginning = self.frame.size.width-mPartOfTextStringWidth;
                 }
@@ -206,11 +207,11 @@
             
             
             //--- set extra space from beginning
-            if(self.textAlignment == UITextAlignmentCenter)
+            if(self.textAlignment == NSTextAlignmentCenter)
             {
                 extraSpaceFromBeginning = (self.frame.size.width-mPartOfTextStringWidth)/2;
             }
-            else if(self.textAlignment == UITextAlignmentRight)
+            else if(self.textAlignment == NSTextAlignmentRight)
             {
                 extraSpaceFromBeginning = self.frame.size.width-mPartOfTextStringWidth;
             }

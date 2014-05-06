@@ -312,7 +312,8 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
     int bringupHeight = KeyboardHeight;
-    NSString *keyboardLanguage = [UITextInputMode currentInputMode].primaryLanguage;
+    UITextInputMode *current = [[UITextInputMode activeInputModes] firstObject];
+    NSString *keyboardLanguage = current.primaryLanguage;
     
     if([keyboardLanguage rangeOfString:@"ja"].location != NSNotFound){
         bringupHeight += JapaneseSuggestionAreaHeight;

@@ -37,8 +37,8 @@
         toast.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.6f];
         toast.textColor = [UIColor whiteColor];
         toast.numberOfLines = 1000;
-        toast.textAlignment = UITextAlignmentCenter;
-        toast.lineBreakMode = UILineBreakModeWordWrap;
+        toast.textAlignment = NSTextAlignmentCenter;
+        toast.lineBreakMode = NSLineBreakByWordWrapping;
         toast.font = [UIFont systemFontOfSize:14.0f];
         //    toast.alpha = 0.0f;
         toast.layer.cornerRadius = kCBToastCornerRadius;

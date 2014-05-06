@@ -51,7 +51,6 @@
     HUPickerTableView   *_pickerTableView;
 }
 
--(void)resignActiveTextViewAndHideKeyboard;
 -(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType;
 -(void)removePickerTableView;
 
@@ -277,11 +276,14 @@
         }
 
     }
-    
 }
 
 - (void) downloadSucceed:(id) sender{
     [self performSelector:@selector(layoutViews) withObject:nil afterDelay:0.1];
+}
+
+-(void)hideKeyboardFor:(UIView *)label {
+
 }
 
 #pragma mark - Load Categories

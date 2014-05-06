@@ -301,7 +301,10 @@
     if(index == 0){
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSideMenuLogoutSelected object:nil];
     }
-    
+}
+
+-(void) dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 @end

@@ -108,7 +108,10 @@
     NSString *result = [[HUHTTPClient sharedClient] doGetSynchronous:url];
     
     if(result != nil){
-        id resultJSON = [result JSONValue];
+        ;
+        id resultJSON = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding]
+                                                        options:NSJSONReadingAllowFragments
+                                                          error:nil];
         
         if([resultJSON isKindOfClass:[NSArray class]]){
             
@@ -695,8 +698,6 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[ModelUser objectToDictionary:toUser]];
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
-    
     // disable to update email
     [params removeObjectForKey:@"email"];
     
@@ -741,7 +742,6 @@
         //remove password
         [params removeObjectForKey:@"password"];
         
-        NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
         [self setDefaultHeaderValues];
         
         [[HUHTTPClient sharedClient] doPost:@"updateUser"
@@ -801,8 +801,6 @@
                             success:(DMUpdateBlock)successBlock
                               error:(DMErrorBlock)errorBlock{
     
-    BOOL isAdding = NO;
-        
     if ([user.contacts containsObject:contactId]) {
         
         NSDictionary *params = @{@"user_id":contactId};

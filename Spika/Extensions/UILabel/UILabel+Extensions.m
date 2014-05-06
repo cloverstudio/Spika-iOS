@@ -41,7 +41,7 @@
     label.text = text;
     label.backgroundColor = [UIColor clearColor];
     label.numberOfLines = 0;
-    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     [label sizeToFit];
     
     return label;

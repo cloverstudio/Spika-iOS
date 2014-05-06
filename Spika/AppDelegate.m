@@ -234,7 +234,7 @@
                      
                      ModelUser *user = (ModelUser *) result;
                      
-                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:user];
                      });
                      
@@ -256,7 +256,7 @@
                      
                      ModelGroup *group = (ModelGroup *) result;
                      
-                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupProfile object:group];
                      });
                      
@@ -295,7 +295,9 @@
     
     if(eulaAgreed == nil){
         HUEULAViewController *eulaVC = [[HUEULAViewController alloc] initWithNibName:@"HUEULAView" bundle:nil];
-        [loginNavController presentModalViewController:eulaVC animated:YES];
+        [loginNavController presentViewController:eulaVC
+                                         animated:YES
+                                       completion:nil];
     }
     
     CS_RELEASE(loginNavController);
@@ -399,7 +401,7 @@
                     if(result){
                         ModelUser *user = result;
                         
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                         });
                     }
@@ -417,7 +419,7 @@
                     if(result){
                         ModelGroup *group = result;
                         
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
                         });
                     }
@@ -457,7 +459,7 @@
             if(result){
                 ModelUser *user = result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                 });
                 
@@ -478,7 +480,7 @@
             if(result){
                 ModelGroup *group = result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
                 });
             }else{
@@ -504,7 +506,7 @@
                 
                 ModelUser *user = (ModelUser *) result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:user];
                 });
                 
@@ -526,7 +528,7 @@
                  
                  ModelGroup *group = (ModelGroup *) result;
                  
-                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                      [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupProfile object:group];
                  });
                  
@@ -1020,7 +1022,8 @@
 			HUPasswordInputBlock block = ^(id controller, BOOL isSuccess) {
 				if (isSuccess) {
 					self.isPasswordInModalPopover = NO;
-					[self.navigationController dismissModalViewControllerAnimated:YES];
+                    [self.navigationController dismissViewControllerAnimated:YES
+                                                                  completion:nil];
 				}
 			};
 			

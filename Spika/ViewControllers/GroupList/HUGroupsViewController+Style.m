@@ -186,15 +186,17 @@
     return kFontArialMTOfSize(kFontSizeMiddium);
 }
 
--(UILabel *)noGroupsLabel
+-(UILabel *)createNoGroupsLabel
 {
 	UILabel *label = [[UILabel alloc] init];
 	label.backgroundColor = [UIColor clearColor];
 	label.text = NSLocalizedString(@"No Groups", nil);
 	label.font = [UIFont systemFontOfSize:kFontSizeSmall];
-	CGSize size = [label.text sizeWithFont:label.font];
+	CGSize size = [label.text sizeForBoundingSize:CGSizeMake(NSNotFound, NSNotFound)
+                                             font:label.font];
+    
 	label.frame = CGRectMake(0, 110, size.width, size.height);
-	label.textAlignment = UITextAlignmentCenter;
+	label.textAlignment = NSTextAlignmentCenter;
 	label.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, label.center.y);
 	label.hidden = YES;
 	return label;

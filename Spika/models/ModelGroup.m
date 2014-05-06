@@ -62,12 +62,17 @@
 
 +(NSString *) toJSON:(ModelGroup *)group{
     NSDictionary *tmpDic = [ModelGroup toDic:group];
-    return [tmpDic JSONRepresentation];
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:tmpDic
+                                                                          options:NSJSONWritingPrettyPrinted
+                                                                            error:nil]
+                                 encoding:NSUTF8StringEncoding];
 }
 
 +(ModelGroup *) jsonToObj:(NSString *)strJSON{
     
-    NSMutableDictionary *tmpDic = [strJSON JSONValue];
+    NSMutableDictionary *tmpDic = [NSJSONSerialization JSONObjectWithData:[strJSON dataUsingEncoding:NSUTF8StringEncoding]
+                                                                  options:NSJSONReadingAllowFragments
+                                                                    error:nil];
     return [ModelGroup dicToObj:tmpDic];
     
 }

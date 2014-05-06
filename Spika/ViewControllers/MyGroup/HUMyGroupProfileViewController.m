@@ -198,9 +198,9 @@
     
     _avatarImage = [image copy];
     _avatarView.image = image;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
     [self layoutViews];
-    
 }
 
 -(IBAction) confirmDelete{
@@ -293,9 +293,13 @@
         return;
     }
     
-    if(index == 0)
+    if(index == 0) {
         [self onDelete];
-    
+    }
+}
+
+-(void) dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 -(IBAction) onDelete {

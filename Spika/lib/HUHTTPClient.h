@@ -77,6 +77,4 @@
                   uploadProgressBlock:(CSProgressBlock)uploadProgressBlock
                 downloadProgressBlock:(CSProgressBlock)downloadProgressBlock;
 
-- (void) handleCriticalError;
-
 @end

@@ -60,7 +60,11 @@
 }
 
 +(NSString *) objectToJson:(ModelComment *)comment{
-    return [[ModelComment objectToDictionary:comment] JSONRepresentation];
+    
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:[ModelComment objectToDictionary:comment]
+                                                                          options:NSJSONWritingPrettyPrinted
+                                                                            error:nil]
+                                 encoding:NSUTF8StringEncoding];
 }
 
 + (id) objectWithJson:(NSString *)strJSON{

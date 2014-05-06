@@ -656,6 +656,10 @@
     
 }
 
+- (void) dropViewDidBeginRefreshing:(id)sender {
+
+}
+
 - (void) getPage:(int) page {
     
     if(_targetMode == ModeUser) {
@@ -1217,8 +1221,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
-   [self dismissModalViewControllerAnimated:YES];
-
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
 
     if (CFStringCompare((CFStringRef) mediaType,  kUTTypeImage, 0) == kCFCompareEqualTo) {
@@ -1231,16 +1236,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
     if (CFStringCompare((CFStringRef) mediaType,  kUTTypeMovie, 0) == kCFCompareEqualTo) {
         NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
-        if (url) {
-			AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:url];
-			CMTime duration = playerItem.duration;
-
-			//if (CMTimeGetSeconds(duration) <= kVideoMaxLength)
-				[self performSelector:@selector(sendVideo:) withObject:url afterDelay:0.5];
-			//else
-			//	[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Video-Time-Too-Long", nil)];
+        if (url) {				
+            [self performSelector:@selector(sendVideo:)
+                       withObject:url
+                       afterDelay:0.5];
 		}
-        
     }
     
 }

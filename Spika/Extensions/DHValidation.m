@@ -66,12 +66,15 @@ NSString * const DHCancelAsync = @"cancelAsync:";
     // Check if this method takes a paramter
     if([self respondsToSelector:selector])
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         isValid = [self performSelector:selector withObject:candidate withObject:parameter];
     }
     else
     {
         selector = NSSelectorFromString(rule);
         isValid = [self performSelector:selector withObject:candidate];
+#pragma clang diagnostic pop
     }
     
     [self modifyErrorTable:tag method:rule isValid:isValid];

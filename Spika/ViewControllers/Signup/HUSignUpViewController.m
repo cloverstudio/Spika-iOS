@@ -28,17 +28,11 @@
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
 #import "HUDialog.h"
-#import "HUServerListViewController.h";
+#import "HUServerListViewController.h"
 
 #define kTagSignUpSucceededAlert    700
 
-@interface HUSignUpViewController () {
-}
-
-#pragma mark - Animations
-- (void) showLoadingView:(BOOL) show animated:(BOOL) animated;
-- (void) animateKeyboardWillShow:(NSNotification *)aNotification;
-- (void) animateKeyboardWillHide:(NSNotification *)aNotification;
+@interface HUSignUpViewController ()
 
 @end
 
@@ -296,6 +290,10 @@
 }
 
 #pragma mark - HUDialogDelegate
+
+- (void)dialog:(HUDialog *)dialog didPressButtonAtIndex:(NSInteger)index {
+
+}
 
 -(void) dialogDidPressCancel:(HUDialog *)dialog{
     

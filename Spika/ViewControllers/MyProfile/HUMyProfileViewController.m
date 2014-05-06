@@ -566,8 +566,9 @@
        didFinishPickingImage:(UIImage*)image
                  editingInfo:(NSDictionary*)editingInfo{
     
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
     
-    [self dismissModalViewControllerAnimated:YES];
     [self performSelector:@selector(openUimageUploadViewController:)
                withObject:image
                afterDelay:0.5];

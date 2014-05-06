@@ -39,8 +39,6 @@
 
 @implementation UserListCell
 
-@synthesize userAvatarImageView = _userAvatarImageView;
-
 #pragma mark - Initialization
 
 -(id) initWithUser:(ModelUser *)user reuseIdentifier:(NSString *)reuseIdentifier{

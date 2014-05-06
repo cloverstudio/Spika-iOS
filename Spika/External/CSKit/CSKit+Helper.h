@@ -25,41 +25,6 @@
 ///returns YES if iPhone has screen larger than 480p
 +(BOOL) isIPhone5;
 
-/*
-///iOS 3.0
-///Creates a custom CSTabBarItem
-///@param image normal image
-///@param selectedImage image when the tab is selected
-///@return an autoreleased instance of CSTabBarItem
-+(id)csTabBarItemWithImage:(UIImage *)image
-             selectedImage:(UIImage *)selectedImage;
-*/
-
-#pragma mark - TabBarItem
- 
-///iOS 5.0
-///Creates a custom UITabBarItem
-///@param image normal image
-///@param selectedImage image when the tab is selected
-///@param title title of the tab
-///@param font custom font to use. nil for default
-///@return an autoreleased instance of UITabBarItem
-+(UITabBarItem *)tabBarItemWithImage:(UIImage *)image
-                       selectedImage:(UIImage *)selectedImage
-                               title:(NSString *)title
-                                font:(UIFont *)font;
-
-///iOS 3.0
-///Creates a custom UITabBarItem
-///@param imageName imageName
-///@param title title of the tab
-///@param tag tag of the tab
-///@return an autoreleased instance of UITabBarItem
-+(UITabBarItem *)tabBarItemWithImageNamed:(NSString *)imageName
-                                    title:(NSString *)title
-                                      tag:(NSInteger) tag;
-
-
 #pragma mark - UINavigationController
 
 ///iOS 3.0
@@ -238,20 +203,6 @@
 ///@param button a button to form the UIBarButtonItemWith
 ///@return an autoreleased UIBarButtonItem
 +(UIBarButtonItem*) barButtonItemWithButton:(UIButton*) button;
-
-///iOS 4.0
-///Creates a custom CSBarButtonItem with UIActivityIndicatorView added as subview
-+(UIBarButtonItem *) barButtonItemWithActivitiIndicator;
-
-///iOS 4.0
-///Creates a custom CSBarButtonItem
-///@param UIActivityIndicatorViewStyle style of UIActivityIndicatorView
-+(UIBarButtonItem *) barButtonItemWithActivitiIndicator:(UIActivityIndicatorViewStyle)indicatorStyle;
-
-///iOS 4.0
-///Creates a custom CSBarButtonItem
-///@param CGFloat widht of fixed item
-+(UIBarButtonItem *) barButtonItemWithFixedSpace:(CGFloat) width;
 
 #pragma mark - UITextView
 

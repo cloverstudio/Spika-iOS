@@ -152,11 +152,7 @@
 
 -(void)loadStateChanged:(NSNotification*)notification
 {
-    MPMovieLoadState loadState = [_player loadState];
-    //NSLog(@"%d",loadState);
-    
 }
-
 
 -(void)playerDidFinish:(NSNotification*)notification
 {

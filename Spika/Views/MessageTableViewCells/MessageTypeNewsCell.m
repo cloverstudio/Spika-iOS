@@ -59,8 +59,8 @@
         _messageLabel.textColor = [UIColor darkGrayColor];
         _messageLabel.backgroundColor = [UIColor clearColor];
         _messageLabel.numberOfLines = 0;
-        _messageLabel.lineBreakMode = UILineBreakModeWordWrap;
-        _messageLabel.textAlignment = UITextAlignmentLeft;
+        _messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _messageLabel.textAlignment = NSTextAlignmentLeft;
         _messageLabel.frame = CGRectMake(
             5,
             5,
@@ -146,8 +146,9 @@
 }
 
 + (CGFloat) calcLabelHeight:(ModelMessage *)message {
-    CGSize messageBodySize = [message.body sizeWithFont:[MessageCell fontForMessageLabel]
-                                      constrainedToSize:CGSizeMake(NewsLabelWidth, NSNotFound)];
+    
+    CGSize messageBodySize = [message.body sizeForBoundingSize:CGSizeMake(NewsLabelWidth, NSNotFound)
+                                                          font:[MessageCell fontForMessageLabel]];
     messageBodySize.width = NewsLabelWidth;
     
     return messageBodySize.height;

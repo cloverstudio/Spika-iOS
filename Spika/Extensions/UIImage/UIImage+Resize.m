@@ -7,8 +7,6 @@
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
 
-CS_CATEGORY_FIX(UIImage_Resize);
-
 // Private helper methods
 @interface UIImage ()
 - (UIImage *)resizedImage:(CGSize)newSize

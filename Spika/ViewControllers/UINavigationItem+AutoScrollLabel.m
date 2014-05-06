@@ -38,12 +38,12 @@
     
 }
 
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (id) initWithTitle:(NSString *)title{
     
     if(self = [super init]){
-        
-     
+    
         AutoScrollLabel *autoScrollLabel=[[AutoScrollLabel alloc] initWithFrame:CGRectMake(0,0,320,44)];
         autoScrollLabel.textColor = [UIColor clearColor];
         autoScrollLabel.backgroundColor = [UIColor clearColor];
@@ -51,13 +51,10 @@
         autoScrollLabel.font = kFontArialMTBoldOfSize(kFontSizeBig);
     
         self.titleView = autoScrollLabel;
-         
-        
     }
-    
     return self;
-
 }
+#pragma clang diagnostic pop
 
 - (void) setTitleAutoScroll:(NSString *)title{
     

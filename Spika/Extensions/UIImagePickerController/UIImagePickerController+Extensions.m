@@ -77,7 +77,9 @@
     imagePicker.delegate = delegate;
     
     if (imagePicker) {
-        [self presentModalViewController:imagePicker animated:YES];
+        [self presentViewController:imagePicker
+                           animated:YES
+                         completion:nil];
     }
     
     return imagePicker;

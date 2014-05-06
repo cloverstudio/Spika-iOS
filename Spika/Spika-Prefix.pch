@@ -28,5 +28,6 @@
     #import "UIView+Extensions.h"
     #import "HUControls.h"
     #import "ServerManager.h"
+    #import "NSString+Size.h"
 
 #endif

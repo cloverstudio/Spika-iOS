@@ -65,7 +65,7 @@
     UILabel *label = [CSKit labelWithFrame:[self frameForLoadingLabel]
                                       font:[self fontForViewStateLabels]
                                  textColor:[self colorForViewStateLabels]
-                             textAlignment:UITextAlignmentCenter
+                             textAlignment:NSTextAlignmentCenter
                                       text:nil];
     return label;
 }
@@ -75,7 +75,7 @@
     UILabel *label = [CSKit labelWithFrame:[self frameForNoItemsLabel]
                                       font:[self fontForViewStateLabels]
                                  textColor:[self colorForViewStateLabels]
-                             textAlignment:UITextAlignmentCenter
+                             textAlignment:NSTextAlignmentCenter
                                       text:nil];
     return label;
 }

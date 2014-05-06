@@ -115,7 +115,7 @@ static CGFloat roundRadius = 18.0f;
 -(void) showResult:(BOOL)isSuccess {
 	
 	UILabel *resultView = [[UILabel alloc] initWithFrame:self.bounds];
-	resultView.textAlignment = UITextAlignmentCenter;
+	resultView.textAlignment = NSTextAlignmentCenter;
 	resultView.textColor = [UIColor whiteColor];
 	resultView.font = kFontArialMTBoldOfSize(kFontSizeBig);
 	

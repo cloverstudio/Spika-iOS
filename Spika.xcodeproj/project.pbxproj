@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F9F9C9019191A850017DFE0 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F9C8F19191A850017DFE0 /* NSString+Size.m */; };
 		4012FAB518D9794D004B1538 /* HUUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012FAB318D9794D004B1538 /* HUUserListCell.m */; };
 		4012FAB618D9794D004B1538 /* HUUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4012FAB418D9794D004B1538 /* HUUserListCell.xib */; };
 		4012FABE18D97B39004B1538 /* HUUsersInGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012FABC18D97B39004B1538 /* HUUsersInGroupViewController.m */; };
@@ -454,6 +455,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F9F9C8E19191A850017DFE0 /* NSString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
+		1F9F9C8F19191A850017DFE0 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		36EBC6D2B81D2E1E98E5955D /* Spika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spika.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4012FAB218D9794D004B1538 /* HUUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUserListCell.h; sourceTree = "<group>"; };
 		4012FAB318D9794D004B1538 /* HUUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUserListCell.m; sourceTree = "<group>"; };
@@ -473,7 +476,7 @@
 		74B0EDCD18E5A6F6006D0F54 /* ServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerManager.h; sourceTree = "<group>"; };
 		74B0EDCE18E5A6F6006D0F54 /* ServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerManager.m; sourceTree = "<group>"; };
 		AD74BB3617E0AB200061F786 /* CSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSToast.h; sourceTree = "<group>"; };
-		AD74BB3717E0AB200061F786 /* CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSToast.m; sourceTree = "<group>"; };
+		AD74BB3717E0AB200061F786 /* CSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CSToast.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AD74BB3A17E0B3680061F786 /* favorites_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites_icon.png; sourceTree = "<group>"; };
 		AD74BB3B17E0B3680061F786 /* favorites_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites_icon@2x.png"; sourceTree = "<group>"; };
 		AD74BB3C17E0B3680061F786 /* hu_right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hu_right_arrow.png; sourceTree = "<group>"; };
@@ -493,7 +496,7 @@
 		AD74BB4A17E0B3680061F786 /* user_online_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_online_icon.png; sourceTree = "<group>"; };
 		AD74BB4B17E0B3680061F786 /* user_online_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_online_icon@2x.png"; sourceTree = "<group>"; };
 		ADC6436917E0761500C16A9D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		ADC6436A17E0761500C16A9D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ADC6436A17E0761500C16A9D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC6436D17E0761500C16A9D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		ADC6436F17E0761500C16A9D /* CSLazyLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLazyLoadController.h; sourceTree = "<group>"; };
 		ADC6437017E0761500C16A9D /* CSLazyLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLazyLoadController.m; sourceTree = "<group>"; };
@@ -572,7 +575,7 @@
 		ADC643CA17E0761500C16A9D /* UIImagePickerController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+Extensions.h"; sourceTree = "<group>"; };
 		ADC643CB17E0761500C16A9D /* UIImagePickerController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+Extensions.m"; sourceTree = "<group>"; };
 		ADC643CD17E0761500C16A9D /* UILabel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extensions.h"; sourceTree = "<group>"; };
-		ADC643CE17E0761500C16A9D /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extensions.m"; sourceTree = "<group>"; };
+		ADC643CE17E0761500C16A9D /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UILabel+Extensions.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC643D017E0761500C16A9D /* UIResponder+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Extension.h"; sourceTree = "<group>"; };
 		ADC643D117E0761500C16A9D /* UIResponder+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Extension.m"; sourceTree = "<group>"; };
 		ADC643D317E0761500C16A9D /* UIToolbar+BackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+BackgroundColor.h"; sourceTree = "<group>"; };
@@ -763,7 +766,7 @@
 		ADC644CB17E0761600C16A9D /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		ADC644CC17E0761600C16A9D /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		ADC644CD17E0761600C16A9D /* HUControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUControls.h; sourceTree = "<group>"; };
-		ADC644CE17E0761600C16A9D /* HUControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUControls.m; sourceTree = "<group>"; };
+		ADC644CE17E0761600C16A9D /* HUControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HUControls.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC644CF17E0761600C16A9D /* HUDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDataManager.h; sourceTree = "<group>"; };
 		ADC644D017E0761600C16A9D /* HUDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDataManager.m; sourceTree = "<group>"; };
 		ADC644D117E0761600C16A9D /* HUHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUHTTPClient.h; sourceTree = "<group>"; };
@@ -858,15 +861,15 @@
 		ADC6459D17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationItem+AutoScrollLabel.h"; path = "../ViewControllers/UINavigationItem+AutoScrollLabel.h"; sourceTree = "<group>"; };
 		ADC6459E17E0761600C16A9D /* UINavigationItem+AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+AutoScrollLabel.m"; path = "../ViewControllers/UINavigationItem+AutoScrollLabel.m"; sourceTree = "<group>"; };
 		ADC645A417E0761600C16A9D /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
-		ADC645A517E0761600C16A9D /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
+		ADC645A517E0761600C16A9D /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AlertViewManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645A617E0761600C16A9D /* CSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSPageControl.h; sourceTree = "<group>"; };
 		ADC645A717E0761600C16A9D /* CSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSPageControl.m; sourceTree = "<group>"; };
 		ADC645AA17E0761600C16A9D /* HUActivityMessageCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUActivityMessageCell+Style.h"; sourceTree = "<group>"; };
-		ADC645AB17E0761600C16A9D /* HUActivityMessageCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUActivityMessageCell+Style.m"; sourceTree = "<group>"; };
+		ADC645AB17E0761600C16A9D /* HUActivityMessageCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUActivityMessageCell+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645AC17E0761600C16A9D /* HUActivityMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUActivityMessageCell.h; sourceTree = "<group>"; };
 		ADC645AD17E0761600C16A9D /* HUActivityMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUActivityMessageCell.m; sourceTree = "<group>"; };
 		ADC645AE17E0761600C16A9D /* HUCounterBalloonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCounterBalloonView.h; sourceTree = "<group>"; };
-		ADC645AF17E0761600C16A9D /* HUCounterBalloonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCounterBalloonView.m; sourceTree = "<group>"; };
+		ADC645AF17E0761600C16A9D /* HUCounterBalloonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HUCounterBalloonView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645B017E0761600C16A9D /* HUDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDatePicker.h; sourceTree = "<group>"; };
 		ADC645B117E0761600C16A9D /* HUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDatePicker.m; sourceTree = "<group>"; };
 		ADC645B217E0761600C16A9D /* HUDialog+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUDialog+Style.h"; sourceTree = "<group>"; };
@@ -881,11 +884,11 @@
 		ADC645BC17E0761600C16A9D /* HUExploreUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUExploreUsersView.h; sourceTree = "<group>"; };
 		ADC645BD17E0761600C16A9D /* HUExploreUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUExploreUsersView.m; sourceTree = "<group>"; };
 		ADC645BE17E0761600C16A9D /* HUGroupsCategoryTableViewCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsCategoryTableViewCell+Style.h"; sourceTree = "<group>"; };
-		ADC645BF17E0761600C16A9D /* HUGroupsCategoryTableViewCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsCategoryTableViewCell+Style.m"; sourceTree = "<group>"; };
+		ADC645BF17E0761600C16A9D /* HUGroupsCategoryTableViewCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUGroupsCategoryTableViewCell+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645C017E0761600C16A9D /* HUGroupsCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsCategoryTableViewCell.h; sourceTree = "<group>"; };
 		ADC645C117E0761600C16A9D /* HUGroupsCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupsCategoryTableViewCell.m; sourceTree = "<group>"; };
 		ADC645C217E0761600C16A9D /* HUGroupsTableViewCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsTableViewCell+Style.h"; sourceTree = "<group>"; };
-		ADC645C317E0761600C16A9D /* HUGroupsTableViewCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsTableViewCell+Style.m"; sourceTree = "<group>"; };
+		ADC645C317E0761600C16A9D /* HUGroupsTableViewCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUGroupsTableViewCell+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645C417E0761600C16A9D /* HUGroupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsTableViewCell.h; sourceTree = "<group>"; };
 		ADC645C517E0761600C16A9D /* HUGroupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupsTableViewCell.m; sourceTree = "<group>"; };
 		ADC645C617E0761600C16A9D /* HUImageView+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUImageView+Style.h"; sourceTree = "<group>"; };
@@ -921,7 +924,7 @@
 		ADC645E417E0761600C16A9D /* HUVoicePlayerControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoicePlayerControlBar.h; sourceTree = "<group>"; };
 		ADC645E517E0761600C16A9D /* HUVoicePlayerControlBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoicePlayerControlBar.m; sourceTree = "<group>"; };
 		ADC645E717E0761600C16A9D /* ImageMessageCommentRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMessageCommentRow.h; sourceTree = "<group>"; };
-		ADC645E817E0761600C16A9D /* ImageMessageCommentRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMessageCommentRow.m; sourceTree = "<group>"; };
+		ADC645E817E0761600C16A9D /* ImageMessageCommentRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ImageMessageCommentRow.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645E917E0761600C16A9D /* LoadingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewCell.h; sourceTree = "<group>"; };
 		ADC645EA17E0761600C16A9D /* LoadingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewCell.m; sourceTree = "<group>"; };
 		ADC645EB17E0761600C16A9D /* MessageTypeBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeBasicCell.h; sourceTree = "<group>"; };
@@ -935,15 +938,15 @@
 		ADC645F317E0761600C16A9D /* MessageTypeImageDetailCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageTypeImageDetailCell+Style.h"; sourceTree = "<group>"; };
 		ADC645F417E0761600C16A9D /* MessageTypeImageDetailCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageTypeImageDetailCell+Style.m"; sourceTree = "<group>"; };
 		ADC645F517E0761600C16A9D /* MessageTypeImageDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeImageDetailCell.h; sourceTree = "<group>"; };
-		ADC645F617E0761600C16A9D /* MessageTypeImageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTypeImageDetailCell.m; sourceTree = "<group>"; };
+		ADC645F617E0761600C16A9D /* MessageTypeImageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MessageTypeImageDetailCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645F717E0761600C16A9D /* MessageTypeLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeLocationCell.h; sourceTree = "<group>"; };
 		ADC645F817E0761600C16A9D /* MessageTypeLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTypeLocationCell.m; sourceTree = "<group>"; };
 		ADC645F917E0761600C16A9D /* MessageTypeMediaCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageTypeMediaCell+Style.h"; sourceTree = "<group>"; };
-		ADC645FA17E0761600C16A9D /* MessageTypeMediaCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageTypeMediaCell+Style.m"; sourceTree = "<group>"; };
+		ADC645FA17E0761600C16A9D /* MessageTypeMediaCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MessageTypeMediaCell+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645FB17E0761600C16A9D /* MessageTypeMediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeMediaCell.h; sourceTree = "<group>"; };
 		ADC645FC17E0761600C16A9D /* MessageTypeMediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTypeMediaCell.m; sourceTree = "<group>"; };
 		ADC645FD17E0761600C16A9D /* MessageTypeNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeNewsCell.h; sourceTree = "<group>"; };
-		ADC645FE17E0761600C16A9D /* MessageTypeNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTypeNewsCell.m; sourceTree = "<group>"; };
+		ADC645FE17E0761600C16A9D /* MessageTypeNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MessageTypeNewsCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		ADC645FF17E0761600C16A9D /* MessageTypeTextCell+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageTypeTextCell+Style.h"; sourceTree = "<group>"; };
 		ADC6460017E0761600C16A9D /* MessageTypeTextCell+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MessageTypeTextCell+Style.m"; sourceTree = "<group>"; };
 		ADC6460117E0761600C16A9D /* MessageTypeTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeTextCell.h; sourceTree = "<group>"; };
@@ -996,17 +999,17 @@
 		B374797718745B82001CE0E7 /* HUUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUsersViewController.h; sourceTree = "<group>"; };
 		B374797818745B82001CE0E7 /* HUUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUsersViewController.m; sourceTree = "<group>"; };
 		B374797A18745B82001CE0E7 /* HUGroupsViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUGroupsViewController+Style.h"; sourceTree = "<group>"; };
-		B374797B18745B82001CE0E7 /* HUGroupsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUGroupsViewController+Style.m"; sourceTree = "<group>"; };
+		B374797B18745B82001CE0E7 /* HUGroupsViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUGroupsViewController+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B374797C18745B82001CE0E7 /* HUGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUGroupsViewController.h; sourceTree = "<group>"; };
 		B374797D18745B82001CE0E7 /* HUGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUGroupsViewController.m; sourceTree = "<group>"; };
 		B374797F18745B82001CE0E7 /* HUBaseTableViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseTableViewController+Style.h"; sourceTree = "<group>"; };
-		B374798018745B82001CE0E7 /* HUBaseTableViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseTableViewController+Style.m"; sourceTree = "<group>"; };
+		B374798018745B82001CE0E7 /* HUBaseTableViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUBaseTableViewController+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B374798118745B82001CE0E7 /* HUBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseTableViewController.h; sourceTree = "<group>"; };
 		B374798218745B82001CE0E7 /* HUBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseTableViewController.m; sourceTree = "<group>"; };
 		B374798318745B82001CE0E7 /* HUBaseViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUBaseViewController+Style.h"; sourceTree = "<group>"; };
-		B374798418745B82001CE0E7 /* HUBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUBaseViewController+Style.m"; sourceTree = "<group>"; };
+		B374798418745B82001CE0E7 /* HUBaseViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUBaseViewController+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B374798518745B82001CE0E7 /* HUBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUBaseViewController.h; sourceTree = "<group>"; };
-		B374798618745B82001CE0E7 /* HUBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUBaseViewController.m; sourceTree = "<group>"; };
+		B374798618745B82001CE0E7 /* HUBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HUBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B374798818745B82001CE0E7 /* HUEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUEULAViewController.h; sourceTree = "<group>"; };
 		B374798918745B82001CE0E7 /* HUEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUEULAViewController.m; sourceTree = "<group>"; };
 		B374799418745EDA001CE0E7 /* HUPasswordConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUPasswordConfirmViewController.h; sourceTree = "<group>"; };
@@ -1030,7 +1033,7 @@
 		B37479A818745EDA001CE0E7 /* HUVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVideoRecorderViewController.h; sourceTree = "<group>"; };
 		B37479A918745EDA001CE0E7 /* HUVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVideoRecorderViewController.m; sourceTree = "<group>"; };
 		B37479AA18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUVoiceMessageDetailViewController.h; sourceTree = "<group>"; };
-		B37479AB18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUVoiceMessageDetailViewController.m; sourceTree = "<group>"; };
+		B37479AB18745EDA001CE0E7 /* HUVoiceMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HUVoiceMessageDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B37479AC18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoicePlayerViewController+Style.h"; sourceTree = "<group>"; };
 		B37479AD18745EDA001CE0E7 /* HUVoicePlayerViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUVoicePlayerViewController+Style.m"; sourceTree = "<group>"; };
 		B37479AE18745EDA001CE0E7 /* HUVoiceRecorderViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUVoiceRecorderViewController+Style.h"; sourceTree = "<group>"; };
@@ -1046,7 +1049,7 @@
 		B37479B818745EDA001CE0E7 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		B37479B918745EDA001CE0E7 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		B37479BA18745EDA001CE0E7 /* VideoDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailVC.h; sourceTree = "<group>"; };
-		B37479BB18745EDA001CE0E7 /* VideoDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailVC.m; sourceTree = "<group>"; };
+		B37479BB18745EDA001CE0E7 /* VideoDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = VideoDetailVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B37479BD18745EDA001CE0E7 /* HUSearchBarController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSearchBarController+Style.h"; sourceTree = "<group>"; };
 		B37479BE18745EDA001CE0E7 /* HUSearchBarController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSearchBarController+Style.m"; sourceTree = "<group>"; };
 		B37479BF18745EDA001CE0E7 /* HUSearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSearchBarController.h; sourceTree = "<group>"; };
@@ -1056,7 +1059,7 @@
 		B37479C418745EDA001CE0E7 /* HURecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HURecentActivityViewController.h; sourceTree = "<group>"; };
 		B37479C518745EDA001CE0E7 /* HURecentActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HURecentActivityViewController.m; sourceTree = "<group>"; };
 		B37479DE18745EE0001CE0E7 /* HUSideMenuViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HUSideMenuViewController+Style.h"; sourceTree = "<group>"; };
-		B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HUSideMenuViewController+Style.m"; sourceTree = "<group>"; };
+		B37479DF18745EE0001CE0E7 /* HUSideMenuViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "HUSideMenuViewController+Style.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B37479E018745EE0001CE0E7 /* HUSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSideMenuViewController.h; sourceTree = "<group>"; };
 		B37479E118745EE0001CE0E7 /* HUSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUSideMenuViewController.m; sourceTree = "<group>"; };
 		B37479E218745EE0001CE0E7 /* HUSubMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUSubMenuViewController.h; sourceTree = "<group>"; };
@@ -1101,9 +1104,9 @@
 		FA19A91318BF465D002CE05E /* dialog_bubble_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_bubble_large@2x.png"; sourceTree = "<group>"; };
 		FA19A91418BF465D002CE05E /* dialog_bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_bubble@2x.png"; sourceTree = "<group>"; };
 		FA1EF3C918D3568E00B53D76 /* CSKit+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CSKit+Helper.h"; sourceTree = "<group>"; };
-		FA1EF3CA18D3568E00B53D76 /* CSKit+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CSKit+Helper.m"; sourceTree = "<group>"; };
+		FA1EF3CA18D3568E00B53D76 /* CSKit+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 2; path = "CSKit+Helper.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA1EF3CB18D3568E00B53D76 /* CSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLabel.h; sourceTree = "<group>"; };
-		FA1EF3CC18D3568E00B53D76 /* CSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLabel.m; sourceTree = "<group>"; };
+		FA1EF3CC18D3568E00B53D76 /* CSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 2; path = CSLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA1EF3CF18D356D400B53D76 /* CSBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSBlocks.h; sourceTree = "<group>"; };
 		FA1EF3D018D356D400B53D76 /* CSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSConstants.h; sourceTree = "<group>"; };
 		FA1EF3D118D357B100B53D76 /* CSArcMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSArcMacros.h; sourceTree = "<group>"; };
@@ -1383,6 +1386,8 @@
 		ADC643B017E0761500C16A9D /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				1F9F9C8E19191A850017DFE0 /* NSString+Size.h */,
+				1F9F9C8F19191A850017DFE0 /* NSString+Size.m */,
 				ADC643B117E0761500C16A9D /* NSString+Extensions.h */,
 				ADC643B217E0761500C16A9D /* NSString+Extensions.m */,
 				ADC643B317E0761500C16A9D /* NSString+NoNull.h */,
@@ -2887,6 +2892,7 @@
 				ADC6462B17E0761600C16A9D /* NSArray+Extensions.m in Sources */,
 				ADC6462C17E0761600C16A9D /* NSDateFormatter+SharedFormatter.m in Sources */,
 				ADC6462D17E0761600C16A9D /* NSDictionary+KeyPath.m in Sources */,
+				1F9F9C9019191A850017DFE0 /* NSString+Size.m in Sources */,
 				4012FABE18D97B39004B1538 /* HUUsersInGroupViewController.m in Sources */,
 				ADC6462E17E0761600C16A9D /* NSNotification+Extensions.m in Sources */,
 				ADC6462F17E0761600C16A9D /* NSString+Extensions.m in Sources */,
@@ -3116,8 +3122,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Josip Bernat (M5L7AVSP76)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josip Bernat (M5L7AVSP76)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Spika/External\"",
@@ -3132,8 +3138,8 @@
 					"$(PROJECT_DIR)/Spika/External/CrittercismSDK",
 				);
 				PRODUCT_NAME = Spika;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E1C789D5-BDC0-40AE-95C9-E66E3E833CCE";
+				PROVISIONING_PROFILE = "97B4FD21-E20C-4B98-B723-AF63D29B2CD1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "97B4FD21-E20C-4B98-B723-AF63D29B2CD1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

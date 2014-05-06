@@ -37,7 +37,10 @@
 - (void) drawPlaceholderInRect:(CGRect)rect {
     
     [[self placeholderTextColor] setFill];
-    [[self placeholder] drawInRect:rect withFont:self.font];
+    
+    [[self placeholder] drawInRect:rect
+                    withAttributes:@{NSFontAttributeName: self.font,
+                                     NSForegroundColorAttributeName: [self placeholderTextColor]}];
 }
 
 // text position

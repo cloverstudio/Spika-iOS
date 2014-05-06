@@ -59,58 +59,6 @@
     return NO;
 }
 
-#pragma mark - UITabBar
-
-///iOS 5.0
-///Creates a custom UITabBarItem
-///@param image normal image
-///@param selectedImage image when the tab is selected
-///@param title title of the tab
-///@param font custom font to use. nil for default
-///@return an autoreleased instance of UITabBarItem
-+ (UITabBarItem *)tabBarItemWithImage:(UIImage *)image
-                        selectedImage:(UIImage *)selectedImage
-                                title:(NSString *)title
-                                 font:(UIFont *)font
-{
-    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:nil image:nil tag:0];
-    [item setFinishedSelectedImage:selectedImage withFinishedUnselectedImage:image];
-    [item setTitle:title];
-    
-    if (font)
-    {
-     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000
-
-        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIColor darkGrayColor], UITextAttributeTextColor,
-                                      [UIColor blackColor], UITextAttributeTextShadowColor,
-                                      [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -0.5f)], UITextAttributeTextShadowOffset,
-                                      font, UITextAttributeFont, nil] forState:UIControlStateNormal];
-        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIColor whiteColor], UITextAttributeTextColor,
-                                      [UIColor blackColor], UITextAttributeTextShadowColor,
-                                      [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -0.5f)], UITextAttributeTextShadowOffset,
-                                      font, UITextAttributeFont, nil] forState:UIControlStateSelected];
-#endif
-    }
-    
-    return CS_AUTORELEASE(item);
-}
-
-///iOS 3.0
-///Creates a custom UITabBarItem
-///@param imageName imageName
-///@param title title of the tab
-///@param tag tag of the tab
-///@return an autoreleased instance of UITabBarItem
-+ (UITabBarItem *)tabBarItemWithImageNamed:(NSString *)imageName
-                                     title:(NSString *)title
-                                       tag:(NSInteger) tag
-{
-    return CS_AUTORELEASE([[UITabBarItem alloc] initWithTitle:title image:[UIImage imageNamed:imageName] tag:tag]);
-}
-
 #pragma mark - UINavigationController
 ///iOS 3.0
 ///Creates an array of UINavigationControllers with rootViewControllers of classNames
@@ -421,11 +369,11 @@
     label.numberOfLines = 0;
     label.text = text;
     
-    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(constraintSize.width, MAXFLOAT)];
-    
+    CGSize size = [text sizeForBoundingSize:CGSizeMake(constraintSize.width, MAXFLOAT)
+                                       font:font];
     [label setFrame:CGRectMake(point.x, point.y, size.width, size.height)];
     
-    return CS_AUTORELEASE(label);
+    return label;
 }
 
 ///iOS 3.0

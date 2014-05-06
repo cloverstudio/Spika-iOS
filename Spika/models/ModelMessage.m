@@ -97,7 +97,10 @@
 
 + (NSString *) toJSON:(ModelMessage *)message {
     
-    return [[ModelMessage toDic:message] JSONRepresentation];
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:[ModelMessage toDic:message]
+                                                                          options:NSJSONWritingPrettyPrinted
+                                                                            error:nil]
+                                 encoding:NSUTF8StringEncoding];
 }
 
 +(ModelMessage *) jsonToObj:(NSString *)strJSON {
