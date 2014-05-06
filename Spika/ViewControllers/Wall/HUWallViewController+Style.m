@@ -38,7 +38,7 @@
 
 - (UIView *) contentView {
 
-    UIView *contentView = CS_AUTORELEASE([[UIView alloc] initWithFrame:self.view.bounds]);
+    UIView *contentView = [[UIView alloc] initWithFrame:self.view.bounds];
     contentView.autoresizingMask = self.view.autoresizingMask;
     
     return contentView;
@@ -46,7 +46,7 @@
 
 - (UIView *) messageInputContainer {
 
-    UIView *viewMessageInputHolder = CS_AUTORELEASE([[UIView alloc] initWithFrame:[self frameForMessageInputContainer]]);
+    UIView *viewMessageInputHolder = [[UIView alloc] initWithFrame:[self frameForMessageInputContainer]];
     viewMessageInputHolder.backgroundColor = [self wallBackgroundColor];
     viewMessageInputHolder.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     viewMessageInputHolder.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.5].CGColor;
@@ -59,7 +59,7 @@
 
 - (UITableView *) messagesTableView {
 
-    UITableView *tableView = CS_AUTORELEASE([[UITableView alloc] initWithFrame:[self frameForMessagesTableView] style:UITableViewStylePlain]);
+    UITableView *tableView = [[UITableView alloc] initWithFrame:[self frameForMessagesTableView] style:UITableViewStylePlain];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.backgroundColor = [self wallBackgroundColor];
     tableView.autoresizingMask = self.view.autoresizingMask;
@@ -107,7 +107,7 @@
 
 - (HPGrowingTextView *) messageInputTextField {
 
-    HPGrowingTextView *messageInputTextField = CS_AUTORELEASE([[HPGrowingTextView alloc] initWithFrame:[self frameForMessageInputTextField]]);
+    HPGrowingTextView *messageInputTextField = [[HPGrowingTextView alloc] initWithFrame:[self frameForMessageInputTextField]];
     messageInputTextField.contentInset = UIEdgeInsetsMake(0, 5, 5, 0);
     messageInputTextField.font = [self fontForMessageInputTextField];
     messageInputTextField.maxNumberOfLines = 3;
@@ -121,7 +121,7 @@
 
 - (HUMediaPanelView *) mediaPanelView {
 
-    HUMediaPanelView *mediaPanelView = CS_AUTORELEASE([[HUMediaPanelView alloc] initWithFrame:[self frameForMediaPanel]]);
+    HUMediaPanelView *mediaPanelView = [[HUMediaPanelView alloc] initWithFrame:[self frameForMediaPanel]];
     return mediaPanelView;
 }
 

@@ -298,9 +298,7 @@
         [loginNavController presentViewController:eulaVC
                                          animated:YES
                                        completion:nil];
-    }
-    
-    CS_RELEASE(loginNavController);
+    }    
 }
 
 //------------------------------------------------------------------------------------------------------

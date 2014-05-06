@@ -81,10 +81,9 @@ void sendAsynchronousRequest4(id self, SEL _cmd, NSURLRequest *request, NSOperat
     connectionDelegate.data = [NSMutableData data];
     connectionDelegate.queue = queue;
     connectionDelegate.handler = handler;
-    //NSURLConnection *connection = CS_AUTORELEASE([NSURLConnection connectionWithRequest:request
-                                                                //delegate:connectionDelegate]);
+
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request
-                                                                               delegate:connectionDelegate];
+                                                                delegate:connectionDelegate];
     NSAssert(connection, nil);
 }
 

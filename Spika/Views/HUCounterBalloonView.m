@@ -40,15 +40,6 @@
 
 @implementation HUCounterBalloonView
 
-@synthesize count = _count;
-
-#pragma mark - Memory Management
-
--(void) dealloc {
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 -(id) initWithImage:(UIImage *)image {

@@ -480,8 +480,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if(cell == nil) {
-            cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                               reuseIdentifier:cellIdentifier]);
+            cell = [[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                        reuseIdentifier:cellIdentifier];
         }
         
         [cell populateWithData:groupCategory];
@@ -514,8 +514,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         HUGroupsTableViewCell *cell = (HUGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if(cell == nil) {
-            cell = CS_AUTORELEASE([[HUGroupsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                               reuseIdentifier:cellIdentifier]);
+            cell = [[HUGroupsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                reuseIdentifier:cellIdentifier];
         }
         
         [cell populateWithData:group];

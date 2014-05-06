@@ -48,8 +48,8 @@
 
 - (UITableView *) contentTableView {
 
-    UITableView *tableView = CS_AUTORELEASE([[UITableView alloc] initWithFrame:[self frameForTableView]
-                                                                         style:self.tableViewStyle]);
+    UITableView *tableView = [[UITableView alloc] initWithFrame:[self frameForTableView]
+                                                          style:self.tableViewStyle];
     tableView.autoresizingMask = self.view.autoresizingMask;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.delegate = self;
@@ -84,7 +84,7 @@
 
 - (UIActivityIndicatorView *) loadingIndicatorView {
     
-    UIActivityIndicatorView *indicatorView = CS_AUTORELEASE([[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]);
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     indicatorView.center = [self centerForLoadingIndicatorView];
     indicatorView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [indicatorView startAnimating];

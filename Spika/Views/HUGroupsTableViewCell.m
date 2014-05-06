@@ -45,21 +45,6 @@
 
 @implementation HUGroupsTableViewCell
 
-@synthesize group = _group;
-@synthesize avatarImageView = _avatarImageView;
-
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-    CS_RELEASE(_group);
-    CS_RELEASE(_avatarImageView);
-    CS_RELEASE(_backgroundView);
-    CS_RELEASE(_groupNameLabel);
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -68,13 +53,13 @@
 
         self.contentView.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = CS_RETAIN([self aBackgroundView]);
+        _backgroundView = [self aBackgroundView];
         [self.contentView addSubview:_backgroundView];
         
         _avatarImageView = [self anAvatarImageView];
         [self.contentView  addSubview:_avatarImageView];
         
-        _groupNameLabel = CS_RETAIN([self groupNameLabel]);
+        _groupNameLabel = [self groupNameLabel];
         [self.contentView  addSubview:_groupNameLabel];
         
         _favoriteImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"not_in_favorites_icon"]];

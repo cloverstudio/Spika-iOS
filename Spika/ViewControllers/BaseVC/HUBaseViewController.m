@@ -117,14 +117,6 @@
     self.navigationItem.rightBarButtonItems = [HUBaseViewController dummyBarButtonItem];
     self.view.userInteractionEnabled = YES;
     
-    /*
-    if ([self viewFromNib]) {
-        self.view = [self viewFromNib];
-    } else {
-        self.view = CS_AUTORELEASE([[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]]);
-    }
-    */
-    
     if ([NSStringFromClass([self class]) isEqualToString:@"HULoginViewController"] ||
         [NSStringFromClass([self class]) isEqualToString:@"HUSignUpViewController"]) {
         

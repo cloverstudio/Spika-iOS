@@ -99,7 +99,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.tabBarItem = viewController.tabBarItem;
     navigationController.navigationBar.barStyle = UIBarStyleDefault;
-    return CS_AUTORELEASE(navigationController);
+    return navigationController;
 }
 
 ///iOS 3.0
@@ -113,7 +113,7 @@
     id navigationController = [[NSClassFromString(@"CSNavigationController") alloc] initWithRootViewController:viewController];
     [navigationController setTabBarItem: viewController.tabBarItem];
     [[navigationController navigationBar] setTintColor:[UIColor blackColor]];
-    return CS_AUTORELEASE(navigationController);
+    return navigationController;
 }
 
 #pragma mark - UIViewController
@@ -126,7 +126,7 @@
 {
     Class class = NSClassFromString(className);
     UIViewController *viewController = (UIViewController*)[[class alloc] init];
-    return CS_AUTORELEASE(viewController);
+    return viewController;
 }
 
 ///iOS 3.0
@@ -166,7 +166,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [imageView setHighlightedImage:highlightedImage];
     [imageView setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    return CS_AUTORELEASE(imageView);
+    return imageView;
 }
 
 ///iOS 3.0
@@ -222,7 +222,7 @@
     [button setImage:imageNormal forState:UIControlStateNormal];
     [button setImage:imageHighlight forState:UIControlStateHighlighted];
     
-    return CS_AUTORELEASE(button);
+    return button;
 }
 
 ///iOS 3.0
@@ -301,7 +301,7 @@
     tableView.dataSource = dataSource;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    return CS_AUTORELEASE(tableView);
+    return tableView;
 }
 
 ///iOS 3.0
@@ -320,7 +320,7 @@
     tableView.backgroundColor = [UIColor clearColor];
     tableView.backgroundView = nil;
     tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    return CS_AUTORELEASE(tableView);
+    return tableView;
 }
 
 #pragma mark - UILabel
@@ -397,7 +397,7 @@
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = textAlignment;
     label.backgroundColor = [UIColor clearColor];
-    return CS_AUTORELEASE(label);
+    return label;
 }
 
 #pragma mark - UIBarButtonItem
@@ -424,7 +424,7 @@
 ///@return an autoreleased UIBarButtonItem
 + (UIBarButtonItem *) barButtonItemWithButton:(UIButton*) button
 {
-    return CS_AUTORELEASE([[UIBarButtonItem alloc] initWithCustomView:button]);
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 #pragma mark - UITextView
@@ -443,7 +443,7 @@
     [textView setFont:font];
     [textView setEditable:editable];
     [textView setBackgroundColor:[UIColor clearColor]];
-    return CS_AUTORELEASE(textView);
+    return textView;
 }
 
 #pragma mark - UITableViewCell
@@ -474,7 +474,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (!cell)
     {
-        cell = CS_AUTORELEASE([[NSClassFromString(className) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]);
+        cell = [[NSClassFromString(className) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     return cell;
 }
@@ -498,7 +498,7 @@
     scrollView.contentSize = contentSize;
     scrollView.delegate = delegate;
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    return CS_AUTORELEASE(scrollView);
+    return scrollView;
 }
 
 ///iOS 3.0
@@ -525,7 +525,7 @@
                                               cancelButtonTitle:cancel
                                               otherButtonTitles:other, nil];
     [alertView show];
-    return CS_AUTORELEASE(alertView);
+    return alertView;
 }
 
 ///iOS 3.0
@@ -542,7 +542,7 @@
     UIActivityIndicatorView *activityindicator = [self activityIndicatorWithStyle:UIActivityIndicatorViewStyleWhiteLarge
                                                                            center:CGPointMake(140, 64)];
     [alertView addSubview:activityindicator];
-    return CS_AUTORELEASE(alertView);
+    return alertView;
 }
 
 ///iOS 3.0
@@ -560,7 +560,7 @@
     alertView.message = message;
     [alertView show];
     [NSTimer scheduledTimerWithTimeInterval:duration target:alertView selector:@selector(dismissWithClickedButtonIndex:animated:) userInfo:nil repeats:NO];
-    return CS_AUTORELEASE(alertView);
+    return alertView;
 }
 
 
@@ -575,7 +575,7 @@
     id textView = [[NSClassFromString(@"CSTextView") alloc] initWithFrame:frame];
     [textView setBackgroundColor:[UIColor clearColor]];
     [textView setEditable:NO];
-    return CS_AUTORELEASE(textView);
+    return textView;
 }
 
 #pragma mark - UITextField
@@ -597,7 +597,7 @@
     [textField setFont:font];
     [textField setText:text];
     [textField setPlaceholder:placeholder];
-    return CS_AUTORELEASE(textField);
+    return textField;
 }
 
 #pragma mark - UISearchBar
@@ -615,7 +615,7 @@
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:frame];
     [searchBar setTintColor:tintColor];
     [searchBar setDelegate:delegate];
-    return CS_AUTORELEASE(searchBar);
+    return searchBar;
 }
 
 #pragma mark - UIActivityIndicatorView
@@ -630,7 +630,7 @@
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];
     [activityIndicator setCenter:center];
     [activityIndicator startAnimating];
-    return CS_AUTORELEASE(activityIndicator);
+    return activityIndicator;
 }
 
 #pragma mark - UIView
@@ -639,12 +639,12 @@
 ///Creates a view with frame [CSKit frame]
 + (UIView *) view
 {
-    return CS_AUTORELEASE([[UIView alloc] initWithFrame:[CSKit frame]]);
+    return [[UIView alloc] initWithFrame:[CSKit frame]];
 }
 
 + (UIView *) viewWithFrame:(CGRect) frame {
 
-    return CS_AUTORELEASE([[UIView alloc] initWithFrame:frame]);
+    return [[UIView alloc] initWithFrame:frame];
 }
 
 

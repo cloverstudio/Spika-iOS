@@ -37,13 +37,6 @@
 
 @implementation HUSideMenuViewController
 
-#pragma mark - Dealloc
-
--(void) dealloc {
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 - (id)init {

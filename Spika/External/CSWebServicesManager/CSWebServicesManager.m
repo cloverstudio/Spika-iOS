@@ -127,19 +127,6 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
     
     [self removeObserver:self
               forKeyPath:@"imagesCacheQueuePriority"];
-    
-    CS_RELEASE(_baseUrl);
-    CS_RELEASE(_authorizationHeaderUsername);
-    CS_RELEASE(_authorizationHeaderPassword);
-    CS_RELEASE(_headerValues);
-    CS_RELEASE(_urlCache);
-    CS_RELEASE(_imagesQueue);
-    CS_RELEASE(_servicesQueue);
-    CS_RELEASE(_alertsArray);
-    CS_RELEASE(_localizedInternetError);
-    CS_RELEASE(_reachability);
-    
-    CS_SUPER_DEALLOC;
 }
 
 #pragma mark - Initialization
@@ -152,7 +139,7 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
         
         _alertsArray = [[NSMutableArray alloc] init];
         
-        _localizedInternetError = CS_RETAIN(@"Internet connection is not available");
+        _localizedInternetError = @"Internet connection is not available";
                 
         _servicesQueue = [[NSOperationQueue alloc] init];
         _servicesQueue.maxConcurrentOperationCount = 2;
@@ -163,7 +150,6 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
         _imagesCacheQueuePriority = DISPATCH_QUEUE_PRIORITY_BACKGROUND;
         
         _imagesCacheQueue = dispatch_get_global_queue(_imagesCacheQueuePriority, 0);
-        CS_QUEUE_RETAIN(_imagesCacheQueue);
         
         _urlCache = [[CSURLCache alloc] initWithRelativeDirectoryPath:[NSString stringWithFormat:@"%@/images", [[NSBundle mainBundle] bundleIdentifier]]];
                 
@@ -218,10 +204,7 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
                         context:(void *)context {
     
     if ([keyPath isEqualToString:@"baseUrl"]) {
-        
-        CS_RELEASE(_httpClient);
-        _httpClient = nil;
-        
+            
         _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_baseUrl]];
     }
     else if ([keyPath isEqualToString:@"maxNumberOfDataOperations"]) {
@@ -242,11 +225,9 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
     }
     else if ([keyPath isEqualToString:@"imagesCacheQueuePriority"]) {
     
-        CS_QUEUE_RELEASE(_imagesCacheQueue);
         
         dispatch_set_target_queue(dispatch_get_global_queue(_imagesCacheQueuePriority, 0),
                                   _imagesCacheQueue);
-        CS_QUEUE_RETAIN(_imagesCacheQueue);
     }
 }
 
@@ -478,14 +459,14 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
 - (id) requestOperationForType:(CSWebOperatonType)type withRequest:(NSURLRequest *)urlRequest {
 
     if (type == CSWebOperatonTypeDefault) {
-        return CS_AUTORELEASE([_httpClient HTTPRequestOperationWithRequest:urlRequest
-                              success:nil failure:nil]);
+        return [_httpClient HTTPRequestOperationWithRequest:urlRequest
+                                                    success:nil failure:nil];
     }
     else if (type == CSWebOperatonTypeJSON) {
-        return CS_AUTORELEASE([[AFJSONRequestOperation alloc] initWithRequest:urlRequest]);
+        return [[AFJSONRequestOperation alloc] initWithRequest:urlRequest];
     }
     else {
-        return CS_AUTORELEASE([[AFXMLRequestOperation alloc] initWithRequest:urlRequest]);
+        return [[AFXMLRequestOperation alloc] initWithRequest:urlRequest];
     }
 }
 
@@ -495,9 +476,7 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
 
     @synchronized(self) {
     
-        CS_RELEASE(_headerValues);
         _headerValues = nil;
-        
         _headerValues = [[NSDictionary alloc] initWithDictionary:headerValues];
     }
 }
@@ -583,7 +562,6 @@ CSHTTPMethod const CSHTTPMethodDELETE       = @"DELETE";
     alertView.tag = kTagNoInternetAlert;
     [_alertsArray addObject:alertView];
     [alertView show];
-    CS_RELEASE(alertView);
 }
 
 -(void) hideNoInternetAlert {

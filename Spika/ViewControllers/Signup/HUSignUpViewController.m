@@ -38,20 +38,6 @@
 
 @implementation HUSignUpViewController
 
-#pragma mark - Memory Managemnt
-
-- (void) dealloc {
-    
-    CS_RELEASE(_mainView);
-    CS_RELEASE(_loginFieldsBackground);
-    CS_RELEASE(_usernameField);
-    CS_RELEASE(_emailField);
-    CS_RELEASE(_passwordField);
-    CS_RELEASE(_selectServerLabel);
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - View Lifecycle
 
 - (void) loadView {

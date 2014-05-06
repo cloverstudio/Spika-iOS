@@ -7,7 +7,6 @@
 //
 
 #import "CSURLCache.h"
-#import "CSArcMacros.h"
 
 @interface CSURLCache () {
 
@@ -49,12 +48,6 @@
 
     [self removeObserver:self
               forKeyPath:@"directoryPath"];
-    
-    CS_RELEASE(_urlDictionary);
-    CS_RELEASE(_directoryPath);
-    CS_RELEASE(_imagesCache);
-    
-    CS_SUPER_DEALLOC;
 }
 
 #pragma mark - Initialization
@@ -69,7 +62,6 @@
                                                                 diskCapacity:0
                                                                     diskPath:nil];
         [NSURLCache setSharedURLCache:sharedCache];
-        CS_RELEASE(sharedCache);
         
         if (relativePath) {
             self.directoryPath = relativePath;
@@ -370,14 +362,12 @@
             
             if ([oldestDate compare:date] == NSOrderedDescending) {
                 
-                CS_RELEASE(oldestDate);
                 oldestDate = [date copy];
                 [oldestFullPath setString:fullPath];
                 oldestFilePath = filePath;
             }
         }
         
-        CS_RELEASE(oldestDate);
         [fileManager removeItemAtPath:oldestFullPath error:nil];
         [files removeObject:oldestFilePath];
         [self removeFilePath:oldestFullPath];
@@ -467,9 +457,7 @@
 - (void) removeImagesCache {
     
     @synchronized(self) {
-    
         [_imagesCache removeAllObjects];
-        CS_RELEASE(_imagesCache);
         _imagesCache = nil;
     }
 }

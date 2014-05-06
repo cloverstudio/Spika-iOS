@@ -1109,7 +1109,6 @@
 		FA1EF3CC18D3568E00B53D76 /* CSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 2; path = CSLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA1EF3CF18D356D400B53D76 /* CSBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSBlocks.h; sourceTree = "<group>"; };
 		FA1EF3D018D356D400B53D76 /* CSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSConstants.h; sourceTree = "<group>"; };
-		FA1EF3D118D357B100B53D76 /* CSArcMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSArcMacros.h; sourceTree = "<group>"; };
 		FA1EF3D218D357B100B53D76 /* CSGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSGraphics.h; sourceTree = "<group>"; };
 		FA1EF3D318D3581900B53D76 /* CSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSButton.h; sourceTree = "<group>"; };
 		FA1EF3D418D3581900B53D76 /* CSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSButton.m; sourceTree = "<group>"; };
@@ -2523,7 +2522,6 @@
 				FA1EF3D718D3590200B53D76 /* CSNavigationController.m */,
 				FA1EF3D318D3581900B53D76 /* CSButton.h */,
 				FA1EF3D418D3581900B53D76 /* CSButton.m */,
-				FA1EF3D118D357B100B53D76 /* CSArcMacros.h */,
 				FA1EF3D218D357B100B53D76 /* CSGraphics.h */,
 				FA1EF3CF18D356D400B53D76 /* CSBlocks.h */,
 				FA1EF3D018D356D400B53D76 /* CSConstants.h */,

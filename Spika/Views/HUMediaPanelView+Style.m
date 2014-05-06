@@ -70,7 +70,7 @@
 
 - (CSPageControl *)newPageControll {
 
-    CSPageControl *pageControll = CS_AUTORELEASE([[CSPageControl alloc] init]);
+    CSPageControl *pageControll = [[CSPageControl alloc] init];
     pageControll.backgroundColor = [UIColor clearColor];
     pageControll.dotColorCurrentPage = [self colorForSelectedPageDot];
     pageControll.dotColorOtherPage = [self colorForOtherPageDot];

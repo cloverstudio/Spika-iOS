@@ -12,23 +12,13 @@
 
 @synthesize placeholderTextColor = _placeholderTextColor;
 
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-    CS_RELEASE(_placeholderTextColor);
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Getters
 
 - (UIColor *) placeholderTextColor {
 
     if (!_placeholderTextColor) {
-        
         self.placeholderTextColor = [UIColor blackColor];
     }
-    
     return _placeholderTextColor;
 }
 

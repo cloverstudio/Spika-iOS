@@ -28,7 +28,6 @@
 - (void)dealloc {
     self.completion = nil;
     self.start = nil;
-    CS_SUPER_DEALLOC;
 }
 
 #pragma mark - Initialization
@@ -73,7 +72,6 @@
         CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
         delegate.completion = completion;
         self.delegate = delegate;
-        CS_RELEASE(delegate);
     }
 }
 
@@ -91,7 +89,6 @@
         CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
         delegate.start = start;
         self.delegate = delegate;
-        CS_RELEASE(delegate);
     }
 }
 

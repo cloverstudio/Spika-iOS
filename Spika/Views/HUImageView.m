@@ -42,19 +42,6 @@
 
 @implementation HUImageView
 
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-//    [self removeObserver:self
-//              forKeyPath:@"imageURL"];
-    
-//    [self removeObserver:self
-//              forKeyPath:@"image"];
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 - (id)init {

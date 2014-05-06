@@ -41,12 +41,12 @@
     //iOS5+
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) {
         
-        [self setBackgroundImage:CS_AUTORELEASE([UIImage new]) forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        [self setBackgroundImage:[UIImage new] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }
     //iOS6+
     if ([self respondsToSelector:@selector(setShadowImage:forToolbarPosition:)]) {
         
-        [self setShadowImage:CS_AUTORELEASE([UIImage new]) forToolbarPosition:UIToolbarPositionAny];
+        [self setShadowImage:[UIImage new] forToolbarPosition:UIToolbarPositionAny];
     }
 }
 

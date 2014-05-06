@@ -47,7 +47,7 @@
 
 - (CSTextField *) newSearchField {
 
-    CSTextField *textField = CS_AUTORELEASE([[CSTextField alloc] initWithFrame:[self frameForSearchField]]);
+    CSTextField *textField = [[CSTextField alloc] initWithFrame:[self frameForSearchField]];
     textField.font = [self fontForSearchTextField];
     textField.placeholder = NSLocalizedString(@"Search-Groups", @"");
     textField.placeholderTextColor = [UIColor whiteColor];

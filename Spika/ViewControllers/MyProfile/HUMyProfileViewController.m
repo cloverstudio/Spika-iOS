@@ -70,19 +70,9 @@
 
 -(void) dealloc {
     
-    CS_RELEASE(_nameLabel);
-    CS_RELEASE(_aboutLabel);
-    CS_RELEASE(_genderLabel);
-    CS_RELEASE(_birthdayLabel);
-    CS_RELEASE(_datePicker);
-    
-	if (_pickerTableView != nil)
+	if (_pickerTableView != nil) {
 		[_pickerTableView removePickerTableView];
-    
-	CS_RELEASE(_pickerTableView);
-
-    CS_SUPER_DEALLOC;
-    
+    }
 }
 
 #pragma mark - Initialization
