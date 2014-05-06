@@ -2,7 +2,7 @@
 //  CSWebServicesManager.h
 //  CSWebServicesManager
 //
-//  Created by Giga on 4/12/13.
+//  Created by Josip Bernat on 4/12/13.
 //  Copyright (c) 2013 Clover-Studio. All rights reserved.
 //
 
