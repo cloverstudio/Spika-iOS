@@ -34,7 +34,6 @@
 #import "CSToast.h"
 #import "UserManager.h"
 #import "CSNotificationView.h"
-#import "CSDispatcher.h"
 #import "HUEditableLabelView.h"
 #import "HUPickerTableView.h"
 #import "HUDataManager.h"

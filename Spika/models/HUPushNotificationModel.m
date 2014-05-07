@@ -26,7 +26,6 @@
 #import "HUPushNotificationModel+Style.h"
 #import "HUPushNotificationManager.h"
 #import "CSGraphics.h"
-#import "CSDispatcher.h"
 
 @implementation HUPushNotificationModel
 
@@ -83,11 +82,12 @@
     }
     
     //bring to front after all views from subclasses are done initializing
-    [CSDispatcher dispatchMainQueue:^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [contentView bringSubviewToFront:touchView];
-        if (button)
+        if (button) {
             [contentView bringSubviewToFront:button];
-    }];
+        }
+    });
     
     return contentView;
 }

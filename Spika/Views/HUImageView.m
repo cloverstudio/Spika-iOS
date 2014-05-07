@@ -27,7 +27,6 @@
 #import "CAAnimation+Blocks.h"
 #import "HUImageView+Style.h"
 #import "DatabaseManager.h"
-#import "CSDispatcher.h"
 
 @interface HUImageView () {
 
@@ -236,7 +235,7 @@
 
 - (void) imageDownloadDidFinish:(UIImage *)image {
     
-    [CSDispatcher dispatchMainQueue:^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         if (image) {
             [self setImage:image];
@@ -246,9 +245,7 @@
         }
         
         _downloadBlock = nil;
-        
-    }];
-    
+    });
 }
 
 @end

@@ -27,7 +27,6 @@
 #import "UserManager.h"
 #import "ModelGroup.h"
 #import "CSToast.h"
-#import "CSDispatcher.h"
 #import "HUEditableLabelView.h"
 #import "UIImagePickerController+Extensions.h"
 #import "UIActionSheet+MKBlockAdditions.h"

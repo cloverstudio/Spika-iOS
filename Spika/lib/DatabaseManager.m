@@ -29,7 +29,6 @@
 #import "NSDictionary+KeyPath.h"
 #import "NSString+MD5.h"
 #import "UserManager.h"
-#import "CSDispatcher.h"
 #import "CSToast.h"
 #import "SBJSON.h"
 #import <CSUtils/CSUtils.h>
@@ -179,17 +178,17 @@
             
             if (successBlock) {
 				
-                [CSDispatcher dispatchMainQueue:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     successBlock(user);
-                }];
+                });
             }
             
         } else {
             
             if (errorBlock) {
-                [CSDispatcher dispatchMainQueue:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     errorBlock(nil);
-                }];
+                });
             }
             
         }
@@ -655,14 +654,14 @@
         }
         i++;
         if (i == user.contacts.count) {
-            [CSDispatcher dispatchMainQueue:^{
-                
-                NSArray *sortedAry = [users sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
-                    return [a.name compare:b.name];
-                }];
-                
-                successBlock(sortedAry);
+            
+            NSArray *sortedAry = [users sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
+                return [a.name compare:b.name];
             }];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                successBlock(sortedAry);
+            });
         }
     };
     
@@ -1375,14 +1374,13 @@
         }
         i++;
         if (i == user.favouriteGroups.count) {
-            [CSDispatcher dispatchMainQueue:^{
-                
-                NSArray *sortedAry = [groups sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
-                    return [a.name compare:b.name];
-                }];
-                
-                successBlock(sortedAry);
+            
+            NSArray *sortedAry = [groups sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
+                return [a.name compare:b.name];
             }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                successBlock(sortedAry);
+            });
         }
     };
     

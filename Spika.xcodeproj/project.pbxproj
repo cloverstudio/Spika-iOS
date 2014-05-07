@@ -246,7 +246,6 @@
 		ADC646FC17E0761700C16A9D /* video_more_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC644C217E0761600C16A9D /* video_more_icon@2x.png */; };
 		ADC646FD17E0761700C16A9D /* video_more_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC644C317E0761600C16A9D /* video_more_icon_active.png */; };
 		ADC646FE17E0761700C16A9D /* video_more_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC644C417E0761600C16A9D /* video_more_icon_active@2x.png */; };
-		ADC646FF17E0761700C16A9D /* CSDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC644CA17E0761600C16A9D /* CSDispatcher.m */; };
 		ADC6470017E0761700C16A9D /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC644CC17E0761600C16A9D /* DatabaseManager.m */; };
 		ADC6470117E0761700C16A9D /* HUControls.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC644CE17E0761600C16A9D /* HUControls.m */; };
 		ADC6470217E0761700C16A9D /* HUDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC644D017E0761600C16A9D /* HUDataManager.m */; };
@@ -761,8 +760,6 @@
 		ADC644C417E0761600C16A9D /* video_more_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_more_icon_active@2x.png"; sourceTree = "<group>"; };
 		ADC644C517E0761600C16A9D /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADC644C617E0761600C16A9D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADC644C917E0761600C16A9D /* CSDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSDispatcher.h; sourceTree = "<group>"; };
-		ADC644CA17E0761600C16A9D /* CSDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSDispatcher.m; sourceTree = "<group>"; };
 		ADC644CB17E0761600C16A9D /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		ADC644CC17E0761600C16A9D /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		ADC644CD17E0761600C16A9D /* HUControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUControls.h; sourceTree = "<group>"; };
@@ -1908,7 +1905,6 @@
 		ADC644C717E0761600C16A9D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				ADC644C817E0761600C16A9D /* CSLib */,
 				ADC644CB17E0761600C16A9D /* DatabaseManager.h */,
 				ADC644CC17E0761600C16A9D /* DatabaseManager.m */,
 				ADC644CD17E0761600C16A9D /* HUControls.h */,
@@ -1935,15 +1931,6 @@
 				74B0EDCE18E5A6F6006D0F54 /* ServerManager.m */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		ADC644C817E0761600C16A9D /* CSLib */ = {
-			isa = PBXGroup;
-			children = (
-				ADC644C917E0761600C16A9D /* CSDispatcher.h */,
-				ADC644CA17E0761600C16A9D /* CSDispatcher.m */,
-			);
-			path = CSLib;
 			sourceTree = "<group>";
 		};
 		ADC644D317E0761600C16A9D /* JSON */ = {
@@ -2929,7 +2916,6 @@
 				FA1EF3E418D35D7800B53D76 /* CSURLCache.m in Sources */,
 				ADC6464C17E0761600C16A9D /* RCSwitchClone.m in Sources */,
 				ADC6464D17E0761600C16A9D /* RCSwitchOnOff.m in Sources */,
-				ADC646FF17E0761700C16A9D /* CSDispatcher.m in Sources */,
 				ADC6470017E0761700C16A9D /* DatabaseManager.m in Sources */,
 				ADC6470117E0761700C16A9D /* HUControls.m in Sources */,
 				ADC6470217E0761700C16A9D /* HUDataManager.m in Sources */,

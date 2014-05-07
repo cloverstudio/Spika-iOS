@@ -39,7 +39,6 @@
 #import "HUPushNotificationManager.h"
 #import "HUOfflinePushNotification.h"
 #import "HUDefaultMessageNotification.h"
-#import "CSDispatcher.h"
 #import "NSDictionary+KeyPath.h"
 #import "NSNotification+Extensions.h"
 #import "AlertViewManager.h"

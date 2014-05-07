@@ -34,7 +34,6 @@
 #import "HUExploreUsersView.h"
 #import "AlertViewManager.h"
 #import "DatabaseManager.h"
-#import "CSDispatcher.h"
 #import "DatabaseManager.h"
 #import "HUCachedImageLoader.h"
 
