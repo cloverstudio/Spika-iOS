@@ -83,7 +83,7 @@ typedef enum {
     UILabel* lbNavTitle = [[UILabel alloc] initWithFrame:CGRectMake(50,0,100,40)];
     lbNavTitle.backgroundColor = [UIColor clearColor];
     lbNavTitle.textColor = [UIColor whiteColor];
-    lbNavTitle.textAlignment = UITextAlignmentCenter;
+    lbNavTitle.textAlignment = NSTextAlignmentCenter;
     lbNavTitle.font = [UIFont boldSystemFontOfSize:kFontSizeMiddium];
     lbNavTitle.text = NSLocalizedString(@"VOICE TITLE",nil);
     self.navigationItem.titleView = lbNavTitle;
@@ -198,7 +198,7 @@ typedef enum {
 {
     UILabel *timerLabel = [[UILabel alloc] initWithFrame:[self frameForTimerLabel]];
     timerLabel.center = CGPointMake(self.view.center.x, timerLabel.center.y);
-    timerLabel.textAlignment = UITextAlignmentCenter;
+    timerLabel.textAlignment = NSTextAlignmentCenter;
     timerLabel.font = kFontArialMTOfSize(kFontSizeExtraBig);
     timerLabel.text = @"00:00";
     timerLabel.textColor = [HUBaseViewController colorWithSharedColorType:HUSharedColorTypeRed];

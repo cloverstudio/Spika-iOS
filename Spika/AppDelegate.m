@@ -39,12 +39,10 @@
 #import "HUPushNotificationManager.h"
 #import "HUOfflinePushNotification.h"
 #import "HUDefaultMessageNotification.h"
-#import "CSDispatcher.h"
 #import "NSDictionary+KeyPath.h"
 #import "NSNotification+Extensions.h"
 #import "AlertViewManager.h"
 #import "HUPasswordConfirmViewController.h"
-#import <CSUtils/CSUtils.h>
 #import "UIImage+Aditions.h"
 #import "HUMyGroupProfileViewController.h"
 #import "Crittercism.h"
@@ -52,6 +50,7 @@
 #import "HULoginViewController.h"
 #import "HUInformationViewController.h"
 #import "HUUsersInGroupViewController.h"
+#import "HUSubMenuViewController.h"
 
 @interface AppDelegate (){
     UIView *_disableTouchView;
@@ -111,7 +110,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
         
-    _navigationController = [[CSNavigationController alloc] initWithRootViewController:[CSKit viewControllerFromString:@"RootVC"]];
+    _navigationController = [[CSNavigationController alloc] initWithRootViewController:[[RootVC alloc] init]];
     
     [_navigationController setBackgroundImage:[UIImage imageWithColor:kHUColorDarkDarkGray andSize:CGSizeMake(1, 1)]];
     
@@ -119,9 +118,8 @@
     
     _sideMenuView = [[HUSideMenuViewController alloc] init];
     
-    _subMenuViewController = (HUSideMenuViewController *)[CSKit viewControllerFromString:@"HUSubMenuViewController"];
+    _subMenuViewController = (HUSideMenuViewController *)[[HUSubMenuViewController alloc] init];
     
-    //[self.window addSubview:_navigationController.view];
     [self.window setRootViewController:_navigationController];
     [self.window addSubview:_sideMenuView.view];
     [self.window addSubview:_subMenuViewController.view];
@@ -234,7 +232,7 @@
                      
                      ModelUser *user = (ModelUser *) result;
                      
-                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:user];
                      });
                      
@@ -256,7 +254,7 @@
                      
                      ModelGroup *group = (ModelGroup *) result;
                      
-                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                          [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupProfile object:group];
                      });
                      
@@ -295,10 +293,10 @@
     
     if(eulaAgreed == nil){
         HUEULAViewController *eulaVC = [[HUEULAViewController alloc] initWithNibName:@"HUEULAView" bundle:nil];
-        [loginNavController presentModalViewController:eulaVC animated:YES];
-    }
-    
-    CS_RELEASE(loginNavController);
+        [loginNavController presentViewController:eulaVC
+                                         animated:YES
+                                       completion:nil];
+    }    
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -399,7 +397,7 @@
                     if(result){
                         ModelUser *user = result;
                         
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                         });
                     }
@@ -417,7 +415,7 @@
                     if(result){
                         ModelGroup *group = result;
                         
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
                         });
                     }
@@ -457,7 +455,7 @@
             if(result){
                 ModelUser *user = result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowUserWall object:user];
                 });
                 
@@ -478,7 +476,7 @@
             if(result){
                 ModelGroup *group = result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupWall object:group];
                 });
             }else{
@@ -504,7 +502,7 @@
                 
                 ModelUser *user = (ModelUser *) result;
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowProfile object:user];
                 });
                 
@@ -526,7 +524,7 @@
                  
                  ModelGroup *group = (ModelGroup *) result;
                  
-                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                      [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupProfile object:group];
                  });
                  
@@ -1020,7 +1018,8 @@
 			HUPasswordInputBlock block = ^(id controller, BOOL isSuccess) {
 				if (isSuccess) {
 					self.isPasswordInModalPopover = NO;
-					[self.navigationController dismissModalViewControllerAnimated:YES];
+                    [self.navigationController dismissViewControllerAnimated:YES
+                                                                  completion:nil];
 				}
 			};
 			
@@ -1033,27 +1032,18 @@
     HUOfflinePushNotification *offlineNotification = [DatabaseManager defaultManager].offlineNotificationModel;
     HUPushNotificationManager *pushManager = [HUPushNotificationManager defaultManager];
 
-    //TODO: fix observerForName: to use CSWebServicesManager reachability notification
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"kNetworkCrittercismReachabilityChangedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"kNetworkCrittercismReachabilityChangedNotification"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
         
-        if ([CSWebServicesManager webServicesManager].isInternetAvailable) {
-            [pushManager removePushNotification:offlineNotification];
-        } else {
-            [pushManager removePushNotification:offlineNotification];
-            //[pushManager insertPushNotification:offlineNotification atIndex:0];
-        }
-        
+                                                      if ([[HUHTTPClient sharedClient] isInternetAvailable]) {
+                                                          [pushManager removePushNotification:offlineNotification];
+                                                      }
+                                                      else {
+                                                          [pushManager removePushNotification:offlineNotification];
+                                                      }
     }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:CSWebServicesManagerInternerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSLog(@"internet!");
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:CSWebServicesManagerInternerDidBecomeUnavailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSLog(@"no internet!");
-    }];
-    
 }
 
 

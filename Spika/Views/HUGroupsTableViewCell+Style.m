@@ -44,7 +44,7 @@
 
 - (UIImageView *) anAvatarImageView {
 
-    UIImageView *imageView = CS_AUTORELEASE([[UIImageView alloc] initWithFrame:[HUGroupsTableViewCell frameForAvatarImageView]]);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:[HUGroupsTableViewCell frameForAvatarImageView]];
     imageView.backgroundColor = [UIColor clearColor];
     
     return imageView;
@@ -56,7 +56,7 @@
     UILabel *label = [CSKit labelWithFrame:[HUGroupsTableViewCell frameForGroupNameLabel]
                                       font:[HUGroupsTableViewCell fontForGroupNameLabel]
                                  textColor:[self textColorForGroupNameLabel]
-                             textAlignment:UITextAlignmentLeft
+                             textAlignment:NSTextAlignmentLeft
                                       text:nil];
     label.numberOfLines = 0;
     
@@ -68,7 +68,7 @@
 
 - (HUCounterBalloonView *) newCounterBalloonView {
     
-    HUCounterBalloonView *counterBaloonView = CS_AUTORELEASE([[HUCounterBalloonView alloc] initWithImage:[UIImage imageNamed:@"comment_number_ballon.png"]]);
+    HUCounterBalloonView *counterBaloonView = [[HUCounterBalloonView alloc] initWithImage:[UIImage imageNamed:@"comment_number_ballon.png"]];
     counterBaloonView.center = CGPointMake(kBackgroundViewWidth + 32, 30);
     counterBaloonView.count = 10;
     

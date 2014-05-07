@@ -48,12 +48,6 @@ typedef void (^DMLoadVoice)(NSData *data);
 
 +(DatabaseManager *) defaultManager;
 
--(AFHTTPClient *) getClient;
-
--(void) changeAPIEndpoint:(NSString *)apiEndpoint
-				  success:(DMUpdateBlock)successBlock
-					error:(DMErrorBlock)errorBlock;
-
 #pragma mark - check methods
 -(NSDictionary *) checkUniqueSynchronous:(NSString *) key
               value:(NSString *) value;
@@ -122,11 +116,6 @@ typedef void (^DMLoadVoice)(NSData *data);
 
 -(void)updateUser:(ModelUser *)toUser
          oldEmail:(NSString *)oldEmail
-          success:(DMUpdateBlock)successBlock
-            error:(DMErrorBlock)errorBlock;
-
--(void)updateUser:(ModelUser *)user
-   favouriteGroup:(NSString *)favouriteGroup
           success:(DMUpdateBlock)successBlock
             error:(DMErrorBlock)errorBlock;
 

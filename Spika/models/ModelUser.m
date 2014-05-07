@@ -23,7 +23,6 @@
  */
 
 #import "ModelUser.h"
-#import "SBJson.h"
 #import "NSDictionary+KeyPath.h"
 #import "DatabaseManager.h"
 
@@ -106,7 +105,10 @@
 
 +(NSString *) objectToJson:(ModelUser *)message{
     
-    return [[ModelUser objectToDictionary:message] JSONRepresentation];
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:[ModelUser objectToDictionary:message]
+                                                                          options:NSJSONWritingPrettyPrinted
+                                                                            error:nil]
+                                 encoding:NSUTF8StringEncoding];
     
 }
 

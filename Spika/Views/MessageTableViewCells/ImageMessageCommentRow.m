@@ -44,10 +44,8 @@
                                              300
                                              );
     
-    CGSize labelSize = [comment
-                        sizeWithFont:MessageBodyFont
-                        constrainedToSize:textMessageLabelRect.size
-                        lineBreakMode:UILineBreakModeWordWrap];
+    CGSize labelSize = [comment sizeForBoundingSize:textMessageLabelRect.size
+                                               font:MessageBodyFont];
     
     CGFloat labelHeight = labelSize.height;
     
@@ -135,7 +133,7 @@
         _labelInfo.text = [Utils generateMessageInfoTextWithCreated:created withName:userName withId:userId];
         
         if(isMyMessage){
-            _labelInfo.textAlignment = UITextAlignmentRight;
+            _labelInfo.textAlignment = NSTextAlignmentRight;
         }
 
         

@@ -340,8 +340,9 @@
                                           context:nil];
         
         return frame.size.height;
-    }else{
-        return [text sizeWithFont:font constrainedToSize:size].height;
+    }
+    else{
+        return [text sizeForBoundingSize:size font:font].height;
     }
     
 }

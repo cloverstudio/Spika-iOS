@@ -57,19 +57,6 @@
     
     [self removeObserver:self
               forKeyPath:@"tableViewStyle"];
-
-    CS_RELEASE(_items);
-    CS_RELEASE(_tableView);
-    
-    /*
-    CS_RELEASE(_loadingView);
-    CS_RELEASE(_loadingLabel);
-    CS_RELEASE(_loadingIndicatorView);
-    CS_RELEASE(_noItemsView);
-    CS_RELEASE(_noItemsLabel);
-    */
-    
-    CS_SUPER_DEALLOC;
 }
 
 #pragma mark - Initialization
@@ -104,30 +91,7 @@
 
     self.view.backgroundColor = [HUBaseViewController sharedViewBackgroundColor];
     
-    /*
-    _loadingView = CS_RETAIN([self loadingView]);
-    
-    _loadingLabel = CS_RETAIN([self loadingLabel]);
-    _loadingLabel.text = [self loadingTitle];
-    [_loadingView addSubview:_loadingLabel];
-    _loadingLabel.alpha = 0.0;
-    
-    _loadingIndicatorView = CS_RETAIN([self loadingIndicatorView]);
-    [_loadingView addSubview:_loadingIndicatorView];
-    _loadingView.alpha = 0.0;
-    [self.view addSubview:_loadingView];
-    
-    _noItemsView = CS_RETAIN([self noItemsView]);
-    
-    _noItemsLabel = CS_RETAIN([self noItemsLabel]);
-    _noItemsLabel.text = [self noItemsTitle];
-    [_noItemsView addSubview:_noItemsLabel];
-    _noItemsView.alpha = 0.0;
-    
-    [self.view addSubview:_noItemsView];
-    */
-    
-    _tableView = CS_RETAIN([self contentTableView]);
+    _tableView = [self contentTableView];
     [self.view addSubview:_tableView];
     _tableView.alpha = 0.0;
 
@@ -145,8 +109,6 @@
 }
 
 - (void) showViewType:(HUViewType)viewType animated:(BOOL)animated {
-
-     __weak HUBaseTableViewController *this = self;
     
     BOOL showMainView = NO;
     BOOL showLoadingView = NO;
@@ -211,9 +173,8 @@
         if (_tableView.style != _tableViewStyle) {
             
             [_tableView removeFromSuperview];
-            CS_RELEASE(_tableView);
             
-            _tableView = CS_RETAIN([self contentTableView]);
+            _tableView = [self contentTableView];
             [self.view addSubview:_tableView];
         }
     }
@@ -258,7 +219,7 @@
     
     if (!cell) {
         
-        cell = CS_AUTORELEASE([[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier]);
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     cell.textLabel.text = cellIdentifier;

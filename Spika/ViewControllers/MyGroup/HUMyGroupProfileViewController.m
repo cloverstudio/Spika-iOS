@@ -34,7 +34,6 @@
 #import "CSToast.h"
 #import "UserManager.h"
 #import "CSNotificationView.h"
-#import "CSDispatcher.h"
 #import "HUEditableLabelView.h"
 #import "HUPickerTableView.h"
 #import "HUDataManager.h"
@@ -198,9 +197,9 @@
     
     _avatarImage = [image copy];
     _avatarView.image = image;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
     [self layoutViews];
-    
 }
 
 -(IBAction) confirmDelete{
@@ -293,9 +292,13 @@
         return;
     }
     
-    if(index == 0)
+    if(index == 0) {
         [self onDelete];
-    
+    }
+}
+
+-(void) dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 -(IBAction) onDelete {

@@ -38,10 +38,7 @@
                                         UITableViewDataSource,
                                         UITableViewDelegate,
                                         UITextViewDelegate>{
-    
-    IBOutlet UIScrollView *contentView;
-    IBOutlet HUImageView *_userAvatarImageView;
-    
+        
     IBOutlet UILabel        *_nameLabel;
     IBOutlet UITextField    *_nameValueLabel;
     IBOutlet UILabel        *_aboutLabel;
@@ -63,6 +60,6 @@
 - (IBAction) onSave;
 
 @property (nonatomic, strong) ModelUser *myUser;
-@property (nonatomic, strong) UIScrollView *contentView;
-@property (nonatomic, strong) HUImageView *userAvatarImageView;
+@property (nonatomic, strong) IBOutlet UIScrollView *contentView;
+@property (nonatomic, strong) IBOutlet HUImageView *userAvatarImageView;
 @end

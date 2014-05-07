@@ -23,7 +23,6 @@
  */
 
 #import "HUPasswordConfirmViewController.h"
-#import "CSDispatcher.h"
 
 @interface HUPasswordConfirmViewController ()
 
@@ -110,14 +109,18 @@
 	[super processPassword:password success:isSuccess];
 	
 	if (isSuccess) {
-		[CSDispatcher dispatchAfter:1.5f block:^{
-			//call super to avoid cancel block callback
-			[super passwordViewControllerWillClose];
-		}];
-	} else {
-		[CSDispatcher dispatchAfter:.8f block:^{
-			[self resetInput];
-		}];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            //call super to avoid cancel block callback
+            [super passwordViewControllerWillClose];
+        });
+	}
+    else {
+	
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self resetInput];
+        });
 	}
 }
 

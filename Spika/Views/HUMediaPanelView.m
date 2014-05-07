@@ -41,18 +41,6 @@
 
 @implementation HUMediaPanelView
 
-@synthesize delegate = _delegate;
-
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-    CS_RELEASE(_scrollViewContainerView);
-    CS_RELEASE(_pageControll);
-    CS_RELEASE(_scrollViewEmoticons);
-
-    CS_SUPER_DEALLOC;
-}
 
 #pragma mark - Initialization
 
@@ -90,12 +78,12 @@
     [self addSubview:voiceButton];
     
     
-    _scrollViewContainerView = CS_RETAIN([self newScrollEmotionViewContainer]);
+    _scrollViewContainerView = [self newScrollEmotionViewContainer];
     
-    _pageControll = CS_RETAIN([self newPageControll]);
+    _pageControll = [self newPageControll];
     [_scrollViewContainerView addSubview:_pageControll];
     
-    _scrollViewEmoticons = CS_RETAIN([self newScrollEmotionView]);
+    _scrollViewEmoticons = [self newScrollEmotionView];
     _scrollViewEmoticons.delegate = self;
     [_scrollViewContainerView addSubview:_scrollViewEmoticons];
     

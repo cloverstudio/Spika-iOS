@@ -37,13 +37,6 @@
 
 @implementation HUSideMenuViewController
 
-#pragma mark - Dealloc
-
--(void) dealloc {
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 - (id)init {
@@ -301,7 +294,10 @@
     if(index == 0){
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSideMenuLogoutSelected object:nil];
     }
-    
+}
+
+-(void) dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 @end

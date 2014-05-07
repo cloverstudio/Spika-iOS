@@ -95,9 +95,6 @@
 
 @implementation HUWallViewController
 
-@synthesize contentViewFrame = _contentViewFrame;
-@synthesize isKeyboardShown = _isKeyboardShown;
-
 #pragma mark - Memory Management
 
 - (void) dealloc{
@@ -107,15 +104,12 @@
     [_contentView removeObserver:self
                       forKeyPath:@"frame"];
     
-    CS_RELEASE(_contentView);
-    
     [_reloadTimer invalidate];
     _reloadTimer = nil;
 	
-	if (_targetMode == ModeGroup)
+	if (_targetMode == ModeGroup) {
 		[[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
-    
-    CS_SUPER_DEALLOC;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -239,13 +233,7 @@
     
     _allowSwipe = NO;
     
-    if(_targetUser != nil && [_targetUser._id isEqualToString:[[UserManager defaultManager] getLoginedUser]._id]) {
-    
-    }else{
-        //self.navigationItem.rightBarButtonItems = [self profileBarButtonItemsWithSelector:@selector(onProfile)];
-    }
-    
-    _contentView = CS_RETAIN([self contentView]);
+    _contentView = [self contentView];
     [self setContentViewTopShadow:_contentView];
     [self.view addSubview:_contentView];
     
@@ -265,28 +253,28 @@
     [_contentView addSubview:self.tableView];
     
     
-    _messageInputContainer = CS_RETAIN([self messageInputContainer]);
+    _messageInputContainer = [self messageInputContainer];
     [self setShadowOnTopOfInputView:_messageInputContainer];
     [_contentView addSubview:_messageInputContainer];
     
-    _mediaButton = CS_RETAIN([self mediaButton]);
+    _mediaButton = [self mediaButton];
     [_mediaButton addTarget:self
                      action:@selector(onMediaButton)
            forControlEvents:UIControlEventTouchUpInside];
     
-    _sendButton = CS_RETAIN([self sendButton]);
+    _sendButton = [self sendButton];
     [_sendButton addTarget:self
                     action:@selector(onSend)
           forControlEvents:UIControlEventTouchUpInside];
     
-    _messageInputTextField = CS_RETAIN([self messageInputTextField]);
+    _messageInputTextField = [self messageInputTextField];
     _messageInputTextField.delegate = self;
     
     [_messageInputContainer addSubview:_mediaButton];
     [_messageInputContainer addSubview:_sendButton];
     [_messageInputContainer addSubview:_messageInputTextField];
 
-    _HUMediaPanelView = CS_RETAIN([self mediaPanelView]);
+    _HUMediaPanelView = [self mediaPanelView];
     _HUMediaPanelView.delegate = self;
     [_contentView addSubview:_HUMediaPanelView];
     
@@ -654,6 +642,10 @@
                                                   });
                                               }];
     
+}
+
+- (void) dropViewDidBeginRefreshing:(id)sender {
+
 }
 
 - (void) getPage:(int) page {
@@ -1217,8 +1209,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
-   [self dismissModalViewControllerAnimated:YES];
-
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
 
     if (CFStringCompare((CFStringRef) mediaType,  kUTTypeImage, 0) == kCFCompareEqualTo) {
@@ -1231,16 +1224,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
     if (CFStringCompare((CFStringRef) mediaType,  kUTTypeMovie, 0) == kCFCompareEqualTo) {
         NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
-        if (url) {
-			AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:url];
-			CMTime duration = playerItem.duration;
-
-			//if (CMTimeGetSeconds(duration) <= kVideoMaxLength)
-				[self performSelector:@selector(sendVideo:) withObject:url afterDelay:0.5];
-			//else
-			//	[[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Video-Time-Too-Long", nil)];
+        if (url) {				
+            [self performSelector:@selector(sendVideo:)
+                       withObject:url
+                       afterDelay:0.5];
 		}
-        
     }
     
 }

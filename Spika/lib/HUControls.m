@@ -85,13 +85,15 @@
     UILabel *label = [CSKit labelWithFrame:frame
                                       font:kFontArialMTOfSize(fontSize)
                                  textColor:kHUColorDarkDarkGray
-                             textAlignment:UITextAlignmentLeft
+                             textAlignment:NSTextAlignmentLeft
                                       text:text];
     return label;
 }
 
-+(CGRect) buttonFrameForText:(NSString*) text font:(UIFont*) font{
-    CGSize size = [text sizeWithFont:font constrainedToSize:kHUButtonSizeDefault];
++(CGRect) buttonFrameForText:(NSString*) text font:(UIFont*) font {
+    CGSize size = [text sizeForBoundingSize:kHUButtonSizeDefault
+                                       font:font];
+    
     CGFloat paddedWidth = size.width + kHUButtonTextPadding;
     size.width = paddedWidth > kHUButtonSizeDefault.width ? paddedWidth : kHUButtonSizeDefault.width;
     size.height = kHUButtonSizeDefault.height;

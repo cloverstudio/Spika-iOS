@@ -335,7 +335,6 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"CoreLocation can't find current location. Error is: %@", error);
 }
 
 

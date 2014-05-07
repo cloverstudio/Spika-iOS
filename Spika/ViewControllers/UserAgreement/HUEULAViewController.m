@@ -85,7 +85,8 @@
     
     [[AlertViewManager defaultManager] showTutorial:NSLocalizedString(@"tutorial-login",nil)];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 @end

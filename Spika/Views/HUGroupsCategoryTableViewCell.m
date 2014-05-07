@@ -35,17 +35,6 @@
 
 @implementation HUGroupsCategoryTableViewCell
 
-@synthesize groupCategory = _groupCategory;
-@synthesize avatarImageView = _avatarImageView;
-
-#pragma mark - Memory Management
-
-- (void) dealloc {
-    
-    CS_RELEASE(_groupCategory);
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -54,13 +43,13 @@
 
         self.contentView.backgroundColor = [UIColor clearColor];
         
-        _backgroundView = CS_RETAIN([self aBackgroundView]);
+        _backgroundView = [self aBackgroundView];
         [self.contentView addSubview:_backgroundView];
         
         _avatarImageView = [self anAvatarImageView];
         [self.contentView  addSubview:_avatarImageView];
         
-        _groupNameLabel = CS_RETAIN([self groupNameLabel]);
+        _groupNameLabel = [self groupNameLabel];
         [self.contentView  addSubview:_groupNameLabel];
         
         self.selectedBackgroundView = [[HUSelectedTableViewCellVew alloc] initWithFrame:self.frame withHeight:77];

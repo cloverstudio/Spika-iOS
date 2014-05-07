@@ -23,7 +23,6 @@
  */
 
 #import "ModelGroupCategory.h"
-#import "SBJson.h"
 #import "UserManager.h"
 #import "NSDictionary+KeyPath.h"
 #import "DatabaseManager.h"
@@ -43,12 +42,17 @@
 
 +(NSString *) toJSON:(ModelGroupCategory *)groupCategory{
     NSDictionary *tmpDic = [ModelGroupCategory toDic:groupCategory];
-    return [tmpDic JSONRepresentation];
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:tmpDic
+                                                                          options:NSJSONWritingPrettyPrinted
+                                                                            error:nil]
+                                 encoding:NSUTF8StringEncoding];
 }
 
 +(ModelGroupCategory *) jsonToObj:(NSString *)strJSON{
     
-    NSMutableDictionary *tmpDic = [strJSON JSONValue];
+    NSMutableDictionary *tmpDic = [NSJSONSerialization JSONObjectWithData:[strJSON dataUsingEncoding:NSUTF8StringEncoding]
+                                                                  options:NSJSONReadingAllowFragments
+                                                                    error:nil];
     return [ModelGroupCategory dicToObj:tmpDic];
     
 }

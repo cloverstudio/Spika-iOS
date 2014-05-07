@@ -27,7 +27,6 @@
 #import "UserManager.h"
 #import "ModelGroup.h"
 #import "CSToast.h"
-#import "CSDispatcher.h"
 #import "HUEditableLabelView.h"
 #import "UIImagePickerController+Extensions.h"
 #import "UIActionSheet+MKBlockAdditions.h"
@@ -51,7 +50,6 @@
     HUPickerTableView   *_pickerTableView;
 }
 
--(void)resignActiveTextViewAndHideKeyboard;
 -(void)showPickerTableViewForPickerDataType:(HUPickerTableViewDataType)dataType;
 -(void)removePickerTableView;
 
@@ -277,11 +275,14 @@
         }
 
     }
-    
 }
 
 - (void) downloadSucceed:(id) sender{
     [self performSelector:@selector(layoutViews) withObject:nil afterDelay:0.1];
+}
+
+-(void)hideKeyboardFor:(UIView *)label {
+
 }
 
 #pragma mark - Load Categories
@@ -534,8 +535,8 @@
 			HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 			
 			if(cell == nil) {
-				cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-																		   reuseIdentifier:cellIdentifier]);
+				cell = [[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                            reuseIdentifier:cellIdentifier];
 			}
 			
 			[cell populateWithData:groupCategory];

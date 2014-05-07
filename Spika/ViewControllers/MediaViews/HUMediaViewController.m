@@ -440,22 +440,20 @@
 
 -(void) dialog:(HUDialog *)dialog didPressButtonAtIndex:(NSInteger)index{
     
-    if(index == 0){
-
+    if(index == 0) {
         
         [[AlertViewManager defaultManager] showWaiting:@"" message:@""];
-        
+
         [[DatabaseManager defaultManager] report:_message success:^(id result) {
             
             [[AlertViewManager defaultManager] dismiss];
-            
             [[AlertViewManager defaultManager] showAlert:NSLocalizedString(@"Violation Reported", nil)];
-            
         }];
-
-    
     }
-    
+}
+
+- (void)dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 @end

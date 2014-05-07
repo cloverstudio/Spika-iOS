@@ -79,8 +79,8 @@
     UINavigationBar *navBar = [UINavigationBar new];
     navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [navBar setTitleTextAttributes:@{
-                UITextAttributeFont: kFontArialMTOfSize(kFontSizeSmall),
-            UITextAttributeTextColor: kHUColorWhite
+                NSFontAttributeName: kFontArialMTOfSize(kFontSizeSmall),
+            NSForegroundColorAttributeName: kHUColorWhite
     }];
     [navBar setTitleVerticalPositionAdjustment:5.0f forBarMetrics:UIBarMetricsDefault];
     [navBar setBackgroundImage:[UIImage imageWithColor:kHUColorDarkDarkGray andSize:CGSizeMake(1, 1)] forBarMetrics:UIBarMetricsDefault];

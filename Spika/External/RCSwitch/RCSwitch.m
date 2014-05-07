@@ -162,7 +162,6 @@
 		if(UIGraphicsBeginImageContextWithOptions != NULL)
 			UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
 		else {
-			CGSize testSize = sliderOnRect.size;
 			UIGraphicsBeginImageContext(sliderOnRect.size);
 		}
 		[buttonEndTrackBase drawInRect:sliderOnRect];
@@ -341,7 +340,7 @@
 		percent = 0.0;
 	if(percent > 1.0)
 		percent = 1.0;
-	if(oldPercent < 0.25 && percent > 0.5 || oldPercent > 0.75 && percent < 0.5)
+	if((oldPercent < 0.25 && percent > 0.5) || (oldPercent > 0.75 && percent < 0.5))
 		mustFlip = NO;
 	[self setNeedsDisplay];
 	[self sendActionsForControlEvents:UIControlEventTouchDragInside];

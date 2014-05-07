@@ -46,19 +46,6 @@
 
 @implementation HUBaseViewController
 
-@synthesize isViewOpened = _isViewOpened;
-@synthesize viewType = _viewType;
-
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-	NSLog(@"%@ dealloc'd!",NSStringFromClass([self class]));
-    
-    CS_RELEASE(_slideButton);
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 +(void) initialize {
@@ -72,11 +59,6 @@
 		
 		_isDebugMode = kIsDebugMode;
         _allowSwipe = YES;
-        
-        [self addObserver:self
-               forKeyPath:@"viewType"
-                  options:0
-                  context:NULL];
     }
     
     return self;
@@ -135,14 +117,6 @@
     self.navigationItem.rightBarButtonItems = [HUBaseViewController dummyBarButtonItem];
     self.view.userInteractionEnabled = YES;
     
-    /*
-    if ([self viewFromNib]) {
-        self.view = [self viewFromNib];
-    } else {
-        self.view = CS_AUTORELEASE([[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]]);
-    }
-    */
-    
     if ([NSStringFromClass([self class]) isEqualToString:@"HULoginViewController"] ||
         [NSStringFromClass([self class]) isEqualToString:@"HUSignUpViewController"]) {
         
@@ -156,7 +130,7 @@
 		label.text = NSStringFromClass([self class]);
 		label.center = CGPointMake(self.view.width / 2, self.view.height / 2);
 		label.textColor = [UIColor blackColor];
-		label.textAlignment = UITextAlignmentCenter;
+		label.textAlignment = NSTextAlignmentCenter;
 		label.backgroundColor = [UIColor yellowColor];
 		[UIView animateWithDuration:1.0
 						 animations:nil

@@ -32,7 +32,7 @@
     UIImageView *_userStatusIconView;
 }
 
-@property (nonatomic, strong) HUImageView *userAvatarImageView;
+@property (nonatomic, strong) UIImageView *userAvatarImageView;
 
 -(id) initWithUser:(ModelUser *)user reuseIdentifier:(NSString *)reuseIdentifier;
 -(void) populateWithData:(ModelUser *)user;

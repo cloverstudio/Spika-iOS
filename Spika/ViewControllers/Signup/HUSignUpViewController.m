@@ -28,35 +28,15 @@
 #import "HUDataManager.h"
 #import "AlertViewManager.h"
 #import "HUDialog.h"
-#import "HUServerListViewController.h";
+#import "HUServerListViewController.h"
 
 #define kTagSignUpSucceededAlert    700
 
-@interface HUSignUpViewController () {
-}
-
-#pragma mark - Animations
-- (void) showLoadingView:(BOOL) show animated:(BOOL) animated;
-- (void) animateKeyboardWillShow:(NSNotification *)aNotification;
-- (void) animateKeyboardWillHide:(NSNotification *)aNotification;
+@interface HUSignUpViewController ()
 
 @end
 
 @implementation HUSignUpViewController
-
-#pragma mark - Memory Managemnt
-
-- (void) dealloc {
-    
-    CS_RELEASE(_mainView);
-    CS_RELEASE(_loginFieldsBackground);
-    CS_RELEASE(_usernameField);
-    CS_RELEASE(_emailField);
-    CS_RELEASE(_passwordField);
-    CS_RELEASE(_selectServerLabel);
-    
-    CS_SUPER_DEALLOC;
-}
 
 #pragma mark - View Lifecycle
 
@@ -296,6 +276,10 @@
 }
 
 #pragma mark - HUDialogDelegate
+
+- (void)dialog:(HUDialog *)dialog didPressButtonAtIndex:(NSInteger)index {
+
+}
 
 -(void) dialogDidPressCancel:(HUDialog *)dialog{
     

@@ -39,6 +39,5 @@
 - (IBAction) clearCacheClicked;
 
 -(void) passwordActiveDidChangeValue:(id)sender;
--(void) apiEndpointDidChange:(UITextField *)textField;
 
 @end

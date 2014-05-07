@@ -44,8 +44,6 @@
 @implementation HUPhotoDetailViewController
 
 -(MessageTypeBasicCell *) getMediaCellWithMessage:_message indexPath:(NSIndexPath *) indexPath{
-
-    NSInteger section = [super numberOfSectionsInTableView:self.tableView] - 1;
     
     NSString *cellIdentifier = @"MessageTypeImageDetailCell";
     

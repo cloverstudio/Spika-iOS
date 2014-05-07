@@ -98,7 +98,7 @@
     _reportViolationBtn = [[UILabel alloc] init];
     _reportViolationBtn.text = NSLocalizedString(@"ReportViolation", nil);
     _reportViolationBtn.font = kFontArialMTOfSize(10);
-    _reportViolationBtn.textAlignment = UITextAlignmentRight;
+    _reportViolationBtn.textAlignment = NSTextAlignmentRight;
     _reportViolationBtn.textColor = kHUColorLightGray;
     _reportViolationBtn.userInteractionEnabled = YES;
     _reportViolationBtn.backgroundColor = [UIColor clearColor];

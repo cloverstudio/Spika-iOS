@@ -81,12 +81,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationGroupsShowMyGroups object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationGroupsShowSearch object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationGroupsAddGroup object:nil];
-
-    CS_RELEASE(_groupsArray);
-    CS_RELEASE(_searchGroupsArray);
-    CS_RELEASE(_searchField);
-    
-    CS_SUPER_DEALLOC;
 }
 
 #pragma mark - Initialization
@@ -224,7 +218,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = nil;
     
-    _noGroupsLabel = [self noGroupsLabel];
+    _noGroupsLabel = [self createNoGroupsLabel];
 	[self.view addSubview:_noGroupsLabel];
 
     [self loadFavoriteGroups];
@@ -486,8 +480,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         HUGroupsCategoryTableViewCell *cell = (HUGroupsCategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if(cell == nil) {
-            cell = CS_AUTORELEASE([[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                               reuseIdentifier:cellIdentifier]);
+            cell = [[HUGroupsCategoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                        reuseIdentifier:cellIdentifier];
         }
         
         [cell populateWithData:groupCategory];
@@ -520,20 +514,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         HUGroupsTableViewCell *cell = (HUGroupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if(cell == nil) {
-            cell = CS_AUTORELEASE([[HUGroupsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                               reuseIdentifier:cellIdentifier]);
+            cell = [[HUGroupsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                reuseIdentifier:cellIdentifier];
         }
         
         [cell populateWithData:group];
         
         cell.avatarImageView.image = [UIImage imageNamed:@"group_stub"];
-        
-//        [HUAvatarManager avatarImageForId:group._id atIndexPath:indexPath  width:kListViewSmallWidht completionHandler:^(UIImage *image, NSIndexPath *indexPath) {
-//            cell.avatarImageView.image = image;
-//        }];
-        
-        NSString *url = group.thumbImageUrl;
-        
+
         [HUCachedImageLoader thumbnailFromGroup:group completionHandler:^(UIImage *image, ModelGroup *targetGroup) {
             
             if(image == nil)
@@ -584,7 +572,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
     }else{
 
-        ModelUser *myUser = [UserManager defaultManager].getLoginedUser;
         ModelGroup *group = [self.items objectAtIndex:indexPath.row];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowGroupProfile object:group];
