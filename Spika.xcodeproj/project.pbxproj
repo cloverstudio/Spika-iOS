@@ -86,7 +86,6 @@
 		ADC6464017E0761600C16A9D /* UIView+Margin.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643DD17E0761500C16A9D /* UIView+Margin.m */; };
 		ADC6464117E0761600C16A9D /* UIView+RoundedCorners.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643DF17E0761500C16A9D /* UIView+RoundedCorners.m */; };
 		ADC6464417E0761600C16A9D /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643E817E0761500C16A9D /* CSNotificationView.m */; };
-		ADC6464517E0761600C16A9D /* CSUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC643E917E0761500C16A9D /* CSUtils.framework */; };
 		ADC6464617E0761600C16A9D /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643EC17E0761500C16A9D /* HPGrowingTextView.m */; };
 		ADC6464717E0761600C16A9D /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643EE17E0761500C16A9D /* HPTextViewInternal.m */; };
 		ADC6464817E0761600C16A9D /* MAKVONotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC643F117E0761500C16A9D /* MAKVONotificationCenter.m */; };
@@ -433,8 +432,6 @@
 		FA1EF3D518D3581900B53D76 /* CSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3D418D3581900B53D76 /* CSButton.m */; };
 		FA1EF3D818D3590200B53D76 /* CSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3D718D3590200B53D76 /* CSNavigationController.m */; };
 		FA1EF3DB18D3599C00B53D76 /* CSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3DA18D3599C00B53D76 /* CSTextField.m */; };
-		FA1EF3E418D35D7800B53D76 /* CSURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3E318D35D7800B53D76 /* CSURLCache.m */; };
-		FA1EF3E818D35DAD00B53D76 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3E718D35DAD00B53D76 /* XMLReader.m */; };
 		FA1EF3EF18D362AF00B53D76 /* CSUReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3ED18D362AF00B53D76 /* CSUReachability.m */; };
 		FA1EF3F618D3672300B53D76 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = FA1EF3F418D3672300B53D76 /* dsym_upload.sh */; };
 		FA1EF3F718D3672300B53D76 /* libCrittercism_v4_3_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1EF3F518D3672300B53D76 /* libCrittercism_v4_3_2.a */; };
@@ -1112,10 +1109,6 @@
 		FA1EF3D718D3590200B53D76 /* CSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNavigationController.m; sourceTree = "<group>"; };
 		FA1EF3D918D3599C00B53D76 /* CSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSTextField.h; sourceTree = "<group>"; };
 		FA1EF3DA18D3599C00B53D76 /* CSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSTextField.m; sourceTree = "<group>"; };
-		FA1EF3E218D35D7800B53D76 /* CSURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSURLCache.h; sourceTree = "<group>"; };
-		FA1EF3E318D35D7800B53D76 /* CSURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSURLCache.m; sourceTree = "<group>"; };
-		FA1EF3E618D35DAD00B53D76 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		FA1EF3E718D35DAD00B53D76 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		FA1EF3ED18D362AF00B53D76 /* CSUReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSUReachability.m; sourceTree = "<group>"; };
 		FA1EF3EE18D362AF00B53D76 /* CSUReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSUReachability.h; sourceTree = "<group>"; };
 		FA1EF3F118D3672300B53D76 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
@@ -1160,7 +1153,6 @@
 				ADC647A517E0790100C16A9D /* SystemConfiguration.framework in Frameworks */,
 				ADC647A617E0790100C16A9D /* UIKit.framework in Frameworks */,
 				ADC647A017E078CC00C16A9D /* Foundation.framework in Frameworks */,
-				ADC6464517E0761600C16A9D /* CSUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1490,8 +1482,6 @@
 			isa = PBXGroup;
 			children = (
 				FA1EF3F018D3672300B53D76 /* CrittercismSDK */,
-				FA1EF3E518D35DAD00B53D76 /* XMLReader */,
-				FA1EF3E118D35D7800B53D76 /* CSURLCache */,
 				FA1EF3DC18D35BB800B53D76 /* CSWebServicesManager */,
 				FA1EF3C818D3568E00B53D76 /* CSKit */,
 				AD74BB3617E0AB200061F786 /* CSToast.h */,
@@ -2526,24 +2516,6 @@
 			path = CSWebServicesManager;
 			sourceTree = "<group>";
 		};
-		FA1EF3E118D35D7800B53D76 /* CSURLCache */ = {
-			isa = PBXGroup;
-			children = (
-				FA1EF3E218D35D7800B53D76 /* CSURLCache.h */,
-				FA1EF3E318D35D7800B53D76 /* CSURLCache.m */,
-			);
-			path = CSURLCache;
-			sourceTree = "<group>";
-		};
-		FA1EF3E518D35DAD00B53D76 /* XMLReader */ = {
-			isa = PBXGroup;
-			children = (
-				FA1EF3E618D35DAD00B53D76 /* XMLReader.h */,
-				FA1EF3E718D35DAD00B53D76 /* XMLReader.m */,
-			);
-			path = XMLReader;
-			sourceTree = "<group>";
-		};
 		FA1EF3F018D3672300B53D76 /* CrittercismSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -2908,7 +2880,6 @@
 				ADC6464917E0761600C16A9D /* OrderedDictionary.m in Sources */,
 				ADC6464B17E0761600C16A9D /* RCSwitch.m in Sources */,
 				B3409DFE186DEB3F0033A4B3 /* HULoginViewController.m in Sources */,
-				FA1EF3E418D35D7800B53D76 /* CSURLCache.m in Sources */,
 				ADC6464C17E0761600C16A9D /* RCSwitchClone.m in Sources */,
 				ADC6464D17E0761600C16A9D /* RCSwitchOnOff.m in Sources */,
 				ADC6470017E0761700C16A9D /* DatabaseManager.m in Sources */,
@@ -2970,7 +2941,6 @@
 				B37479CD18745EDA001CE0E7 /* HUPhotoDetailViewController.m in Sources */,
 				CE1151E317EF4BCD00C14DA6 /* HUTextView.m in Sources */,
 				B3C69A6918718B440055DD19 /* HUMyProfileViewController.m in Sources */,
-				FA1EF3E818D35DAD00B53D76 /* XMLReader.m in Sources */,
 				B374798F18745B82001CE0E7 /* HUBaseTableViewController.m in Sources */,
 				FA1EF3D518D3581900B53D76 /* CSButton.m in Sources */,
 				FA1EF3DB18D3599C00B53D76 /* CSTextField.m in Sources */,
