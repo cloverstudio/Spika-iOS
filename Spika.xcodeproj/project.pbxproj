@@ -485,6 +485,7 @@
 		1FAADBA5191A430500244993 /* AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScrollLabel.m; sourceTree = "<group>"; };
 		1FAADBB4191A435600244993 /* DHValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHValidation.h; sourceTree = "<group>"; };
 		1FAADBB5191A435600244993 /* DHValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHValidation.m; sourceTree = "<group>"; };
+		1FAADBB7191A47D700244993 /* CSGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGraphics.h; sourceTree = "<group>"; };
 		36EBC6D2B81D2E1E98E5955D /* Spika.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spika.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4012FAB218D9794D004B1538 /* HUUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUUserListCell.h; sourceTree = "<group>"; };
 		4012FAB318D9794D004B1538 /* HUUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUUserListCell.m; sourceTree = "<group>"; };
@@ -530,7 +531,6 @@
 		ADC6437417E0761500C16A9D /* HUPushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUPushNotificationManager.m; sourceTree = "<group>"; };
 		ADC6437517E0761500C16A9D /* CSCodingConventions-MUST_READ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CSCodingConventions-MUST_READ"; sourceTree = "<group>"; };
 		ADC6437617E0761500C16A9D /* CSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSConstants.h; sourceTree = "<group>"; };
-		ADC6437717E0761500C16A9D /* CSGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGraphics.h; sourceTree = "<group>"; };
 		ADC6437817E0761500C16A9D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		ADC6437917E0761500C16A9D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		ADC6437A17E0761500C16A9D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -1103,7 +1103,6 @@
 		FA1EF3CC18D3568E00B53D76 /* CSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 2; path = CSLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA1EF3CF18D356D400B53D76 /* CSBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSBlocks.h; sourceTree = "<group>"; };
 		FA1EF3D018D356D400B53D76 /* CSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSConstants.h; sourceTree = "<group>"; };
-		FA1EF3D218D357B100B53D76 /* CSGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSGraphics.h; sourceTree = "<group>"; };
 		FA1EF3D318D3581900B53D76 /* CSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSButton.h; sourceTree = "<group>"; };
 		FA1EF3D418D3581900B53D76 /* CSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSButton.m; sourceTree = "<group>"; };
 		FA1EF3D618D3590200B53D76 /* CSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNavigationController.h; sourceTree = "<group>"; };
@@ -1295,7 +1294,6 @@
 				ADC6436A17E0761500C16A9D /* AppDelegate.m */,
 				ADC6436D17E0761500C16A9D /* Constants.h */,
 				ADC6437617E0761500C16A9D /* CSConstants.h */,
-				ADC6437717E0761500C16A9D /* CSGraphics.h */,
 				ADC6437917E0761500C16A9D /* Default.png */,
 				ADC6437A17E0761500C16A9D /* Default@2x.png */,
 				ADC6437817E0761500C16A9D /* Default-568h@2x.png */,
@@ -2520,13 +2518,13 @@
 		FA1EF3C818D3568E00B53D76 /* CSKit */ = {
 			isa = PBXGroup;
 			children = (
+				1FAADBB7191A47D700244993 /* CSGraphics.h */,
 				FA1EF3D918D3599C00B53D76 /* CSTextField.h */,
 				FA1EF3DA18D3599C00B53D76 /* CSTextField.m */,
 				FA1EF3D618D3590200B53D76 /* CSNavigationController.h */,
 				FA1EF3D718D3590200B53D76 /* CSNavigationController.m */,
 				FA1EF3D318D3581900B53D76 /* CSButton.h */,
 				FA1EF3D418D3581900B53D76 /* CSButton.m */,
-				FA1EF3D218D357B100B53D76 /* CSGraphics.h */,
 				FA1EF3CF18D356D400B53D76 /* CSBlocks.h */,
 				FA1EF3D018D356D400B53D76 /* CSConstants.h */,
 				FA1EF3C918D3568E00B53D76 /* CSKit+Helper.h */,
