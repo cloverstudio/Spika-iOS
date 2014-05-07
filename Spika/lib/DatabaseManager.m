@@ -30,10 +30,8 @@
 #import "NSString+MD5.h"
 #import "UserManager.h"
 #import "CSToast.h"
-#import "SBJSON.h"
 #import "AFJSONRequestOperation.h"
 #import "ModelComment.h"
-#import "SBJson.h"
 #import "UIImage+Resize.h"
 
 @implementation DatabaseManager

@@ -23,7 +23,6 @@
  */
 
 #import "ModelGroup.h"
-#import "SBJson.h"
 #import "UserManager.h"
 #import "NSDictionary+KeyPath.h"
 #import "DatabaseManager.h"

@@ -23,18 +23,8 @@
  */
 
 #import "ModelComment.h"
-#import "SBJSON.h"
 
 @implementation ModelComment
-
-- (id) init {
-    
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
 
 + (NSDictionary *) objectToDictionary:(ModelComment *)comment {
     

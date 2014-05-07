@@ -23,40 +23,10 @@
  */
 
 #import "ModelMessage.h"
-#import "SBJson.h"
 
 #import "Utils.h"
 
 @implementation ModelMessage
-
-@synthesize _id = _id;
-@synthesize _rev = _rev;
-@synthesize type = _type;
-@synthesize message_type = _message_type;
-@synthesize message_target_type = _message_target_type;
-@synthesize body = _body;
-@synthesize messageUrl = _messageUrl;
-@synthesize from_user_id = _from_user_id;
-@synthesize from_user_name = _from_user_name;
-@synthesize to_user_id = _to_user_id;
-@synthesize to_user_name = _to_user_name;
-@synthesize group_id = _group_id;
-@synthesize group_name = _group_name;
-@synthesize imageUrl = _imageUrl;
-@synthesize imageThumbUrl = _imageThumbUrl;
-@synthesize valid = _valid;
-@synthesize attachmentsOrig = _attachmentsOrig;
-@synthesize comments = _comments;
-@synthesize created = _created;
-@synthesize modified = _modified;
-@synthesize emoticonImageURL = _emoticonImageURL;
-@synthesize longitude = _longitude;
-@synthesize latitude = _latitude;
-@synthesize avatarThumbUrl = _avatarThumbUrl;
-@synthesize avatarThumbFileId = _avatarThumbFileId;
-@synthesize deleteAt = _deleteAt;
-@synthesize deleteType = _deleteType;
-@synthesize comment_count = _comment_count;
 
 +(NSDictionary *) toDic:(ModelMessage *)message{
     NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc] init];
