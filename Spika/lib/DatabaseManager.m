@@ -2724,9 +2724,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:messageId forKey:@"message_id"];
     [params setObject:[NSString stringWithFormat:@"%d", deleteType] forKey:@"delete_type"];
-    
-    NSLog(@"%@", params);
-    
+        
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"setDelete"

@@ -50,6 +50,7 @@
 #import "HULoginViewController.h"
 #import "HUInformationViewController.h"
 #import "HUUsersInGroupViewController.h"
+#import "HUSubMenuViewController.h"
 
 @interface AppDelegate (){
     UIView *_disableTouchView;
@@ -109,7 +110,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
         
-    _navigationController = [[CSNavigationController alloc] initWithRootViewController:[CSKit viewControllerFromString:@"RootVC"]];
+    _navigationController = [[CSNavigationController alloc] initWithRootViewController:[[RootVC alloc] init]];
     
     [_navigationController setBackgroundImage:[UIImage imageWithColor:kHUColorDarkDarkGray andSize:CGSizeMake(1, 1)]];
     
@@ -117,9 +118,8 @@
     
     _sideMenuView = [[HUSideMenuViewController alloc] init];
     
-    _subMenuViewController = (HUSideMenuViewController *)[CSKit viewControllerFromString:@"HUSubMenuViewController"];
+    _subMenuViewController = (HUSideMenuViewController *)[[HUSubMenuViewController alloc] init];
     
-    //[self.window addSubview:_navigationController.view];
     [self.window setRootViewController:_navigationController];
     [self.window addSubview:_sideMenuView.view];
     [self.window addSubview:_subMenuViewController.view];

@@ -27,7 +27,6 @@
 @implementation NSObject (KeyPath)
 
 -(id) objectForKeyPath:(NSString *)keyPath {
-	NSLog(@"ERROR: -objectForKeyPath: was sent to a non-dictionary object! Place breakpoint in the NSObject(KeyPath) method to trace error.");
 	return nil;
 }
 

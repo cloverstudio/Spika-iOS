@@ -166,7 +166,6 @@
        
         NSError *error = [[notification userInfo] objectForKey:@"error"];
         if (error) {
-            NSLog(@"Did finish with error: %@", error);
         }
         
     }

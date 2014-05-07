@@ -108,7 +108,7 @@
 
     return  [NSArray arrayWithObjects:
              negativeSpacer,
-             [CSKit barButtonItemWithButton:dummyButton],
+             [[UIBarButtonItem alloc] initWithCustomView:dummyButton],
              nil];
 
     

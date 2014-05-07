@@ -45,8 +45,6 @@
     self.deleteType = deleteType;
     self.deleteTypeOld = deleteType;
     
-    NSLog(@"delete type ??? %d", deleteType);
-    
     UIButton *button = [self.buttons objectAtIndex:deleteType];
     [self setButtonSelection:button selected:YES];
  
@@ -100,7 +98,7 @@
                                                     deleteType:self.deleteType
                                                        success:^(id result) {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                               NSLog(@"RELOAD");
+
                                                                UINavigationController *navController = [AppDelegate getInstance].navigationController;
                                                                HUBaseViewController *baseVC = navController.viewControllers[navController.viewControllers.count - 1];
                                                                if (baseVC) {

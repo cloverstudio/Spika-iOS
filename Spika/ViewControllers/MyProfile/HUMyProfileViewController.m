@@ -631,12 +631,7 @@
         return NO;
     }
     
-    CGPoint absolutePosition = [textField convertPoint:textField.frame.origin toView:nil];
-    
-    NSLog(@"%f",absolutePosition.y);
-    
     return YES;
-    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

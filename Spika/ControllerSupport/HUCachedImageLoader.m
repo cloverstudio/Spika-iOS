@@ -44,11 +44,8 @@
         block(image);
         
     } error:^(NSString *error) {
-        
         NSLog(@"Error occured:%@",error);
-        
     }];
-    
 }
 
 +(void) thumbnailFromUserId:(NSString *)userId completionHandler:(HUImageResultBlock)block{
