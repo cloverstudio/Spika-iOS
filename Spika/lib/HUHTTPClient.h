@@ -25,10 +25,14 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 
-@interface HUHTTPClient : AFHTTPClient{
+extern NSString * const HUHTTPClientInternetAvailavilityChanged;
+
+@interface HUHTTPClient : AFHTTPClient {
     NSString *_baseURL;
     NSMutableArray *_downloadingImageURL;
 }
+
+@property (nonatomic, readonly, getter = isInternetAvailable) BOOL internetAvailable;
 
 + (HUHTTPClient *)sharedClient;
 + (HUHTTPClient *)refreshClient;

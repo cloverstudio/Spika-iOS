@@ -2008,20 +2008,19 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] imageFromURL:[NSURL URLWithString:imageUrl]
-                                                 completion:^(NSURL *imageURL, UIImage *image) {
-                                                     
-                                                     if (image && successBlock) {
-                                                         successBlock(image);
-                                                         return;
-                                                     }
-                                                     else {
-                                                         
-                                                         if(errorBlock)
-                                                             errorBlock(nil);
-                                                         
-                                                         return;
-                                                     }
-                                                 }];
+                                   completion:^(NSURL *imageURL, UIImage *image) {
+                                   
+                                       if (image && successBlock) {
+                                           successBlock(image);
+                                           return;
+                                       }
+                                       else {
+                                           if(errorBlock) {
+                                               errorBlock(nil);
+                                           }
+                                           return;
+                                       }
+                                   }];
 }
 
 - (void)loadCategoryIconByName:(NSString *)categoryName

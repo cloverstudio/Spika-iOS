@@ -23,7 +23,6 @@
  */
 
 #import "HUImageView.h"
-#import <CSUtils/CSWebServicesManager.h>
 #import "CAAnimation+Blocks.h"
 #import "HUImageView+Style.h"
 #import "DatabaseManager.h"
@@ -34,12 +33,19 @@
     __block BOOL                _commitSpinnerAnimation;
 }
 
-@property (nonatomic, weak) __block UIImageView *spinnerImageView;
-@property (nonatomic, weak) __block NSURL *currentUrl;
+@property (nonatomic, strong) __block UIImageView *spinnerImageView;
+@property (nonatomic, strong) __block NSURL *currentUrl;
 
 @end
 
 @implementation HUImageView
+
+#pragma mark - Memory Management
+
+- (void)dealloc {
+    [self removeObserver:self
+              forKeyPath:@"imageURL"];
+}
 
 #pragma mark - Initialization
 
@@ -53,9 +59,6 @@
         _spinnerImageView = [self createNewSpinnerImageView];
         _spinnerImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_spinnerImageView];
-        
-        //_commitSpinnerAnimation = YES;
-        //[self startSpinnerAnimation];
     }
     
     return self;
@@ -77,14 +80,6 @@
                forKeyPath:@"imageURL"
                   options:0
                   context:NULL];
-        
-//        [self addObserver:self
-//               forKeyPath:@"image"
-//                  options:0
-//                  context:NULL];
-        
-        //_commitSpinnerAnimation = YES;
-        //[self startSpinnerAnimation];
     }
     
     return self;
@@ -121,11 +116,9 @@
                         context:(void *)context {
 
     if ([keyPath isEqualToString:@"imageURL"]) {
-
-        [self loadImageUrl:_imageURL];
+        [self startDownload:self.imageURL];
     }
     else if ([keyPath isEqualToString:@"image"]) {
-    
         [_spinnerImageView setHidden:YES];
     }
 }
@@ -137,98 +130,73 @@
     if (image) {
 		self.downloadedImageSize = image.size;
         [self stopSpinnerAnimation];
-    } else
+    }
+    else {
 		self.downloadedImageSize = CGSizeZero;
+    }
 }
 
 #pragma mark - Override
 
 - (void) layoutSubviews {
 
+    [super layoutSubviews];
     _spinnerImageView.frame = [self frameForSpinnerImageView];
 }
 
 - (void) setFrame:(CGRect)frame {
 
     [super setFrame:frame];
-
     _spinnerImageView.frame = [self frameForSpinnerImageView];
 }
 
-#pragma mark - Images Download
-
-- (void) loadImageUrl:(NSURL *)url {
-    
-    if(!url) {
-        _downloadBlock = nil;
-        self.image = nil;
-        return;
-    }
-    
-    if ([url isEqual:_currentUrl]) {
-        return;
-    }
-    else {
-        self.image = nil;
-    }
-    
-    _currentUrl = url;
-
-    [[CSWebServicesManager webServicesManager] cachedImageWithUrl:url
-       completion:^(NSURL *imageURL, UIImage *image) {
-                                                                                       
-           if (!image && [imageURL isEqual:_currentUrl]) {
-               
-               _currentUrl = imageURL;
-               [self startDownload:url];
-           }
-           else {
-               
-               _currentUrl = nil;
-               
-               dispatch_async(dispatch_get_main_queue(), ^{
-                   [self setImage:image];
-               });
-               
-           }
-    }];
-    
-}
+#pragma mark - Image Download
 
 - (void)startDownload:(NSURL *)url {
     
-    __weak HUImageView *me = self;
+    if (!url) {
+        self.image = nil;
+        _downloadBlock = nil;
+        return;
+    }
+    
+    if ([url isEqual:_currentUrl]) { return; }
+    else { self.image = nil; }
     
     _commitSpinnerAnimation = YES;
     [self startSpinnerAnimation];
     
+    __weak HUImageView *this = self;
+    void (^responseHandler)(UIImage *) = ^(UIImage *image) {
+    
+        if(image == nil) { return; }
+        
+        __strong HUImageView *strongThis = this;
+        [strongThis imageDownloadDidFinish:image];
+        strongThis.downloadedImageSize = image.size;
+        strongThis.currentUrl = nil;
+        [strongThis stopSpinnerAnimation];
+        
+        if([strongThis.delegate respondsToSelector:@selector(downloadSucceed:)]){
+            [strongThis.delegate performSelector:@selector(downloadSucceed:) withObject:self];
+        }
+    };
+    
+    void (^errorHandler)(NSString *) = ^(NSString *error) {
+    
+        __strong HUImageView *strongThis = this;
+        
+        strongThis.downloadedImageSize = CGSizeZero;
+        [strongThis stopSpinnerAnimation];
+        
+        if([strongThis.delegate respondsToSelector:@selector(downloadFailed:)]){
+            [strongThis.delegate performSelector:@selector(downloadFailed:) withObject:self];
+        }
+    };
     
     [[DatabaseManager defaultManager] loadImage:[NSString stringWithFormat:@"%@",url]
-        success:^(UIImage *image){
-            
-            if(image == nil)
-                return;
-            
-            [me imageDownloadDidFinish:image];
-			me.downloadedImageSize = image.size;
-            me.currentUrl = nil;
-            [me stopSpinnerAnimation];
-
-            if([self.delegate respondsToSelector:@selector(downloadSucceed:)]){
-                [self.delegate performSelector:@selector(downloadSucceed:) withObject:self];
-            }
-            
-        }error:^(NSString *error) {
-            
-			me.downloadedImageSize = CGSizeZero;
-            [me stopSpinnerAnimation];
-
-            if([self.delegate respondsToSelector:@selector(downloadFailed:)]){
-                [self.delegate performSelector:@selector(downloadFailed:) withObject:self];
-            }
-
-    }];
-
+                                        success:responseHandler
+                                          error:errorHandler];
 }
 
 #pragma mark - Handling Download Response
@@ -237,12 +205,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        if (image) {
-            [self setImage:image];
-        }
-        else {
-            [self setImage:nil];
-        }
+        if (image) { [self setImage:image]; }
+        else { [self setImage:nil];  }
         
         _downloadBlock = nil;
     });

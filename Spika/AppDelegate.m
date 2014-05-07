@@ -43,7 +43,6 @@
 #import "NSNotification+Extensions.h"
 #import "AlertViewManager.h"
 #import "HUPasswordConfirmViewController.h"
-#import <CSUtils/CSUtils.h>
 #import "UIImage+Aditions.h"
 #import "HUMyGroupProfileViewController.h"
 #import "Crittercism.h"
@@ -1033,27 +1032,18 @@
     HUOfflinePushNotification *offlineNotification = [DatabaseManager defaultManager].offlineNotificationModel;
     HUPushNotificationManager *pushManager = [HUPushNotificationManager defaultManager];
 
-    //TODO: fix observerForName: to use CSWebServicesManager reachability notification
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"kNetworkCrittercismReachabilityChangedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"kNetworkCrittercismReachabilityChangedNotification"
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
         
-        if ([CSWebServicesManager webServicesManager].isInternetAvailable) {
-            [pushManager removePushNotification:offlineNotification];
-        } else {
-            [pushManager removePushNotification:offlineNotification];
-            //[pushManager insertPushNotification:offlineNotification atIndex:0];
-        }
-        
+                                                      if ([[HUHTTPClient sharedClient] isInternetAvailable]) {
+                                                          [pushManager removePushNotification:offlineNotification];
+                                                      }
+                                                      else {
+                                                          [pushManager removePushNotification:offlineNotification];
+                                                      }
     }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:CSWebServicesManagerInternerDidBecomeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSLog(@"internet!");
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:CSWebServicesManagerInternerDidBecomeUnavailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        NSLog(@"no internet!");
-    }];
-    
 }
 
 

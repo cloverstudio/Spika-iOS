@@ -433,7 +433,6 @@
 		FA1EF3D518D3581900B53D76 /* CSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3D418D3581900B53D76 /* CSButton.m */; };
 		FA1EF3D818D3590200B53D76 /* CSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3D718D3590200B53D76 /* CSNavigationController.m */; };
 		FA1EF3DB18D3599C00B53D76 /* CSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3DA18D3599C00B53D76 /* CSTextField.m */; };
-		FA1EF3DF18D35BB800B53D76 /* CSWebServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3DE18D35BB800B53D76 /* CSWebServicesManager.m */; };
 		FA1EF3E418D35D7800B53D76 /* CSURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3E318D35D7800B53D76 /* CSURLCache.m */; };
 		FA1EF3E818D35DAD00B53D76 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3E718D35DAD00B53D76 /* XMLReader.m */; };
 		FA1EF3EF18D362AF00B53D76 /* CSUReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1EF3ED18D362AF00B53D76 /* CSUReachability.m */; };
@@ -1113,8 +1112,6 @@
 		FA1EF3D718D3590200B53D76 /* CSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNavigationController.m; sourceTree = "<group>"; };
 		FA1EF3D918D3599C00B53D76 /* CSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSTextField.h; sourceTree = "<group>"; };
 		FA1EF3DA18D3599C00B53D76 /* CSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSTextField.m; sourceTree = "<group>"; };
-		FA1EF3DD18D35BB800B53D76 /* CSWebServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSWebServicesManager.h; sourceTree = "<group>"; };
-		FA1EF3DE18D35BB800B53D76 /* CSWebServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSWebServicesManager.m; sourceTree = "<group>"; };
 		FA1EF3E218D35D7800B53D76 /* CSURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSURLCache.h; sourceTree = "<group>"; };
 		FA1EF3E318D35D7800B53D76 /* CSURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSURLCache.m; sourceTree = "<group>"; };
 		FA1EF3E618D35DAD00B53D76 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
@@ -2525,8 +2522,6 @@
 			children = (
 				FA1EF3ED18D362AF00B53D76 /* CSUReachability.m */,
 				FA1EF3EE18D362AF00B53D76 /* CSUReachability.h */,
-				FA1EF3DD18D35BB800B53D76 /* CSWebServicesManager.h */,
-				FA1EF3DE18D35BB800B53D76 /* CSWebServicesManager.m */,
 			);
 			path = CSWebServicesManager;
 			sourceTree = "<group>";
@@ -2944,7 +2939,6 @@
 				ADC6471517E0761700C16A9D /* StrManager.m in Sources */,
 				ADC6471617E0761700C16A9D /* StyleManupulator.m in Sources */,
 				ADC6471717E0761700C16A9D /* UserManager.m in Sources */,
-				FA1EF3DF18D35BB800B53D76 /* CSWebServicesManager.m in Sources */,
 				ADC6471817E0761700C16A9D /* Utils.m in Sources */,
 				ADC6471917E0761700C16A9D /* main.m in Sources */,
 				ADC6471A17E0761700C16A9D /* HUBaseModel.m in Sources */,

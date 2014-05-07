@@ -10,6 +10,6 @@
 
 @interface ServerManager : NSObject
 
-+(NSString *)serverBaseUrl;
++ (NSString *)serverBaseUrl;
 
 @end

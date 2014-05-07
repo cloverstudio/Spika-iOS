@@ -31,6 +31,15 @@
 #import "AFHTTPClient+Synchronous.h"
 #import "ModelUser.h"
 #import "UserManager.h"
+#import "CSUReachability.h"
+
+NSString * const HUHTTPClientInternetAvailavilityChanged    = @"HUHTTPClientInternetAvailavilityChanged";
+
+@interface HUHTTPClient ()
+
+@property (nonatomic, retain) CSUReachability *reachability;
+
+@end
 
 @implementation HUHTTPClient
 
@@ -51,7 +60,7 @@ HUHTTPClient *_sharedClient = nil;
     return _sharedClient;
 }
 
-
+#pragma mark - Initialization
 
 - (id)initWithBaseURL:(NSURL *)url {
     
@@ -72,6 +81,42 @@ HUHTTPClient *_sharedClient = nil;
     _downloadingImageURL = [[NSMutableArray alloc] init];
     
     return self;
+}
+
+#pragma mark InternetConnection
+
+- (void) startCheckingInternetConnection {
+    
+    if (self.reachability == nil) {
+        
+        void (^reachableBlock)() = ^(CSUReachability * reachability) {
+            [self checkReachability:reachability];
+        };
+        
+        void (^unreachableBlock)() = ^(CSUReachability * reachability) {
+            [self checkReachability:reachability];
+        };
+        
+        self.reachability = [CSUReachability reachabilityWithHostname:@"www.example.com"];
+        self.reachability.reachableBlock = reachableBlock;
+        self.reachability.unreachableBlock = unreachableBlock;
+        
+        [_reachability startNotifier];
+    }
+}
+
+- (void)checkReachability:(CSUReachability *)reachability {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:HUHTTPClientInternetAvailavilityChanged
+                                                        object:nil];
+}
+
+#pragma mark - Getters
+
+- (BOOL)isInternetAvailable {
+    
+    NetworkStatus remoteHostStatus = [self.reachability currentReachabilityStatus];
+    return (remoteHostStatus == ReachableViaWiFi || remoteHostStatus == ReachableViaWWAN);
 }
 
 - (void) setBaseUrl:(NSString *)url{
