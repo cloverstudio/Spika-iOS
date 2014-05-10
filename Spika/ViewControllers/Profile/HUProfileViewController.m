@@ -76,7 +76,7 @@
   
     if (self = [super init]) {
         
-        _user = CS_RETAIN([ModelUser objectWithDictionary:[ModelUser objectToDictionary:user]]);
+        _user = [ModelUser objectWithDictionary:[ModelUser objectToDictionary:user]];
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         _isEditing = NO;
         _keyboardShowing = NO;
@@ -92,7 +92,7 @@
 
     if (self = [super initWithNibName:nibNameOrNil bundle:nil]) {
         
-        _user = CS_RETAIN([ModelUser objectWithDictionary:[ModelUser objectToDictionary:user]]);
+        _user = [ModelUser objectWithDictionary:[ModelUser objectToDictionary:user]];
         _views = [[NSMutableArray alloc] initWithCapacity:10];
         _isEditing = NO;
         _keyboardShowing = NO;
@@ -292,9 +292,7 @@
 
 
 -(void) loadAvatar{
-    
-    __weak HUProfileViewController *this = self;
-    
+        
     if( _user.imageUrl != nil &&  _user.imageUrl.length > 0){
         NSString *url = _user.imageUrl;
         

@@ -49,7 +49,7 @@
      forControlEvents:UIControlEventTouchUpInside];
     
     [button titleLabel].numberOfLines = 0;
-    [button titleLabel].lineBreakMode = UILineBreakModeWordWrap;
+    [button titleLabel].lineBreakMode = NSLineBreakByWordWrapping;
     
     return button;
 }
@@ -71,9 +71,9 @@
     
     [button alignmentRectInsets];
     
-    UIBarButtonItem *negativeSpacer = CS_AUTORELEASE([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                                                                                   target:nil
-                                                                                                   action:nil]);                           
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                    target:nil
+                                                                                    action:nil];
     negativeSpacer.width = -5;
     // Note: We use 5 above b/c that's how many pixels of padding iOS seems to add
     // Add the two buttons together on the left:
@@ -101,14 +101,14 @@
     
     dummyButton.backgroundColor = [UIColor clearColor];
     
-    UIBarButtonItem *negativeSpacer = CS_AUTORELEASE([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                                                                                   target:nil
-                                                                                                   action:nil]);
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                    target:nil
+                                                                                    action:nil];
     negativeSpacer.width = -5;
 
     return  [NSArray arrayWithObjects:
              negativeSpacer,
-             [CSKit barButtonItemWithButton:dummyButton],
+             [[UIBarButtonItem alloc] initWithCustomView:dummyButton],
              nil];
 
     

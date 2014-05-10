@@ -298,7 +298,7 @@
 
     label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
     label.textColor = [UIColor whiteColor];
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
     
 }
 
@@ -328,7 +328,7 @@
     label.font = GeneralBoldFont;
     label.textColor = [UIColor whiteColor];
 
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
 }
 
 +(void) attachMessageLocationViewFrameStylePlayLabel:(UILabel *)label{
@@ -336,6 +336,6 @@
     label.font = GeneralBoldFont;
     label.textColor = [UIColor whiteColor];
     
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
 }
 @end

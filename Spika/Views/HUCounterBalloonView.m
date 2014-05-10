@@ -40,15 +40,6 @@
 
 @implementation HUCounterBalloonView
 
-@synthesize count = _count;
-
-#pragma mark - Memory Management
-
--(void) dealloc {
-    
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Initialization
 
 -(id) initWithImage:(UIImage *)image {
@@ -58,7 +49,7 @@
         _label = [UILabel labelWithText:@"0"];
         _label.numberOfLines = 1;
         _label.textColor = [UIColor whiteColor];
-        _label.textAlignment = UITextAlignmentCenter;
+        _label.textAlignment = NSTextAlignmentCenter;
         _label.frame = CGRectMake(
             -3,
             0,

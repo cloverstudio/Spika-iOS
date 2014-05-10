@@ -47,22 +47,6 @@
 @end
 
 @implementation HULoginViewController
-@synthesize selectedUrl = _selectedUrl;
-
-#pragma mark - Memory Managemnt
-
-
-- (void) dealloc {
-
-    CS_RELEASE(_mainView);
-    
-    CS_RELEASE(_loginContainer);
-    CS_RELEASE(_emailField);
-    CS_RELEASE(_passwordField);
-    CS_RELEASE(_signInButton);
-    
-    CS_SUPER_DEALLOC;
-}
 
 #pragma mark - View Lifecycle
 

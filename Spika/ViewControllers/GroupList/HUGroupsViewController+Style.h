@@ -56,6 +56,6 @@
 #pragma mark - Fonts
 - (UIFont *) fontForSearchTextField;
 
--(UILabel *)noGroupsLabel;
+-(UILabel *)createNoGroupsLabel;
 
 @end

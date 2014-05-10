@@ -214,7 +214,8 @@
     CGRect calculatedFrame = CGRectWithPointAndSize(self.frame.origin, maximumSize);
     
     CGSize textSize = CGRectContract(calculatedFrame, kRectContractionValue).size;
-    textSize = [text sizeWithFont:kFontArialMTOfSize(kFontSizeMiddium) constrainedToSize:CGSizeMake(calculatedFrame.size.width, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    textSize = [text sizeForBoundingSize:CGSizeMake(calculatedFrame.size.width, 9999)
+                                    font:kFontArialMTOfSize(kFontSizeMiddium)];
     
     CGRect rectContraction = CGRectExpand(CGRectWithPointAndSize(self.frame.origin, textSize), kRectContractionValue);
     calculatedFrame = CGRectMake(rectContraction.origin.x, rectContraction.origin.y, calculatedFrame.size.width, rectContraction.size.height);
@@ -274,23 +275,15 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGRect contractedRect = CGRectContract(rect, kRectContractionValue);
-    
-    //draw background
-    //CGPoint arrowPoint = CGPointMake(CGRectGetWidth(rect) * self.arrowAnchorPoint.x, 0);
-    //arrowPoint.x = MIN(CGRectGetMaxX(contractedRect), MAX(arrowPoint.x,CGRectGetMinX(contractedRect)));
-    
-    /*
-    CSDrawTriangleFill(ctx, arrowPoint,
-                       CGPointMake(MAX(arrowPoint.x - kRectContractionValue, CGRectGetMinX(contractedRect)), CGRectGetMinY(contractedRect)),
-                       CGPointMake(MIN(arrowPoint.x + kRectContractionValue, CGRectGetMaxX(contractedRect)), CGRectGetMinY(contractedRect)),
-                       [DialogClass backgroundColor]);
-    */
-    
     CSDrawRectangleFill(ctx, contractedRect, [DialogClass backgroundColor]);
     
-    //draw text
-    [[UIColor darkGrayColor] set];
-    [self.text drawInRect:CGRectContract(contractedRect, 10) withFont:kFontArialMTOfSize(kFontSizeMiddium) lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+    NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    textStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    textStyle.alignment = NSTextAlignmentCenter;
+    
+    [self.text drawInRect:CGRectContract(contractedRect, 10) withAttributes:@{NSFontAttributeName:kFontArialMTOfSize(kFontSizeMiddium),
+                                                                              NSParagraphStyleAttributeName:textStyle}];
+
 }
 
 @end

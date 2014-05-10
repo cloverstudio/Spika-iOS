@@ -83,13 +83,13 @@ AlertViewManager *_AlertViewManager;
         
         labelTitle = [[UILabel alloc] init];
         labelTitle.frame = CGRectMake(0,appDelegate.window.frame.size.height / 2 + 20,appDelegate.window.frame.size.width,30);
-        labelTitle.textAlignment = UITextAlignmentCenter;
+        labelTitle.textAlignment = NSTextAlignmentCenter;
         labelTitle.textColor = [UIColor whiteColor];
         labelTitle.backgroundColor = [UIColor clearColor];
         
         labelMessage = [[UILabel alloc] init];
         labelMessage.frame = CGRectMake(0,appDelegate.window.frame.size.height / 2 + 55,appDelegate.window.frame.size.width,30);
-        labelMessage.textAlignment = UITextAlignmentCenter;
+        labelMessage.textAlignment = NSTextAlignmentCenter;
         labelMessage.textColor = [UIColor whiteColor];
         labelMessage.backgroundColor = [UIColor clearColor];
 
@@ -127,30 +127,9 @@ AlertViewManager *_AlertViewManager;
     });
     
 }
--(UIAlertView *) showAlert:(NSString *)title message:(NSString *)message{
+-(void) showAlert:(NSString *)title message:(NSString *)message{
     [self showAlert:message];
 }
-/*-(UIAlertView *) showAlert:(NSString *)title message:(NSString *)message{
-
-           
-    
-	indicator.hidden = NO;
-	[indicator startAnimating];
-    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    labelMessage.textColor = [UIColor whiteColor];
-    labelTitle.textColor = [UIColor whiteColor];
-
-    
-    UIAlertView *alertViewLocal = [[UIAlertView alloc] 
-                              initWithTitle:title message:message delegate:self 
-                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
-    
-    [alertViewLocal show];
-    
-	return alertViewLocal;
-     
-    
-}*/
 
 -(void)changeSpinnerImage
 {

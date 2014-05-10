@@ -29,13 +29,9 @@
 #import "NSDictionary+KeyPath.h"
 #import "NSString+MD5.h"
 #import "UserManager.h"
-#import "CSDispatcher.h"
 #import "CSToast.h"
-#import "SBJSON.h"
-#import <CSUtils/CSUtils.h>
 #import "AFJSONRequestOperation.h"
 #import "ModelComment.h"
-#import "SBJson.h"
 #import "UIImage+Resize.h"
 
 @implementation DatabaseManager
@@ -92,6 +88,7 @@
 
 
 #pragma mark - check methods
+
 -(NSDictionary *) checkUniqueSynchronous:(NSString *) key
                                    value:(NSString *) value{
 
@@ -107,29 +104,32 @@
     
     NSString *result = [[HUHTTPClient sharedClient] doGetSynchronous:url];
     
-    if(result != nil){
-        id resultJSON = [result JSONValue];
+    if(result) {
         
-        if([resultJSON isKindOfClass:[NSArray class]]){
+        id resultJSON = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding]
+                                                        options:NSJSONReadingAllowFragments
+                                                          error:nil];
+        
+        if([resultJSON isKindOfClass:[NSArray class]]) {
             
             NSArray *resultAry = (NSArray *) resultJSON;
-            if(resultAry.count > 0)
+            if(resultAry.count > 0) {
                 return [resultAry objectAtIndex:0];
-            else
+            }
+            else {
                 return nil;
-            
+            }
         }
-        
-        else if([resultJSON isKindOfClass:[NSDictionary class]])
-            return (NSDictionary *) resultJSON;
-        
-        else
+        else if([resultJSON isKindOfClass:[NSDictionary class]]) {
+            return (NSDictionary *)resultJSON;
+        }
+        else {
             return nil;
+        }
     }
-    
-    else
+    else {
         return nil;
-    
+    }
 }
 
 #pragma mark - User Methods
@@ -159,7 +159,9 @@
     NSDictionary *params = @{@"email" : email, @"password" : [Utils MD5:password]};
     
     CSErrorBlock error = ^(NSError *error) {
-        errorBlock(error.description);
+        if (errorBlock) {
+            errorBlock(error.description);
+        }
     };
     
     CSResultBlock success = ^(NSDictionary *result) {
@@ -176,33 +178,28 @@
             
             if (successBlock) {
 				
-                [CSDispatcher dispatchMainQueue:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     successBlock(user);
-                }];
+                });
             }
-            
-        } else {
+        }
+        else {
             
             if (errorBlock) {
-                [CSDispatcher dispatchMainQueue:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     errorBlock(nil);
-                }];
+                });
             }
-            
         }
-        
     };
     
- 
     [[HUHTTPClient sharedClient] doPost:AuthURL
-                                        operationType:AFJSONParameterEncoding
-                                               params:params
-                                          resultBlock:success
-                                         failureBlock:error
-                                  uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
-    
-    
+                          operationType:AFJSONParameterEncoding
+                                 params:params
+                            resultBlock:success
+                           failureBlock:error
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 - (void)findUserByEmail:(NSString *)email
@@ -215,34 +212,32 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
                                              
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             
-                                             NSArray *ary = [responseDictionary objectForKey:@"rows"];
-                                             
-                                             if([ary count] > 0){
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *ary = [responseDictionary objectForKey:@"rows"];
+                               
+                               if([ary count] > 0){
                                                  
-                                                 NSDictionary *tmpDic2 = [ary objectAtIndex:0];
-                                                 
-                                                 if([[[tmpDic2 objectForKey:@"value"] objectForKey:@"type"] isEqual:@"user"]){
-                                                     ModelUser *user = [ModelUser objectWithDictionary:[tmpDic2 objectForKey:@"value"]];
-                                                     successBlock(user);
-                                                     return;
-                                                 }
-                                             }
-                                             
-                                             successBlock(nil);
-
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            
-                                            CSLog(@"%@", [error description]);
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                                   NSDictionary *tmpDic2 = [ary objectAtIndex:0];
+                                   if([[[tmpDic2 objectForKey:@"value"] objectForKey:@"type"] isEqual:@"user"]){
+                                       
+                                       ModelUser *user = [ModelUser objectWithDictionary:[tmpDic2 objectForKey:@"value"]];
+                                       successBlock(user);
+                                       return;
+                                   }
+                               }
+                               if (successBlock) {
+                                   successBlock(nil);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              CSLog(@"%@", [error description]);
+                              errorBlock(error.localizedDescription);
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void)createUserByEmail:(NSString *)email
@@ -267,26 +262,28 @@
         [[HUHTTPClient sharedClient] setDefaultHeader:@"user_id" value:@"create_user"];
         
         [[HUHTTPClient sharedClient] doPost:@"createUser"
-                                            operationType:CSWebOperatonTypeJSON
-                                                   params:params
-                                              resultBlock:^(id result) {
+                              operationType:AFJSONParameterEncoding
+                                     params:params
+                                resultBlock:^(id result) {
                                                   
-                                                  NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
+                                        successBlock(YES,nil);
+                                        return;
+                                    }
                                                   
-                                                  if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
-                                                      successBlock(YES,nil);
-                                                      return;
-                                                  }
-                                                  
-                                                  successBlock(false, @"Failed to create new user.");
-                                              }
-                                             failureBlock:^(NSError *error) {
-                                                 errorBlock(error.localizedDescription);
-                                             }
-                                      uploadProgressBlock:nil
-                                    downloadProgressBlock:nil];
-    
-
+                                    if (successBlock) {
+                                        successBlock(false, @"Failed to create new user.");
+                                    }
+                                }
+                               failureBlock:^(NSError *error) {
+                                   
+                                   if (errorBlock) {
+                                       errorBlock(error.localizedDescription);
+                                   }
+                               }
+                        uploadProgressBlock:nil
+                      downloadProgressBlock:nil];
 }
 
 - (void)saveUserAvatarImage:(ModelUser *)toUser
@@ -302,11 +299,13 @@
             if ([result objectForKey:@"rev"]) {
                 toUser._rev = [result objectForKey:@"rev"];
             }
-            successBlock(YES, nil);
-        } else {
+            if (successBlock) {
+                successBlock(YES, nil);
+            }
+        }
+        else if (successBlock) {
             successBlock(false, @"Failed to save avatar");
         }
-        
     };
     
     [self saveAvatarImageWithParams:params
@@ -340,34 +339,39 @@
             [params setObject:thumbReturnString forKey:@"avatar_thumb_file_id"];
             
             [[HUHTTPClient sharedClient] doPost:@"updateUser"
-                                                operationType:CSWebOperatonTypeJSON
-                                                       params:params
-                                                  resultBlock:^(id result) {
-                                                      
-                                                      NSDictionary *responseDictionary = (NSDictionary *)result;
-                                                      
-                                                      if([responseDictionary objectForKey:@"_id"] != nil) {
+                                  operationType:AFJSONParameterEncoding
+                                         params:params
+                                    resultBlock:^(id result) {
+                                        
+                                        NSDictionary *responseDictionary = (NSDictionary *)result;
+                                        if([responseDictionary objectForKey:@"_id"]) {
                                                           
-                                                          if (successBlock) successBlock(responseDictionary);
-                                                          return;
-                                                      }
-                                                      successBlock(nil);
-                                                  }
-                                                 failureBlock:^(NSError *error) {
-                                                     errorBlock(error.localizedDescription);
-                                                 }
-                                          uploadProgressBlock:nil
-                                        downloadProgressBlock:nil];
-
-            
-        }else{
-            errorBlock(@"Failed to upload");
-            return;
+                                            if (successBlock) {
+                                                successBlock(responseDictionary);
+                                            }
+                                            return;
+                                        }
+                                        
+                                        if (successBlock) {
+                                            successBlock(nil);
+                                        }
+                                    }
+                                   failureBlock:^(NSError *error) {
+                                       
+                                       if (errorBlock) {
+                                           errorBlock(error.localizedDescription);
+                                       }
+                                   }
+                            uploadProgressBlock:nil
+                          downloadProgressBlock:nil];
         }
-        
-        
+        else {
+            
+            if (errorBlock) {
+                errorBlock(@"Failed to upload");
+            }
+        }
     });
-    
 }
 
 -(NSString *) uploadFileSynchronously:(NSData *) data fliename:(NSString *) filename{
@@ -445,26 +449,35 @@
                         }];
     
     [[HUHTTPClient sharedClient] doGet:method
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
-                                             CSLog(@"%@", result);
-                                             NSMutableArray *arrayOfUsers = [NSMutableArray arrayWithCapacity:[result count]];
-                                             for (NSDictionary *userDictionary in result) {
-                                                 ModelUser *user = [ModelUser objectWithDictionary:userDictionary];
-                                                 [arrayOfUsers addObject:user];
-                                             }
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
+                              
+                               CSLog(@"%@", result);
+                               
+                               NSMutableArray *arrayOfUsers = [NSMutableArray arrayWithCapacity:[result count]];
+                               
+                               for (NSDictionary *userDictionary in result) {
+                                   
+                                   ModelUser *user = [ModelUser objectWithDictionary:userDictionary];
+                                   [arrayOfUsers addObject:user];
+                               }
                                              
-                                             NSArray *sortedAry = [arrayOfUsers sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
-                                                 return [a.name compare:b.name];
-                                             }];
+                               NSArray *sortedAry = [arrayOfUsers sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
+                                   return [a.name compare:b.name];
+                               }];
                                              
-                                             successBlock(sortedAry);
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                               if (successBlock) {
+                                   successBlock(sortedAry);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 -(NSString*) getURL:(NSString*) url withParameters:(NSDictionary*) parameters {
@@ -486,45 +499,48 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
+                               
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *ary = [responseDictionary objectForKey:@"rows"];
                                              
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             
-                                             NSArray *ary = [responseDictionary objectForKey:@"rows"];
-                                             
-                                             if (string) {
+                               if (string) {
+                                   //retrieve object you want to compare
+                                   id(^objectBlock)(NSDictionary *rawDictionary) = ^id(NSDictionary *rawDictionary) {
+                                       return [rawDictionary objectForKeyPath:@"value.name"];
+                                   };
                                                  
-                                                 //retrieve object you want to compare
-                                                 id(^objectBlock)(NSDictionary *rawDictionary) = ^id(NSDictionary *rawDictionary) {
-                                                     return [rawDictionary objectForKeyPath:@"value.name"];
-                                                 };
-                                                 
-                                                 //do the comparison in this block
-                                                 BOOL(^compareBlock)(id obj, id value) = ^BOOL(NSString *object, NSString *value) {
-                                                     return [object rangeOfString:value].location != NSNotFound;
-                                                 };
-                                                 
-                                                 ary = [ary arrayByFilteringObjectsContainingValue:string
-                                                                                            object:objectBlock
-                                                                                        usingBlock:compareBlock];
-                                             }
+                                   //do the comparison in this block
+                                   BOOL(^compareBlock)(id obj, id value) = ^BOOL(NSString *object, NSString *value) {
+                                       return [object rangeOfString:value].location != NSNotFound;
+                                   };
+                                   
+                                   ary = [ary arrayByFilteringObjectsContainingValue:string
+                                                                              object:objectBlock
+                                                                          usingBlock:compareBlock];
+                                   
+                               }
                                              
-                                             for(NSDictionary *row in ary){
-                                                 
-                                                 if([row objectForKey:@"value"] != nil){
-                                                     ModelUser *user = [ModelUser objectWithDictionary:[row objectForKey:@"value"]];
-                                                     [aryUsers addObject:user];
-                                                 }
-                                             }
-                                             
-                                             successBlock(aryUsers);
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                               for(NSDictionary *row in ary){
+                                   
+                                   if([row objectForKey:@"value"] != nil){
+                                       ModelUser *user = [ModelUser objectWithDictionary:[row objectForKey:@"value"]];
+                                       [aryUsers addObject:user];
+                                   }
+                               }
+                               if (successBlock) {
+                                   successBlock(aryUsers);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void)reloadUser:(ModelUser *)user
@@ -546,26 +562,29 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-						 operationType:CSWebOperatonTypeJSON
-						   resultBlock:^(id result)
-	{
+						 operationType:AFJSONParameterEncoding
+						   resultBlock:^(id result) {
                                              
-		NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
 		
-		if ([[responseDictionary objectForKey:@"type"] isEqual:@"user"]) {
-			ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
-			successBlock(user);
-		} else {
-			successBlock(nil);
-		}
-	}
-              failureBlock:^(NSError *error) {
-                  errorBlock(error.localizedDescription);
-              }
-       uploadProgressBlock:nil
-     downloadProgressBlock:nil];
+                               if ([[responseDictionary objectForKey:@"type"] isEqual:@"user"]) {
+                                   ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
+                                   if (successBlock) {
+                                       successBlock(user);
+                                   }
+                               }
+                               else {
+                                   if (successBlock) {
+                                       successBlock(nil);
+                                   }
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              errorBlock(error.localizedDescription);
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
-
 
 -(void)findUserByName:(NSString *)userName
               success:(DMFindOneBlock)successBlock
@@ -576,29 +595,31 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-						 operationType:CSWebOperatonTypeJSON
-						   resultBlock:^(id result)
-     {
+						 operationType:AFJSONParameterEncoding
+						   resultBlock:^(id result) {
          
-        NSDictionary *responseDictionary = (NSDictionary *)result;
-
-         NSArray *rows = [responseDictionary objectForKey:@"rows"];
-         if(rows != nil && rows.count > 0){
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *rows = [responseDictionary objectForKey:@"rows"];
+                               if(rows && rows.count > 0){
              
-             ModelUser *user = [ModelUser objectWithDictionary:[[rows objectAtIndex:0] objectForKey:@"value"]];
-             successBlock(user);
-             
-         } else {
-             successBlock(nil);
-         }
-         
-        } failureBlock:^(NSError *error) {
-            errorBlock(error.localizedDescription);
-        }
-        uploadProgressBlock:nil
-        downloadProgressBlock:nil];
-
-
+                                   ModelUser *user = [ModelUser objectWithDictionary:[[rows objectAtIndex:0] objectForKey:@"value"]];
+                                   if (successBlock) {
+                                       successBlock(user);
+                                   }
+                               }
+                               else {
+                                   if (successBlock) {
+                                       successBlock(nil);
+                                   }
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void) findUserListByGroupID:(NSString *)groupId
@@ -609,24 +630,31 @@
 {
     NSString *strUrl = [NSString stringWithFormat:@"groupUsers/%@/%d/%d", groupId, count, offset];
     [self setDefaultHeaderValues];
-    [[HUHTTPClient sharedClient] doGet:strUrl operationType:CSWebOperatonTypeJSON resultBlock:^(id result) {
+    [[HUHTTPClient sharedClient] doGet:strUrl
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
         
-        NSDictionary *dictionary  = result;
-        NSInteger totalResults = [dictionary[@"count"] integerValue];
-        NSArray *arrayUsers = dictionary[@"users"];
-        CSLog(@"Group:%@ have:%d total: %ld", groupId, [arrayUsers count], (long)totalResults);
-        NSMutableArray *arrayModel = [NSMutableArray arrayWithCapacity:arrayUsers.count];
-        for (NSDictionary *dict in arrayUsers) {
-            ModelUser *user = [ModelUser objectWithDictionary:dict];
-            [arrayModel addObject:user];
-        }
+                               NSDictionary *dictionary  = result;
+                               NSInteger totalResults = [dictionary[@"count"] integerValue];
+                               NSArray *arrayUsers = dictionary[@"users"];
+                               NSMutableArray *arrayModel = [NSMutableArray arrayWithCapacity:arrayUsers.count];
+                               for (NSDictionary *dict in arrayUsers) {
+                                   ModelUser *user = [ModelUser objectWithDictionary:dict];
+                                   [arrayModel addObject:user];
+                               }
         
-        successBlock(arrayModel, totalResults);
-        errorBlock(nil);
-        ;
-    } failureBlock:^(NSError *error) {
-        errorBlock([error localizedDescription]);
-    }
+                               if (successBlock) {
+                                   successBlock(arrayModel, totalResults);
+                               }
+                               if (errorBlock) {
+                                   errorBlock(nil);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              if (errorBlock) {
+                                  errorBlock([error localizedDescription]);
+                              }
+                          }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
     
@@ -652,14 +680,14 @@
         }
         i++;
         if (i == user.contacts.count) {
-            [CSDispatcher dispatchMainQueue:^{
-                
-                NSArray *sortedAry = [users sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
-                    return [a.name compare:b.name];
-                }];
-                
-                successBlock(sortedAry);
+            
+            NSArray *sortedAry = [users sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
+                return [a.name compare:b.name];
             }];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                successBlock(sortedAry);
+            });
         }
     };
     
@@ -695,36 +723,39 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[ModelUser objectToDictionary:toUser]];
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
-    
     // disable to update email
     [params removeObjectForKey:@"email"];
     
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"updateUser"
-						 operationType:CSWebOperatonTypeJSON
+						 operationType:AFJSONParameterEncoding
 								params:params
-						   resultBlock:^(id result)
-	{
+						   resultBlock:^(id result) {
                                              
-		NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
 		
-		if([responseDictionary objectForKey:@"_rev"] != nil) {
+                               if([responseDictionary objectForKey:@"_rev"] != nil) {
 			
-			toUser._rev = [responseDictionary objectForKey:@"_rev"];
-			successBlock(YES, nil);
-			return;
-		}
-		
-		successBlock(false, @"Failed to user");
-		
-	}
+                                   toUser._rev = [responseDictionary objectForKey:@"_rev"];
+                                   
+                                   if (successBlock) {
+                                       successBlock(YES, nil);
+                                   }
+                                   return;
+                               }
+                               if (successBlock) {
+                                   successBlock(false, @"Failed to user");
+                               }
+                           }
 						  failureBlock:^(NSError *error) {
-                                            errorBlock(error.localizedDescription);
-                                        }
-				   uploadProgressBlock:nil
-				 downloadProgressBlock:nil];
+                              
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 - (void) updateUser:(ModelUser *)user
@@ -741,11 +772,10 @@
         //remove password
         [params removeObjectForKey:@"password"];
         
-        NSString *strUrl = [NSString stringWithFormat:@"%@", [params objectForKey:@"_id"]];
         [self setDefaultHeaderValues];
         
         [[HUHTTPClient sharedClient] doPost:@"updateUser"
-                             operationType:CSWebOperatonTypeJSON
+                             operationType:AFJSONParameterEncoding
                                     params:params
                                resultBlock:^(id result) {
                                    
@@ -756,7 +786,9 @@
                                        [[UserManager defaultManager] getLoginedUser]._rev = [responseDictionary objectForKey:@"rev"];
                                    }
                                    
-                                   resultBlock(result);
+                                   if (resultBlock) {
+                                       resultBlock(result);
+                                   }
                                }
                               failureBlock:errorBlock
                        uploadProgressBlock:nil
@@ -771,29 +803,6 @@
         errorBlock(error);
         
     }];
-    
-    
-    /*
-    [[HUHTTPClient sharedClient] doPut:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                              params:params
-                                         resultBlock:^(id result) {
-                                         
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             
-                                             if ([responseDictionary objectForKey:@"rev"]) {
-                                                 
-                                                 [[UserManager defaultManager] getLoginedUser]._rev = [responseDictionary objectForKey:@"rev"];
-                                             }
-                                             
-                                             resultBlock(result);
-                                         }
-                                        failureBlock:errorBlock
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
-     
-     */
-    
 }
 
 - (void)updateUserAddRemoveContacts:(ModelUser *)user
@@ -801,14 +810,12 @@
                             success:(DMUpdateBlock)successBlock
                               error:(DMErrorBlock)errorBlock{
     
-    BOOL isAdding = NO;
-        
     if ([user.contacts containsObject:contactId]) {
         
         NSDictionary *params = @{@"user_id":contactId};
         
         [[HUHTTPClient sharedClient] doPost:@"removeContact"
-                              operationType:CSWebOperatonTypeJSON
+                              operationType:AFJSONParameterEncoding
                                      params:params
                                 resultBlock:^(id result) {
                                     
@@ -816,12 +823,14 @@
                                     ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
                                     [[UserManager defaultManager] setLoginedUser:user];
                                     
-                                    successBlock(YES,result);
+                                    if (successBlock) {
+                                        successBlock(YES,result);
+                                    }
                                 }
+         
                                failureBlock:^(NSError *error) {}
-                                uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
-        
+                        uploadProgressBlock:nil
+                      downloadProgressBlock:nil];
     }
     else {
         
@@ -829,7 +838,7 @@
         NSDictionary *params = @{@"user_id":contactId};
         
         [[HUHTTPClient sharedClient] doPost:@"addContact"
-                              operationType:CSWebOperatonTypeJSON
+                              operationType:AFJSONParameterEncoding
                                      params:params
                                 resultBlock:^(id result) {
                                     
@@ -837,15 +846,14 @@
                                     ModelUser *user = [ModelUser objectWithDictionary:responseDictionary];
                                     [[UserManager defaultManager] setLoginedUser:user];
                                     
-                                    successBlock(YES,result);
-                                    
+                                    if (successBlock) {
+                                        successBlock(YES,result);
+                                    }
                                 }
                                failureBlock:^(NSError *error) {}
-                               uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                        uploadProgressBlock:nil
+                      downloadProgressBlock:nil];
     }
-
-
 }
 
 - (void)saveUserPushNotificationToken:(ModelUser *)toUser
@@ -916,7 +924,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
+                                       operationType:AFJSONParameterEncoding
                                          resultBlock:^(id result) {
                                              
                                              NSDictionary *responseDictionary = (NSDictionary *)result;
@@ -931,10 +939,15 @@
                                                  }
                                              }
                                              
-                                             successBlock(groupsArray);
+                                             if (successBlock) {
+                                                 successBlock(groupsArray);
+                                             }
                                          }
                                         failureBlock:^(NSError *error) {
-                                            errorBlock(error.localizedDescription);
+                                            
+                                            if (errorBlock) {
+                                                errorBlock(error.localizedDescription);
+                                            }
                                         }
                                  uploadProgressBlock:nil
                                downloadProgressBlock:nil];
@@ -947,7 +960,7 @@
     NSString *url = [NSString stringWithFormat:@"searchGroups/name/%@",name];
     
     [[HUHTTPClient sharedClient] doGet:url
-                                       operationType:CSWebOperatonTypeJSON
+                                       operationType:AFJSONParameterEncoding
                                          resultBlock:^(id result) {
                                              
                                              NSArray *aryResult = (NSArray *)result;
@@ -960,18 +973,20 @@
                                                      [aryGroup addObject:group];
                                                  }
                                                  
-                                                 
                                                  NSArray *sortedAry = [aryGroup sortedArrayUsingComparator:^(ModelGroup *a, ModelGroup *b) {
                                                      return [a.name compare:b.name];
                                                  }];
                                                  
-                                                 successBlock(sortedAry);
-                                                 
-                                             }else{
-                                                 successBlock(nil);
+                                                 if (successBlock) {
+                                                     successBlock(sortedAry);
+                                                 }
                                              }
-                                              
-                                            
+                                             else {
+                                                 
+                                                 if (successBlock) {
+                                                     successBlock(nil);
+                                                 }
+                                             }
                                          }
                                         failureBlock:^(NSError *error) {
                                             errorBlock(error.localizedDescription);
@@ -1029,7 +1044,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"createGroup"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
                             resultBlock:^(id result) {
                                 
@@ -1037,11 +1052,15 @@
                                 
                                 if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
                                     
-                                    successBlock(YES,result);
+                                    if (successBlock) {
+                                        successBlock(YES,result);
+                                    }
                                     return;
                                 }
                                 
-                                successBlock(false, @"Failed to create new group.");
+                                if (successBlock) {
+                                    successBlock(false, @"Failed to create new group.");
+                                }
                             }
                            failureBlock:^(NSError *error) {
                                errorBlock(error.localizedDescription);
@@ -1059,16 +1078,22 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
+                                       operationType:AFJSONParameterEncoding
                                          resultBlock:^(id result) {
                                              
                                              NSDictionary *responseDictionary = (NSDictionary *)result;
                                              
                                              if ([[responseDictionary objectForKey:@"type"] isEqual:@"group"]) {
                                                  ModelGroup *group = [ModelGroup dicToObj:responseDictionary];
-                                                 successBlock(group);
-                                             } else {
-                                                 successBlock(nil);
+                                                 
+                                                 if (successBlock) {
+                                                     successBlock(group);
+                                                 }
+                                             }
+                                             else {
+                                                 if (successBlock) {
+                                                     successBlock(nil);
+                                                 }
                                              }
                                          }
                                         failureBlock:^(NSError *error) {
@@ -1087,7 +1112,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
                                
                                NSDictionary *responseDictionary = (NSDictionary *)result;
@@ -1095,7 +1120,9 @@
                                NSArray *rows = [responseDictionary objectForKey:@"rows"];
                                
                                if(rows == nil){
-                                   successBlock(nil);
+                                   if (successBlock) {
+                                       successBlock(nil);
+                                   }
                                    return;
                                }
                                
@@ -1115,11 +1142,14 @@
                                    return [a.name compare:b.name];
                                }];
                                
-                               successBlock(sortedAry);
-
+                               if (successBlock) {
+                                   successBlock(sortedAry);
+                               }
                            }
                           failureBlock:^(NSError *error) {
-                              errorBlock(error.localizedDescription);
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
@@ -1139,14 +1169,19 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"unSubscribeGroup"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
                             resultBlock:^(NSString * result){
                                 
-                                successBlock(YES,result);
+                                if (successBlock) {
+                                    successBlock(YES,result);
+                                }
                             }
                            failureBlock:^(NSError *error) {
-                               errorBlock(error.localizedDescription);
+                               
+                               if (errorBlock) {
+                                   errorBlock(error.localizedDescription);
+                               }
                            }
                     uploadProgressBlock:nil
                   downloadProgressBlock:nil];
@@ -1190,14 +1225,19 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"subscribeGroup"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
                             resultBlock:^(NSString * result){
                                 
-                                successBlock(YES,result);
+                                if (successBlock) {
+                                    successBlock(YES,result);
+                                }
                             }
                             failureBlock:^(NSError *error) {
-                               errorBlock(error.localizedDescription);
+                                
+                                if (errorBlock) {
+                                    errorBlock(error.localizedDescription);
+                                }
                             }
                     uploadProgressBlock:nil
                   downloadProgressBlock:nil];
@@ -1234,31 +1274,35 @@
         [self setDefaultHeaderValues];
         
         [[HUHTTPClient sharedClient] doPost:@"updateGroup"
-                                           operationType:CSWebOperatonTypeJSON
-                                                  params:params
-                                             resultBlock:^(id result) {
+                              operationType:AFJSONParameterEncoding
+                                     params:params
+                                resultBlock:^(id result) {
                                                  
-                                                 NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    NSDictionary *responseDictionary = (NSDictionary *)result;
                                                  
-                                                 if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
-                                                     
-                                                     if ([responseDictionary objectForKey:@"rev"]) {
-                                                         
-                                                         newGroup._rev = [responseDictionary objectForKey:@"rev"];
-                                                     }
-                                                     
-                                                     successBlock(YES, nil);
-                                                     return;
-                                                 }
-                                                 
-                                                 successBlock(false, @"Failed to save group");
-                                             }
-                                            failureBlock:^(NSError *error) {
+                                    if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                                       
+                                        if ([responseDictionary objectForKey:@"rev"]) {
+                                            newGroup._rev = [responseDictionary objectForKey:@"rev"];
+                                        }
+                                        
+                                        if (successBlock) {
+                                            successBlock(YES, nil);
+                                        }
+                                        return;
+                                    }
+                                    if (successBlock) {
+                                        successBlock(false, @"Failed to save group");
+                                    }
+                                }
+                               failureBlock:^(NSError *error) {
                                                 
-                                                errorBlock(error.localizedDescription);
-                                            }
-                                     uploadProgressBlock:nil
-                                   downloadProgressBlock:nil];
+                                   if (errorBlock) {
+                                       errorBlock(error.localizedDescription);
+                                   }
+                               }
+                        uploadProgressBlock:nil
+                      downloadProgressBlock:nil];
     });
     
 }
@@ -1272,22 +1316,25 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
                                              
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             
-                                             ModelGroup *group = [ModelGroup dicToObj:responseDictionary];
-                                             successBlock(group);
-                                             
-                                             return;
-                                         }
-                                        failureBlock:^(NSError *error) {
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               ModelGroup *group = [ModelGroup dicToObj:responseDictionary];
+                               
+                               if (successBlock) {
+                                   successBlock(group);
+                               }
+                               return;
+                           }
+                          failureBlock:^(NSError *error) {
                                             
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void)deleteGroup:(ModelGroup *)newGroup
@@ -1303,7 +1350,7 @@
     
 
     [[HUHTTPClient sharedClient] doPost:@"deleteGroup"
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                                 params:params
                            resultBlock:^(id result) {
                                
@@ -1311,16 +1358,18 @@
                                
                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
                                    
-                                   
-                                   void(^successBlockRemoveFav)(BOOL success, NSString *error) = ^(BOOL success, NSString *error)
-                                   {
+                                   void(^successBlockRemoveFav)(BOOL success, NSString *error) = ^(BOOL success, NSString *error) {
                                        
                                        if(success){
-                                           successBlock(YES,nil);
-                                       }else{
-                                           successBlock(false, @"Failed to unsubscribe group");
+                                           if (successBlock) {
+                                               successBlock(YES,nil);
+                                           }
                                        }
-                                       
+                                       else {
+                                           if (successBlock) {
+                                               successBlock(false, @"Failed to unsubscribe group");
+                                           }
+                                       }
                                    };
                                    
                                    void(^errorBlockRemoveFav)(id result) = ^(NSString *errStr){
@@ -1335,21 +1384,20 @@
                                    return;
                                }
                                
-                               successBlock(false, @"Failed to delete group");
+                               if (successBlock) {
+                                   successBlock(false, @"Failed to delete group");
+                               }
                                return;
-                               
                            }
                           failureBlock:^(NSError *error) {
                               
-                              errorBlock(error.localizedDescription);
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
                           }
-     
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
-    
 }
-
-
 
 -(void)getUsersInGroup:(ModelGroup *)group
                success:(DMFindOneBlock)successBlock
@@ -1377,14 +1425,13 @@
         }
         i++;
         if (i == user.favouriteGroups.count) {
-            [CSDispatcher dispatchMainQueue:^{
-                
-                NSArray *sortedAry = [groups sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
-                    return [a.name compare:b.name];
-                }];
-                
-                successBlock(sortedAry);
+            
+            NSArray *sortedAry = [groups sortedArrayUsingComparator:^(ModelUser *a, ModelUser *b) {
+                return [a.name compare:b.name];
             }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                successBlock(sortedAry);
+            });
         }
     };
     
@@ -1450,7 +1497,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
                                
                                NSDictionary *responseDictionary = (NSDictionary *)result;
@@ -1466,16 +1513,18 @@
                                        ModelGroupCategory *gc = [ModelGroupCategory dicToObj:[dic1 objectForKey:@"value"]];
                                        [resultAry addObject:gc];
                                    }
-                                   
                                }
                                
-                               successBlock(resultAry);
-                               
+                               if (successBlock) {
+                                   successBlock(resultAry);
+                               }
                                return;
                            }
                           failureBlock:^(NSError *error) {
                               
-                              errorBlock(error.localizedDescription);
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
@@ -1492,7 +1541,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-						 operationType:CSWebOperatonTypeJSON
+						 operationType:AFJSONParameterEncoding
 						   resultBlock:^(id result)
      {
          
@@ -1502,10 +1551,16 @@
          if(rows != nil && rows.count > 0){
              
              ModelGroup *group = [ModelGroup dicToObj:[[rows objectAtIndex:0] objectForKey:@"value"]];
-             successBlock(group);
+             if (successBlock) {
+                 successBlock(group);
+             }
              
-         } else {
-             successBlock(nil);
+             
+         }
+         else {
+             if (successBlock) {
+                 successBlock(nil);
+             }
          }
          
      } failureBlock:^(NSError *error) {
@@ -1570,27 +1625,33 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:apiName
-                                        operationType:CSWebOperatonTypeJSON
-                                               params:params
-                                          resultBlock:^(id result) {
+                          operationType:AFJSONParameterEncoding
+                                 params:params
+                            resultBlock:^(id result) {
                                               
-                                              NSDictionary *responseDictionary = (NSDictionary *)result;
-                                              
-                                              if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
-                                                  successBlock(YES, nil);
-                                                  return;
-                                              }
-                                              
-                                              successBlock(false, @"Failed to send message");
-
-                                          }
-                                         failureBlock:^(NSError *error) {
-                                             
-                                             errorBlock(error.localizedDescription);
-                                             
-                                         }
-                                  uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
+                                NSDictionary *responseDictionary = (NSDictionary *)result;
+                                
+                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                                    
+                                    if (successBlock) {
+                                        successBlock(YES, nil);
+                                    }
+                                    
+                                    return;
+                                }
+                                
+                                if (successBlock) {
+                                    successBlock(false, @"Failed to send message");
+                                }
+                            }
+                           failureBlock:^(NSError *error) {
+                               
+                               if (errorBlock) {
+                                   errorBlock(error.localizedDescription);
+                               }
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 -(void)findUserMessagesByUser:(ModelUser *) user
@@ -1611,29 +1672,32 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] doGet:url
-                                       operationType:AFJSONParameterEncoding
-                                         resultBlock:^(id result) {
-                                            
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             NSArray *messages = [responseDictionary objectForKey:@"rows"];
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
+                               
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *messages = [responseDictionary objectForKey:@"rows"];
                                              
-                                             for(NSDictionary *row in messages){
-                                                 
-                                                 if([row objectForKey:@"value"] != nil){
-                                                     ModelMessage *messages = [ModelMessage dicToObj:[row objectForKey:@"value"]];
-                                                     [modelMessages addObject:messages];
-                                                 }
-                                             }
+                               for(NSDictionary *row in messages){
+                                   if([row objectForKey:@"value"] != nil){
+                                       
+                                       ModelMessage *messages = [ModelMessage dicToObj:[row objectForKey:@"value"]];
+                                       [modelMessages addObject:messages];
+                                   }
+                               }
                                              
-                                             successBlock(modelMessages);
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
-     
-
+                               if (successBlock) {
+                                   successBlock(modelMessages);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 
@@ -1656,28 +1720,30 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
                                              
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *rows = [responseDictionary objectForKey:@"rows"];
                                              
-                                             NSArray *rows = [responseDictionary objectForKey:@"rows"];
-                                             
-                                             for(NSDictionary *row in rows){
-                                                 
-                                                 if([row objectForKey:@"value"] != nil){
-                                                     message = [ModelMessage dicToObj:[row objectForKey:@"value"]];
-                                                     [messagesArray addObject:message];
-                                                 }
-                                                 
-                                             }
-                                             successBlock(messagesArray);
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                               for(NSDictionary *row in rows){
+                                   
+                                   if([row objectForKey:@"value"] != nil){
+                                       
+                                       message = [ModelMessage dicToObj:[row objectForKey:@"value"]];
+                                       [messagesArray addObject:message];
+                                   }
+                               }
+                               
+                               if (successBlock) {
+                                   successBlock(messagesArray);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void)reloadMessage:(ModelMessage *)message
@@ -1689,20 +1755,25 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
                                              
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                         
-                                             ModelMessage *message = [ModelMessage dicToObj:responseDictionary];
-                                             successBlock(message);
-                                         }
-                                        failureBlock:^(NSError *error) {
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               
+                               ModelMessage *message = [ModelMessage dicToObj:responseDictionary];
+                               
+                               if (successBlock) {
+                                   successBlock(message);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
                                             
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 #pragma mark - Emoticons
@@ -1715,21 +1786,23 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:^(id result) {
-
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
+                               
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               NSArray *array = [responseDictionary objectForKey:@"rows"];
                                              
-                                             NSArray *array = [responseDictionary objectForKey:@"rows"];
-                                             
-                                             successBlock(array);
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                               if (successBlock) {
+                                   successBlock(array);
+                               }
+                           }
+                          failureBlock:^(NSError *error) {
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
+                          }
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 
@@ -1779,10 +1852,6 @@
         successBlock(false, @"No recipients set.");
     }
     
-    /*
-    [params setObject:[Utils generateAttachmentJsonForImage:image fileName:MessageTypeImageFileName]
-               forKey:@"_attachments"];
-    */
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -1802,34 +1871,40 @@
             [params setObject:thumbId forKey:@"picture_thumb_file_id"];
 
             [[HUHTTPClient sharedClient] doPost:apiName
-                                                operationType:CSWebOperatonTypeJSON
-                                                       params:params
-                                                  resultBlock:^(id result) {
-                                                      
-                                                      NSDictionary *responseDictionary = (NSDictionary *)result;
-                                                      
-                                                      if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
-                                                          successBlock(YES, nil);
-                                                          return;
-                                                      }
-                                                      
-                                                      successBlock(false, @"Failed to send message.");
-                                                      return;
-
-                                                  }
-                                                 failureBlock:^(NSError *error) {
+                                  operationType:AFJSONParameterEncoding
+                                         params:params
+                                    resultBlock:^(id result) {
+                                        
+                                        NSDictionary *responseDictionary = (NSDictionary *)result;
+                                        
+                                        if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
+                                        
+                                            if (successBlock) {
+                                                successBlock(YES, nil);
+                                            }
+                                            return;
+                                        }
+                                        if (successBlock) {
+                                            successBlock(false, @"Failed to send message.");
+                                        }
+                                        return;
+                                    }
+                                   failureBlock:^(NSError *error) {
                                                      
-                                                     errorBlock(error.localizedDescription);
-                                                 }
-                                          uploadProgressBlock:nil
-                                        downloadProgressBlock:nil];
+                                       if (errorBlock) {
+                                           errorBlock(error.localizedDescription);
+                                       }
+                                   }
+                            uploadProgressBlock:nil
+                          downloadProgressBlock:nil];
         
-        }else{
-            errorBlock(@"Failed to send message.");
         }
-    
+        else {
+            if (errorBlock) {
+                errorBlock(@"Failed to send message.");
+            }
+        }
     });
-                   
 }
 
 - (void)postImageComment:(ModelMessage *) message
@@ -1850,30 +1925,32 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"sendComment"
-                                       operationType:CSWebOperatonTypeJSON
-                                              params:params
-                                         resultBlock:^(id result) {
-                                             
-                                             NSDictionary *responseDictionary = (NSDictionary *)result;
-                                             
-                                             if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                          operationType:AFJSONParameterEncoding
+                                 params:params
+                            resultBlock:^(id result) {
+                                
+                                NSDictionary *responseDictionary = (NSDictionary *)result;
+                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
                                                  
-                                                 [self updateModified:message._id success:nil error:nil];
+                                    [self updateModified:message._id success:nil error:nil];
                                                  
-                                                 successBlock(YES, responseDictionary);
-                                                 return;
-                                             }
-                                             
-                                             successBlock(false, nil);
-                                             return;
-                                             
-                                         }
-                                        failureBlock:^(NSError *error) {
-                                            
-                                            errorBlock(error.localizedDescription);
-                                        }
-                                 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                                    if (successBlock) {
+                                        successBlock(YES, responseDictionary);
+                                    }
+                                    return;
+                                }
+                                if (successBlock) {
+                                    successBlock(false, nil);
+                                }
+                                return;
+                            }
+                           failureBlock:^(NSError *error) {
+                               if (errorBlock) {
+                                   errorBlock(error.localizedDescription);
+                               }
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 - (void)updateModified:(NSString *)objectID
@@ -1885,26 +1962,23 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-        operationType:CSWebOperatonTypeJSON
-        resultBlock:^(id result) {
-
-            NSDictionary *responseDictionary = (NSDictionary *)result;
-            [responseDictionary setValue:[NSNumber numberWithLong:[Utils getUTCFormateDateInLong]] forKey:@"modified"];
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:^(id result) {
+          
+                               NSDictionary *responseDictionary = (NSDictionary *)result;
+                               [responseDictionary setValue:[NSNumber numberWithLong:[Utils getUTCFormateDateInLong]] forKey:@"modified"];
             
-            [[HUHTTPClient sharedClient] doPost:@""
-                                  operationType:CSWebOperatonTypeJSON
-                                         params:responseDictionary
-                                    resultBlock:nil 
-                                   failureBlock:nil
-                            uploadProgressBlock:nil
-                          downloadProgressBlock:nil];
-            
-        }
-        failureBlock:nil
-        uploadProgressBlock:nil
-        downloadProgressBlock:nil];
-
-
+                               [[HUHTTPClient sharedClient] doPost:@""
+                                                     operationType:AFJSONParameterEncoding
+                                                            params:responseDictionary
+                                                       resultBlock:nil
+                                                      failureBlock:nil
+                                               uploadProgressBlock:nil
+                                             downloadProgressBlock:nil];
+                           }
+                          failureBlock:nil
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 - (void)sendEmoticonMessage:(int) targetType
@@ -1967,26 +2041,31 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] doPost:apiName
-                                        operationType:CSWebOperatonTypeJSON
-                                               params:params
-                                          resultBlock:^(id result) {
+                          operationType:AFJSONParameterEncoding
+                                 params:params
+                            resultBlock:^(id result) {
                                               
-                                              NSDictionary *responseDictionary = (NSDictionary *)result;
-                                              
-                                              if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
-                                                  successBlock(YES, nil);
-                                                  return;
-                                              }
-                                              
-                                              successBlock(false, @"Failed to send message.");
-                                              return;
-                                          }
-                                         failureBlock:^(NSError *error) {
+                                NSDictionary *responseDictionary = (NSDictionary *)result;
+                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1){
+                                    
+                                    if (successBlock) {
+                                        successBlock(YES, nil);
+                                    }
+                                    return;
+                                }
+                                if (successBlock) {
+                                    successBlock(false, @"Failed to send message.");
+                                }
+                                return;
+                            }
+                           failureBlock:^(NSError *error) {
                                              
-                                             errorBlock(error.localizedDescription);
-                                         }
-                                  uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
+                               if (errorBlock) {
+                                   errorBlock(error.localizedDescription);
+                               }
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
  
 - (void)loadImage:(NSString *)imageUrl
@@ -2012,20 +2091,19 @@
     [self setDefaultHeaderValues];
 
     [[HUHTTPClient sharedClient] imageFromURL:[NSURL URLWithString:imageUrl]
-                                                 completion:^(NSURL *imageURL, UIImage *image) {
-                                                     
-                                                     if (image && successBlock) {
-                                                         successBlock(image);
-                                                         return;
-                                                     }
-                                                     else {
-                                                         
-                                                         if(errorBlock)
-                                                             errorBlock(nil);
-                                                         
-                                                         return;
-                                                     }
-                                                 }];
+                                   completion:^(NSURL *imageURL, UIImage *image) {
+                                   
+                                       if (image && successBlock) {
+                                           successBlock(image);
+                                           return;
+                                       }
+                                       else {
+                                           if(errorBlock) {
+                                               errorBlock(nil);
+                                           }
+                                           return;
+                                       }
+                                   }];
 }
 
 - (void)loadCategoryIconByName:(NSString *)categoryName
@@ -2135,7 +2213,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:url
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
                                
                                NSDictionary *responseDictionary = (NSDictionary *)result;
@@ -2146,15 +2224,13 @@
                                for(int i = 0; i < [ary count] ; i++){
                                    
                                    NSDictionary *tmpDic2 = [ary objectAtIndex:i];
-                                   
                                    ModelComment *comment = [ModelComment objectWithDictionary:[tmpDic2 objectForKey:@"value"]];
-                                   
                                    [resultAry addObject:comment];
                                    
                                }
-                               
-                               successBlock(resultAry);
-                               
+                               if (successBlock) {
+                                   successBlock(resultAry);
+                               }
                            }
                           failureBlock:^(NSError *error) {
                               
@@ -2163,8 +2239,6 @@
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
-    
-    
 }
 
 -(void)getCommentsCountByMessage:(ModelMessage *) message
@@ -2176,7 +2250,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
                                
                                NSDictionary *responseDictionary = (NSDictionary *)result;
@@ -2188,30 +2262,27 @@
                                        if([[[responseDictionary objectForKey:@"rows"] objectAtIndex:0] objectForKey:@"value"] != nil){
                                        
                                            NSString *number = [NSString stringWithFormat:@"%@",[[[responseDictionary objectForKey:@"rows"] objectAtIndex:0] objectForKey:@"value"]];
-                                           
-                                           successBlock(number);
+                                           if (successBlock) {
+                                               successBlock(number);
+                                           }
                                            return;
                                        }
-                                       
                                    }
-                                   
                                }
-                               
-                               successBlock(nil);
-                               
+                               if (successBlock) {
+                                   successBlock(nil);
+                               }
                            }
      
                           failureBlock:^(NSError *error) {
                               
-                              CSLog(@"%@", [error description]);
-                              errorBlock(error.localizedDescription);
+                              if (errorBlock) {
+                                  errorBlock(error.localizedDescription);
+                              }
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
-    
-    
 }
-
 
 #pragma mark - Video Methods
 
@@ -2268,29 +2339,31 @@
         [self setDefaultHeaderValues];
         
         [[HUHTTPClient sharedClient] doPost:apiName
-                                            operationType:CSWebOperatonTypeJSON
-                                                   params:params
-                                              resultBlock:^(id result) {
-                                                  
-                                                  NSDictionary *responseDictionary = (NSDictionary *)result;
-                                                  
-                                                  if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                              operationType:AFJSONParameterEncoding
+                                     params:params
+                                resultBlock:^(id result) {
+                                    
+                                    NSDictionary *responseDictionary = (NSDictionary *)result;
+                                    
+                                    if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
                                                       
-                                                      successBlock(YES, nil);
-                                                      return;
-                                                  }
-                                                  
-                                                  successBlock(false, @"Failed to send message");
-                                                  return;
-
-                                              }
-                                             failureBlock:^(NSError *error) {
-                                                 
-                                                 errorBlock(error.localizedDescription);
-                                             }
-                                      uploadProgressBlock:nil
-                                    downloadProgressBlock:nil];
-        
+                                        if (successBlock) {
+                                            successBlock(YES, nil);
+                                        }
+                                        return;
+                                    }
+                                    if (successBlock) {
+                                        successBlock(false, @"Failed to send message");
+                                    }
+                                    return;
+                                }
+                               failureBlock:^(NSError *error) {
+                                   if (errorBlock) {
+                                       errorBlock(error.localizedDescription);
+                                   }
+                               }
+                        uploadProgressBlock:nil
+                      downloadProgressBlock:nil];
     });
 }
 
@@ -2349,7 +2422,7 @@
             [self setDefaultHeaderValues];
             
             [[HUHTTPClient sharedClient] doPost:apiName
-                                  operationType:CSWebOperatonTypeJSON
+                                  operationType:AFJSONParameterEncoding
                                          params:params
                                     resultBlock:^(id result) {
                                         
@@ -2357,28 +2430,32 @@
                                         
                                         if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
                                             
-                                            successBlock(YES, nil);
+                                            if (successBlock) {
+                                                successBlock(YES, nil);
+                                            }
                                             return;
                                         }
                                         
-                                        successBlock(false, @"Failed to send message");
+                                        if (successBlock) {
+                                            successBlock(false, @"Failed to send message");
+                                        }
                                         return;
-                                        
                                     }
                                    failureBlock:^(NSError *error) {
                                        
-                                       errorBlock(error.localizedDescription);
+                                       if (errorBlock) {
+                                           errorBlock(error.localizedDescription);
+                                       }
                                    }
                             uploadProgressBlock:nil
                           downloadProgressBlock:nil];
-            
-            
-        }else{
-            errorBlock(@"Failed to send message.");
         }
-        
+        else {
+            if (errorBlock) {
+                errorBlock(@"Failed to send message.");
+            }
+        }
     });
-    
 }
 
 - (void)loadVoice:(NSString *)loadVoice
@@ -2389,16 +2466,21 @@
         errorBlock(nil);
     }
     
-    [[HUHTTPClient sharedClient] fileFromURL:[NSURL URLWithString:loadVoice] completion: ^(NSURL *irl, NSData *data){
+    [[HUHTTPClient sharedClient] fileFromURL:[NSURL URLWithString:loadVoice]
+                                  completion: ^(NSURL *irl, NSData *data){
         
-        if(data == nil)
-            errorBlock(@"Failed to load audio.");
-        
-        else
-            successBlock(data);
-        
+                                      if(data == nil) {
+                                      
+                                          if (errorBlock) {
+                                              errorBlock(@"Failed to load audio.");
+                                          }
+                                      }
+                                      else {
+                                          if (successBlock) {
+                                              successBlock(data);
+                                          }
+                                      }
     }];
-    
 }
 
 - (void)loadVideo:(NSString *)loadVideo
@@ -2409,18 +2491,21 @@
         errorBlock(nil);
     }
     
-    [[HUHTTPClient sharedClient] fileFromURL:[NSURL URLWithString:loadVideo] completion: ^(NSURL *irl, NSData *data){
+    [[HUHTTPClient sharedClient] fileFromURL:[NSURL URLWithString:loadVideo]
+                                  completion: ^(NSURL *irl, NSData *data){
         
-        if(data == nil)
-            errorBlock(@"Failed to load video.");
-        
-        else
-            successBlock(data);
-        
+                                      if(data == nil) {
+                                          if (errorBlock) {
+                                              errorBlock(@"Failed to load video.");
+                                          }
+                                      }
+                                      else {
+                                          if (successBlock) {
+                                              successBlock(data);
+                                          }
+                                      }
     }];
-    
 }
-
 
 #pragma mark - Location Methods
 
@@ -2462,27 +2547,31 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:apiName
-                                        operationType:CSWebOperatonTypeJSON
-                                               params:params
-                                          resultBlock:^(id result) {
-                                              
-                                              NSDictionary *responseDictionary = (NSDictionary *)result;
-                                              
-                                              if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
-                                                  
-                                                  successBlock(YES, nil);
-                                                  return;
-                                              }
-                                              
-                                              successBlock(false, @"Failed to send message");
-
-                                          }
-                                         failureBlock:^(NSError *error) {
+                          operationType:AFJSONParameterEncoding
+                                 params:params
+                            resultBlock:^(id result) {
+                                
+                                NSDictionary *responseDictionary = (NSDictionary *)result;
+                                
+                                if([[responseDictionary objectForKey:@"ok"] intValue] == 1) {
+                                    
+                                    if (successBlock) {
+                                        successBlock(YES, nil);
+                                    }
+                                    return;
+                                }
+                                if (successBlock) {
+                                    successBlock(false, @"Failed to send message");
+                                }
+                            }
+                           failureBlock:^(NSError *error) {
                                           
-                                             errorBlock(error.localizedDescription);
-                                         }
-                                  uploadProgressBlock:nil
-                                downloadProgressBlock:nil];
+                               if (errorBlock) {
+                                   errorBlock(error.localizedDescription);
+                               }
+                           }
+                    uploadProgressBlock:nil
+                  downloadProgressBlock:nil];
 }
 
 #pragma mark - Recent activity
@@ -2537,11 +2626,11 @@
 
     
     [[HUHTTPClient sharedClient] doGet:strUrl
-                                       operationType:CSWebOperatonTypeJSON
-                                         resultBlock:block
-										failureBlock:errorBlockLocal
-								 uploadProgressBlock:nil
-                               downloadProgressBlock:nil];
+                         operationType:AFJSONParameterEncoding
+                           resultBlock:block
+                          failureBlock:errorBlockLocal
+                   uploadProgressBlock:nil
+                 downloadProgressBlock:nil];
 }
 
 
@@ -2554,7 +2643,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"watchGroup"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
                             resultBlock:nil
                            failureBlock:nil
@@ -2569,7 +2658,7 @@
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"unWatchGroup"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:nil
                             resultBlock:nil
                            failureBlock:nil
@@ -2586,12 +2675,18 @@
                      withParameters:@{@"user_id":[[UserManager defaultManager] getLoginedUser]._id}];
     
     [[HUHTTPClient sharedClient] doGet:method
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
-                               successBlock(result);
+                               
+                               if (successBlock) {
+                                  successBlock(result);
+                               }
                            }
                           failureBlock:^(NSError *error) {
-                              successBlock(error);
+                              
+                              if (successBlock) {
+                                  successBlock(error);
+                              }
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
@@ -2603,12 +2698,18 @@
                      withParameters:@{@"message_id":message._id}];
     
     [[HUHTTPClient sharedClient] doGet:method
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:^(id result) {
-                               successBlock(result);
+                               
+                               if (successBlock) {
+                                   successBlock(result);
+                               }
                            }
                           failureBlock:^(NSError *error) {
-                              successBlock(error);
+                              
+                              if (successBlock) {
+                                  successBlock(error);
+                              }
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
@@ -2621,13 +2722,11 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:messageId forKey:@"message_id"];
     [params setObject:[NSString stringWithFormat:@"%d", deleteType] forKey:@"delete_type"];
-    
-    NSLog(@"%@", params);
-    
+        
     [self setDefaultHeaderValues];
     
     [[HUHTTPClient sharedClient] doPost:@"setDelete"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
                             resultBlock:successBlock
                            failureBlock:nil
@@ -2641,16 +2740,14 @@
     NSString *method = [self getURL:ServerListAPIURL withParameters:nil];
     
     [[HUHTTPClient sharedClient] doGet:method
-                         operationType:CSWebOperatonTypeJSON
+                         operationType:AFJSONParameterEncoding
                            resultBlock:successBlock
                           failureBlock:^(NSError *error) {
                               //successBlock(error);
-                              NSLog(@"%@", error);
                           }
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
 }
-
 
 -(void) test{
     
@@ -2663,20 +2760,11 @@
     
     [[HUHTTPClient sharedClient] setDefaultHeader:@"user_id" value:@"create_user"];
 
-    
     [[HUHTTPClient sharedClient] doPost:@"test.php"
-                          operationType:CSWebOperatonTypeJSON
+                          operationType:AFJSONParameterEncoding
                                  params:params
-                           resultBlock:^(id result) {
-                               
-                               NSLog(@"%@",result);
-                               
-                           }
-                          failureBlock:^(NSError *error) {
-                              
-                              NSLog(@"%@",error.localizedDescription);
-                              
-                          }
+                           resultBlock:nil
+                          failureBlock:nil
                    uploadProgressBlock:nil
                  downloadProgressBlock:nil];
 }

@@ -23,7 +23,6 @@
  */
 
 #import "HUPasswordSetNewViewController.h"
-#import "CSDispatcher.h"
 
 typedef enum {
 	HUPasswordConfirmStageInputNew	= 1,
@@ -109,11 +108,14 @@ typedef enum {
 		if ([self.delegate respondsToSelector:@selector(passwordViewController:didChangePassword:oldPassword:)]) {
 			[self.delegate passwordViewController:self didChangePassword:password oldPassword:_oldPassword];
 		}
-		[CSDispatcher dispatchAfter:1.0f block:^{
-			//call super to avoid cancel callback
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            //call super to avoid cancel callback
 			[super passwordViewControllerWillClose];
-		}];
-	} else {
+        });
+	}
+    else {
 		[self setStage:HUPasswordConfirmStageInputNew];
 		[super processPassword:password success:isSuccess];
 	}

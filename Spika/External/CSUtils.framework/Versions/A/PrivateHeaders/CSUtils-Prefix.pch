@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'CSUtils' target in the 'CSUtils' project
-//
-
-#ifdef __OBJC__
-
-    #import <Foundation/Foundation.h>
-    #import "CSUtils.h"
-#endif

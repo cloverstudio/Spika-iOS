@@ -78,12 +78,11 @@
 -(void) loadAvatar;
 
 -(void)hideKeyboardFor:(UIView *)label;
--(void)resignActiveTextViewAndHideKeyboard;
--(void)hideStartConverstationBtn;
--(void)enablePassword;
 
 -(IBAction) startConversation;
 -(IBAction) openOwner;
 -(IBAction) viewMembers:(id)sender;
+
+-(IBAction)onCategoryOpen;
 
 @end

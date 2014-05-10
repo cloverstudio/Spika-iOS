@@ -245,7 +245,7 @@
 }
 
 -(void)willTransitionToState:(UITableViewCellStateMask)state{
-    NSLog(@"EventTableCell willTransitionToState");
+
     [super willTransitionToState:state];
     if((state & UITableViewCellStateShowingDeleteConfirmationMask) == UITableViewCellStateShowingDeleteConfirmationMask){
         [self recurseAndReplaceSubViewIfDeleteConfirmationControl:self.subviews];

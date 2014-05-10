@@ -28,13 +28,12 @@
 #define kLabelMarginLeft     60
 #define kMargin              5
 
-@interface HUNewGroupViewController : HUGroupProfileViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
+@interface HUNewGroupViewController : HUGroupProfileViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
     IBOutlet UIButton       *_saveButton;
     IBOutlet UIButton       *_cancelButton;
 }
 
 -(IBAction)onSave;
--(IBAction)onCategoryOpen;
 -(IBAction)onBack:(id)sender;
 -(IBAction)avatarImageViewDidTap:(UITapGestureRecognizer *)recognizer;
 

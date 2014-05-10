@@ -14,7 +14,6 @@
 
 #import "CSNotificationView.h"
 #import "UIView+Extensions.h"
-#import "CSDispatcher.h"
 #import <objc/runtime.h>
 
 #define RADIANS(deg) ((deg) * M_PI / 180.0f)
@@ -233,9 +232,10 @@
     
     if (duration != 0.0f) {
         duration = MIN(0.5f, duration);
-        [CSDispatcher dispatchAfter:duration block:^{
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self hideNotification];
-        }];
+        });
     }
 }
 

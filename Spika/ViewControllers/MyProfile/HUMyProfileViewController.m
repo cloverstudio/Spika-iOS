@@ -70,19 +70,9 @@
 
 -(void) dealloc {
     
-    CS_RELEASE(_nameLabel);
-    CS_RELEASE(_aboutLabel);
-    CS_RELEASE(_genderLabel);
-    CS_RELEASE(_birthdayLabel);
-    CS_RELEASE(_datePicker);
-    
-	if (_pickerTableView != nil)
+	if (_pickerTableView != nil) {
 		[_pickerTableView removePickerTableView];
-    
-	CS_RELEASE(_pickerTableView);
-
-    CS_SUPER_DEALLOC;
-    
+    }
 }
 
 #pragma mark - Initialization
@@ -566,8 +556,9 @@
        didFinishPickingImage:(UIImage*)image
                  editingInfo:(NSDictionary*)editingInfo{
     
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
     
-    [self dismissModalViewControllerAnimated:YES];
     [self performSelector:@selector(openUimageUploadViewController:)
                withObject:image
                afterDelay:0.5];
@@ -640,12 +631,7 @@
         return NO;
     }
     
-    CGPoint absolutePosition = [textField convertPoint:textField.frame.origin toView:nil];
-    
-    NSLog(@"%f",absolutePosition.y);
-    
     return YES;
-    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

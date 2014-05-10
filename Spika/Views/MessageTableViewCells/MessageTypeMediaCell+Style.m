@@ -82,7 +82,7 @@
     UITextView *rightView = [[UITextView alloc] initWithFrame:[MessageCell frameForRightLabelView:nil]];
     rightView.backgroundColor = [MessageCell defaultBackgroundColor];
     rightView.textColor = [UIColor darkGrayColor];
-    rightView.textAlignment = UITextAlignmentLeft;
+    rightView.textAlignment = NSTextAlignmentLeft;
     rightView.opaque = YES;
     rightView.font = kFontArialMTOfSize(kFontSizeSmall);
     rightView.editable = NO;
@@ -126,9 +126,9 @@
 }
 
 +(CGRect) getFrameForContainerView:(ModelMessage *)message leftFrame:(CGRect *)leftFrame rightFrame:(CGRect *)rightFrame {
-    
-    CGSize messageBodySize = [message.body sizeWithFont:kFontArialMTOfSize(kFontSizeSmall)
-                                      constrainedToSize:CGSizeMake(kLeftContainerWidth, NSNotFound)];
+
+    CGSize messageBodySize = [message.body sizeForBoundingSize:CGSizeMake(kLeftContainerWidth, NSNotFound)
+                                                          font:kFontArialMTOfSize(kFontSizeSmall)];
     
     CGRect avatarIconFrame = [MessageCell frameForAvatarIconView:message];
     CGRect arrowFrame = [MessageCell frameForArrowImageView:message];

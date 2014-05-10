@@ -152,11 +152,12 @@
 	HUModelActivityNotification *notification = category.notifications[indexPath.row];
 	ModelMessage *message = notification.messages.lastObject;
 	
-	NSString *cellIdentifier = @"CellIdentifier";
-	NSString *tableViewClassName = @"HUActivityMessageCell";
-	HUActivityMessageCell *cell = (HUActivityMessageCell *)[CSKit tableViewCellCustom:cellIdentifier
-																			className:tableViewClassName
-																			tableView:tableView];
+	static NSString *cellIdentifier = @"CellIdentifier";
+	HUActivityMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[HUActivityMessageCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                            reuseIdentifier:cellIdentifier];
+    }
 	
 	cell.textLabel.text = message.body;
     cell.timestampLabel.text = [Utils formatDate:[NSDate dateWithTimeIntervalSince1970:message.modified]];

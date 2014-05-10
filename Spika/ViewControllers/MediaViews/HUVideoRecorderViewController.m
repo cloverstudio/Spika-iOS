@@ -70,7 +70,7 @@
     UILabel* lbNavTitle = [[UILabel alloc] initWithFrame:CGRectMake(50,0,100,40)];
     lbNavTitle.backgroundColor = [UIColor clearColor];
     lbNavTitle.textColor = [UIColor whiteColor];
-    lbNavTitle.textAlignment = UITextAlignmentCenter;
+    lbNavTitle.textAlignment = NSTextAlignmentCenter;
     lbNavTitle.font = [UIFont boldSystemFontOfSize:kFontSizeMiddium];
     lbNavTitle.text = NSLocalizedString(@"VIDEO TITLE",nil);
     self.navigationItem.titleView = lbNavTitle;

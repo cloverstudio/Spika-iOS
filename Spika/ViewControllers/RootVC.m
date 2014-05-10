@@ -42,7 +42,7 @@
 - (void) loadView {
     
     UIView *view = [CSKit view];
-    view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    view.backgroundColor = [UIColor darkTextColor];
     self.view = view;
 }
 

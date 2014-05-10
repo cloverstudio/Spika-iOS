@@ -32,8 +32,6 @@
 
 @interface HUProfileViewController : HUBaseViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,HUEditableLabelDelegate,UIActionSheetDelegate>{
     
-    IBOutlet UIScrollView *contentView;
-    IBOutlet HUImageView *_userAvatarImageView;
     IBOutlet UIButton    *_startConversationBtn;
     IBOutlet UILabel    *_nameLabel;
     IBOutlet UILabel    *_nameValueLabel;
@@ -56,8 +54,8 @@
 }
 
 @property (nonatomic, strong) ModelUser *user;
-@property (nonatomic, strong) UIScrollView *contentView;
-@property (nonatomic, strong) HUImageView *userAvatarImageView;
+@property (nonatomic, strong) IBOutlet UIScrollView *contentView;
+@property (nonatomic, strong) IBOutlet HUImageView *userAvatarImageView;
 
 - (id)initWithUser:(ModelUser *) user;
 - (id)initWithNibName:(NSString *)nibNameOrNil withUser:(ModelUser *)user;
