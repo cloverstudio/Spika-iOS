@@ -310,17 +310,22 @@
     
     
     [self subscribeForKeyboardWillShowNotificationUsingBlock:^(NSNotification *note) {
+       
         this.isKeyboardShown = YES;
+        
     }];
 
     [self subscribeForKeyboardWillChangeFrameNotificationUsingBlock:^(NSNotification *note) {
+        
         [this animateKeyboardWillShow:note];
     }];
     
 
     [self subscribeForKeyboardWillHideNotificationUsingBlock:^(NSNotification *note) {
+        
         this.isKeyboardShown = NO;
         [this animateKeyboardWillHide:note];
+        
     }];
     
 	[this reload];
@@ -1406,7 +1411,6 @@ didSelectLocationButton:(UIButton *)button {
 }
 
 - (void) hideMediaPanel{
-    
     _mediaButton.hidden = YES;
     
     _messageInputTextField.frame = CGRectMake(
