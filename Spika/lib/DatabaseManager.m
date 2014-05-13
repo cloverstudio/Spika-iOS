@@ -376,9 +376,12 @@
 
 -(NSString *) uploadFileSynchronously:(NSData *) data fliename:(NSString *) filename contentType:(NSString *) strContentType{
     
-    // upload image
+    // get upload url
+    NSURL *uploadURLAPIURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/createuploadurl",HttpRootURL]];
+    NSString *urlString = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:uploadURLAPIURL] encoding:NSUTF8StringEncoding];
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",HttpRootURL,FileUplaoder];
+    
+    // upload image
     
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
