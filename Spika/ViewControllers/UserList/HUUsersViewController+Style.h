@@ -28,6 +28,6 @@
 
 -(NSArray *) newSearchBarButtonItemWithSelector:(SEL)aSelector;
 -(HUSearchBarController *) newSearchBar;
--(UILabel *)noUsersLabel;
+-(UILabel *)createNoUsersLabel;
 
 @end

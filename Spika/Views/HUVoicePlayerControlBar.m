@@ -152,8 +152,15 @@
             NSLog(@"AVAudioPlayer error:'%@'", [error description]);
         }
         
-        UInt32 doChangeDefaultRoute = 1;
-        AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof (doChangeDefaultRoute), &doChangeDefaultRoute);
+        
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        NSError *setCategoryError = nil;
+        if (![session setCategory:AVAudioSessionCategoryPlayback
+                      withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker
+                            error:&setCategoryError]) {
+            // handle error
+            NSLog(@"%@", setCategoryError);
+        }
         
         _playerLocal.delegate = self;
         

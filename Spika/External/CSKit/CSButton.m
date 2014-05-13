@@ -32,10 +32,7 @@
                 action:@selector(pushed)
       forControlEvents:UIControlEventTouchUpInside];
     
-    CS_RELEASE(_callback);
     _callback = nil;
-    
-    CS_SUPER_DEALLOC;
 }
 #pragma mark - Initialization
 

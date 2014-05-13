@@ -23,7 +23,6 @@
  */
 
 #import "HUPushNotificationManager.h"
-#import "CSDispatcher.h"
 #import "CSGraphics.h"
 
 static HUPushNotificationManager *instance = nil;
@@ -212,10 +211,10 @@ static dispatch_queue_t serialQueue = nil;
 		
 		if (model.hidesAfterTimeInterval != 0.0f) {
 			__block HUPushNotificationModel *_model = model;
-			[CSDispatcher dispatchAfter:_model.hidesAfterTimeInterval
-								  block:^{
-									  [self removePushNotification:_model];
-								  }];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_model.hidesAfterTimeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self removePushNotification:_model];
+            });
 		}
     }];
 }

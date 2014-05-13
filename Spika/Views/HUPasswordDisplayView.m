@@ -26,7 +26,6 @@
 #import "HUPasswordDisplayView+Style.h"
 #import "HUBaseViewController+Style.h"
 #import "CSNotificationView.h"
-#import "CSDispatcher.h"
 #import "CSGraphics.h"
 
 @interface HUPasswordDisplayView ()
@@ -115,7 +114,7 @@ static CGFloat roundRadius = 18.0f;
 -(void) showResult:(BOOL)isSuccess {
 	
 	UILabel *resultView = [[UILabel alloc] initWithFrame:self.bounds];
-	resultView.textAlignment = UITextAlignmentCenter;
+	resultView.textAlignment = NSTextAlignmentCenter;
 	resultView.textColor = [UIColor whiteColor];
 	resultView.font = kFontArialMTBoldOfSize(kFontSizeBig);
 	
@@ -128,50 +127,17 @@ static CGFloat roundRadius = 18.0f;
 	CSNotificationView *note = [CSNotificationView notificationWithView:resultView];
 	note.anchorPointZ = 12;
 	[self showNotification:note];
+    
 	if (!isSuccess) {
-		[CSDispatcher dispatchAfter:1.0f block:^{
-			[self hideNotification];
-			[CSDispatcher dispatchAfter:0.5f block:^{
-				if (self.animationFinishedCallback) self.animationFinishedCallback();
-			}];
-		}];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self hideNotification];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.animationFinishedCallback) { self.animationFinishedCallback(); }
+            });
+        });
 	}
 }
 
-/*
-
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	
-	NSInteger totalNumber = [_datasource totalNumberOfDigitsForInputView:self];
-	
-	NSMutableArray *array = [NSMutableArray new];
-	CGFloat offset = (self.width - self.height * totalNumber) * 0.5f;
-	CGFloat height = self.height;
-	for (int i = 0; i < totalNumber; i++) {
-		CGRect frame = CGRectMake(offset + height * i, 0, height, height);
-		[array addObject:[NSValue valueWithCGRect:frame]];
-	}
-	
-	int j = 0;
-	NSInteger currentNumberOfDigits = [_datasource currentNumberOfDigitsForInputView:self];
-	for (NSValue *value in array) {
-		
-		[self drawEllipseInContext:ctx rect:value.CGRectValue index:j currentNumber:currentNumberOfDigits];
-		j++;
-	}
-}
-
--(void) drawEllipseInContext:(CGContextRef)ctx rect:(CGRect)rect index:(NSInteger)index currentNumber:(NSInteger)currentNumber {
-	
-	HUSharedColorType type = index < currentNumber ? HUSharedColorTypeRed : HUSharedColorTypeGray;
-	UIColor *color = [HUBaseViewController colorWithSharedColorType:type];
-	
-	CGContextAddEllipseInRect(ctx, CGRectContract(rect, 4));
-	CGContextSetFillColor(ctx, CGColorGetComponents(color.CGColor));
-    CGContextFillPath(ctx);
-}
-*/
 @end

@@ -10,17 +10,10 @@
 
 @implementation ServerManager
 
-+(NSString *)serverBaseUrl {
++ (NSString *)serverBaseUrl {
+    
     NSString *base = [[NSUserDefaults standardUserDefaults] objectForKey:serverBaseURLprefered];
-    NSLog(@"base: %@", base);
-    if ([base length] > 0) {
-
-        return base;
-    }
-    else {
-
-        return DefaultAPIEndPoint;
-    }
+    return (base && base.length ? base : DefaultAPIEndPoint);
 }
 
 @end

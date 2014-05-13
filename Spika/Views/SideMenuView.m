@@ -164,6 +164,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationSideMenuLogoutSelected object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHideSideMenu object:nil];
     }
+}
+
+- (void)dialogDidPressCancel:(HUDialog *)dialog {
 
 }
 

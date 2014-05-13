@@ -48,8 +48,8 @@
 
 + (CGRect) frameForMessageLabel:(ModelMessage *)message {
     
-    CGSize messageBodySize = [message.body sizeWithFont:[MessageCell fontForMessageLabel]
-                                      constrainedToSize:CGSizeMake(kMessageLabelWidth, NSNotFound)];
+    CGSize messageBodySize = [message.body sizeForBoundingSize:CGSizeMake(kMessageLabelWidth, NSNotFound)
+                                                          font:[MessageCell fontForMessageLabel]];
     messageBodySize.width = kMessageLabelWidth;
     
     CGRect avatarIconViewFrame = [MessageCell frameForAvatarIconView:message];

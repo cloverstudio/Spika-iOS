@@ -37,30 +37,6 @@
     
     if (self) {
         
-        /*
-        UIColor *gradientColorTop = [UIColor colorWithRed:(202/255.0) green:(255/255.0) blue:(232/255.0) alpha:1];
-        UIColor *gradientColorBottom = [UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:1];
-        
-        UIView* gradientView = [[UIView alloc] init];
-        gradientView.frame = CGRectMake(
-                                        0,
-                                        0,
-                                        self.width,
-                                        height
-                                        );
-        
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        
-        gradient.startPoint = CGPointMake(0, 0.5);
-        gradient.endPoint = CGPointMake(0.2, 0.5);
-        
-        gradient.frame = gradientView.bounds;
-        gradient.colors = [NSArray arrayWithObjects:(id)[gradientColorTop CGColor],(id)[gradientColorBottom CGColor], nil];
-        [gradientView.layer insertSublayer:gradient atIndex:0];
-        [self addSubview:gradientView];
-        */
-        
-        UIColor *greenColor = [UIColor colorWithRed:(0/255.0) green:(255/255.0) blue:(143/255.0) alpha:1];
         UIColor *redColor = [UIColor colorWithRed:(255/255.0) green:(32/255.0) blue:(93/255.0) alpha:1];
         UIView *accentView = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:[UIColor whiteColor] andSize:CGSizeMake(320, 3)]];
         accentView.frame = CGRectMake(

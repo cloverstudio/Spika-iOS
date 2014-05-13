@@ -126,7 +126,9 @@
 		}
 	}];
 	
-	[self presentModalViewController:viewController animated:YES];
+    [self presentViewController:viewController
+                       animated:YES
+                     completion:nil];
 }
 
 -(void) showSetNewPasswordModalViewController {
@@ -139,7 +141,9 @@
 		}
 	}];
 	
-	[self presentModalViewController:viewController animated:YES];
+    [self presentViewController:viewController
+                       animated:YES
+                     completion:nil];
 }
 
 -(BOOL) passwordExists {
@@ -178,9 +182,11 @@
             }
             
         });
-        
     }
-    
+}
+
+- (void)dialogDidPressCancel:(HUDialog *)dialog {
+
 }
 
 - (void) changePasswordClicked {

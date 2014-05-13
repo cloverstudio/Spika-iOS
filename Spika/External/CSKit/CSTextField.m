@@ -2,7 +2,7 @@
 //  CSTextField.m
 //  CSKit
 //
-//  Created by Giga on 4/25/13.
+//  Created by Josip Bernat on 4/25/13.
 //  Copyright (c) 2013 Clover Studio. All rights reserved.
 //
 
@@ -12,23 +12,13 @@
 
 @synthesize placeholderTextColor = _placeholderTextColor;
 
-#pragma mark - Memory Management
-
-- (void) dealloc {
-
-    CS_RELEASE(_placeholderTextColor);
-    CS_SUPER_DEALLOC;
-}
-
 #pragma mark - Getters
 
 - (UIColor *) placeholderTextColor {
 
     if (!_placeholderTextColor) {
-        
         self.placeholderTextColor = [UIColor blackColor];
     }
-    
     return _placeholderTextColor;
 }
 
@@ -37,7 +27,10 @@
 - (void) drawPlaceholderInRect:(CGRect)rect {
     
     [[self placeholderTextColor] setFill];
-    [[self placeholder] drawInRect:rect withFont:self.font];
+    
+    [[self placeholder] drawInRect:rect
+                    withAttributes:@{NSFontAttributeName: self.font,
+                                     NSForegroundColorAttributeName: [self placeholderTextColor]}];
 }
 
 // text position

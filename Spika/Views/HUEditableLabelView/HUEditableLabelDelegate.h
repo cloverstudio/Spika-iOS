@@ -26,6 +26,8 @@
 
 @protocol HUEditableLabelDelegate <NSObject>
 
+@optional
+
 - (BOOL)textViewShouldBeginEditing:(id)textView;
 - (void)textViewDidBeginEditing:(id)textView;
 - (void)textFieldDidEndEditing:(id)textView;

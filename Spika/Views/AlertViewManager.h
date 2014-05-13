@@ -48,7 +48,7 @@ typedef void (^HUStringBlock)(NSString *);
 +(AlertViewManager *) defaultManager;
 
 
--(UIAlertView *) showAlert:(NSString *)title message:(NSString *)message;
+-(void) showAlert:(NSString *)title message:(NSString *)message;
 -(void) showAlert:(NSString *)title;
 -(void) showWaiting:(NSString *)title message:(NSString *)message;
 -(void) dismiss;

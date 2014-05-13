@@ -140,7 +140,9 @@
 #pragma mark - Selector
 
 -(void) passwordViewControllerWillClose {
-	[self dismissModalViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 -(void) okButtonDidPress:(id)sender {
@@ -210,7 +212,9 @@
     self.passwordText = [_passwordText stringByAppendingFormat:@"%i", digit];
 }
 
-//-(void) digitInputDidPressDeleteButton:(HUDigitInputViewController *)digitInput {
+- (void)digitInputDidPressDeleteButton:(HUDigitInputViewController *)digitInput {
+
+}
 
 -(void) displayViewDidPressDeleteButton:(HUPasswordDisplayView *)displayView {
 	NSInteger length = _passwordText.length;

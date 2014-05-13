@@ -112,10 +112,6 @@
 - (void)dealloc {
     
     _delegate = nil;
-    
-    CS_RELEASE(_dotColorCurrentPage);
-    CS_RELEASE(_dotColorOtherPage);
-    CS_SUPER_DEALLOC;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

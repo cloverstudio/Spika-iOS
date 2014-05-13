@@ -40,9 +40,7 @@
                                                 attributes:@{NSForegroundColorAttributeName: color}];
     
     serverList = [NSMutableArray array];
-    NSLog(@"poziv prije database managera");
     DMArrayBlock successBlock = ^(NSArray *servers) {
-        NSLog(@"%@", servers);
         for (NSDictionary *dictionary in servers) {
             ModelServer *server = [[ModelServer alloc] initWithDictionary:dictionary];
             [serverList addObject:server];
@@ -97,7 +95,6 @@
     [HUHTTPClient refreshClient];
     
     NSString *selected = server.name;
-    NSLog(@"returning: %@", selected);
     [self.delegate addItemViewController:self didFinishEnteringItem:selected];
     
 }
@@ -125,7 +122,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:serverBaseNamePrefered];
     [HUHTTPClient refreshClient];
 
-    NSLog(@"returning: %@", selected);
     [self.delegate addItemViewController:self didFinishEnteringItem:selected];
     return NO;
 }

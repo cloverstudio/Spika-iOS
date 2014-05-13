@@ -28,11 +28,9 @@
 @implementation HUUsersInGroupViewController
 
 #pragma mark - Dealloc
-- (void)dealloc
-{
-    CS_RELEASE(_tableViewUsers);
+
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    CS_SUPER_DEALLOC;
     
 }
 #pragma mark - Initialization

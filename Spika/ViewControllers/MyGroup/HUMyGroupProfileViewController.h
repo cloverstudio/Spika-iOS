@@ -27,7 +27,7 @@
 #import "HUDialog.h"
 #import "HUGroupProfileViewController.h"
 
-@interface HUMyGroupProfileViewController : HUGroupProfileViewController<HUDialogDelegate>{
+@interface HUMyGroupProfileViewController : HUGroupProfileViewController<HUDialogDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
     IBOutlet UIButton       *_saveButton;
     IBOutlet UIButton       *_deleteButton;
 }

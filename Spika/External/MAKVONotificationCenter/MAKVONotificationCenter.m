@@ -155,7 +155,6 @@ static char MAKVONotificationHelperMagicContext = 0;
 
 - (void)deregister
 {
-    //NSLog(@"deregistering observer %@ target %@ observation %@", _observer, _target, self);
     if ([_target isKindOfClass:[NSArray class]])
     {
         NSIndexSet		*idxSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [(NSArray *)_target count])];
@@ -319,7 +318,6 @@ static char MAKVONotificationHelperMagicContext = 0;
 
         if ([MAKVONotificationCenter_swizzledClasses containsObject:class])
             return;
-//NSLog(@"Swizzling class %@", class);
         SEL				deallocSel = NSSelectorFromString(@"dealloc");/*@selector(dealloc)*/
         Method			dealloc = class_getInstanceMethod(class, deallocSel);
         IMP				origImpl = method_getImplementation(dealloc),
@@ -330,7 +328,6 @@ static char MAKVONotificationHelperMagicContext = 0;
         #endif
                                                               
         {
-//NSLog(@"Auto-deregistering any helpers (%@) on object %@ of class %@", objc_getAssociatedObject((__bridge id)obj, &MAKVONotificationCenter_HelpersKey), obj, class);
             @autoreleasepool
             {
                 for (_MAKVONotificationHelper *observation in [objc_getAssociatedObject((__bridge id)obj, &MAKVONotificationCenter_HelpersKey) copy])

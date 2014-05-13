@@ -39,7 +39,7 @@
 	
 	UILabel *textLabel = [UILabel new];
 	textLabel.numberOfLines = 2;
-	textLabel.lineBreakMode = UILineBreakModeWordWrap;
+	textLabel.lineBreakMode = NSLineBreakByWordWrapping;
 	textLabel.font = [UIFont systemFontOfSize:kFontSizeMiddium];
 	textLabel.backgroundColor = [UIColor clearColor];
     

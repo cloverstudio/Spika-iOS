@@ -41,7 +41,7 @@
 
 - (UIImageView *) anAvatarImageView {
     
-    UIImageView *imageView = CS_AUTORELEASE([[UIImageView alloc] initWithFrame:[HUGroupsCategoryTableViewCell frameForAvatarImageView]]);
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:[HUGroupsCategoryTableViewCell frameForAvatarImageView]];
     imageView.backgroundColor = [UIColor clearColor];
     
     return imageView;
@@ -53,7 +53,7 @@
     UILabel *label = [CSKit labelWithFrame:[HUGroupsCategoryTableViewCell frameForGroupNameLabel]
                                       font:[HUGroupsCategoryTableViewCell fontForGroupNameLabel]
                                  textColor:[self textColorForGroupNameLabel]
-                             textAlignment:UITextAlignmentLeft
+                             textAlignment:NSTextAlignmentLeft
                                       text:nil];
     label.numberOfLines = 0;
     

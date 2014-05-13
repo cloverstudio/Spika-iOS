@@ -43,6 +43,5 @@ typedef enum {
 
 -(void)showPickerTableViewInView:(UIView *)view pickerDataType:(HUPickerTableViewDataType)dataType;
 -(void)removePickerTableView;
--(void) reloadData;
 
 @end

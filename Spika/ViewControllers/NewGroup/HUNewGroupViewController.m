@@ -47,12 +47,6 @@
 
 @implementation HUNewGroupViewController
 
-#pragma mark - Dealloc
-
--(void) dealloc {
-
-}
-
 #pragma mark - Initialization
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -163,7 +157,9 @@
 }
 
 - (IBAction)onBack:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 - (IBAction) onSave{
@@ -312,7 +308,9 @@
     
     _avatarImage = [image copy];
     _avatarView.image = image;
-    [self dismissModalViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
     [self layoutViews];
     
 }

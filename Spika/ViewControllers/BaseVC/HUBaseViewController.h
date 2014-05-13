@@ -100,6 +100,5 @@ typedef NS_ENUM(NSInteger, HUSharedColorType) {
 #pragma mark - Keyboard Done Button
 
 - (void) showKeyboardDoneButtonForTextView:(UITextView *) textView;
-- (void) doneWithKeyboardWithDoneButton:(UITextView *) textView;
 
 @end
